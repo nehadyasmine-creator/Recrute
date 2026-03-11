@@ -1,3 +1,22 @@
 spring:
   application:
     name: recrute-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5433/recrute
+    username: recrute_user
+    password: recrute_pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8080
