@@ -27,6 +27,7 @@ public class Utilisateur {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "role_type")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private RoleType role;
 
     @Column(name = "datecreation")

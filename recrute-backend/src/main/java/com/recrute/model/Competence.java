@@ -15,6 +15,7 @@ public class Competence {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "categorie_competence")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private CategorieType category;
 
     private String nom;

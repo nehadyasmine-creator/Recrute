@@ -24,6 +24,7 @@ public class Entreprise {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "taille_type")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private TailleType taille;
 
     private String siteWeb;

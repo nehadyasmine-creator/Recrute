@@ -23,6 +23,7 @@ public class CompetenceCandidat {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "niveau_type")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private NiveauType niveau;
 
     public enum NiveauType {

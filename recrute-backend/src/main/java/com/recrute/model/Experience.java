@@ -31,5 +31,7 @@ public class Experience {
     private LocalDate dateFin;
 
     private String description;
+
+    @Column(name = "entreprise")
     private String entrepriseNom;
 }

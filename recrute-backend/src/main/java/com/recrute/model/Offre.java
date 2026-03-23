@@ -25,6 +25,7 @@ public class Offre {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type_contrat", columnDefinition = "contrat_type")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private Candidat.ContratType typeContrat;
 
     private BigDecimal salaire;
@@ -41,6 +42,7 @@ public class Offre {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "statut_offre")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private StatutOffre statut;
 
     private Boolean teletravail;
