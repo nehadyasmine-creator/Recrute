@@ -1,3 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Prend au moins 100% de la hauteur de l'écran */
+}
+
 .content {
-  flex: 1;
+  flex: 1; /* Force cette zone à s'étirer pour remplir le vide, poussant le footer en bas */
+}
+
+.app-footer {
+  flex-shrink: 0; /* Empêche le footer de se compresser */
+  /* Tes styles existants (display flex, justify-content, etc.) */
 }

@@ -1,10 +1,5 @@
-html, body {
-  height: 100%;
-  margin: 0;
-}
+@import url(bootstrap);
 
-app-root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+html, body, app-root{
+    background: linear-gradient(90deg,rgb(31, 104, 168) 0%, rgb(23, 58, 97) 45%, rgb(23, 58, 97) 55%, rgba(31, 104, 168, 1) 100%);
 }

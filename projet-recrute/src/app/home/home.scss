@@ -1,0 +1,36 @@
+.connexion-card {
+    position: relative;
+    flex-direction: column;
+    width: 400px;
+    max-width: 1600px;
+    margin: 50px auto;
+    height: 400px;
+
+    background: rgba(45, 117, 180, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    box-shadow: inset 5px 0 2px -2px rgba(0, 0, 0, 0.1), inset -2px 0 8px -5px rgba(0, 0, 0, 0.1), inset 0 5px 8px -2px rgba(0, 0, 0, 0.1), inset 0 -5px 8px -2px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    padding: 30px;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Le formulaire prend tout l'espace disponible sous le titre */
+    width: 100%;
+    justify-content: space-between; /* Pousse les inputs en haut et le bouton en bas */
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne les labels à gauche */
+}
