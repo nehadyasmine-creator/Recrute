@@ -5,7 +5,7 @@ from seleniumbase import SB
 
 # Requête modifiée pour la France entière
 BASE_URL = "https://fr.indeed.com/jobs?q=ing%C3%A9nieur&l=France"
-TARGET_COUNT = 100
+TARGET_COUNT = 2
 HTML_DIR = "html"
 
 
