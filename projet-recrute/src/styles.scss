@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(bootstrap);
+
+html, body, app-root{
+    background: linear-gradient(90deg,rgb(31, 104, 168) 0%, rgb(23, 58, 97) 45%, rgb(23, 58, 97) 55%, rgba(31, 104, 168, 1) 100%);
+}
