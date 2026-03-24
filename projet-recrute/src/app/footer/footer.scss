@@ -1,0 +1,131 @@
+.footer {
+  background: linear-gradient(to right, #07143a, #1c2e57);
+  color: #ffffff;
+  padding: 55px 80px 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 70px;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  min-width: 180px;
+}
+
+.brand-section {
+  max-width: 260px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.logo h3 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-section h4 {
+  margin: 0 0 18px 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b8c3e0;
+}
+
+.footer-section p {
+  margin: 0 0 14px 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e3e8f5;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: #e3e8f5;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-section a:hover {
+  opacity: 0.75;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 45px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-left {
+  font-size: 13px;
+  color: #b8c3e0;
+}
+
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid #37d6d6;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #37d6d6;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 24px 20px;
+  }
+
+  .footer-container {
+    gap: 35px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.footer-section p {
+  margin: 5px 0; 
+}
