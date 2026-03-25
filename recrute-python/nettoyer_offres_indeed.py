@@ -1,18 +1,35 @@
 import os
-import re
 import csv
+import json
+import time
 import datetime
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 
-# Paramètres des dossiers et fichiers
+from openai import OpenAI
+
+# --- Configuration de l'API OpenAI via le fichier .env ---
+load_dotenv()
+
+# Récupère la clé API de manière sécurisée
+VOTRE_CLE_API = os.getenv("OPENAI_API_KEY")
+
+if not VOTRE_CLE_API:
+    raise ValueError("Erreur : La clé API est introuvable. Avez-vous bien créé le fichier .env avec OPENAI_API_KEY ?")
+
+# Initialisation du client OpenAI
+# Note : par défaut, OpenAI() lit directement os.getenv("OPENAI_API_KEY"),
+# mais la passer explicitement permet de garder la même logique que votre code initial.
+client = OpenAI(api_key=VOTRE_CLE_API)
+
+# --- Configuration des dossiers et fichiers ---
 HTML_DIR = "html"
 OUTPUT_CSV = "offres_indeed_extraites.csv"
-
 
 def extraire_donnees_offre(fichier_path):
     # Initialisation du dictionnaire
     offre = {
-        "fichier_source": os.path.basename(fichier_path),  # Pratique pour le débogage
+        "fichier_source": os.path.basename(fichier_path),
         "titre": None,
         "entreprise": None,
         "localisation": None,
@@ -30,7 +47,7 @@ def extraire_donnees_offre(fichier_path):
         with open(fichier_path, "r", encoding="utf-8") as f:
             soup = BeautifulSoup(f, 'lxml')
 
-            # --- 1. Extraction des métadonnées standard ---
+            # --- 1. Extraction des métadonnées standard (BeautifulSoup) ---
             titre_el = soup.find('h1', attrs={'data-testid': 'jobsearch-JobInfoHeader-title'})
             if titre_el:
                 offre["titre"] = titre_el.text.strip()
@@ -48,7 +65,10 @@ def extraire_donnees_offre(fichier_path):
                 details_text = details_el.text.strip()
 
                 if '€' in details_text:
-                    offre["salaire"] = [ligne for ligne in details_text.split('-') if '€' in ligne][0].strip()
+                    parts = details_text.split('-')
+                    salaire_parts = [ligne for ligne in parts if '€' in ligne]
+                    if salaire_parts:
+                        offre["salaire"] = salaire_parts[0].strip()
 
                 mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance', 'Temps plein', 'Temps partiel']
                 contrats_trouves = [mot for mot in mots_cles_contrat if mot.lower() in details_text.lower()]
@@ -61,42 +81,45 @@ def extraire_donnees_offre(fichier_path):
                 description_texte = desc_el.get_text(separator='\n').strip()
                 offre["description"] = description_texte
 
-                # --- 3. Analyse NLP basique via Regex ---
-                desc_lower = description_texte.lower()
+                prompt = f"""
+                Tu es un assistant spécialisé dans l'analyse de données RH.
+                Analyse la description d'offre d'emploi ci-dessous et extrais les informations demandées.
 
-                # Télétravail
-                if "télétravail" in desc_lower or "remote" in desc_lower or "hybride" in desc_lower:
-                    if "100% télétravail" in desc_lower or "full remote" in desc_lower:
-                        offre["teletravail"] = "100% Distanciel"
-                    elif "hybride" in desc_lower:
-                        offre["teletravail"] = "Hybride"
-                    else:
-                        offre["teletravail"] = "Oui (à vérifier)"
+                Les clés du JSON doivent être exactement celles-ci :
+                - "teletravail": "100% Distanciel", "Hybride", "Oui (à vérifier)" ou null si non mentionné
+                - "experience_requise": la durée (ex: "2 ans", "3 à 5 ans") ou null si non mentionné
+                - "date_debut": la période (ex: "Dès que possible", "Septembre") ou null si non mentionné
+                - "duree": la durée du contrat (ex: "6 mois", "1 an") ou null si CDI ou non mentionné
+                - "salaire" : le salaire proposé ou null s'il n'est pas mentionné
 
-                # Expérience requise
-                match_exp = re.search(r'(\d+)\s*(?:à|-)?\s*(\d+)?\s*(?:ans|années)\s*(?:d\'|d’)?expérience', desc_lower)
-                if match_exp:
-                    offre["experience_requise"] = match_exp.group(0)
+                Description de l'offre :
+                {description_texte}
+                """
 
-                # Date de début
-                if "dès que possible" in desc_lower or "asap" in desc_lower:
-                    offre["date_debut"] = "Dès que possible"
-                else:
-                    match_date = re.search(
-                        r'à partir de (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)',
-                        desc_lower)
-                    if match_date:
-                        offre["date_debut"] = match_date.group(0).capitalize()
+                try:
+                    reponse = client.chat.completions.create(
+                        model="gpt-4o-mini",  # L'équivalent rapide et économique (comme le modèle Flash)
+                        messages=[
+                            {"role": "user", "content": prompt}
+                        ],
+                        response_format={"type": "json_object"}
+                    )
+                    contenu = reponse.choices[0].message.content
 
-                # Durée
-                if offre["type_contrat"] and (
-                        "stage" in offre["type_contrat"].lower() or "cdd" in offre["type_contrat"].lower()):
-                    match_duree = re.search(r'(\d+)\s*(?:à|-)?\s*(\d+)?\s*mois', desc_lower)
-                    if match_duree:
-                        offre["duree"] = match_duree.group(0)
+                    donnees_extraites = json.loads(contenu)
+
+                    offre["teletravail"] = donnees_extraites.get("teletravail", offre["teletravail"])
+                    offre["experience_requise"] = donnees_extraites.get("experience_requise",
+                                                                        offre["experience_requise"])
+                    offre["date_debut"] = donnees_extraites.get("date_debut", offre["date_debut"])
+                    offre["duree"] = donnees_extraites.get("duree", offre["duree"])
+                    offre["salaire"] = donnees_extraites.get("salaire", offre["salaire"]) if offre["salaire"] is None else offre["salaire"]
+
+                except Exception as e_api:
+                    print(f"[-] Erreur lors de l'appel à l'API OpenAI pour {os.path.basename(fichier_path)} : {e_api}")
 
     except Exception as e:
-        print(f"[-] Erreur lors de l'analyse du fichier {fichier_path} : {e}")
+        print(f"[-] Erreur lors de la lecture du fichier {fichier_path} : {e}")
 
     return offre
 
@@ -116,21 +139,33 @@ def traiter_dossier_html():
     toutes_les_offres = []
 
     # Boucle sur chaque fichier du dossier
-    for nom_fichier in fichiers_html:
+    for index, nom_fichier in enumerate(fichiers_html, start=1):
         chemin_complet = os.path.join(HTML_DIR, nom_fichier)
+        print(f"[{index}/{len(fichiers_html)}] Traitement de {nom_fichier} avec OpenAI...")
+
         donnees = extraire_donnees_offre(chemin_complet)
         toutes_les_offres.append(donnees)
 
+        # --- GESTION DE LA LIMITE DE REQUÊTES (Rate Limit) ---
+        # Le niveau gratuit autorise ~15 requêtes par minute.
+        # On ajoute une pause de 4,1 secondes entre chaque appel (60s / 15 = 4s).
+        # On ne met pas de pause après le tout dernier fichier.
+        if index < len(fichiers_html):
+            time.sleep(12.1)
+
     # Sauvegarde des données dans un fichier CSV
-    colonnes = toutes_les_offres[0].keys()
+    if toutes_les_offres:
+        colonnes = toutes_les_offres[0].keys()
 
-    with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8') as fichier_csv:
-        writer = csv.DictWriter(fichier_csv, fieldnames=colonnes)
-        writer.writeheader()
-        writer.writerows(toutes_les_offres)
+        with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8') as fichier_csv:
+            writer = csv.DictWriter(fichier_csv, fieldnames=colonnes)
+            writer.writeheader()
+            writer.writerows(toutes_les_offres)
 
-    print(f"\n[+] Succès ! {len(toutes_les_offres)} offres ont été extraites.")
-    print(f"[+] Les données ont été sauvegardées dans : {OUTPUT_CSV}")
+        print(f"\n[+] Succès ! {len(toutes_les_offres)} offres ont été extraites.")
+        print(f"[+] Les données ont été sauvegardées dans : {OUTPUT_CSV}")
+    else:
+        print("\n[-] Aucune donnée n'a pu être extraite.")
 
 
 if __name__ == "__main__":
