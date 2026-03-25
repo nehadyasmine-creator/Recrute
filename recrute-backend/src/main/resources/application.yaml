@@ -13,10 +13,6 @@ spring:
   sql:
     init:
       mode: always
-  security:
-    user:
-      name: admin
-      password: admin
   servlet:
     multipart:
       max-file-size: 10MB
@@ -24,6 +20,10 @@ spring:
 
 file:
   upload-dir: uploads/cv
+
+jwt:
+  secret: recruteSecretKey404E635266556A586E3272357538782F413F4428472B4B6250645367566B59
+  expiration: 86400000
 
 server:
   port: 8080
