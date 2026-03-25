@@ -1,0 +1,38 @@
+<button routerLink="/" type="button" class="btn btn-light" style="margin-left:2.6%;">Retour à la page d'accueil</button>
+<div class="inscription_candidat_content"
+    style="align-items:center; display:flex; flex-direction:column; color:white; margin-top:2.5%;">
+    <div class="inscription-card">
+        <h4>Création d'un compte candidat</h4>
+        <form style="width:70%;">
+            <div class="inputs-group mb-5 ">
+                <div class="form-group mb-3">
+                    <label for="input1">Prénom</label>
+                    <input type="text" class="form-control" id="input1" placeholder="Malo">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="input2">NOM</label>
+                    <input type="text" class="form-control" id="input2" placeholder="LEPLUSBEAU" oninput="this.value = this.value.toUpperCase()">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="input3">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="input3" placeholder="malo.leplusbeau@email.fr">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="input4">Mot de passe</label>
+                    <input type="password" class="form-control" id="input4" placeholder="Mot de passe">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="input5">Confirmez votre mot de passe</label>
+                    <input type="password" class="form-control" id="input5" placeholder="Mot de passe">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="input6">Téléphone</label>
+                    <input type="tel" class="form-control" id="input6" placeholder="XX XX XX XX XX">
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-light">Je crée mon compte</button>
+
+    </div>
+</div>

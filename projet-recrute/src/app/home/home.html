@@ -1,41 +1,44 @@
-<div class="home-container">
-    <div class="home-content"
-        style="align-items:center; display:flex; flex-direction:column; color:white; margin-top:2.5%;">
-        <h1>Bienvenue sur Recrute!</h1>
-        <p>Votre espace de prédilection pour l'emploi des ingénieurs</p>
+<div class="home-content" style="align-items:center; display:flex; flex-direction:column; color:white; margin-top:2.5%;">
+    <h1>Bienvenue sur Recrute!</h1>
+    <p>Votre espace de prédilection pour l'emploi des ingénieurs</p>
 
-        <div class="connexion-card">
-            <h4>Connexion</h4>
-            <form>
-                <div class="inputs-group">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Adresse e-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Entrez votre e-mail">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Mot de passe</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                            placeholder="Entrez votre mot de passe">
-                    </div>
+    <div class="connexion-card">
+        <h4>Connexion</h4>
+        <form>
+            <div class="inputs-group">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Entrez votre e-mail">
                 </div>
-                <button type="submit" class="btn btn-light">Je me connecte</button>
-            </form>
-        </div>
-        <h4>Pas encore de compte?</h4>
-        <h4>Je suis...</h4>
-        <div class="inscriptions">
-            <div class = "inscription_card">
-                <h3 style="margin-top:5%;">Un candidat</h3>
-                <h6>à la recherche du poste idéal.</h6>
-                <a style=" display: flex ; height: 40%; width: auto; margin-left:2%;  margin-top:10%;" href="/"><img src="assets/pictos/candidat_picto.png" alt="Logo Recrute"  ></a>
-                <button type="submit" class="btn btn-light" style="margin-bottom:5%;">Je crée mon compte</button>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mot de passe</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1"
+                        placeholder="Entrez votre mot de passe">
+                </div>
             </div>
-            <div class = "inscription_card">
-                <h3 style="margin-top:5%;">Un employeur</h3>
-                <h6>à la recherche du talent idéal.</h6>
-                <a style=" display: flex ; height: 40%; width: auto; margin-left:2%; margin-top:10%;" href="/"><img src="assets/pictos/employeur_picto.png" alt="Logo Recrute"  ></a>
-                <button type="submit" class="btn btn-light" style="margin-bottom:5%;">Je crée mon compte</button>
-            </div>
+            <button type="submit" class="btn btn-light">Je me connecte</button>
+        </form>
+    </div>
+    <h4>Pas encore de compte?</h4>
+    <h4>Je suis...</h4>
+    <div class="inscriptions">
+        <div class="inscription_card">
+            <h3 style="margin-top:5%;">Un candidat</h3>
+            <h6>à la recherche du poste idéal.</h6>
+            <div style=" display: flex ; height: 40%; width: auto; margin-left:2%;  margin-top:10%;"><img
+                    src="assets/pictos/candidat_picto.png" alt="Logo Recrute"></div>
+            <button routerLink="/inscription-candidat" type="button" class="btn btn-light" style="margin-bottom:5%;">Je
+                crée mon compte</button>
+
         </div>
-        
+        <div class="inscription_card">
+            <h3 style="margin-top:5%;">Un employeur</h3>
+            <h6>à la recherche du talent idéal.</h6>
+            <div style=" display: flex ; height: 40%; width: auto; margin-left:2%; margin-top:10%;"><img
+                    src="assets/pictos/employeur_picto.png" alt="Logo Recrute"></div>
+            <button routerLink="/inscription-employeur" type="button" class="btn btn-light" style="margin-bottom:5%;">Je
+                crée mon compte</button>
+        </div>
+    </div>
+</div>
