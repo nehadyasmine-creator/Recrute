@@ -1,10 +1,18 @@
+import os
 import re
+import csv
 import datetime
 from bs4 import BeautifulSoup
+
+# Paramètres des dossiers et fichiers
+HTML_DIR = "html"
+OUTPUT_CSV = "offres_indeed_extraites.csv"
+
 
 def extraire_donnees_offre(fichier_path):
     # Initialisation du dictionnaire
     offre = {
+        "fichier_source": os.path.basename(fichier_path),  # Pratique pour le débogage
         "titre": None,
         "entreprise": None,
         "localisation": None,
@@ -13,14 +21,13 @@ def extraire_donnees_offre(fichier_path):
         "experience_requise": None,
         "type_contrat": None,
         "date_debut": None,
-        "date_publication": datetime.date.today(), # On peut l'assigner directement ici
+        "date_publication": datetime.date.today().strftime("%Y-%m-%d"),
         "teletravail": None,
         "description": None,
     }
 
     try:
         with open(fichier_path, "r", encoding="utf-8") as f:
-            # On parse le fichier une seule fois
             soup = BeautifulSoup(f, 'lxml')
 
             # --- 1. Extraction des métadonnées standard ---
@@ -54,7 +61,7 @@ def extraire_donnees_offre(fichier_path):
                 description_texte = desc_el.get_text(separator='\n').strip()
                 offre["description"] = description_texte
 
-                # --- 3. INTEGÉRATION MÉTHODE 1 (Analyse NLP basique via Regex) ---
+                # --- 3. Analyse NLP basique via Regex ---
                 desc_lower = description_texte.lower()
 
                 # Télétravail
@@ -66,7 +73,7 @@ def extraire_donnees_offre(fichier_path):
                     else:
                         offre["teletravail"] = "Oui (à vérifier)"
 
-                # Expérience requise (ex: "3 ans d'expérience", "2 à 5 ans")
+                # Expérience requise
                 match_exp = re.search(r'(\d+)\s*(?:à|-)?\s*(\d+)?\s*(?:ans|années)\s*(?:d\'|d’)?expérience', desc_lower)
                 if match_exp:
                     offre["experience_requise"] = match_exp.group(0)
@@ -75,12 +82,15 @@ def extraire_donnees_offre(fichier_path):
                 if "dès que possible" in desc_lower or "asap" in desc_lower:
                     offre["date_debut"] = "Dès que possible"
                 else:
-                    match_date = re.search(r'à partir de (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)', desc_lower)
+                    match_date = re.search(
+                        r'à partir de (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)',
+                        desc_lower)
                     if match_date:
                         offre["date_debut"] = match_date.group(0).capitalize()
 
-                # Durée (surtout utile si c'est un stage ou un CDD)
-                if offre["type_contrat"] and ("stage" in offre["type_contrat"].lower() or "cdd" in offre["type_contrat"].lower()):
+                # Durée
+                if offre["type_contrat"] and (
+                        "stage" in offre["type_contrat"].lower() or "cdd" in offre["type_contrat"].lower()):
                     match_duree = re.search(r'(\d+)\s*(?:à|-)?\s*(\d+)?\s*mois', desc_lower)
                     if match_duree:
                         offre["duree"] = match_duree.group(0)
@@ -90,30 +100,38 @@ def extraire_donnees_offre(fichier_path):
 
     return offre
 
-# --- Test du script ---
+
+def traiter_dossier_html():
+    if not os.path.exists(HTML_DIR):
+        print(f"[!] Le dossier '{HTML_DIR}' n'existe pas. Veuillez lancer le scraper d'abord.")
+        return
+
+    fichiers_html = [f for f in os.listdir(HTML_DIR) if f.endswith('.html')]
+
+    if not fichiers_html:
+        print(f"[-] Aucun fichier HTML trouvé dans le dossier '{HTML_DIR}'.")
+        return
+
+    print(f"[*] Début de l'analyse de {len(fichiers_html)} offres...")
+    toutes_les_offres = []
+
+    # Boucle sur chaque fichier du dossier
+    for nom_fichier in fichiers_html:
+        chemin_complet = os.path.join(HTML_DIR, nom_fichier)
+        donnees = extraire_donnees_offre(chemin_complet)
+        toutes_les_offres.append(donnees)
+
+    # Sauvegarde des données dans un fichier CSV
+    colonnes = toutes_les_offres[0].keys()
+
+    with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8') as fichier_csv:
+        writer = csv.DictWriter(fichier_csv, fieldnames=colonnes)
+        writer.writeheader()
+        writer.writerows(toutes_les_offres)
+
+    print(f"\n[+] Succès ! {len(toutes_les_offres)} offres ont été extraites.")
+    print(f"[+] Les données ont été sauvegardées dans : {OUTPUT_CSV}")
+
+
 if __name__ == "__main__":
-    fichier_test = "indeed_offre_1.html"
-    donnees = extraire_donnees_offre(fichier_test)
-
-    print("\n[+] Données extraites :")
-    for cle, valeur in donnees.items():
-        if cle == "description" and valeur:
-            print(f"  - {cle.capitalize()} : {valeur[:80]}... (tronqué)")
-        else:
-            print(f"  - {cle.capitalize()} : {valeur}")
-
-
-# --- Test du script ---
-if __name__ == "__main__":
-    # Remplace par le nom de ton fichier HTML sauvegardé
-    fichier_test = "indeed_offre_1.html"
-
-    offre = extraire_donnees_offre(fichier_test)
-
-
-    print("\n[+] Données extraites :")
-    for cle, valeur in offre.items():
-        if cle == "description" and valeur:
-            print(f"  - {cle.capitalize()} : {valeur[:100]}... (tronqué)")
-        else:
-            print(f"  - {cle.capitalize()} : {valeur}")
+    traiter_dossier_html()
