@@ -6,6 +6,7 @@ services:
       POSTGRES_DB: recrute
       POSTGRES_USER: recrute_user
       POSTGRES_PASSWORD: recrute_pass
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
     ports:
       - "5433:5432"
     volumes:

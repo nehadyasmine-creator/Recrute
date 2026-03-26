@@ -3,6 +3,9 @@ package com.recrute.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
+
+import com.recrute.enums.StatusCandidature;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -35,9 +38,5 @@ public class Candidature {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "statut_candidature")
     @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
-    private StatutCandidature statut;
-
-    public enum StatutCandidature {
-        envoyee, en_attente, refusee, acceptee
-    }
+    private StatusCandidature statut;
 }

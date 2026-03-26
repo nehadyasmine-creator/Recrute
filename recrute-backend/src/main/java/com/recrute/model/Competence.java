@@ -3,6 +3,8 @@ package com.recrute.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import com.recrute.enums.CategorieType;
+
 @Entity
 @Table(name = "competence")
 @Data
@@ -19,8 +21,4 @@ public class Competence {
     private CategorieType category;
 
     private String nom;
-
-    public enum CategorieType {
-        technique, soft_skill, langue, autre
-    }
 }
