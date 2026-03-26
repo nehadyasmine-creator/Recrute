@@ -2,10 +2,10 @@ spring:
   application:
     name: recrute-backend
   datasource:
-    url: jdbc:postgresql://localhost:5433/recrute
     username: recrute_user
     password: recrute_pass
     driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/recrute?characterEncoding=UTF-8&useUnicode=true
   jpa:
     hibernate:
       ddl-auto: none
@@ -17,7 +17,6 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
 file:
   upload-dir: uploads/cv
 

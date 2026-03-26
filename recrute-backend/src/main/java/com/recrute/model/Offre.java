@@ -5,6 +5,9 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.math.BigDecimal;
 
+import com.recrute.enums.StatutOffre;
+import com.recrute.enums.ContratType;
+
 @Entity
 @Table(name = "offre")
 @Data
@@ -26,7 +29,7 @@ public class Offre {
     @Enumerated(EnumType.STRING)
     @Column(name = "type_contrat", columnDefinition = "contrat_type")
     @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
-    private Candidat.ContratType typeContrat;
+    private ContratType typeContrat;
 
     private BigDecimal salaire;
     private String duree;
@@ -46,8 +49,4 @@ public class Offre {
     private StatutOffre statut;
 
     private Boolean teletravail;
-
-    public enum StatutOffre {
-        ouverte, fermee
-    }
 }

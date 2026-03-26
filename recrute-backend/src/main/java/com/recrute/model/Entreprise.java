@@ -3,6 +3,8 @@ package com.recrute.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import com.recrute.enums.TailleType;
+
 @Entity
 @Table(name = "entreprise")
 @Data
@@ -27,9 +29,6 @@ public class Entreprise {
     @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private TailleType taille;
 
+    @Column(name = "siteweb")
     private String siteWeb;
-
-    public enum TailleType {
-        startup, pme, eti, grand_groupe
-    }
 }

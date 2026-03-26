@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 
+import com.recrute.enums.ContratType;
+
 @Entity
 @Table(name = "candidat")
 @Data
@@ -26,8 +28,4 @@ public class Candidat {
     private String ville;
     private LocalDate disponibilite;
     private String cv;
-
-    public enum ContratType {
-        CDI, CDD, Stage, Alternance, Freelance, Interim
-    }
 }
