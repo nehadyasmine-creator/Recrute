@@ -6,14 +6,14 @@ html, body {
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Prend au moins 100% de la hauteur de l'écran */
+  min-height: 100vh;
 }
 
 .content {
-  flex: 1; /* Force cette zone à s'étirer pour remplir le vide, poussant le footer en bas */
+  flex: 1;
+  padding-top:100px;
 }
 
 .app-footer {
-  flex-shrink: 0; /* Empêche le footer de se compresser */
-  /* Tes styles existants (display flex, justify-content, etc.) */
+  flex-shrink: 0; 
 }
