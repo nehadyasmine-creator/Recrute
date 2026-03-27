@@ -37,4 +37,6 @@ public class Utilisateur {
 
     @Column(name = "datecreation")
     private LocalDate dateCreation;
+
+    private String pdp;
 }
