@@ -68,7 +68,7 @@ def extraire_donnees_offre(fichier_path):
                     parts = details_text.split('-')
                     salaire_parts = [ligne for ligne in parts if '€' in ligne]
                     if salaire_parts:
-                        offre["salaire"] = salaire_parts[0].strip()
+                        offre["salaire"] = salaire_parts[0].strip(' ')
 
                 mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance', 'Temps plein', 'Temps partiel']
                 contrats_trouves = [mot for mot in mots_cles_contrat if mot.lower() in details_text.lower()]
@@ -86,13 +86,16 @@ def extraire_donnees_offre(fichier_path):
                 Analyse la description d'offre d'emploi ci-dessous et extrais les informations demandées.
 
                 Les clés du JSON doivent être exactement celles-ci :
-                - "teletravail": "100% Distanciel", "Hybride", "Oui (à vérifier)" ou null si non mentionné
-                - "experience_requise": la durée (ex: "2 ans", "3 à 5 ans") ou null si non mentionné
+                - "teletravail": "100% Distanciel", "Hybride", "Oui" ou null si non mentionné
+                - "experience_requise": la durée minimale (ex: "2 ans", "3 ans", "5 ans", pas "3 à 5 ans") ou null si non mentionné
                 - "date_debut": la période (ex: "Dès que possible", "Septembre") ou null si non mentionné
                 - "duree": la durée du contrat (ex: "6 mois", "1 an") ou null si CDI ou non mentionné
-                - "salaire" : le salaire proposé ou null s'il n'est pas mentionné
+                - "salaire" : nettoyer le salaire minimal proposé sous la forme d'un entier (ex : 1000, 40000 ) ou null si non mentionné
+                - "localisation" : nettoyer le lieu de stage et ne renvoyer que la ville (ex : "Pantin", "Paris", "Lyon") ou null si non mentionné
 
                 Description de l'offre :
+                localisation : {offre["localisation"]}
+                salaire : {offre["salaire"]}
                 {description_texte}
                 """
 
@@ -113,7 +116,12 @@ def extraire_donnees_offre(fichier_path):
                                                                         offre["experience_requise"])
                     offre["date_debut"] = donnees_extraites.get("date_debut", offre["date_debut"])
                     offre["duree"] = donnees_extraites.get("duree", offre["duree"])
-                    offre["salaire"] = donnees_extraites.get("salaire", offre["salaire"]) if offre["salaire"] is None else offre["salaire"]
+                    offre["localisation"] = donnees_extraites.get("localisation", offre["localisation"])
+                    offre["salaire"] = donnees_extraites.get("salaire", offre["salaire"])
+                    if offre["salaire"] is not None:
+                        if offre["salaire"] < 10000:
+                            offre["salaire"] = offre["salaire"]*12
+
 
                 except Exception as e_api:
                     print(f"[-] Erreur lors de l'appel à l'API OpenAI pour {os.path.basename(fichier_path)} : {e_api}")
@@ -146,12 +154,8 @@ def traiter_dossier_html():
         donnees = extraire_donnees_offre(chemin_complet)
         toutes_les_offres.append(donnees)
 
-        # --- GESTION DE LA LIMITE DE REQUÊTES (Rate Limit) ---
-        # Le niveau gratuit autorise ~15 requêtes par minute.
-        # On ajoute une pause de 4,1 secondes entre chaque appel (60s / 15 = 4s).
-        # On ne met pas de pause après le tout dernier fichier.
         if index < len(fichiers_html):
-            time.sleep(12.1)
+            time.sleep(6.1)
 
     # Sauvegarde des données dans un fichier CSV
     if toutes_les_offres:
