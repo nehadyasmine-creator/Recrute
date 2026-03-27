@@ -51,4 +51,23 @@ INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire) VALUES
 (1, 3, true),   -- Offre Java : Spring Boot obligatoire
 (1, 5, false),  -- Offre Java : Docker optionnel
 (2, 5, true),   -- Offre DevOps : Docker obligatoire
-(2, 6, true);   -- Offre DevOps : SQL obligatoire
+(2, 6, true);   -- Offre DevOps : SQL obligatoireINSERT INTO Entreprise (nom, siegesocial) VALUES ('Economat des Armées', 'Pantin');
+
+
+-- Entreprises
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Economat des Armées', 'Pantin', 'Restauration', 'https://www.economat-des-armees.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Advanced Schema', 'Paris', 'Informatique', 'https://www.advancedschema.com/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('CESI Campus NANTERRE', 'Paris', 'Informatique', 'https://www.cesi.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Thales', 'Gennevilliers', 'Défense', 'https://www.thalesgroup.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Groupement Mousquetaires', 'Châtillon', 'Distribution', 'https://www.groupe-mousquetaires.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ISCOD', 'Massy', 'Informatique', 'https://iscod.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Cosium', 'Versailles', 'Informatique', 'https://www.cosium.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Salute Inc.', 'Paris', 'DataCenter', 'https://www.saluteinc.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Odysis', 'Paris', 'Informatique', 'https://odysis.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('INPI', 'Courbevoie', 'Public', 'inpi.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Seyos', 'Gennevilliers', 'Informatique', 'https://www.seyos.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Siemens', 'Châtillon', 'Mobilité', 'https://www.siemens.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('RATP EPIC', 'Noisy-le-Grand', 'Transport', 'https://www.ratp.fr/groupe-ratp', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Inetum', 'Saint-Ouen', 'Informatique', 'https://www.inetum.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Atos', 'Bezons', 'Informatique', 'https://atos.net', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Sia', 'Paris', 'Conseil', 'https://www.sia-consulting.com', 'grand_groupe');
