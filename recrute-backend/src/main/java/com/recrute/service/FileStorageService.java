@@ -13,11 +13,42 @@ import java.util.UUID;
 @Service
 public class FileStorageService {
 
-    @Value("${file.upload-dir}")
-    private String uploadDir;
+    @Value("${file.upload-dir:uploads/cv}")
+    private String cvUploadDir;
+
+    @Value("${file.upload-pdp-dir:uploads/pdp}")
+    private String pdpUploadDir;
 
     public String saveFile(MultipartFile file) throws IOException {
-        Path uploadPath = Paths.get(uploadDir);
+        return saveFileInDirectory(file, cvUploadDir);
+    }
+
+    public String savePdpFile(MultipartFile file) throws IOException {
+        return saveFileInDirectory(file, pdpUploadDir);
+    }
+
+    public byte[] loadFile(String fileName) throws IOException {
+        Path filePath = Paths.get(cvUploadDir).resolve(fileName);
+        return Files.readAllBytes(filePath);
+    }
+
+    public byte[] loadPdpFile(String fileName) throws IOException {
+        Path filePath = Paths.get(pdpUploadDir).resolve(fileName);
+        return Files.readAllBytes(filePath);
+    }
+
+    public void deleteFile(String fileName) throws IOException {
+        Path filePath = Paths.get(cvUploadDir).resolve(fileName);
+        Files.deleteIfExists(filePath);
+    }
+
+    public void deletePdpFile(String fileName) throws IOException {
+        Path filePath = Paths.get(pdpUploadDir).resolve(fileName);
+        Files.deleteIfExists(filePath);
+    }
+
+    private String saveFileInDirectory(MultipartFile file, String targetDirectory) throws IOException {
+        Path uploadPath = Paths.get(targetDirectory);
 
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
@@ -28,15 +59,5 @@ public class FileStorageService {
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
         return fileName;
-    }
-
-    public byte[] loadFile(String fileName) throws IOException {
-        Path filePath = Paths.get(uploadDir).resolve(fileName);
-        return Files.readAllBytes(filePath);
-    }
-
-    public void deleteFile(String fileName) throws IOException {
-        Path filePath = Paths.get(uploadDir).resolve(fileName);
-        Files.deleteIfExists(filePath);
     }
 }

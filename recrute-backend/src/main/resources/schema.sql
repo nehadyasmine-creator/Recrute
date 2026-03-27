@@ -35,7 +35,8 @@ CREATE TABLE Utilisateur (
     telephone VARCHAR(20),
     motDePasse VARCHAR(255) NOT NULL,
     role role_type,
-    dateCreation DATE DEFAULT CURRENT_DATE
+    dateCreation DATE DEFAULT CURRENT_DATE,
+    pdp TEXT
 );
 
 CREATE TABLE Entreprise (
