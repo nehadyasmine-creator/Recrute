@@ -3,13 +3,13 @@
       src="assets/logo/logoblanc.png" alt="Logo Recrute"></a>
   <a class="navbar-brand" style="color: white; font-style: italic;">"Au bon projet le bon ingénieur" </a>
   <div class="nav-right" style="margin-left: auto; margin-right: 4%;">
-    <a class="nav-item nav-link" routerLink="/">Qui sommes-nous ?</a>
+    <a class="nav-item nav-link" routerLink="qui-sommes-nous">Qui sommes-nous ?</a>
     <a class="nav-item nav-link" routerLink="faq">F.A.Q.</a>
     <a class="nav-item nav-link" routerLink="contactez-nous">Contactez-nous</a>
   </div>
   @if (!isDeconnecte()){
   <!-- il faudra changer l'image pour afficher dynamiquement la pdp de l'utilisateur (ou a defaut ses initiales dans un rond par ex) -->
-
+    <!-- ajouter "voir profil, voir candidatures", voir offres enregistrées-->
   <a class = "nav-item" style=" display: flex ; height: 80%; width: auto; margin-right:2%;" routerLink="/modifier-profil-candidat">
     <div style="border-radius:50%; height:100%;aspect-ratio: 1/1; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.8);">
       <img style="height:100%;width:100%;object-fit: cover;" src="assets/placeholder/photo_profil.webp" alt="Logo Recrute">
