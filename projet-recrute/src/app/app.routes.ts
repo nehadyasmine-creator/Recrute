@@ -6,6 +6,7 @@ import { InscriptionCandidat } from './inscription-candidat/inscription-candidat
 import { InscriptionEmployeur } from './inscription-employeur/inscription-employeur';
 import { AccueilCandidat } from './accueil-candidat/accueil-candidat';
 import { ModifierProfilCandidat } from './modifier-profil-candidat/modifier-profil-candidat';
+import { ListeOffres } from './liste-offres/liste-offres';
 import { QuiSommesNous } from './qui-sommes-nous/qui-sommes-nous';
 
 export const routes: Routes = [
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'inscription-employeur', component: InscriptionEmployeur},
     { path: 'accueil-candidat', component: AccueilCandidat},
     { path: 'modifier-profil-candidat', component: ModifierProfilCandidat},
+    { path: 'liste-offres', component: ListeOffres},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
 
 
