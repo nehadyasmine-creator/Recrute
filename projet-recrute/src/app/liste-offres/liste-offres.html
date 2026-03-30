@@ -1,1 +1,20 @@
-<p>liste-offres works!</p>
+<section class="offres-page">
+	<h1>Offres disponibles</h1>
+
+	<p *ngIf="loading" class="state">Chargement des offres...</p>
+	<p *ngIf="error" class="state error">{{ error }}</p>
+
+	<div *ngIf="!loading && !error && offres.length === 0" class="state">
+		Aucune offre ouverte pour le moment.
+	</div>
+
+	<div class="offres-grid" *ngIf="!loading && !error && offres.length > 0">
+		<article class="offre-card" *ngFor="let offre of offres">
+			<h2>{{ offre.titre }}</h2>
+			<p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
+			<p>{{ offre.description }}</p>
+			<p class="meta">Salaire: {{ offre.salaire || 'Non renseigne' }}</p>
+			<p class="meta">Teletravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
+		</article>
+	</div>
+</section>

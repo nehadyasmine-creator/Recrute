@@ -1,4 +1,3 @@
-
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
