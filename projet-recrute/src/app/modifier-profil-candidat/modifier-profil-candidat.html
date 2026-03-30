@@ -2,4 +2,47 @@
     <h1>Votre profil.</h1>
     <p>Visualisez et modifiez vos informations.</p>
 
-</div> 
+    <div class="menus" style="display:flex;flex-direction:row;margin-top:2%;">
+        <div class="menu-options">
+            <table class="table table-borderless table-hover">
+                <tbody>
+                    <tr (click)="changerOnglet('infos')" [class.active]="ongletActif === 'infos'" class="en-haut">
+                        <td>Modifier mes informations personnelles</td>
+                    </tr>
+                    <tr (click)="changerOnglet('exp')">
+                        <td>Mes expériences</td>
+                    </tr>
+                    <tr (click)="changerOnglet('comp')">
+                        <td>Mes compétences</td>
+                    </tr>
+                    <tr (click)="changerOnglet('cv')">
+                        <td>Mon CV</td>
+                    </tr>
+                    <tr>
+                        <td style="color:red;font-weight:bold">Déconnexion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="menu-contenu">
+            @switch (ongletActif) {
+            @case ('infos') {
+            <h2>Mes informations</h2>
+            }
+            @case ('exp') {
+            <h2>Mes expériences</h2>
+            }
+            @case ('comp') {
+            <h2>Mes compétences</h2>
+            }
+            @case ('cv') {
+            <h2>Mon CV</h2>
+            }
+            @default {
+            <p>Sélectionnez une option dans le menu de gauche.</p>
+            }
+            }
+        </div>
+    </div>
+</div>

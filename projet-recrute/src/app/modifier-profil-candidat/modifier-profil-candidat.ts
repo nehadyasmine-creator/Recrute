@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './modifier-profil-candidat.scss',
 })
 export class ModifierProfilCandidat {
+  ongletActif: string = 'infos'; 
 
+  
+  changerOnglet(nomOnglet: string) {
+    this.ongletActif = nomOnglet;
+  }
 }
