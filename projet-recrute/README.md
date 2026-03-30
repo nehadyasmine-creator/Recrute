@@ -66,3 +66,5 @@ For more information on using the Angular CLI, including detailed command refere
 npm install -g @angular/cli@20
 
 npm install bootstrap@5.3.3
+
+npm install bootstrap-icons
