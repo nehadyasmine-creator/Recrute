@@ -51,4 +51,41 @@ INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire) VALUES
 (1, 3, true),   -- Offre Java : Spring Boot obligatoire
 (1, 5, false),  -- Offre Java : Docker optionnel
 (2, 5, true),   -- Offre DevOps : Docker obligatoire
-(2, 6, true);   -- Offre DevOps : SQL obligatoire
+(2, 6, true);   -- Offre DevOps : SQL obligatoireINSERT INTO Entreprise (nom, siegesocial) VALUES ('Economat des Armées', 'Pantin');
+
+
+-- Entreprises
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Economat des Armées', 'Pantin', 'Restauration', 'https://www.economat-des-armees.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Advanced Schema', 'Paris', 'Informatique', 'https://www.advancedschema.com/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('CESI Campus NANTERRE', 'Paris', 'Informatique', 'https://www.cesi.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Thales', 'Gennevilliers', 'Défense', 'https://www.thalesgroup.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Groupement Mousquetaires', 'Châtillon', 'Distribution', 'https://www.groupe-mousquetaires.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ISCOD', 'Massy', 'Informatique', 'https://iscod.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Cosium', 'Versailles', 'Informatique', 'https://www.cosium.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Salute Inc.', 'Paris', 'DataCenter', 'https://www.saluteinc.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Odysis', 'Paris', 'Informatique', 'https://odysis.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('INPI', 'Courbevoie', 'Public', 'inpi.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Seyos', 'Gennevilliers', 'Informatique', 'https://www.seyos.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Siemens', 'Châtillon', 'Mobilité', 'https://www.siemens.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('RATP EPIC', 'Noisy-le-Grand', 'Transport', 'https://www.ratp.fr/groupe-ratp', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Inetum', 'Saint-Ouen', 'Informatique', 'https://www.inetum.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Atos', 'Bezons', 'Informatique', 'https://atos.net', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Sia', 'Paris', 'Conseil', 'https://www.sia-consulting.com', 'grand_groupe');
+
+-- Utilisateurs
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Gaetan', 'LopesGaetan@gmail.com', '+33788477558', 'LopesGaetan', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Christophe', 'LopesChristophe@gmail.com', '+33746085100', 'LopesChristophe', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Malo', 'LopesMalo@gmail.com', '+33635252043', 'LopesMalo', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Sabine', 'LopesSabine@gmail.com', '+33706559584', 'LopesSabine', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Yasmine', 'LopesYasmine@gmail.com', '+33633465067', 'LopesYasmine', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Clément', 'LopesClément@gmail.com', '+33758188241', 'LopesClément', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Martin', 'LopesMartin@gmail.com', '+33704735987', 'LopesMartin', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Pierre', 'LopesPierre@gmail.com', '+33705695055', 'LopesPierre', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Ilyes', 'LopesIlyes@gmail.com', '+33694817360', 'LopesIlyes', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lopes', 'Thomas', 'LopesThomas@gmail.com', '+33660990181', 'LopesThomas', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Gaetan', 'DufournierGaetan@gmail.com', '+33779729657', 'DufournierGaetan', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Christophe', 'DufournierChristophe@gmail.com', '+33790646885', 'DufournierChristophe', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Malo', 'DufournierMalo@gmail.com', '+33783634795', 'DufournierMalo', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Sabine', 'DufournierSabine@gmail.com', '+33664907718', 'DufournierSabine', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Yasmine', 'DufournierYasmine@gmail.com', '+33655925556', 'DufournierYasmine', 'Recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Clément', 'DufournierClément@gmail.com', '+33729397168', 'DufournierClément', 'Recruteur','2026-03-31');

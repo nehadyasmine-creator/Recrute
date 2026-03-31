@@ -32,8 +32,10 @@ def extraire_donnees_offre(fichier_path):
         "fichier_source": os.path.basename(fichier_path),
         "titre": None,
         "entreprise": None,
+        "secteur" : None,
         "localisation": None,
         "salaire": None,
+        "site_web" : None,
         "duree": None,
         "experience_requise": None,
         "type_contrat": None,
@@ -86,14 +88,17 @@ def extraire_donnees_offre(fichier_path):
                 Analyse la description d'offre d'emploi ci-dessous et extrais les informations demandées.
 
                 Les clés du JSON doivent être exactement celles-ci :
+                - "secteur" : secteur de l'entreprise en un mot basé sur le nom de l'entreprise et la description (ex : "Informatique", "Aéronautique") 
                 - "teletravail": "100% Distanciel", "Hybride", "Oui" ou null si non mentionné
                 - "experience_requise": la durée minimale (ex: "2 ans", "3 ans", "5 ans", pas "3 à 5 ans") ou null si non mentionné
                 - "date_debut": la période (ex: "Dès que possible", "Septembre") ou null si non mentionné
                 - "duree": la durée du contrat (ex: "6 mois", "1 an") ou null si CDI ou non mentionné
                 - "salaire" : nettoyer le salaire minimal proposé sous la forme d'un entier (ex : 1000, 40000 ) ou null si non mentionné
                 - "localisation" : nettoyer le lieu de stage et ne renvoyer que la ville (ex : "Pantin", "Paris", "Lyon") ou null si non mentionné
+                - "site_web" : trouver le site web de l'entreprise sachant son nom
 
                 Description de l'offre :
+                entreprise : {offre["entreprise"]}
                 localisation : {offre["localisation"]}
                 salaire : {offre["salaire"]}
                 {description_texte}
@@ -118,6 +123,8 @@ def extraire_donnees_offre(fichier_path):
                     offre["duree"] = donnees_extraites.get("duree", offre["duree"])
                     offre["localisation"] = donnees_extraites.get("localisation", offre["localisation"])
                     offre["salaire"] = donnees_extraites.get("salaire", offre["salaire"])
+                    offre["secteur"] = donnees_extraites.get("secteur", offre["secteur"])
+                    offre["site_web"] = donnees_extraites.get("site_web", offre["site_web"])
                     if offre["salaire"] is not None:
                         if offre["salaire"] < 10000:
                             offre["salaire"] = offre["salaire"]*12
