@@ -72,10 +72,12 @@ def extraire_donnees_offre(fichier_path):
                     if salaire_parts:
                         offre["salaire"] = salaire_parts[0].strip(' ')
 
-                mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance','Intérim']
+                mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance','Interim']
                 contrats_trouves = [mot for mot in mots_cles_contrat if mot.lower() in details_text.lower()]
                 if contrats_trouves:
                     offre["type_contrat"] = ", ".join(contrats_trouves)
+                else:
+                    offre["type_contrat"] = "CDI"
 
             # --- 2. Extraction de la description ---
             desc_el = soup.find('div', id='jobDescriptionText')

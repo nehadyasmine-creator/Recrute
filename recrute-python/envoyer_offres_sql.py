@@ -11,16 +11,34 @@ chemin_csv = os.path.join(dossier_actuel, 'offres_indeed_extraites.csv')
 chemin_sql = os.path.abspath(
     os.path.join(dossier_actuel, '..', 'recrute-backend', 'src', 'main', 'resources', 'data.sql'))
 
+lignes_a_conserver = []
+if os.path.exists(chemin_sql):
+    with open(chemin_sql, mode='r', encoding='utf-8') as f:
+        lignes_existantes = f.readlines()
+        for i, ligne in enumerate(lignes_existantes):
+            # On s'arrête dès qu'on détecte le début de la génération des entreprises
+            if '-- ==========================' in ligne and i + 1 < len(lignes_existantes) and 'Entreprises' in \
+                    lignes_existantes[i + 1]:
+                break
+            elif '-- Entreprises' in ligne:  # Cas de secours si le format des '=' a changé
+                break
+            lignes_a_conserver.append(ligne)
+
 entreprises_traitees = set()
 
-# J'ai passé le mode en 'w' (write) pour écraser le fichier à chaque test, c'est plus sûr
 with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
-        open(chemin_sql, mode='w', encoding='utf-8') as file_out:
+        open(chemin_sql, mode='w', encoding='utf-8') as file_out:  # Mode 'w' car on réécrit l'entête nous-mêmes
+
     lignes_csv = list(csv.DictReader(file_in))
 
-    file_out.write('-- ==========================\n')
+    # On réinjecte le contenu manuel qu'on a sauvegardé (s'il y en a)
+    file_out.writelines(lignes_a_conserver)
+
+    # Si le fichier ne se termine pas par un saut de ligne, on en ajoute un pour la propreté
+    if lignes_a_conserver and not lignes_a_conserver[-1].endswith('\n'):
+        file_out.write('\n\n')
+
     file_out.write('-- Entreprises\n')
-    file_out.write('-- ==========================\n')
 
     for row in lignes_csv:
         nom_entreprise = row['entreprise']
@@ -42,9 +60,7 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             file_out.write(requete_sql)
             entreprises_traitees.add(nom_entreprise)
 
-    file_out.write('\n-- ==========================\n')
     file_out.write('-- Recruteurs (Utilisateurs)\n')
-    file_out.write('-- ==========================\n')
 
     prenoms = ['Yasmine', 'Malo', 'Gaetan', 'Martin', 'Pierre', 'Clément', 'Thomas', 'Ilyes', 'Christophe', 'Sabine']
     shuffle(prenoms)
@@ -53,8 +69,6 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
     i = 0
 
     entreprises_traitees = set()
-
-    # NOUVEAU : Dictionnaire pour mémoriser l'ID du recruteur par entreprise
     map_entreprise_recruteur = {}
 
     for row in lignes_csv:
@@ -75,7 +89,7 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             sel = bcrypt.gensalt(rounds=10)
             motdepasse_hashe = bcrypt.hashpw(motdepasse_clair.encode('utf-8'), sel).decode('utf-8')
 
-            i += 1  # On incrémente l'ID
+            i += 1
 
             requete_sql_utilisateur = (
                 f"INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES"
@@ -88,7 +102,6 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
                 f" ({i}, {i}, 'Responsable RH');\n")
             file_out.write(requete_sql_recruteur)
 
-            # On sauvegarde la correspondance entre l'entreprise et cet ID
             map_entreprise_recruteur[nom_entreprise] = i
             entreprises_traitees.add(nom_entreprise)
 
@@ -96,51 +109,43 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
     file_out.write('-- Offres\n')
     file_out.write('-- ==========================\n')
 
-    # Troisième boucle : on parcourt TOUTES les lignes (plus de 'set' car on veut toutes les offres)
-    # ... (Début de la 3ème boucle)
     for row in lignes_csv:
         nom_entreprise = row['entreprise']
 
-        # 1. LIAISON CLÉ ÉTRANGÈRE (INT)
         id_recruteur = map_entreprise_recruteur[nom_entreprise]
 
-        # 2. CHAÎNES DE CARACTÈRES (VARCHAR / TEXT) -> Échappement des apostrophes
         titre_echappe = row.get('titre', '').replace("'", "''")
         lieu_echappe = row.get('localisation', '').replace("'", "''")
         duree_echappe = row.get('duree', '').replace("'", "''")
         description_echappe = row.get('description', 'Description non fournie').replace("'", "''")
 
-        # 3. ENUMERATIONS (contrat_type / statut_offre) -> Échappement comme des chaînes
         type_contrat_echappe = row.get('type_contrat', 'CDI').replace("'", "''")
 
-        # 4. NOMBRES (INT / DECIMAL) -> Conversion propre + Pas de guillemets dans le SQL !
-        # Gestion du salaire (DECIMAL 10,2) : on s'assure que c'est bien un float
         salaire_brut = row.get('salaire', '0')
         try:
             salaire = float(salaire_brut.replace(' ', '').replace(',', '.')) if salaire_brut else 0.0
         except ValueError:
-            salaire = 0.0  # Fallback si le CSV contient du texte comme "Non renseigné"
+            salaire = 0.0
 
-        # Gestion de l'expérience (INT)
         exp_brute = row.get('experience_requise', '0')
         experience_requise = int(exp_brute) if exp_brute.isdigit() else 0
 
-        # 5. DATES (DATE) -> Format YYYY-MM-DD entouré de guillemets simples
         date_debut_csv = row.get('date_debut', '').strip()
         date_debut_sql = f"'{date_debut_csv}'" if date_debut_csv else "NULL"
         date_publication = row.get('date_publication', str(datetime.date.today()))
 
-        # 6. BOOLEAN -> Mot-clé SQL natif TRUE ou FALSE (sans guillemets)
         teletravail_brut = str(row.get('boolean', 'False')).strip().lower()
         teletravail_sql = 'TRUE' if teletravail_brut in ['true', '1', 'oui', 'yes'] else 'FALSE'
 
-        # --- GÉNÉRATION DE LA REQUÊTE ---
+        # CORRECTION DES GUILLEMETS DANS CETTE REQUÊTE :
+        # 1. Enlevé les '' autour de {date_debut_sql} (car ils y sont déjà s'il y a une date)
+        # 2. Corrigé la fin de la chaîne avant teletravail_sql
         requete_sql_offre = (
             f"INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, "
             f"experience_requise, date_debut, date_publication, teletravail) VALUES "
             f"({id_recruteur}, '{titre_echappe}', '{description_echappe}', '{lieu_echappe}', '{type_contrat_echappe}', "
-            f"{salaire}, '{duree_echappe}', {experience_requise}, '{date_debut_sql}', '{date_publication}', "
-            f"'{teletravail_sql});\n"
+            f"{salaire}, '{duree_echappe}', {experience_requise}, {date_debut_sql}, '{date_publication}', "
+            f"{teletravail_sql});\n"
         )
 
         file_out.write(requete_sql_offre)
