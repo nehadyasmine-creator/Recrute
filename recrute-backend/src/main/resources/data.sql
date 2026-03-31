@@ -29,37 +29,37 @@ INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Inet
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Atos', 'Bezons', 'Informatique', 'https://atos.net', 'grand_groupe');
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Sia', 'Paris', 'Conseil', 'https://www.sia.fr', 'grand_groupe');
 -- Recruteurs (Utilisateurs)
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Ilyes', 'ilyes.ladan@gmail.com', '+33620333332', '$2b$10$8HJ3yGjPF4jZY5skeRWax.efQ57cQGbbtdL3789pbCLRNgbzSPke.', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Gaetan', 'gaetan.nehad@gmail.com', '+33776079680', '$2b$10$09ueJIsNa1xOVoLhY0OFeOzxx45.pMu9c1WK3UFk54YVyB3nPUIZS', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Yasmine', 'yasmine.ladan@gmail.com', '+33699911772', '$2b$10$bREGrwRSM8iShCFL00jajuIaR//9a2oznFXF0KfQbkNFd6kGWNcEC', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Martin', 'martin.nehad@gmail.com', '+33633805591', '$2b$10$ZPvfuq8Rl2WOUMTznrmqi.PNaApLCtAV3fsASfY6wRnbRlHEWHiPe', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (2, 2, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Sabine', 'sabine.ladan@gmail.com', '+33711137842', '$2b$10$Ya3dxoNaKXcrqrWj9o8kXutlm6nP7h4HqJWKX/JQT/z/OuW/y3yim', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Sabine', 'sabine.nehad@gmail.com', '+33730599076', '$2b$10$QDVE0oj5i6mb7BDi0oawjeKgWNV8ovC6nxnBqiyZUNe9QYrheMJ/G', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (3, 3, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Malo', 'malo.ladan@gmail.com', '+33612908145', '$2b$10$RKW69sCzDmixweONlvaUDewB7FxSdwTews/Szvo2qy/O70dLRduG2', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Pierre', 'pierre.nehad@gmail.com', '+33708682087', '$2b$10$4ca8sRQ3ZJzaLcB2VPUfc.HSJF82dndeCtnQqCqWN2WeulQOpUrQS', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (4, 4, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Clément', 'clément.ladan@gmail.com', '+33697501519', '$2b$10$4vyz52.NVRNND3q86fYoDe83oXXHbakqkCCxWjC5sARksnzcj1vAe', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Yasmine', 'yasmine.nehad@gmail.com', '+33623250601', '$2b$10$1GuBwDBtA9pt2DbjQgan.OHrlniyNdaYTWSM.aW7sYX6y26w472Si', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (5, 5, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Martin', 'martin.ladan@gmail.com', '+33772487719', '$2b$10$LRTJLpb6Rc8n2z4Jti98MuKR2F3T/jH/Y4GanOc.5gULEbzehGIem', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Ilyes', 'ilyes.nehad@gmail.com', '+33636293740', '$2b$10$dqXu5WZMWuyQQ/8.YEFTnOuDisepHGu/hXNVLWslInmy3YDw6/xdy', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (6, 6, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Christophe', 'christophe.ladan@gmail.com', '+33796617467', '$2b$10$AwvAS9FewLEtSrGqP3sjgORFfLHZUVpYXDXoNL4hhQrsLX4mQai82', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Malo', 'malo.nehad@gmail.com', '+33759428436', '$2b$10$pylXWHvTVPKM8xysdczfVOQNkLbhjpgAnOcAIrNMpO8M/A4JHYu9m', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (7, 7, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Gaetan', 'gaetan.ladan@gmail.com', '+33650160909', '$2b$10$1TbWxfjVeaij067fqGxJ9.5JlXQQxTetUJVbeTzCY1zn2wT6hBRee', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Clément', 'clément.nehad@gmail.com', '+33728313895', '$2b$10$d0ef4EyAcZCO1DUIHprIMek9ZzrZkc6Ameic7m43Bt0CkHHSmWole', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (8, 8, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Thomas', 'thomas.ladan@gmail.com', '+33642811361', '$2b$10$dFEan7IxMoiykrW3Au1YHuYKil3SHkmFHEQXCmviaHG4o4/yCPdzS', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Thomas', 'thomas.nehad@gmail.com', '+33721913727', '$2b$10$j34NNnNm9WULlA9E0kOt2ui/E3wN565/8MEGi.4xFJA9sWlZerFK2', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (9, 9, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Pierre', 'pierre.ladan@gmail.com', '+33752065311', '$2b$10$WQutM2lDKPi8zlqPdI7OI.wOUEfURIpd7i/awtq16Xzgzdm.XjJiq', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Christophe', 'christophe.nehad@gmail.com', '+33627839966', '$2b$10$8gJ0UbwlsaRR6b31s1zKSuuOJXylJAPGM/pfFtuEt2gLKORoR4JMS', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (10, 10, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Ilyes', 'ilyes.bennacer@gmail.com', '+33685385488', '$2b$10$x2AAPfzb40HR1bkqpTLzmeEJ7ISZp4etdTwAmFLZZGu1HbxT3/Hce', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Gaetan', 'gaetan.denis@gmail.com', '+33758838298', '$2b$10$5DmMvKM7byNKrY44BVm/QeuSxGLWUrh4zJ1R/dNp/EGVhGe0kwbRq', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (11, 11, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Yasmine', 'yasmine.bennacer@gmail.com', '+33750884231', '$2b$10$B9xnDQa6Gi9ii9QWWIBfcOjQTdUIv9MtcVWJizX6crd4Leav6kbWa', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Martin', 'martin.denis@gmail.com', '+33699954901', '$2b$10$FYA9fMJnso6ns7PxsL/aeeK8agnO7eLZHS2LYzQLi/B8vRgVquotK', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (12, 12, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Sabine', 'sabine.bennacer@gmail.com', '+33762995742', '$2b$10$pQFPctUM3sWtCoHZxT6Slu1Cq/qSYTL1EgSQRITTHetWg1F1YWUje', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Sabine', 'sabine.denis@gmail.com', '+33727049476', '$2b$10$o.SUay2rEmoBwL09puABd.5ZdMDYSLZvcDwznrXPiTV//tr0rU/LK', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (13, 13, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Malo', 'malo.bennacer@gmail.com', '+33696409364', '$2b$10$fi7is33KH4tRGPD9uRotme3I7//x8oa4EeNhkzQ8vDGokUE6vppQy', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Pierre', 'pierre.denis@gmail.com', '+33610098964', '$2b$10$CH.Z.DG8HipXv9cnLpXwSeuzzRS33g.mUx7NyP11SHILv0EKcl2c.', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (14, 14, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Clément', 'clément.bennacer@gmail.com', '+33635054404', '$2b$10$2m4uIg.jjDPHGNHGnkVoE.Cgt1NFRJ0ir9smhtjQ092hMwKrmuHTa', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Yasmine', 'yasmine.denis@gmail.com', '+33650456569', '$2b$10$J7MZul1KcsTiFmMmDHDyrumrok1NeVDMZcXnE9DWGe8az1NBQwzka', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (15, 15, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Bennacer', 'Martin', 'martin.bennacer@gmail.com', '+33730338949', '$2b$10$/D0oKvuASTriabRJuY6QLOMRVsxk.atfVI5hPyhXL1St5qpHe.BD6', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Ilyes', 'ilyes.denis@gmail.com', '+33798054899', '$2b$10$iNTcqd26an1hMVUkJ37eP.QPjIHuGvcZuLcFymaihXyaWwjuBsFAW', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (16, 16, 'Responsable RH');
 
 -- ==========================
@@ -2857,3 +2857,25 @@ Découvrez notre site carrière et parcourez notre vitrine Welcome To The Jungle
 
 
 Sia est un employeur qui souscrit au principe de l’égalité d’accès à l’emploi. Tous les aspects de l’emploi, tels que le recrutement, les promotions, la rémunération, ou les sanctions sont basés uniquement sur les performances, les compétences, et le comportement des employés ou les besoins de l’entreprise.', 'Paris', 'CDI', 0.0, '', 2, NULL, '2026-03-31', FALSE);
+
+-- Candidats
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite)
+VALUES (2, 'CDI', 'Paris', '2026-04-01'),
+       (3, 'Freelance', 'Lyon', '2026-03-15');
+
+-- Compétences des candidats
+INSERT INTO CompetenceCandidat (id_candidat, id_competence, niveau)
+VALUES (1, 1, 'avance'),        -- Bob : Java avancé
+       (1, 3, 'avance'),        -- Bob : Spring Boot avancé
+       (1, 5, 'intermediaire'), -- Bob : Docker intermédiaire
+       (2, 2, 'expert'),        -- Clara : Python expert
+       (2, 4, 'intermediaire');
+-- Clara : React intermédiaire
+
+-- Compétences requises pour les offres
+INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire)
+VALUES (1, 1, true),  -- Offre Java : Java obligatoire
+       (1, 3, true),  -- Offre Java : Spring Boot obligatoire
+       (1, 5, false), -- Offre Java : Docker optionnel
+       (2, 5, true),  -- Offre DevOps : Docker obligatoire
+       (2, 6, true); -- Offre DevOps : SQL obligatoire
