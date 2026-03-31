@@ -72,7 +72,7 @@ def extraire_donnees_offre(fichier_path):
                     if salaire_parts:
                         offre["salaire"] = salaire_parts[0].strip(' ')
 
-                mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance', 'Temps plein', 'Temps partiel']
+                mots_cles_contrat = ['CDI', 'CDD', 'Freelance', 'Stage', 'Alternance','Intérim']
                 contrats_trouves = [mot for mot in mots_cles_contrat if mot.lower() in details_text.lower()]
                 if contrats_trouves:
                     offre["type_contrat"] = ", ".join(contrats_trouves)
@@ -89,9 +89,11 @@ def extraire_donnees_offre(fichier_path):
 
                 Les clés du JSON doivent être exactement celles-ci :
                 - "secteur" : secteur de l'entreprise en un mot basé sur le nom de l'entreprise et la description (ex : "Informatique", "Aéronautique") 
-                - "teletravail": "100% Distanciel", "Hybride", "Oui" ou null si non mentionné
-                - "experience_requise": la durée minimale (ex: "2 ans", "3 ans", "5 ans", pas "3 à 5 ans") ou null si non mentionné
-                - "date_debut": la période (ex: "Dès que possible", "Septembre") ou null si non mentionné
+                - "teletravail": booléen "True" si télétravail total ou partiel/hybride ou "False" ou null si non mentionné
+                - "experience_requise": la durée minimale en années (ex: "2" pour 2 ans, "3" pour 3 ans, "5" pour 5 ans, pas "3 ans" ou "3-5") ou null si non mentionné
+                - "date_debut": la date au format suivant, ex : 2026-31-03, mettre la date du jour {datetime.date.today()} si dès que possible
+                , ou le premier jour du mois ex : 2026-01-10 si seul le mois est mentionné, après {datetime.date.today()} 
+                Si la date n'est pas clairement mentionnée : renvoyer null
                 - "duree": la durée du contrat (ex: "6 mois", "1 an") ou null si CDI ou non mentionné
                 - "salaire" : nettoyer le salaire minimal proposé sous la forme d'un entier (ex : 1000, 40000 ) ou null si non mentionné
                 - "localisation" : nettoyer le lieu de stage et ne renvoyer que la ville (ex : "Pantin", "Paris", "Lyon") ou null si non mentionné
@@ -160,9 +162,6 @@ def traiter_dossier_html():
 
         donnees = extraire_donnees_offre(chemin_complet)
         toutes_les_offres.append(donnees)
-
-        if index < len(fichiers_html):
-            time.sleep(6.1)
 
     # Sauvegarde des données dans un fichier CSV
     if toutes_les_offres:
