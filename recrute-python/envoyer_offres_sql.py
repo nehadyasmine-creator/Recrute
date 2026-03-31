@@ -1,6 +1,7 @@
 import csv
 import datetime
 import os
+import bcrypt
 from random import shuffle
 from random import randint
 
@@ -59,26 +60,28 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
         prenom = prenoms[i % 10]
         email = nom + prenom + '@gmail.com'
         telephone = '+33' + str(randint(600000000, 799999999))
-        motdepasse = nom + prenom
-        role = 'Recruteur'
+        motdepasse_clair = nom + prenom
+        role = 'recruteur'
         dateCreation = datetime.date.today()
 
         if nom_entreprise not in entreprises_traitees:
             nom_echappe = nom.replace("'", "''")
             prenom_echappe = prenom.replace("'", "''")
             email_echappe = email.replace("'", "''")
-            motdepasse_echappe = motdepasse.replace("'", "''")
 
+            # --- MODIFICATION ICI : Hachage du mot de passe ---
+            sel = bcrypt.gensalt(rounds=10)
+            motdepasse_hashe = bcrypt.hashpw(motdepasse_clair.encode('utf-8'), sel).decode('utf-8')
+            # --------------------------------------------------
+
+            # On utilise motdepasse_hashe dans l'insertion
             requete_sql = (
                 f"INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES"
                 f" ('{nom_echappe}', '{prenom_echappe}', '{email_echappe}'"
-                f", '{telephone}', '{motdepasse_echappe}', '{role}','{dateCreation}');\n")
+                f", '{telephone}', '{motdepasse_hashe}', '{role}','{dateCreation}');\n")
 
             file_out.write(requete_sql)
             entreprises_traitees.add(nom_entreprise)
             i += 1
-
-
-
 
 print(f"Les requêtes SQL ont été générées avec succès dans : {chemin_sql}")
