@@ -4,6 +4,7 @@ import os
 import bcrypt
 from random import shuffle
 from random import randint
+import textwrap
 
 dossier_actuel = os.path.dirname(os.path.abspath(__file__))
 chemin_csv = os.path.join(dossier_actuel, 'offres_indeed_extraites.csv')
@@ -148,6 +149,33 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             f"{teletravail_sql});\n"
         )
 
+        # ... (Fin de votre boucle for row in lignes_csv pour les offres)
         file_out.write(requete_sql_offre)
+    requetes_manuelles = textwrap.dedent("""
+                                         -- Candidats
+                                         INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite)
+                                         VALUES (2, 'CDI', 'Paris', '2026-04-01'),
+                                                (3, 'Freelance', 'Lyon', '2026-03-15');
 
+                                         -- Compétences des candidats
+                                         INSERT INTO CompetenceCandidat (id_candidat, id_competence, niveau)
+                                         VALUES (1, 1, 'avance'),        -- Bob : Java avancé
+                                                (1, 3, 'avance'),        -- Bob : Spring Boot avancé
+                                                (1, 5, 'intermediaire'), -- Bob : Docker intermédiaire
+                                                (2, 2, 'expert'),        -- Clara : Python expert
+                                                (2, 4, 'intermediaire');
+                                         -- Clara : React intermédiaire
+
+                                         -- Compétences requises pour les offres
+                                         INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire)
+                                         VALUES (1, 1, true),  -- Offre Java : Java obligatoire
+                                                (1, 3, true),  -- Offre Java : Spring Boot obligatoire
+                                                (1, 5, false), -- Offre Java : Docker optionnel
+                                                (2, 5, true),  -- Offre DevOps : Docker obligatoire
+                                                (2, 6, true); -- Offre DevOps : SQL obligatoire
+                                         """)
+
+    file_out.write(requetes_manuelles)
+
+# Fin du bloc 'with open(...)'
 print(f"Les requêtes SQL ont été générées avec succès dans : {chemin_sql}")
