@@ -1,5 +1,5 @@
 <nav class="navbar-background">
-  <a class="nav-item" style=" display: flex ; height: 90%; width: auto; margin-left:2%;" routerLink="/"><img
+  <a class="nav-item" style=" display: flex ; height: 90%; width: auto; margin-left:2%;" [routerLink]="isLoggedIn ? '/liste-offres' : '/'"><img
       src="assets/logo/logoblanc.png" alt="Logo Recrute"></a>
   <a class="navbar-brand" style="color: white; font-style: italic;">"Au bon projet le bon ingénieur" </a>
   <div class="nav-right" style="margin-left: auto; margin-right: 4%;">
