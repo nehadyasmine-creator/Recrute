@@ -29,6 +29,7 @@ export class ModifierProfilCandidat {
   changerOnglet(nomOnglet: string) {
     this.ongletActif = nomOnglet;
   }
+<<<<<<< Updated upstream
 
   uploadCV() {
   const userId = this.authService.getUserId();
@@ -56,6 +57,27 @@ export class ModifierProfilCandidat {
       console.error('Erreur upload:', err);
       alert("Erreur lors de l'envoi du fichier.");
     }
+=======
+  selectedFile: File | null = null;
+cvUrl: string | null = null; // Pour afficher le lien du CV existant
+
+onFileSelected(event: any) {
+  this.selectedFile = event.target.files[0];
+}
+
+uploadCV() {
+  if (!this.selectedFile) return;
+
+  const formData = new FormData();
+  formData.append('cv', this.selectedFile); // 'cv' doit correspondre au nom attendu par le back
+
+  this.authService.updateCV(formData).subscribe({
+    next: (res) => {
+      alert('CV mis à jour avec succès !');
+      this.cvUrl = res.cvPath; // Le back doit renvoyer le nouveau chemin
+    },
+    error: (err) => console.error('Erreur upload', err)
+>>>>>>> Stashed changes
   });
 }
 }

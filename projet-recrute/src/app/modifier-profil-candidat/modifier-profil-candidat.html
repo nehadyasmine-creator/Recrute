@@ -38,6 +38,7 @@
             }
             @case ('cv') {
             <h2>Mon CV</h2>
+<<<<<<< Updated upstream
 
             <input type="file" (change)="onFileSelected($event)" accept=".pdf">
 
@@ -46,6 +47,23 @@
             </button>
 
             
+=======
+            <div class="cv-upload-container">
+                <p>Téléchargez votre CV au format PDF uniquement.</p>
+
+                <input type="file" (change)="onFileSelected($event)" accept="application/pdf" class="form-control mb-3">
+
+                <button (click)="uploadCV()" [disabled]="!selectedFile" class="btn btn-light">
+                    Mettre à jour mon CV
+                </button>
+
+                @if (cvUrl) {
+                <div class="mt-4">
+                    <p>CV actuel : <a [href]="cvUrl" target="_blank" style="color: #5dade2;">Voir mon CV</a></p>
+                </div>
+                }
+            </div>
+>>>>>>> Stashed changes
             }
             @default {
             <p>Sélectionnez une option dans le menu de gauche.</p>
