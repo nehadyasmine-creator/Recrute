@@ -35,8 +35,8 @@ export class InscriptionCandidat {
     nom: this.candidatData.nom,
     prenom: this.candidatData.prenom,
     email: this.candidatData.email,
-    telephone: this.candidatData.telephone,
-    motdepasse: this.candidatData.motdepasse,
+    telephone: '+33'+this.candidatData.telephone.substring(1),
+    motDePasse: this.candidatData.motdepasse,
     role: 'candidat' 
   };
 
@@ -46,9 +46,9 @@ export class InscriptionCandidat {
         this.router.navigate(['/']); 
       },
       error: (err) => {
-        this.errorMessage = "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";
+        console.error('Détails de l\'erreur :', err); // Ajoute cette ligne
+        this.errorMessage = "Erreur lors de l'inscription.";
       }
     });
   }
 }
-//test
