@@ -1,1 +1,77 @@
-<p>inscription-employeur works!</p>
+<button routerLink="/" type="button" class="btn btn-light" style="margin-left:2.6%;">
+    Retour à la page d'accueil
+</button>
+
+<div class="inscription_employeur_content"
+    style="align-items:center; display:flex; flex-direction:column; color:white; margin-top:2.5%;">
+
+    <div class="inscription-card">
+        <h4>Création d'un compte employeur</h4>
+
+        <form style="width:70%;">
+
+            <div class="inputs-group mb-5">
+
+                <!-- Nom de l'entreprise -->
+                <div class="form-group mb-3">
+                    <label for="entreprise">Nom de l'entreprise</label>
+                    <input type="text" class="form-control" id="entreprise" placeholder="Nom de l'entreprise">
+                </div>
+
+                <!-- SIRET -->
+                <div class="form-group mb-3">
+                    <label for="siret">SIRET</label>
+                    <input type="text" class="form-control" id="siret" placeholder="123 456 789 00000">
+                </div>
+
+                <!-- Nom du recruteur -->
+                <div class="form-group mb-3">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom" placeholder="DUPONT"
+                        oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <!-- Prénom -->
+                <div class="form-group mb-3">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" class="form-control" id="prenom" placeholder="Jean">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-3">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="contact@entreprise.fr">
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="form-group mb-3">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                </div>
+
+                <!-- Confirmation mot de passe -->
+                <div class="form-group mb-3">
+                    <label for="confirmPassword">Confirmez votre mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Mot de passe">
+                </div>
+
+                <!-- Téléphone -->
+                <div class="form-group mb-3">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" class="form-control" id="telephone" placeholder="XX XX XX XX XX">
+                </div>
+
+                <!-- Adresse -->
+                <div class="form-group mb-3">
+                    <label for="adresse">Adresse de l'entreprise</label>
+                    <input type="text" class="form-control" id="adresse" placeholder="Adresse complète">
+                </div>
+
+            </div>
+
+        </form>
+
+        <button type="submit" class="btn btn-light">Je crée mon compte</button>
+
+    </div>
+</div>
