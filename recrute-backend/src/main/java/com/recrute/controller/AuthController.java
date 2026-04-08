@@ -28,7 +28,7 @@ public class AuthController {
         utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));
         utilisateur.setDateCreation(LocalDate.now());
         utilisateurRepository.save(utilisateur);
-        return ResponseEntity.ok("Inscription réussie");
+        return ResponseEntity.ok(Map.of("message", "Inscription réussie"));
     }
 
     @PostMapping("/login")
