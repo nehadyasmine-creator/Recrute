@@ -55,11 +55,23 @@ logout() {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+<<<<<<< Updated upstream
   uploadCV(candidatId: number, formData: FormData): Observable<any> {
   // L'URL doit correspondre à @PostMapping("/{id}/cv")
   // Vérifie si le préfixe est bien /api/candidats ou autre dans le @RequestMapping en haut du fichier Java
   return this.http.post(`http://localhost:8080/candidats/${candidatId}/cv`, formData, {
     responseType: 'text' // Car ton Java renvoie ResponseEntity<String> et non un JSON
   });
+=======
+  updateCV(formData: FormData): Observable<any> {
+  // On récupère le token pour que le back sache qui envoie le CV
+  const token = this.getToken();
+  
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  };
+
+  return this.http.post(`${this.apiUrl}/auth/update-cv`, formData, { headers });
+>>>>>>> Stashed changes
 }
 }
