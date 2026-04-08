@@ -9,4 +9,4 @@ import { RouterLink } from '@angular/router';
 })
 export class InscriptionCandidat {
 
-}
+} 
