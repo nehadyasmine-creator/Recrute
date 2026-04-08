@@ -1,6 +1,5 @@
-<section class="offres-page">
-	<h1>Offres disponibles</h1>
-
+<div class="contenu">
+	<h1 style="color:white ; margin-bottom:50px">Offres disponibles</h1>
 	<p *ngIf="loading" class="state">Chargement des offres...</p>
 	<p *ngIf="error" class="state error">{{ error }}</p>
 
@@ -12,9 +11,11 @@
 		<article class="offre-card" *ngFor="let offre of offres">
 			<h2>{{ offre.titre }}</h2>
 			<p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
-			<p>{{ offre.description }}</p>
-			<p class="meta">Salaire: {{ offre.salaire || 'Non renseigne' }}</p>
-			<p class="meta">Teletravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
+			<p>
+				{{ offre.description| slice:0:300}} {{ offre.description.length > 300 ? '...' : '' }}
+			</p>
+			<p class="meta">Salaire: {{ offre.salaire || 'Non renseigné' }}</p>
+			<p class="meta">Télétravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
 		</article>
 	</div>
-</section>
+</div>

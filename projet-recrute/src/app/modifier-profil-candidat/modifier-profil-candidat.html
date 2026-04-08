@@ -38,6 +38,14 @@
             }
             @case ('cv') {
             <h2>Mon CV</h2>
+
+            <input type="file" (change)="onFileSelected($event)" accept=".pdf">
+
+            <button class= "btn btn-light" (click)="uploadCV()" [disabled]="!selectedFile">
+                Envoyer le fichier
+            </button>
+
+            
             }
             @default {
             <p>Sélectionnez une option dans le menu de gauche.</p>
