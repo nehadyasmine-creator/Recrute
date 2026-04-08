@@ -43,6 +43,6 @@ public class AuthController {
         }
 
         String token = jwtService.generateToken(email, utilisateur.get().getRole().name());
-        return ResponseEntity.ok(Map.of("token", token));
+        return ResponseEntity.ok(Map.of("token", token,"id", utilisateur.get().getId()));
     }
 }
