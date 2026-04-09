@@ -89,10 +89,49 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
     confirmationNouveauMotDePasse: '',
   };
 
+  utilisateur: any = {
+    nom: '',
+    prenom: '',
+    email: '',
+    telephone: '',
+    adresse: ''
+  };
+
   private authService = inject(AuthService);
   private apiService = inject(ApiService);
   private router = inject(Router);
   private sanitizer = inject(DomSanitizer);
+
+  
+
+  chargerInfosUtilisateur() {
+  const userId = this.authService.getUserId();
+  if (userId) {
+    // On utilise la partie "Utilisateurs" de ton ApiService
+    this.apiService.getUtilisateurById(userId).subscribe({
+      next: (data) => {
+        this.utilisateur = data;
+        console.log('Utilisateur chargé :', data);
+      },
+      error: (err) => console.error('Erreur chargement utilisateur', err)
+    });
+  }
+}
+
+  updateProfil() {
+    const userId = this.authService.getUserId();
+    if (userId) {
+      this.apiService.updateCandidat(userId, this.utilisateur).subscribe({
+        next: (res) => {
+          alert('Profil mis à jour avec succès !');
+        },
+        error: (err) => {
+          console.error('Erreur lors de la mise à jour', err);
+          alert('Erreur lors de la mise à jour.');
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.loadAll();
