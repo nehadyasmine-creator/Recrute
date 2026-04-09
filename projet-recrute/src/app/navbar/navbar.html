@@ -1,22 +1,22 @@
 <nav class="navbar-background">
-  <a class="nav-item" style=" display: flex ; height: 90%; width: auto; margin-left:2%;" [routerLink]="isLoggedIn ? '/liste-offres' : '/'"><img
+  <a class="nav-item logo-link" [routerLink]="isLoggedIn ? '/liste-offres' : '/'"><img
       src="assets/logo/logoblanc.png" alt="Logo Recrute"></a>
-  <a class="navbar-brand" style="color: white; font-style: italic;">"Au bon projet le bon ingénieur" </a>
-  <div class="nav-right" style="margin-left: auto; margin-right: 4%;">
+  <a class="navbar-brand brand-text">"Au bon projet le bon ingénieur" </a>
+  <div class="nav-right nav-right-spacing">
     <a class="nav-item nav-link" routerLink="qui-sommes-nous">Qui sommes-nous ?</a>
     <a class="nav-item nav-link" routerLink="faq">F.A.Q.</a>
     <a class="nav-item nav-link" routerLink="contactez-nous">Contactez-nous</a>
   </div>
   @if (!isDeconnecte()){
-  <!-- il faudra changer l'image pour afficher dynamiquement la pdp de l'utilisateur (ou a defaut ses initiales dans un rond par ex) -->
-    <!-- ajouter "voir profil, voir candidatures", voir offres enregistrées-->
-  <a class = "nav-item" style=" display: flex ; height: 80%; width: auto; margin-right:2%;" routerLink="/modifier-profil-candidat">
-    <div style="border-radius:50%; height:100%;aspect-ratio: 1/1; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.8);">
-      <img style="height:100%;width:100%;object-fit: cover;" src="assets/placeholder/photo_profil.webp" alt="Logo Recrute">
+  <a class="nav-item avatar-link" routerLink="/modifier-profil-candidat">
+    <div class="avatar-circle">
+      @if (avatarUrl) {
+      <img class="avatar-image" [src]="avatarUrl" alt="Photo de profil">
+      } @else {
+      <span class="avatar-initials">{{ avatarInitials }}</span>
+      }
     </div>
   </a>
-
-
   }
 
 </nav>

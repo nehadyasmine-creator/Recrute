@@ -32,6 +32,54 @@ position: fixed;
   font-weight: 500;
 }
 
+.logo-link {
+  display: flex;
+  height: 90%;
+  width: auto;
+  margin-left: 2%;
+}
+
+.brand-text {
+  color: white;
+  font-style: italic;
+}
+
+.nav-right-spacing {
+  margin-left: auto;
+  margin-right: 4%;
+}
+
+.avatar-link {
+  display: flex;
+  height: 80%;
+  width: auto;
+  margin-right: 2%;
+}
+
+.avatar-circle {
+  border-radius: 50%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar-initials {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .nav-item:hover{
   opacity:0.75;
 }
