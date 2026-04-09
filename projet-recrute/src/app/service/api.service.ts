@@ -58,10 +58,13 @@ export class ApiService {
   changePassword(id: number, data: any): Observable<any> {
     return this.http.post(`${API}/utilisateurs/${id}/change-password`, data, { responseType: 'text' });
   }
-  uploadPdp(id: number, file: File): Observable<any> {
+  uploadPdp(id: number, file: File): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post(`${API}/utilisateurs/${id}/pdp`, formData);
+    return this.http.post(`${API}/utilisateurs/${id}/pdp`, formData, { responseType: 'text' });
+  }
+  downloadPdp(id: number): Observable<Blob> {
+    return this.http.get(`${API}/utilisateurs/${id}/pdp`, { responseType: 'blob' });
   }
 
   // Offres

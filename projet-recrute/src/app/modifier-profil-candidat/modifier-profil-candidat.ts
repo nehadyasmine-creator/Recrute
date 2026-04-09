@@ -79,6 +79,10 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
   cvPreviewUrl: SafeResourceUrl | null = null;
   private cvBlobUrl: string | null = null;
 
+  selectedPdpFile: File | null = null;
+  pdpPreviewUrl: string | null = null;
+  private pdpBlobUrl: string | null = null;
+
   passwordForm = {
     ancienMotDePasse: '',
     nouveauMotDePasse: '',
@@ -96,6 +100,7 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.clearCvPreviewUrl();
+    this.clearPdpPreviewUrl();
   }
 
   changerOnglet(nomOnglet: string): void {
@@ -168,6 +173,7 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
         this.loadExperiences();
         this.loadCompetencesCandidat();
         this.loadCvPreview();
+        this.loadPdpPreview();
         this.isLoading = false;
       },
       error: () => {
@@ -175,6 +181,21 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
         this.setError('Impossible de charger votre profil candidat.');
       },
     });
+  }
+
+  getUtilisateurInitiales(): string {
+    const nom = (this.utilisateurForm.nom || '').trim();
+    const prenom = (this.utilisateurForm.prenom || '').trim();
+    if (prenom && nom) {
+      return `${prenom.charAt(0)}${nom.charAt(0)}`.toUpperCase();
+    }
+    if (prenom) {
+      return prenom.charAt(0).toUpperCase();
+    }
+    if (nom) {
+      return nom.charAt(0).toUpperCase();
+    }
+    return 'U';
   }
 
   saveInfos(): void {
@@ -494,6 +515,61 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
     });
   }
 
+  onPdpSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0] ?? null;
+    if (!file) {
+      return;
+    }
+
+    this.selectedPdpFile = file;
+    this.clearPdpPreviewUrl();
+    this.pdpBlobUrl = window.URL.createObjectURL(file);
+    this.pdpPreviewUrl = this.pdpBlobUrl;
+  }
+
+  uploadPdp(): void {
+    if (!this.userId) {
+      this.setError('Utilisateur non identifié.');
+      return;
+    }
+
+    if (!this.selectedPdpFile) {
+      this.setError('Veuillez sélectionner une image.');
+      return;
+    }
+
+    this.apiService.uploadPdp(this.userId, this.selectedPdpFile).subscribe({
+      next: () => {
+        this.selectedPdpFile = null;
+        this.setInfo('Photo de profil mise à jour avec succès.');
+        this.refreshUtilisateur();
+      },
+      error: () => this.setError("Erreur lors de l'envoi de la photo de profil."),
+    });
+  }
+
+  private refreshUtilisateur(): void {
+    if (!this.userId) {
+      return;
+    }
+
+    this.apiService.getUtilisateurById(this.userId).subscribe({
+      next: (utilisateur) => {
+        this.currentUtilisateur = utilisateur;
+        this.utilisateurForm = {
+          nom: utilisateur?.nom ?? '',
+          prenom: utilisateur?.prenom ?? '',
+          email: utilisateur?.email ?? '',
+          telephone: utilisateur?.telephone ?? '',
+        };
+        this.loadPdpPreview();
+        window.dispatchEvent(new Event('profile-updated'));
+      },
+      error: () => this.setError('Impossible de rafraîchir le profil utilisateur.'),
+    });
+  }
+
   changePassword(): void {
     if (!this.userId) {
       this.setError('Utilisateur non identifié.');
@@ -546,6 +622,32 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
     if (this.cvBlobUrl) {
       window.URL.revokeObjectURL(this.cvBlobUrl);
       this.cvBlobUrl = null;
+    }
+  }
+
+  private loadPdpPreview(): void {
+    if (!this.userId || !this.currentUtilisateur?.pdp) {
+      this.clearPdpPreviewUrl();
+      return;
+    }
+
+    this.apiService.downloadPdp(this.userId).subscribe({
+      next: (blob) => {
+        this.clearPdpPreviewUrl();
+        this.pdpBlobUrl = window.URL.createObjectURL(blob);
+        this.pdpPreviewUrl = this.pdpBlobUrl;
+      },
+      error: () => {
+        this.clearPdpPreviewUrl();
+      },
+    });
+  }
+
+  private clearPdpPreviewUrl(): void {
+    this.pdpPreviewUrl = null;
+    if (this.pdpBlobUrl) {
+      window.URL.revokeObjectURL(this.pdpBlobUrl);
+      this.pdpBlobUrl = null;
     }
   }
 }

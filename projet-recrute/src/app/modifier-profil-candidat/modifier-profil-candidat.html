@@ -1,7 +1,5 @@
 <div class="content page-root">
     <h1>Votre profil</h1>
-    <p>Visualisez et modifiez vos informations.</p>
-
     @if (isLoading) {
     <p>Chargement du profil...</p>
     }
@@ -41,6 +39,26 @@
             @switch (ongletActif) {
             @case ('infos') {
             <h2>Informations du candidat et utilisateur</h2>
+
+            <div class="item-card pdp-card mt-3">
+                <h5>Photo de profil</h5>
+                <div class="pdp-preview-row">
+                    @if (pdpPreviewUrl) {
+                    <img class="pdp-preview" [src]="pdpPreviewUrl" alt="Photo de profil" />
+                    } @else {
+                    <div class="pdp-fallback">{{ getUtilisateurInitiales() }}</div>
+                    }
+                    <div>
+                        <p class="mb-2">Ajoutez ou remplacez votre photo de profil.</p>
+                        <input type="file" (change)="onPdpSelected($event)" accept="image/*" />
+                    </div>
+                </div>
+                <div class="actions-row">
+                    <button class="btn btn-light" (click)="uploadPdp()" [disabled]="!selectedPdpFile">
+                        Enregistrer la photo
+                    </button>
+                </div>
+            </div>
 
             <div class="form-grid">
                 <div>

@@ -110,6 +110,39 @@
     margin-top: 18px;
 }
 
+.pdp-card {
+    margin-top: 18px;
+}
+
+.pdp-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.pdp-preview,
+.pdp-fallback {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.pdp-preview {
+    object-fit: cover;
+}
+
+.pdp-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
 .cv-actions {
     display: flex;
     gap: 10px;
