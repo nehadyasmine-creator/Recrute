@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;
     private final FileStorageService fileStorageService;
+    private final PasswordEncoder passwordEncoder;
 
     @Value("${file.upload-pdp-dir:uploads/pdp}")
     private String pdpUploadDir;
@@ -87,5 +89,39 @@ public class UtilisateurController {
         } catch (IOException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/{id}/change-password")
+    public ResponseEntity<String> changePassword(@PathVariable Long id, @RequestBody ChangePasswordRequest request) {
+        if (request == null || request.ancienMotDePasse() == null || request.nouveauMotDePasse() == null
+                || request.confirmationNouveauMotDePasse() == null) {
+            return ResponseEntity.badRequest().body("Champs de mot de passe invalides.");
+        }
+
+        if (request.nouveauMotDePasse().isBlank()) {
+            return ResponseEntity.badRequest().body("Le nouveau mot de passe est obligatoire.");
+        }
+
+        if (!request.nouveauMotDePasse().equals(request.confirmationNouveauMotDePasse())) {
+            return ResponseEntity.badRequest().body("La confirmation du nouveau mot de passe ne correspond pas.");
+        }
+
+        Utilisateur utilisateur = utilisateurService.getById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+
+        if (!passwordEncoder.matches(request.ancienMotDePasse(), utilisateur.getMotDePasse())) {
+            return ResponseEntity.badRequest().body("Ancien mot de passe incorrect.");
+        }
+
+        utilisateur.setMotDePasse(passwordEncoder.encode(request.nouveauMotDePasse()));
+        utilisateurService.update(id, utilisateur);
+
+        return ResponseEntity.ok("Mot de passe modifié avec succès.");
+    }
+
+    public record ChangePasswordRequest(
+            String ancienMotDePasse,
+            String nouveauMotDePasse,
+            String confirmationNouveauMotDePasse) {
     }
 }

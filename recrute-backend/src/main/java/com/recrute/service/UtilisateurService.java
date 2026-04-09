@@ -30,7 +30,24 @@ public class UtilisateurService {
     }
 
     public Utilisateur update(Long id, Utilisateur updated) {
+        Utilisateur existing = utilisateurRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
         updated.setId(id);
+
+        if (updated.getMotDePasse() == null || updated.getMotDePasse().isBlank()) {
+            updated.setMotDePasse(existing.getMotDePasse());
+        }
+        if (updated.getDateCreation() == null) {
+            updated.setDateCreation(existing.getDateCreation());
+        }
+        if (updated.getRole() == null) {
+            updated.setRole(existing.getRole());
+        }
+        if (updated.getPdp() == null) {
+            updated.setPdp(existing.getPdp());
+        }
+
         return utilisateurRepository.save(updated);
     }
 
