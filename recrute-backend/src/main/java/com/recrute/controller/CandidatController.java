@@ -32,6 +32,13 @@ public class CandidatController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/utilisateur/{idUtilisateur}")
+    public ResponseEntity<Candidat> getByUtilisateur(@PathVariable Long idUtilisateur) {
+        return candidatService.getByUtilisateurId(idUtilisateur)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public Candidat create(@RequestBody Candidat candidat) {
         return candidatService.create(candidat);

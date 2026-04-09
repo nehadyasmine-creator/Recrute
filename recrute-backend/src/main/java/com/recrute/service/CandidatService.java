@@ -21,6 +21,10 @@ public class CandidatService {
         return candidatRepository.findById(id);
     }
 
+    public Optional<Candidat> getByUtilisateurId(Long idUtilisateur) {
+        return candidatRepository.findByUtilisateurId(idUtilisateur);
+    }
+
     public Candidat create(Candidat candidat) {
         return candidatRepository.save(candidat);
     }

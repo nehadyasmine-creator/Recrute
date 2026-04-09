@@ -1,3 +1,21 @@
+.page-root {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 2.5%;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.menus {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    width: 100%;
+    justify-content: center;
+}
+
 .menu-options{
     position: relative;
     flex-direction: column;
@@ -43,6 +61,76 @@
     box-shadow: inset 5px 0 2px -2px rgba(0, 0, 0, 0.1), inset -2px 0 8px -5px rgba(0, 0, 0, 0.1), inset 0 5px 8px -2px rgba(0, 0, 0, 0.1), inset 0 -5px 8px -2px rgba(0, 0, 0, 0.1);
     border: 1.5px solid rgba(255, 255, 255, 0.4);
     padding: 30px;
+    align-items: stretch;
+}
+
+.logout {
+    color: #ffb4b4 !important;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.list-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.add-card {
+    margin-top: 14px;
+}
+
+.password-card {
+    margin-top: 18px;
+}
+
+.cv-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cv-preview-wrapper {
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cv-preview {
+    width: 100%;
+    min-height: 620px;
+    border: none;
+    background: #fff;
 }
 
 .table {
@@ -71,6 +159,28 @@
         &:last-child {
         border-bottom: none !important;
     }   
+    }
+}
+
+@media (max-width: 992px) {
+    .menus {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-options {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 18px;
+    }
+
+    .menu-contenu {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 }
 
