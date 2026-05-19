@@ -1,0 +1,60 @@
+<div class="applied-offers-page">
+	<div class="page-header">
+		<h1>Mes offres postulées</h1>
+		<p>Suivez l'état actuel de chaque candidature et l'avancement du recrutement.</p>
+	</div>
+
+	@if (loading) {
+		<div class="state-box">Chargement de vos candidatures...</div>
+	} @else if (errorMessage) {
+		<div class="state-box error">{{ errorMessage }}</div>
+	} @else if (candidatures.length === 0) {
+		<div class="empty-box">
+			<i class="bi bi-send-check"></i>
+			<h2>Aucune candidature trouvée</h2>
+			<p>Lorsque vous postulez à une offre, elle apparaîtra ici avec son statut actuel.</p>
+			<a routerLink="/liste-offres" class="action-link">Voir les offres disponibles</a>
+		</div>
+	} @else {
+		<div class="offers-grid">
+			@for (candidature of candidatures; track candidature.id) {
+				<ng-container *ngIf="getOfferId(candidature) as offerId">
+					<article class="offer-card">
+						<div class="offer-card-top">
+							<div>
+								<h2>{{ candidature.offre?.titre || 'Offre sans titre' }}</h2>
+								<p class="company-line">
+									{{ candidature.offre?.lieu || 'Lieu non précisé' }}
+									@if (candidature.offre?.typeContrat) {
+										<span>• {{ candidature.offre?.typeContrat }}</span>
+									}
+								</p>
+							</div>
+							<span class="status-badge" [ngClass]="getStatusClass(candidature.statut)">
+								{{ getStatusLabel(candidature.statut) }}
+							</span>
+						</div>
+
+						<p class="description">
+							{{ candidature.offre?.description ? (candidature.offre?.description | slice:0:180) : 'Description non disponible' }}
+							@if (candidature.offre?.description && candidature.offre?.description!.length > 180) {
+								...
+							}
+						</p>
+
+						<div class="offer-meta">
+							<span>Statut du recrutement: <strong>{{ getStatusLabel(candidature.statut) }}</strong></span>
+							@if (candidature.dateCandidature) {
+								<span>Envoyée le {{ candidature.dateCandidature | date:'dd/MM/yyyy' }}</span>
+							}
+						</div>
+
+						<div class="offer-actions">
+							<a [routerLink]="['/infos-offre', offerId]" class="view-btn">Voir l'offre</a>
+						</div>
+					</article>
+				</ng-container>
+			}
+		</div>
+	}
+</div>
