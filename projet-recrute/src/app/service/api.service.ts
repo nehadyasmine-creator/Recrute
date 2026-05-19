@@ -67,6 +67,11 @@ export class ApiService {
     return this.http.get(`${API}/utilisateurs/${id}/pdp`, { responseType: 'blob' });
   }
 
+  // Contact
+  sendContactMessage(data: any): Observable<any> {
+    return this.http.post(`${API}/contacts`, data);
+  }
+
   // Offres
   getOffres(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/offres`);

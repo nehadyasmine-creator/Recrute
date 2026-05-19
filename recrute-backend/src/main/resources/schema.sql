@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS contact_message;
 DROP TABLE IF EXISTS Messagerie;
 DROP TABLE IF EXISTS Lien;
 DROP TABLE IF EXISTS Candidature;
@@ -120,6 +121,19 @@ CREATE TABLE Candidature (
     date_candidature DATE DEFAULT CURRENT_DATE,
     lettre_motivation TEXT,
     statut statut_candidature DEFAULT 'envoyee'
+);
+
+CREATE TABLE contact_message (
+    id_contact_message SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telephone VARCHAR(20),
+    role_utilisateur VARCHAR(50),
+    objet VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    statut VARCHAR(30) DEFAULT 'ouvert'
 );
 
 CREATE TABLE Messagerie (
