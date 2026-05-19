@@ -60,7 +60,7 @@ export class Navbar {
   }
 
   isDeconnecte(): boolean {
-    return this.currentUrl === '/';
+    return !this.isLoggedIn;
   }
 
   isRecruiter(): boolean {
@@ -71,11 +71,21 @@ export class Navbar {
     return !this.userRole || this.userRole === 'candidat';
   }
 
+  isAdmin(): boolean {
+    return this.userRole === 'admin';
+  }
+
   getProfileLink(): string {
+    if (this.isAdmin()) {
+      return '/admin';
+    }
     return this.isRecruiter() ? '/modifier-profil-employeur' : '/modifier-profil-candidat';
   }
 
   isProfileRouteActive(): boolean {
+    if (this.isAdmin()) {
+      return this.router.url.includes('/admin');
+    }
     return this.isRecruiter()
       ? this.router.url.includes('/modifier-profil-employeur')
       : this.router.url.includes('/modifier-profil-candidat');
@@ -154,6 +164,9 @@ export class Navbar {
   }
 
   openDropdown() {
+    if (!this.isLoggedIn) {
+      return;
+    }
     clearTimeout(this.dropdownTimeout);
     this.showProfileDropdown = true;
   }

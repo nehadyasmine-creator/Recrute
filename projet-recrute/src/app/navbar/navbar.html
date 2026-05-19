@@ -6,7 +6,11 @@
     <a class="nav-item nav-link" routerLink="qui-sommes-nous">Qui sommes-nous ?</a>
     <a class="nav-item nav-link" routerLink="faq">F.A.Q.</a>
     <a class="nav-item nav-link" routerLink="contactez-nous">Contactez-nous</a>
+    @if (isAdmin()) {
+      <a class="nav-item nav-link admin-link" routerLink="/admin">Admin</a>
+    }
   </div>
+  
   @if (!isDeconnecte()){
     <div class="profile-menu" title="Mon profil" [class.active]="isProfileRouteActive()"
         (mouseenter)="openDropdown()"
@@ -23,7 +27,11 @@
 
       <div class="profile-dropdown" [class.show]="showProfileDropdown">
         <div class="dropdown-links">
-          @if (isRecruiter()) {
+          @if (isAdmin()) {
+            <a routerLink="/" (click)="logout()" class="dropdown-link logout">
+              <i class="bi bi-box-arrow-left"></i> Déconnexion
+            </a>
+          } @else if (isRecruiter()) {
             <a routerLink="/modifier-profil-employeur" class="dropdown-link" (click)="showProfileDropdown = false">
               <i class="bi bi-person"></i> Mon profil
             </a>

@@ -68,6 +68,15 @@ export class ApiService {
   }
 
   // Contact
+  getContactMessages(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/contacts`);
+  }
+  markContactMessageAsRead(id: number): Observable<any> {
+    return this.http.put(`${API}/contacts/${id}/statut`, {});
+  }
+  deleteContactMessage(id: number): Observable<any> {
+    return this.http.delete(`${API}/contacts/${id}`);
+  }
   sendContactMessage(data: any): Observable<any> {
     return this.http.post(`${API}/contacts`, data);
   }
@@ -159,6 +168,9 @@ export class ApiService {
   }
 
   // Candidatures
+  getCandidatures(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/candidatures`);
+  }
   getCandidaturesByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidatures/candidat/${id}`);
   }

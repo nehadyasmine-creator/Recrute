@@ -4,6 +4,7 @@ import com.recrute.model.ContactMessage;
 import com.recrute.service.ContactMessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -22,5 +23,16 @@ public class ContactMessageController {
     @PostMapping
     public ContactMessage create(@RequestBody ContactMessage contactMessage) {
         return contactMessageService.create(contactMessage);
+    }
+
+    @PutMapping("/{id}/statut")
+    public ContactMessage markAsTraite(@PathVariable Long id) {
+        return contactMessageService.markAsTraite(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        contactMessageService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

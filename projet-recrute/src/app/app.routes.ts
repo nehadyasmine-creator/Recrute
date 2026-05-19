@@ -11,6 +11,7 @@ import { QuiSommesNous } from './qui-sommes-nous/qui-sommes-nous';
 import { ModifierProfilEmployeur } from './modifier-profil-employeur/modifier-profil-employeur';
 import { CandidatureEnregistre } from './candidature-enregistre/candidature-enregistre';
 import { OffresPostulees } from './offres-postulees/offres-postulees';
+import { Admin } from './admin/admin';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -24,6 +25,7 @@ export const routes: Routes = [
     { path: 'liste-offres', component: ListeOffres},
     { path: 'candidatures-enregistrees', component: CandidatureEnregistre},
     { path: 'offres-postulees', component: OffresPostulees},
+    { path: 'admin', component: Admin},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
 
 
