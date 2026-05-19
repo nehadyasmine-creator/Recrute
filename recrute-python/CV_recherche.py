@@ -4,10 +4,10 @@ from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer
 
 # --- CONFIGURATION ---
-CV_PATH = "CV_Martin.pdf"
+CV_PATH = "CV_axel_guenot.pdf"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
-DB_NAME = "marketplace_rh"
+DB_NAME = "recrute_mongo"
 COLLECTION_NAME = "offres"
 
 
