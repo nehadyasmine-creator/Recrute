@@ -32,6 +32,18 @@ export class Home {
     this.authService.login(this.loginData.email, this.loginData.password).subscribe({
       next: (response) => {
         console.log('Connexion réussie !', response);
+        const role = (response?.role || this.authService.getUserRole() || '').toString().toLowerCase();
+
+        if (role === 'admin') {
+          this.router.navigate(['/admin']);
+          return;
+        }
+
+        if (role === 'recruteur') {
+          this.router.navigate(['/accueil-employeur']);
+          return;
+        }
+
         this.router.navigate(['/liste-offres']); 
       },
       error: (err) => {

@@ -62,6 +62,9 @@ INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (15, 15, 'Re
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Ilyes', 'ilyes.denis@gmail.com', '+33798054899', '$2b$10$iNTcqd26an1hMVUkJ37eP.QPjIHuGvcZuLcFymaihXyaWwjuBsFAW', 'recruteur','2026-03-31');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (16, 16, 'Responsable RH');
 
+-- Compte administrateur par défaut
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Admin', 'Recrute', 'admin@recrute.fr', '+33000000000', '$2y$10$SuU0/V1dJCYONMhy24qs5OiEVYf.fHmXCMnHvmKZQ73KLpx0GT2xy', 'admin','2026-05-19');
+
 -- ==========================
 -- Offres
 -- ==========================

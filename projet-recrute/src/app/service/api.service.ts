@@ -67,6 +67,20 @@ export class ApiService {
     return this.http.get(`${API}/utilisateurs/${id}/pdp`, { responseType: 'blob' });
   }
 
+  // Contact
+  getContactMessages(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/contacts`);
+  }
+  markContactMessageAsRead(id: number): Observable<any> {
+    return this.http.put(`${API}/contacts/${id}/statut`, {});
+  }
+  deleteContactMessage(id: number): Observable<any> {
+    return this.http.delete(`${API}/contacts/${id}`);
+  }
+  sendContactMessage(data: any): Observable<any> {
+    return this.http.post(`${API}/contacts`, data);
+  }
+
   // Offres
   getOffres(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/offres`);
@@ -154,6 +168,9 @@ export class ApiService {
   }
 
   // Candidatures
+  getCandidatures(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/candidatures`);
+  }
   getCandidaturesByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidatures/candidat/${id}`);
   }
@@ -162,6 +179,9 @@ export class ApiService {
   }
   createCandidature(data: any): Observable<any> {
     return this.http.post(`${API}/candidatures`, data);
+  }
+  deleteCandidature(id: number): Observable<any> {
+    return this.http.delete(`${API}/candidatures/${id}`);
   }
 
   // Messagerie

@@ -30,6 +30,9 @@ export class AuthService {
       if (response.id) {
         localStorage.setItem('userId', response.id.toString());
       }
+      if (response.role) {
+        localStorage.setItem('userRole', response.role.toString().toLowerCase());
+      }
       this.loggedIn.next(true);
     })
   );
@@ -41,10 +44,15 @@ getUserId(): number | null {
   return id ? parseInt(id, 10) : null;
 }
 
+getUserRole(): string | null {
+  return localStorage.getItem('userRole');
+}
+
 // Et n'oublie pas de nettoyer au logout
 logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('userId');
+  localStorage.removeItem('userRole');
   this.loggedIn.next(false);
 }
 

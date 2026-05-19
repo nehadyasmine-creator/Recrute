@@ -1,21 +1,36 @@
 <div class="contenu">
 	<h1 style="color:white ; margin-bottom:50px">Offres disponibles</h1>
-	<p *ngIf="loading" class="state">Chargement des offres...</p>
-	<p *ngIf="error" class="state error">{{ error }}</p>
-
-	<div *ngIf="!loading && !error && offres.length === 0" class="state">
-		Aucune offre ouverte pour le moment.
-	</div>
-
-	<div class="offres-grid" *ngIf="!loading && !error && offres.length > 0">
-		<article class="offre-card" *ngFor="let offre of offres">
-			<h2>{{ offre.titre }}</h2>
-			<p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
-			<p>
-				{{ offre.description| slice:0:300}} {{ offre.description.length > 300 ? '...' : '' }}
-			</p>
-			<p class="meta">Salaire: {{ offre.salaire || 'Non renseigné' }}</p>
-			<p class="meta">Télétravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
-		</article>
-	</div>
+	@if (loading) {
+		<p class="state">Chargement des offres...</p>
+	} @else if (error) {
+		<p class="state error">{{ error }}</p>
+	} @else if (!loading && !error && offres.length === 0) {
+		<div class="state">
+			Aucune offre ouverte pour le moment.
+		</div>
+	} @else if (!loading && !error && offres.length > 0) {
+		<div class="offres-grid">
+			@for (offre of offres; track offre.id) {
+				<article class="offre-card">
+					<div class="offre-header">
+						<h2>{{ offre.titre }}</h2>
+						<button 
+							class="bookmark-btn"
+							[class.saved]="isOfferSaved(offre.id)"
+							(click)="toggleSaveOffer(offre)"
+							[title]="isOfferSaved(offre.id) ? 'Retirer de favoris' : 'Ajouter aux favoris'"
+						>
+							<i class="bi" [class.bi-bookmark-fill]="isOfferSaved(offre.id)" [class.bi-bookmark]="!isOfferSaved(offre.id)"></i>
+						</button>
+					</div>
+					<p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
+					<p>
+						{{ offre.description| slice:0:300}} {{ offre.description.length > 300 ? '...' : '' }}
+					</p>
+					<p class="meta">Salaire: {{ offre.salaire || 'Non renseigné' }}</p>
+					<p class="meta">Télétravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
+				</article>
+			}
+		</div>
+	}
 </div>

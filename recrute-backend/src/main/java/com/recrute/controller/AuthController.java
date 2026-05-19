@@ -42,7 +42,7 @@ public class AuthController {
             Candidat candidat = new Candidat();
             candidat.setUtilisateur(savedUtilisateur);
             candidatRepository.save(candidat);
-        }else{
+        } else if (savedUtilisateur.getRole() == RoleType.recruteur) {
             Recruteur recruteur = new Recruteur();
             recruteur.setUtilisateur(savedUtilisateur);
             recruteurRepository.save(recruteur);
@@ -63,6 +63,10 @@ public class AuthController {
         }
 
         String token = jwtService.generateToken(email, utilisateur.get().getRole().name());
-        return ResponseEntity.ok(Map.of("token", token,"id", utilisateur.get().getId()));
+        return ResponseEntity.ok(Map.of(
+                "token", token,
+                "id", utilisateur.get().getId(),
+                "role", utilisateur.get().getRole().name()
+        ));
     }
 }

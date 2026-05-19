@@ -1,0 +1,137 @@
+<main class="admin-page">
+	<section class="admin-hero">
+		<div>
+			<p class="eyebrow">Espace administrateur</p>
+			<h1>Tableau de bord Recrute</h1>
+			<p class="hero-text">
+				Suivez la santé de la plateforme, les candidatures, les remontées utilisateurs et les signaux d'activité en temps réel.
+			</p>
+		</div>
+
+		<div class="hero-actions">
+			<a routerLink="/" class="hero-btn secondary">Retour au site</a>
+			<a routerLink="/contactez-nous" class="hero-btn primary">Voir la page contact</a>
+		</div>
+	</section>
+
+	@if (isLoading) {
+		<section class="state-card">Chargement du dashboard...</section>
+	} @else if (accessDenied) {
+		<section class="state-card danger">
+			Accès réservé aux administrateurs. Tu seras redirigé vers l'accueil.
+		</section>
+	} @else {
+		<section class="stats-grid">
+			@for (stat of stats; track stat.label) {
+				<article class="stat-card">
+					<div class="stat-icon"><i class="bi" [ngClass]="stat.icon"></i></div>
+					<div class="stat-content">
+						<p>{{ stat.label }}</p>
+						<strong>{{ stat.value }}</strong>
+						<span>{{ stat.hint }}</span>
+					</div>
+				</article>
+			}
+		</section>
+
+		<section class="highlights">
+			@for (item of highlights; track item) {
+				<article class="highlight-card">
+					<i class="bi bi-stars"></i>
+					<span>{{ item }}</span>
+				</article>
+			}
+		</section>
+
+		<section class="panels-grid">
+			<article class="panel">
+				<div class="panel-head">
+					<div>
+						<p class="panel-kicker">Remontées</p>
+						<h2>Messages envoyés aux admins</h2>
+					</div>
+					<a routerLink="/contactez-nous" class="panel-link">Voir le formulaire public</a>
+				</div>
+
+				<div class="message-list">
+					@if (recentMessages.length) {
+						@for (message of recentMessages; track message.id || message.email) {
+							<article class="message-item">
+								<div class="message-top">
+									<div>
+										<strong>{{ message.prenom }} {{ message.nom }}</strong>
+										<p>{{ message.roleUtilisateur || 'Utilisateur' }} · {{ message.email }}</p>
+									</div>
+									<span class="badge">{{ message.statut || 'ouvert' }}</span>
+								</div>
+								<h3>{{ message.objet }}</h3>
+								<p class="message-body">{{ message.message }}</p>
+								<span class="message-date">{{ message.dateCreation | date: 'dd MMM yyyy à HH:mm' }}</span>
+
+                                <div class="message-actions">
+                                    <button (click)="markAsRead(message)">
+                                    <i class="bi bi-check2-circle"></i>
+                                    </button>
+
+                                    <button (click)="deleteMessage(message)">
+                                    <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+							</article>
+						}
+					} @else {
+						<p class="empty-state">Aucune remontée pour le moment.</p>
+					}
+				</div>
+			</article>
+
+			<article class="panel">
+				<div class="panel-head">
+					<div>
+						<p class="panel-kicker">Répartition</p>
+						<h2>Candidatures par statut</h2>
+					</div>
+				</div>
+
+				<div class="breakdown-list">
+					@for (item of candidatureBreakdown; track item.label) {
+						<div class="breakdown-item">
+							<div class="breakdown-row">
+								<span>{{ item.label }}</span>
+								<strong>{{ item.count }}</strong>
+							</div>
+							<div class="progress-shell">
+								<span class="progress-bar" [ngClass]="item.tone" [style.width.%]="item.percent"></span>
+							</div>
+						</div>
+					}
+				</div>
+			</article>
+
+			<article class="panel wide">
+				<div class="panel-head">
+					<div>
+						<p class="panel-kicker">Activité</p>
+						<h2>Offres les plus sollicitées</h2>
+					</div>
+				</div>
+
+				<div class="offer-table">
+					@if (topOffers.length) {
+						@for (offer of topOffers; track offer.title) {
+							<div class="offer-row">
+								<div>
+									<strong>{{ offer.title }}</strong>
+									<p>{{ offer.status }}</p>
+								</div>
+								<span>{{ offer.count }} candidature(s)</span>
+							</div>
+						}
+					} @else {
+						<p class="empty-state">Aucune candidature associée aux offres pour l'instant.</p>
+					}
+				</div>
+			</article>
+		</section>
+	}
+</main>

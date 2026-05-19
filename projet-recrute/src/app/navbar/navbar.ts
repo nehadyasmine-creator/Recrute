@@ -14,13 +14,16 @@ import { ApiService } from '../service/api.service';
 })
 
 export class Navbar {
-
+  showProfileDropdown: boolean = false;
   isLoggedIn: boolean = false;
   currentUrl: string = '';
   avatarUrl: string | null = null;
   avatarInitials: string = 'U';
+  userRole: string | null = null;
   private subscriptions = new Subscription();
   private readonly profileUpdatedListener = () => this.loadAvatar();
+    dropdownTimeout: any;
+
 
   constructor(private router: Router, private authService: AuthService, private apiService: ApiService) {}
 
@@ -40,6 +43,7 @@ export class Navbar {
       } else {
         this.clearAvatarUrl();
         this.avatarInitials = 'U';
+        this.userRole = null;
       }
     });
 
@@ -56,7 +60,35 @@ export class Navbar {
   }
 
   isDeconnecte(): boolean {
-    return this.currentUrl === '/';
+    return !this.isLoggedIn;
+  }
+
+  isRecruiter(): boolean {
+    return this.userRole === 'recruteur';
+  }
+
+  isCandidate(): boolean {
+    return !this.userRole || this.userRole === 'candidat';
+  }
+
+  isAdmin(): boolean {
+    return this.userRole === 'admin';
+  }
+
+  getProfileLink(): string {
+    if (this.isAdmin()) {
+      return '/admin';
+    }
+    return this.isRecruiter() ? '/modifier-profil-employeur' : '/modifier-profil-candidat';
+  }
+
+  isProfileRouteActive(): boolean {
+    if (this.isAdmin()) {
+      return this.router.url.includes('/admin');
+    }
+    return this.isRecruiter()
+      ? this.router.url.includes('/modifier-profil-employeur')
+      : this.router.url.includes('/modifier-profil-candidat');
   }
 
   private loadAvatar(): void {
@@ -64,11 +96,13 @@ export class Navbar {
     if (!userId) {
       this.clearAvatarUrl();
       this.avatarInitials = 'U';
+      this.userRole = null;
       return;
     }
 
     this.apiService.getUtilisateurById(userId).subscribe({
       next: (utilisateur) => {
+        this.userRole = this.normalizeRole(utilisateur?.role);
         this.avatarInitials = this.computeInitials(utilisateur?.prenom, utilisateur?.nom);
         if (!utilisateur?.pdp) {
           this.clearAvatarUrl();
@@ -87,13 +121,20 @@ export class Navbar {
       },
       error: () => {
         this.clearAvatarUrl();
+        this.userRole = null;
       },
     });
+  }
+
+  private normalizeRole(role?: string): string | null {
+    const normalizedRole = (role || '').trim().toLowerCase();
+    return normalizedRole || null;
   }
 
   private computeInitials(prenom?: string, nom?: string): string {
     const p = (prenom || '').trim();
     const n = (nom || '').trim();
+    
 
     if (p && n) {
       return `${p.charAt(0)}${n.charAt(0)}`.toUpperCase();
@@ -114,4 +155,25 @@ export class Navbar {
     }
   }
 
+  logout(){
+    this.authService.logout();
+  }
+
+  isActive(url: string): boolean {
+    return this.router.url.includes(url);
+  }
+
+  openDropdown() {
+    if (!this.isLoggedIn) {
+      return;
+    }
+    clearTimeout(this.dropdownTimeout);
+    this.showProfileDropdown = true;
+  }
+
+  closeDropdown() {
+    this.dropdownTimeout = setTimeout(() => {
+      this.showProfileDropdown = false;
+    }, 200); 
+  }
 }

@@ -6,17 +6,66 @@
     <a class="nav-item nav-link" routerLink="qui-sommes-nous">Qui sommes-nous ?</a>
     <a class="nav-item nav-link" routerLink="faq">F.A.Q.</a>
     <a class="nav-item nav-link" routerLink="contactez-nous">Contactez-nous</a>
+    @if (isAdmin()) {
+      <a class="nav-item nav-link admin-link" routerLink="/admin">Admin</a>
+    }
   </div>
+  
   @if (!isDeconnecte()){
-  <a class="nav-item avatar-link" routerLink="/modifier-profil-candidat">
-    <div class="avatar-circle">
-      @if (avatarUrl) {
-      <img class="avatar-image" [src]="avatarUrl" alt="Photo de profil">
-      } @else {
-      <span class="avatar-initials">{{ avatarInitials }}</span>
-      }
-    </div>
-  </a>
-  }
+    <div class="profile-menu" title="Mon profil" [class.active]="isProfileRouteActive()"
+        (mouseenter)="openDropdown()"
+        (mouseleave)="closeDropdown()">
+      <a class="nav-item avatar-link" [routerLink]="getProfileLink()">
+        <div class="avatar-circle">
+          @if (avatarUrl) {
+          <img class="avatar-image" [src]="avatarUrl" alt="Photo de profil">
+          } @else {
+          <span class="avatar-initials">{{ avatarInitials }}</span>
+          }
+        </div>
+      </a>
 
+      <div class="profile-dropdown" [class.show]="showProfileDropdown">
+        <div class="dropdown-links">
+          @if (isAdmin()) {
+            <a routerLink="/" (click)="logout()" class="dropdown-link logout">
+              <i class="bi bi-box-arrow-left"></i> Déconnexion
+            </a>
+          } @else if (isRecruiter()) {
+            <a routerLink="/modifier-profil-employeur" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-person"></i> Mon profil
+            </a>
+            <a routerLink="/" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-briefcase"></i> Offres actives
+            </a>
+            <a routerLink="/" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-inboxes"></i> Nouvelles candidatures
+            </a>
+            <a routerLink="/" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-robot"></i> Suggestions IA
+            </a>
+            <a routerLink="/" (click)="logout()" class="dropdown-link logout">
+              <i class="bi bi-box-arrow-left"></i> Déconnexion
+            </a>
+          } @else {
+            <a routerLink="/modifier-profil-candidat" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-person"></i> Mon profil
+            </a>
+            <a routerLink="/candidatures-enregistrees" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-hourglass-split"></i> Mes offres enregistrées
+            </a>
+            <a routerLink="/offres-postulees" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-send-check"></i> Offres postulées
+            </a>
+            <a routerLink="/" class="dropdown-link" (click)="showProfileDropdown = false">
+              <i class="bi bi-robot"></i> Suggestion IA
+            </a>
+            <a routerLink="/" (click)="logout()" class="dropdown-link logout">
+              <i class="bi bi-box-arrow-left"></i> Déconnexion
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  }
 </nav>

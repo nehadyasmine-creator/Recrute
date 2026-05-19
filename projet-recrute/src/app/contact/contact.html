@@ -1,1 +1,70 @@
-<p>contact works!</p>
+<div class="contact-page">
+	<div class="contact-card">
+		<div class="contact-header">
+			<h1>Contacter les administrateurs</h1>
+			<p>Signalez un problème, posez une question ou faites un retour sur la plateforme.</p>
+		</div>
+
+		@if (isUserLoading) {
+			<div class="state-box">Préparation de votre profil...</div>
+		}
+
+		@if (successMessage) {
+			<div class="state-box success">{{ successMessage }}</div>
+		}
+
+		@if (errorMessage) {
+			<div class="state-box error">{{ errorMessage }}</div>
+		}
+
+		<form class="contact-form" (ngSubmit)="submit()">
+			<div class="form-grid">
+				<div class="field">
+					<label for="prenom">Prénom *</label>
+					<input id="prenom" type="text" name="prenom" [(ngModel)]="contactForm.prenom" placeholder="Votre prénom" />
+				</div>
+
+				<div class="field">
+					<label for="nom">Nom *</label>
+					<input id="nom" type="text" name="nom" [(ngModel)]="contactForm.nom" placeholder="Votre nom" />
+				</div>
+
+				<div class="field">
+					<label for="email">Adresse e-mail *</label>
+					<input id="email" type="email" name="email" [(ngModel)]="contactForm.email" placeholder="vous@email.fr" />
+				</div>
+
+				<div class="field">
+					<label for="telephone">Téléphone</label>
+					<input id="telephone" type="tel" name="telephone" [(ngModel)]="contactForm.telephone" placeholder="06 12 34 56 78" />
+				</div>
+
+				<div class="field full-width">
+					<label for="roleUtilisateur">Vous êtes</label>
+					<select id="roleUtilisateur" name="roleUtilisateur" [(ngModel)]="contactForm.roleUtilisateur">
+						<option value="">Sélectionnez un profil</option>
+						<option value="candidat">Candidat</option>
+						<option value="recruteur">Recruteur</option>
+					</select>
+				</div>
+
+				<div class="field full-width">
+					<label for="objet">Objet *</label>
+					<input id="objet" type="text" name="objet" [(ngModel)]="contactForm.objet" placeholder="Ex: Problème d'inscription" />
+				</div>
+
+				<div class="field full-width">
+					<label for="message">Message *</label>
+					<textarea id="message" name="message" [(ngModel)]="contactForm.message" rows="8" placeholder="Décrivez votre problème ou votre retour..."></textarea>
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<a routerLink="/" class="secondary-btn">Retour à l'accueil</a>
+				<button type="submit" class="primary-btn" [disabled]="isLoading">
+					{{ isLoading ? 'Envoi en cours...' : 'Envoyer le message' }}
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
