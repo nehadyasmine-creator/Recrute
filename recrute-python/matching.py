@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 API_URL = "http://localhost:8080/offres"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
-DB_NAME = "marketplace_rh"
+DB_NAME = "recrute_mongo"
 COLLECTION_NAME = "offres"
 
 # Configuration du logger pour l'API
