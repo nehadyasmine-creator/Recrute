@@ -9,6 +9,7 @@ import { ModifierProfilCandidat } from './modifier-profil-candidat/modifier-prof
 import { ListeOffres } from './liste-offres/liste-offres';
 import { QuiSommesNous } from './qui-sommes-nous/qui-sommes-nous';
 import { ModifierProfilEmployeur } from './modifier-profil-employeur/modifier-profil-employeur';
+import { CandidatureEnregistre } from './candidature-enregistre/candidature-enregistre';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path: 'modifier-profil-candidat', component: ModifierProfilCandidat},
     { path: 'modifier-profil-employeur', component: ModifierProfilEmployeur},
     { path: 'liste-offres', component: ListeOffres},
+    { path: 'candidatures-enregistrees', component: CandidatureEnregistre},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
 
 

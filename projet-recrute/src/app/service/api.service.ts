@@ -163,6 +163,9 @@ export class ApiService {
   createCandidature(data: any): Observable<any> {
     return this.http.post(`${API}/candidatures`, data);
   }
+  deleteCandidature(id: number): Observable<any> {
+    return this.http.delete(`${API}/candidatures/${id}`);
+  }
 
   // Messagerie
   getMessagesByCandidature(id: number): Observable<any[]> {

@@ -1,0 +1,46 @@
+<div class="saved-offers-container">
+  <div class="page-header">
+    <h1>Mes offres enregistrées</h1>
+    <p class="subtitle">Retrouvez toutes les offres que vous avez bookmark</p>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading">
+      <p>Chargement...</p>
+    </div>
+  } @else if (errorMessage) {
+    <div class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+  } @else if (savedOffers.length === 0) {
+    <div class="empty-state">
+      <i class="bi bi-bookmark"></i>
+      <h2>Aucune offre enregistrée</h2>
+      <p>Vous n'avez pas encore enregistré d'offres. Visitez la <a routerLink="/liste-offres">liste des offres</a> et cliquez sur le bookmark pour en enregistrer.</p>
+    </div>
+  } @else {
+    <div class="offers-list">
+      @for (offer of savedOffers; track offer.id) {
+        <div class="offer-card">
+          <div class="offer-header">
+            <h3>{{ offer.titre }}</h3>
+            <button class="remove-btn" (click)="removeSavedOffer(offer.id)" title="Supprimer de favoris">
+              <i class="bi bi-bookmark-fill"></i>
+            </button>
+          </div>
+          <div class="offer-details">
+            <p><strong>Entreprise:</strong> {{ offer.recruteur?.utilisateur?.prenom }} {{ offer.recruteur?.utilisateur?.nom }}</p>
+            <p><strong>Localisation:</strong> {{ offer.localisation || 'Non spécifiée' }}</p>
+            <p><strong>Type de contrat:</strong> {{ offer.typeContrat || 'Non spécifié' }}</p>
+            <p class="offer-description">{{ offer.description | slice:0:150 }}...</p>
+          </div>
+          <div class="offer-footer">
+            <a [routerLink]="getOfferUrl(offer.id)" class="view-btn">
+              Voir l'offre complète
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

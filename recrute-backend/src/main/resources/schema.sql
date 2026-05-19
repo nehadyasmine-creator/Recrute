@@ -25,7 +25,7 @@ CREATE TYPE contrat_type AS ENUM ('CDI','CDD','Stage','Alternance','Freelance','
 CREATE TYPE categorie_competence AS ENUM ('technique','soft_skill','langue','autre');
 CREATE TYPE niveau_type AS ENUM ('debutant','intermediaire','avance','expert');
 CREATE TYPE statut_offre AS ENUM ('ouverte','fermee');
-CREATE TYPE statut_candidature AS ENUM ('envoyee','en_attente','refusee','acceptee');
+CREATE TYPE statut_candidature AS ENUM ('envoyee','en_attente','refusee','acceptee','enregistree');
 
 CREATE TABLE Utilisateur (
     id_utilisateur SERIAL PRIMARY KEY,
