@@ -11,6 +11,7 @@ import { ModifierProfilEmployeur } from './modifier-profil-employeur/modifier-pr
 import { CandidatureEnregistre } from './candidature-enregistre/candidature-enregistre';
 import { OffresPostulees } from './offres-postulees/offres-postulees';
 import { Admin } from './admin/admin';
+import { SuggestionIaCandidat } from './suggestion-ia-candidat/suggestion-ia-candidat';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -23,6 +24,7 @@ export const routes: Routes = [
     { path: 'liste-offres', component: ListeOffres},
     { path: 'candidatures-enregistrees', component: CandidatureEnregistre},
     { path: 'offres-postulees', component: OffresPostulees},
+    { path: 'suggestion-ia-candidat', component: SuggestionIaCandidat},
     { path: 'admin', component: Admin},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
 

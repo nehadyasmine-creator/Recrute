@@ -1,0 +1,61 @@
+<div class="suggestion-ia-page">
+	<div class="page-header">
+		<h1>Suggestions IA</h1>
+		<p>Les 5 offres les plus adaptées à votre CV, calculées par notre moteur IA.</p>
+	</div>
+
+	@if (loading) {
+		<div class="state-box">Chargement de votre profil...</div>
+	} @else if (errorMessage) {
+		<div class="state-box error">{{ errorMessage }}</div>
+	} @else if (!hasCv) {
+		<div class="empty-box">
+			<i class="bi bi-file-earmark-arrow-up"></i>
+			<h2>Aucun CV importé</h2>
+			<p>Importez un CV depuis votre profil pour recevoir des recommandations personnalisées.</p>
+			<div class="empty-actions">
+				<input type="file" accept="application/pdf" (change)="onFileSelected($event)" />
+				<button class="action-link" (click)="uploadCv()" [disabled]="uploading">{{ uploading ? 'Import en cours...' : 'Importer mon CV' }}</button>
+				<a routerLink="/modifier-profil-candidat" class="action-link">Mon profil candidat</a>
+			</div>
+		</div>
+	} @else {
+		<div class="offers-grid">
+			@if (loadingSuggestions) {
+				<div class="state-box">Analyse IA en cours...</div>
+			} @else if (suggestions.length === 0) {
+				<div class="empty-box">
+					<i class="bi bi-robot"></i>
+					<h2>Aucune suggestion trouvée</h2>
+					<p>Nous n'avons trouvé aucune offre correspondant à votre CV pour le moment. Mettez à jour votre CV ou réessayez plus tard.</p>
+					<div class="empty-actions">
+						<button class="action-link">Réessayer</button>
+						<a routerLink="/liste-offres" class="action-link">Voir les offres</a>
+					</div>
+				</div>
+			} @else {
+				@for (suggestion of suggestions; track suggestion.idOffre) {
+					<article class="offer-card">
+						<div class="offer-card-top">
+							<div>
+								<h2>{{ suggestion.titre || 'Offre sans titre' }}</h2>
+								<p class="company-line">{{ suggestion.entreprise || 'Entreprise non précisée' }}</p>
+							</div>
+							<span class="status-badge status-info">{{ suggestion.score }}%</span>
+						</div>
+
+						<p class="description">Suggestion basée sur votre CV. Score de similarité : <strong>{{ suggestion.score }}%</strong></p>
+
+						<div class="offer-actions">
+							@if (suggestion.idOffre) {
+								<a [routerLink]="['/infos-offre', suggestion.idOffre]" class="view-btn">Voir l'offre</a>
+							} @else {
+								<a routerLink="/liste-offres" class="view-btn">Voir les offres</a>
+							}
+						</div>
+					</article>
+				}
+			}
+		</div>
+	}
+</div>
