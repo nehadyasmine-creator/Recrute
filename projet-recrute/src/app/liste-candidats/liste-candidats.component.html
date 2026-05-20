@@ -1,0 +1,70 @@
+<div class="contenu">
+  <h1>Candidats disponibles</h1>
+
+  <div class="filtres">
+    <div class="search-wrapper">
+      <i class="bi bi-search"></i>
+      <input
+        type="text"
+        placeholder="Rechercher un candidat..."
+        (input)="onSearch($event)"
+      />
+    </div>
+    <select (change)="onFiltreContrat($event)">
+      <option value="">Tous les contrats</option>
+      <option value="CDI">CDI</option>
+      <option value="CDD">CDD</option>
+      <option value="Freelance">Freelance</option>
+      <option value="Alternance">Alternance</option>
+      <option value="Stage">Stage</option>
+    </select>
+  </div>
+
+  @if (loading) {
+    <p class="state">Chargement des candidats...</p>
+  } @else if (error) {
+    <p class="state error">{{ error }}</p>
+  } @else if (candidatsFiltres.length === 0) {
+    <p class="state">Aucun candidat trouvé.</p>
+  } @else {
+    <div class="candidats-grid">
+      @for (candidat of candidatsFiltres; track candidat.id) {
+        <article class="candidat-card">
+
+          <div class="card-header">
+            <div class="avatar">{{ getInitiales(candidat.utilisateur?.prenom, candidat.utilisateur?.nom) }}</div>
+            <div class="identite">
+              <h2>{{ candidat.utilisateur?.prenom }} {{ candidat.utilisateur?.nom }}</h2>
+              <p class="email">{{ candidat.utilisateur?.email }}</p>
+            </div>
+          </div>
+
+          <div class="card-meta">
+            @if (candidat.typeContrat) {
+              <span class="badge badge-contrat">
+                <i class="bi bi-briefcase"></i> {{ candidat.typeContrat }}
+              </span>
+            }
+            @if (candidat.ville) {
+              <span class="badge badge-lieu">
+                <i class="bi bi-geo-alt"></i> {{ candidat.ville }}
+              </span>
+            }
+            @if (candidat.disponibilite) {
+              <span class="badge badge-dispo">
+                <i class="bi bi-calendar-check"></i> Dispo le {{ candidat.disponibilite | date:'dd/MM/yyyy' }}
+              </span>
+            }
+          </div>
+
+          <div class="card-actions">
+            <button class="btn-voir" [routerLink]="['/infos-candidat', candidat.id]">
+              <i class="bi bi-person"></i> Voir le profil
+            </button>
+          </div>
+
+        </article>
+      }
+    </div>
+  }
+</div>

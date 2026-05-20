@@ -8,6 +8,7 @@ import { AccueilCandidat } from './accueil-candidat/accueil-candidat';
 import { ModifierProfilCandidat } from './modifier-profil-candidat/modifier-profil-candidat';
 import { ListeOffres } from './liste-offres/liste-offres';
 import { QuiSommesNous } from './qui-sommes-nous/qui-sommes-nous';
+import { ListeCandidatsComponent } from './liste-candidats/liste-candidats.component';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'modifier-profil-candidat', component: ModifierProfilCandidat},
     { path: 'liste-offres', component: ListeOffres},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
+    { path: 'liste-candidats', component: ListeCandidatsComponent},
 
 
     //à laisser en tout dernier, sert à rediriger vers la page d'accueil si on essaie d'aller sur une page qui n'existe pas
