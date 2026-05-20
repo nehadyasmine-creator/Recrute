@@ -6,8 +6,9 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 To start a local development server, run:
 
+# J'ai changé pour intégrer le script Python 
 ```bash
-ng serve
+npm run dev
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.

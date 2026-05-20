@@ -191,4 +191,15 @@ export class ApiService {
   sendMessage(data: any): Observable<any> {
     return this.http.post(`${API}/messagerie`, data);
   }
+
+  public getIASuggestionsFromPdf(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    return this.http.post<any>('http://localhost:8000/api/match-cv', formData);
+  }
+
+  public getIASuggestions(candidatId: number) {
+    return this.http.get<any[]>(`http://localhost:8000/api/match-cv/${candidatId}`);
+  }
 }

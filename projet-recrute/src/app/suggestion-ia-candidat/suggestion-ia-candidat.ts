@@ -56,7 +56,7 @@ export class SuggestionIaCandidat implements OnInit {
         this.selectedFile = null;
         this.hasCv = true;
         this.infoMessage = 'CV importé avec succès. Chargement des suggestions IA...';
-        // chargement des offres
+        this.loadIASuggestions();
       },
       error: () => {
         this.uploading = false;
@@ -79,7 +79,7 @@ export class SuggestionIaCandidat implements OnInit {
         this.loading = false;
 
         if (this.hasCv) {
-          //charger les suggestions
+          this.loadIASuggestions();
         }
       },
       error: () => {
@@ -89,4 +89,24 @@ export class SuggestionIaCandidat implements OnInit {
     });
   }
 
+
+  private loadIASuggestions(): void {
+    if (!this.candidatId) return;
+    
+    this.loadingSuggestions = true;
+    this.errorMessage = ''; 
+    
+    this.apiService.getIASuggestions(this.candidatId).subscribe({
+      next: (data: any) => {
+        console.log("Réponse de l'IA :", data); 
+        this.suggestions = Array.isArray(data) ? data : (data.suggestions || []); 
+        this.loadingSuggestions = false;
+      },
+      error: (err) => {
+        console.error("Erreur de l'API IA :", err); 
+        this.loadingSuggestions = false;
+        this.errorMessage = "Impossible de récupérer les recommandations IA.";
+      }
+    });
+  }
 }
