@@ -1,5 +1,6 @@
 package com.recrute.controller;
 
+import com.recrute.dto.OffreDTO;
 import com.recrute.model.Offre;
 import com.recrute.service.OffreService;
 import lombok.RequiredArgsConstructor;
@@ -37,13 +38,13 @@ public class OffreController {
     }
 
     @PostMapping
-    public Offre create(@RequestBody Offre offre) {
-        return offreService.create(offre);
+    public Offre create(@RequestBody OffreDTO offreDTO) {
+        return offreService.createFromDTO(offreDTO);
     }
 
     @PutMapping("/{id}")
-    public Offre update(@PathVariable Long id, @RequestBody Offre offre) {
-        return offreService.update(id, offre);
+    public Offre update(@PathVariable Long id, @RequestBody OffreDTO offreDTO) {
+        return offreService.updateFromDTO(id, offreDTO);
     }
 
     @DeleteMapping("/{id}")

@@ -1,0 +1,223 @@
+.recruiter-offers-page {
+  max-width: 1200px;
+  margin: 120px auto 40px;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: #8ebdf0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 760px;
+}
+
+.state-box {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+  padding: 22px;
+  text-align: center;
+}
+
+.state-box.error {
+  color: #ffd7d7;
+  border-color: rgba(248, 113, 113, 0.5);
+}
+
+.state-box.empty i {
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.offer-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(19, 42, 70, 0.82), rgba(27, 64, 104, 0.62));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  transition: all 0.2s ease;
+}
+
+.offer-card:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+}
+
+.offer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.offer-header h2 {
+  margin: 0;
+  font-size: 1.22rem;
+}
+
+.meta-line,
+.description,
+.offer-info {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.description {
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+
+.offer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.16);
+  color: #d7ebff;
+  border: 1px solid rgba(96, 165, 250, 0.24);
+  font-size: 0.82rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.offer-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn i {
+  font-size: 1.05rem;
+}
+
+.edit-btn {
+  color: #dbe8f8;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.edit-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.delete-btn {
+  color: #ffd7d7;
+  background: rgba(220, 53, 69, 0.16);
+  border-color: rgba(220, 53, 69, 0.22);
+}
+
+.delete-btn:hover {
+  background: rgba(220, 53, 69, 0.28);
+}
+
+.primary-btn,
+.secondary-btn,
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.primary-btn {
+  color: #fff;
+  background: linear-gradient(135deg, #2d76b4, #1f4d81);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.secondary-btn {
+  color: #d7e8fb;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ghost-btn {
+  color: #f0f7ff;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 768px) {
+  .recruiter-offers-page {
+    margin-top: 100px;
+    padding: 0 14px;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-actions,
+  .primary-btn,
+  .secondary-btn,
+  .ghost-btn {
+    width: 100%;
+  }
+
+  .icon-btn {
+    width: 100%;
+  }
+}

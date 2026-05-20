@@ -81,6 +81,9 @@
 
 			<footer class="action-row">
 				<button class="secondary-btn" (click)="goBackToList()">Retour aux offres</button>
+				@if (canEditOffer()) {
+					<a [routerLink]="['/ajouter-offre', offre.id]" class="secondary-btn">Modifier l'offre</a>
+				}
 				<a [routerLink]="['/postuler', offre.id]" class="primary-btn">Candidater</a>
 			</footer>
 		</article>
