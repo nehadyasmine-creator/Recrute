@@ -24,6 +24,9 @@ export class ApiService {
   getCandidatById(id: number): Observable<any> {
     return this.http.get<any>(`${API}/candidats/${id}`);
   }
+  getCandidatByUtilisateurId(idUtilisateur: number): Observable<any> {
+    return this.http.get<any>(`${API}/candidats/utilisateur/${idUtilisateur}`);
+  }
   createCandidat(data: any): Observable<any> {
     return this.http.post(`${API}/candidats`, data);
   }
@@ -36,7 +39,10 @@ export class ApiService {
   uploadCv(id: number, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post(`${API}/candidats/${id}/cv`, formData);
+    return this.http.post(`${API}/candidats/${id}/cv`, formData, { responseType: 'text' });
+  }
+  downloadCv(id: number): Observable<Blob> {
+    return this.http.get(`${API}/candidats/${id}/cv`, { responseType: 'blob' });
   }
 
   // Utilisateurs
@@ -46,10 +52,33 @@ export class ApiService {
   getUtilisateurById(id: number): Observable<any> {
     return this.http.get<any>(`${API}/utilisateurs/${id}`);
   }
-  uploadPdp(id: number, file: File): Observable<any> {
+  updateUtilisateur(id: number, data: any): Observable<any> {
+    return this.http.put(`${API}/utilisateurs/${id}`, data);
+  }
+  changePassword(id: number, data: any): Observable<any> {
+    return this.http.post(`${API}/utilisateurs/${id}/change-password`, data, { responseType: 'text' });
+  }
+  uploadPdp(id: number, file: File): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post(`${API}/utilisateurs/${id}/pdp`, formData);
+    return this.http.post(`${API}/utilisateurs/${id}/pdp`, formData, { responseType: 'text' });
+  }
+  downloadPdp(id: number): Observable<Blob> {
+    return this.http.get(`${API}/utilisateurs/${id}/pdp`, { responseType: 'blob' });
+  }
+
+  // Contact
+  getContactMessages(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/contacts`);
+  }
+  markContactMessageAsRead(id: number): Observable<any> {
+    return this.http.put(`${API}/contacts/${id}/statut`, {});
+  }
+  deleteContactMessage(id: number): Observable<any> {
+    return this.http.delete(`${API}/contacts/${id}`);
+  }
+  sendContactMessage(data: any): Observable<any> {
+    return this.http.post(`${API}/contacts`, data);
   }
 
   // Offres
@@ -95,11 +124,25 @@ export class ApiService {
   getCompetences(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/competences`);
   }
+  createCompetence(data: any): Observable<any> {
+    return this.http.post(`${API}/competences`, data);
+  }
+  updateCompetence(id: number, data: any): Observable<any> {
+    return this.http.put(`${API}/competences/${id}`, data);
+  }
   getCompetencesByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/competences-candidats/candidat/${id}`);
   }
   addCompetenceCandidat(data: any): Observable<any> {
     return this.http.post(`${API}/competences-candidats`, data);
+  }
+  deleteCompetenceCandidat(idCandidat: number, idCompetence: number): Observable<any> {
+    return this.http.delete(`${API}/competences-candidats`, {
+      body: {
+        idCandidat,
+        idCompetence,
+      },
+    });
   }
 
   // Experiences
@@ -108,6 +151,12 @@ export class ApiService {
   }
   createExperience(data: any): Observable<any> {
     return this.http.post(`${API}/experiences`, data);
+  }
+  updateExperience(id: number, data: any): Observable<any> {
+    return this.http.put(`${API}/experiences/${id}`, data);
+  }
+  deleteExperience(id: number): Observable<any> {
+    return this.http.delete(`${API}/experiences/${id}`);
   }
 
   // Liens
@@ -119,6 +168,9 @@ export class ApiService {
   }
 
   // Candidatures
+  getCandidatures(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/candidatures`);
+  }
   getCandidaturesByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidatures/candidat/${id}`);
   }
@@ -127,6 +179,9 @@ export class ApiService {
   }
   createCandidature(data: any): Observable<any> {
     return this.http.post(`${API}/candidatures`, data);
+  }
+  deleteCandidature(id: number): Observable<any> {
+    return this.http.delete(`${API}/candidatures/${id}`);
   }
 
   // Messagerie

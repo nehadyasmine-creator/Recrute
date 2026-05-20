@@ -63,9 +63,9 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
 
     file_out.write('-- Recruteurs (Utilisateurs)\n')
 
-    prenoms = ['Yasmine', 'Malo', 'Gaetan', 'Martin', 'Pierre', 'Clément', 'Thomas', 'Ilyes', 'Christophe', 'Sabine']
+    prenoms = ['Yasmine', 'Malo', 'Gaetan', 'Martin', 'Pierre', 'Clément']
     shuffle(prenoms)
-    noms = ['Nehad', 'Dufournier', 'Puiseux', 'Ladan', 'Ingrachen', 'Martinez', 'Dupont', 'Bennacer', 'Denis', 'Lopes']
+    noms = ['Nehad', 'Dufournier', 'Puiseux', 'Ladan', 'Ingrachen', 'Martinez']
     shuffle(noms)
     i = 0
 
@@ -74,8 +74,8 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
 
     for row in lignes_csv:
         nom_entreprise = row['entreprise']
-        nom = noms[(i // 10) % 10]
-        prenom = prenoms[i % 10]
+        nom = noms[(i // 6) % 6]
+        prenom = prenoms[i % 6]
         email = prenom.lower() + '.' + nom.lower() + '@gmail.com'
         telephone = '+33' + str(randint(600000000, 799999999))
         motdepasse_clair = prenom + nom

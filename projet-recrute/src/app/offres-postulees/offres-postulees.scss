@@ -1,0 +1,180 @@
+.applied-offers-page {
+	max-width: 1200px;
+	margin: 120px auto 40px;
+	padding: 0 20px;
+	color: white;
+}
+
+.page-header {
+	text-align: center;
+	margin-bottom: 36px;
+
+	h1 {
+		margin: 0 0 10px;
+		font-size: clamp(2rem, 3vw, 2.8rem);
+		font-weight: 700;
+	}
+
+	p {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.75);
+		font-size: 1.05rem;
+	}
+}
+
+.state-box,
+.empty-box {
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.state-box {
+	padding: 24px;
+	text-align: center;
+}
+
+.state-box.error {
+	color: #ffd0d0;
+	border-color: rgba(255, 122, 122, 0.3);
+	background: rgba(255, 122, 122, 0.08);
+}
+
+.empty-box {
+	padding: 50px 20px;
+	text-align: center;
+
+	i {
+		font-size: 3.5rem;
+		margin-bottom: 16px;
+		opacity: 0.75;
+	}
+
+	h2 {
+		margin: 0 0 10px;
+		font-size: 1.7rem;
+	}
+
+	p {
+		margin: 0 auto 18px;
+		max-width: 560px;
+		color: rgba(255, 255, 255, 0.75);
+	}
+}
+
+.action-link,
+.view-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 16px;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.action-link {
+	color: white;
+	background: linear-gradient(135deg, #2d76b4, #1f4d81);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.offers-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	gap: 22px;
+}
+
+.offer-card {
+	padding: 20px;
+	border-radius: 18px;
+	background: linear-gradient(180deg, rgba(19, 42, 70, 0.75), rgba(27, 64, 104, 0.55));
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+}
+
+.offer-card-top {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	align-items: flex-start;
+	margin-bottom: 16px;
+}
+
+.offer-card h2 {
+	margin: 0 0 8px;
+	font-size: 1.3rem;
+}
+
+.company-line,
+.description,
+.offer-meta {
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.company-line {
+	margin: 0;
+}
+
+.status-badge {
+	flex-shrink: 0;
+	padding: 8px 12px;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	border: 1px solid transparent;
+}
+
+.status-info { background: rgba(96, 165, 250, 0.18); color: #d7ebff; border-color: rgba(96, 165, 250, 0.26); }
+.status-warning { background: rgba(251, 191, 36, 0.18); color: #fff0bf; border-color: rgba(251, 191, 36, 0.28); }
+.status-danger { background: rgba(248, 113, 113, 0.18); color: #ffd6d6; border-color: rgba(248, 113, 113, 0.28); }
+.status-success { background: rgba(74, 222, 128, 0.16); color: #dafbe3; border-color: rgba(74, 222, 128, 0.25); }
+.status-neutral { background: rgba(255, 255, 255, 0.12); color: #fff; border-color: rgba(255, 255, 255, 0.18); }
+
+.description {
+	margin: 0 0 16px;
+	line-height: 1.55;
+}
+
+.offer-meta {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 0.95rem;
+	margin-bottom: 16px;
+}
+
+.offer-actions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.view-btn {
+	color: white;
+	background: linear-gradient(135deg, #2d76b4, #1f4d81);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.action-link:hover,
+.view-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 768px) {
+	.applied-offers-page {
+		margin-top: 100px;
+		padding: 0 14px;
+	}
+
+	.offers-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.offer-card-top {
+		flex-direction: column;
+	}
+}

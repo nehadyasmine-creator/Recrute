@@ -1,0 +1,3 @@
+recrute-python/*
+!recrute-python/*.py
+.env

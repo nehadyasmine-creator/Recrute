@@ -7,9 +7,9 @@ from seleniumbase import SB
 TARGET_COUNT = 20
 HTML_DIR = "html"
 
-# Listes étoffées pour garantir +100 offres uniques rien qu'avec les "Pages 1"
-MOTS_CLES = ["ingénieur système", "ingénieur data", "ingénieur mécanique", "ingénieur logiciel", "ingénieur cloud",
-             "ingénieur devops", "ingénieur réseau", "ingénieur IA"]
+
+MOTS_CLES = ["ingénieur système", "ingénieur data", "ingénieur mécanique", "Product Owner", "Data Scientist",
+             "ingénieur aéronautique", "ingénieur IA", "ingénieur santé"]
 VILLES = ["Paris", "Lyon", "Toulouse", "Nantes", "Lille", "Bordeaux", "Rennes", "Strasbourg", "Montpellier"]
 
 
@@ -50,7 +50,7 @@ def extraire_sans_paginer_ni_date():
                     sb.wait_for_element('a.jcs-JobTitle', timeout=8)
                     elements = sb.find_elements('a.jcs-JobTitle')
 
-                    for el in elements:
+                    for el in elements[:3]:
                         href = el.get_attribute("href")
                         if href:
                             clean_url = href.split("?")[0] if "viewjob" in href else href
@@ -59,7 +59,7 @@ def extraire_sans_paginer_ni_date():
                             collected_links.add(absolute_url)
 
                     print(
-                        f"[+] {len(elements)} offres vues sur cette page. Total provisoire : {len(collected_links)}/{TARGET_COUNT}")
+                        f"[+] {min(len(elements),3)} offres vues sur cette page. Total provisoire : {len(collected_links)}/{TARGET_COUNT}")
 
                 except Exception:
                     print("[-] Aucun résultat ou captcha. Fermeture immédiate et passage au suivant.")

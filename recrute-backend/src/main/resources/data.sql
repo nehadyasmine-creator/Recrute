@@ -12,178 +12,641 @@ INSERT INTO Competence (category, nom) VALUES
 ('langue', 'Français');
 
 -- Entreprises
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Economat des Armées', 'Pantin', 'Public', 'https://www.economat-des-armees.fr', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Advanced Schema', 'Paris', 'Informatique', 'https://www.advanced-schema.com/', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('CESI Campus NANTERRE', 'Paris', 'Informatique', 'https://www.cesi.fr', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Thales', 'Gennevilliers', 'Aéronautique', 'https://www.thalesgroup.com/', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Groupement Mousquetaires', 'Châtillon', 'Distribution', 'https://www.mousquetaires.com', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ISCOD', 'Massy', 'Digital', 'https://www.iscod.fr', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Cosium', 'Versailles', 'Informatique', 'https://www.cosium.fr', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Salute Inc.', 'Paris', 'DataCenter', 'https://www.saluteinc.com', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Odysis', 'Paris', 'Informatique', 'https://www.odysis.com', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('INPI', 'Courbevoie', 'Informatique', 'https://www.inpi.fr/', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Seyos', 'Gennevilliers', 'Numérique', 'https://www.seyos.fr/', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Siemens', 'Châtillon', 'Mobilité', 'https://www.siemens.com', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('RATP EPIC', 'Noisy-le-Grand', 'Transports', 'https://www.ratp.fr/groupe-ratp', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Inetum', 'Saint-Ouen', 'Numérique', 'https://www.inetum.com', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Atos', 'Bezons', 'Informatique', 'https://atos.net', 'grand_groupe');
-INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Sia', 'Paris', 'Conseil', 'https://www.sia.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Institut Curie', 'Orsay', 'Santé', 'https://curie.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Elsys Design', 'Créteil', 'Électronique', 'https://www.elsys-design.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ONSPARK', 'Paris', 'Informatique', 'https://onspark.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Banque Française Mutualiste', 'Paris', 'Banque', 'https://www.banque-francaise-mutualiste.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Société Générale', 'La Défense', 'Finance', 'https://www.societegenerale.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Thales', 'Gennevilliers', 'Défense', 'https://www.thalesgroup.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Haute Autorité de Santé', 'Saint-Denis', 'Santé', 'https://www.has-sante.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Collective.work', 'Paris', 'Informatique', 'https://collective.work', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('CS Instruments', 'Les Ulis', 'Nanotechnologie', 'https://csinstruments.com/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('INPI', 'Courbevoie', 'Informatique', 'https://www.inpi.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ISOSKELE', 'Paris', 'Marketing', 'https://www.isoskele.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('BIOMEN', 'Levallois-Perret', 'Santé', 'https://www.biomen.fr', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ALTEN', 'Boulogne-Billancourt', 'Aéronautique', 'https://www.alten.fr/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('RIVAGE INVESTMENT', 'Paris', 'Finance', 'https://www.rivage-investment.com', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('IDEM for STUDIEL SERVICES', 'Île-de-France', 'Aéronautique', 'https://www.idem-group.com/', 'grand_groupe');
+INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Withings', 'Issy-les-Moulineaux', 'Santé', 'https://www.withings.com', 'grand_groupe');
 -- Recruteurs (Utilisateurs)
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Gaetan', 'gaetan.nehad@gmail.com', '+33776079680', '$2b$10$09ueJIsNa1xOVoLhY0OFeOzxx45.pMu9c1WK3UFk54YVyB3nPUIZS', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Pierre', 'pierre.puiseux@gmail.com', '+33698549499', '$2b$10$/eFVi4D3NYGzk1G0SL7J9ePvPhtHdtNtzbZQHILGKUaYMpyhQN/EW', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Martin', 'martin.nehad@gmail.com', '+33633805591', '$2b$10$ZPvfuq8Rl2WOUMTznrmqi.PNaApLCtAV3fsASfY6wRnbRlHEWHiPe', 'recruteur','2026-03-31');
-INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (2, 2, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Sabine', 'sabine.nehad@gmail.com', '+33730599076', '$2b$10$QDVE0oj5i6mb7BDi0oawjeKgWNV8ovC6nxnBqiyZUNe9QYrheMJ/G', 'recruteur','2026-03-31');
-INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (3, 3, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Pierre', 'pierre.nehad@gmail.com', '+33708682087', '$2b$10$4ca8sRQ3ZJzaLcB2VPUfc.HSJF82dndeCtnQqCqWN2WeulQOpUrQS', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Gaetan', 'gaetan.puiseux@gmail.com', '+33743643860', '$2b$10$8V3O0WsgGMnk0Tkq/tYVuefD9FCAFbHzMtErO09FQ15o6BXi33ssC', 'recruteur','2026-05-19');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Malo', 'malo.puiseux@gmail.com', '+33722841691', '$2b$10$rGjMIA8tusElq0U248t2zuHqN/vez7lax/HcxQaAUKafzSPZER0B6', 'recruteur','2026-05-19');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Yasmine', 'yasmine.puiseux@gmail.com', '+33774552383', '$2b$10$o.mR90xhpVYNqfVDRPb/YeFrHf6rRp5wbJ5VnpTFP60.XUFLbp/hu', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (4, 4, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Yasmine', 'yasmine.nehad@gmail.com', '+33623250601', '$2b$10$1GuBwDBtA9pt2DbjQgan.OHrlniyNdaYTWSM.aW7sYX6y26w472Si', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Clément', 'clément.puiseux@gmail.com', '+33624620132', '$2b$10$LGzb9DpsXmgrfdSx8Vk9EOlrpW2YPWeRta7LwpRAyZF2D4Ll5r3Su', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (5, 5, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Ilyes', 'ilyes.nehad@gmail.com', '+33636293740', '$2b$10$dqXu5WZMWuyQQ/8.YEFTnOuDisepHGu/hXNVLWslInmy3YDw6/xdy', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Martin', 'martin.puiseux@gmail.com', '+33629280511', '$2b$10$eKi7bxDvW5E/eLr6HvTE9OKIP2tdQGmN6Nd8vsy7AMgpQ67JxZNuK', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (6, 6, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Malo', 'malo.nehad@gmail.com', '+33759428436', '$2b$10$pylXWHvTVPKM8xysdczfVOQNkLbhjpgAnOcAIrNMpO8M/A4JHYu9m', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Pierre', 'pierre.ingrachen@gmail.com', '+33691635670', '$2b$10$XpoXtT8LXBlOW6QY0.1JcOFwJ3ivalEwUWodrtY4Hhs87fg9lRx1m', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (7, 7, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Clément', 'clément.nehad@gmail.com', '+33728313895', '$2b$10$d0ef4EyAcZCO1DUIHprIMek9ZzrZkc6Ameic7m43Bt0CkHHSmWole', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Gaetan', 'gaetan.ingrachen@gmail.com', '+33687209855', '$2b$10$4z4Yk6eaxNKmuKbBOM8qpOLs96NdWHYpz1jKlH5SstnYR13eeNIW2', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (8, 8, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Thomas', 'thomas.nehad@gmail.com', '+33721913727', '$2b$10$j34NNnNm9WULlA9E0kOt2ui/E3wN565/8MEGi.4xFJA9sWlZerFK2', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Malo', 'malo.ingrachen@gmail.com', '+33783016189', '$2b$10$il3zgu.IZuMogDahQ83xSOn5U9Ufb2Q0/18NxMACdv1LnWnIGaZb6', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (9, 9, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Christophe', 'christophe.nehad@gmail.com', '+33627839966', '$2b$10$8gJ0UbwlsaRR6b31s1zKSuuOJXylJAPGM/pfFtuEt2gLKORoR4JMS', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Yasmine', 'yasmine.ingrachen@gmail.com', '+33685384041', '$2b$10$XAY6F1Exi.O8KXeVRR6rTeBKjMq8rc4E6ACAXrPITu7uA6BdCnjoK', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (10, 10, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Gaetan', 'gaetan.denis@gmail.com', '+33758838298', '$2b$10$5DmMvKM7byNKrY44BVm/QeuSxGLWUrh4zJ1R/dNp/EGVhGe0kwbRq', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Clément', 'clément.ingrachen@gmail.com', '+33665282324', '$2b$10$p6MYEbIxxqmERFj8jDdSQO0ZxcdDMwkDJXXZ3c4lxdoM7LVKZM9u.', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (11, 11, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Martin', 'martin.denis@gmail.com', '+33699954901', '$2b$10$FYA9fMJnso6ns7PxsL/aeeK8agnO7eLZHS2LYzQLi/B8vRgVquotK', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Martin', 'martin.ingrachen@gmail.com', '+33645463034', '$2b$10$T7iOGbExlyQEHXPKZf23AO6mZJqrAksxxxMi0uOt/ie62aCGtQmnW', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (12, 12, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Sabine', 'sabine.denis@gmail.com', '+33727049476', '$2b$10$o.SUay2rEmoBwL09puABd.5ZdMDYSLZvcDwznrXPiTV//tr0rU/LK', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Pierre', 'pierre.ladan@gmail.com', '+33622777301', '$2b$10$UrdD5lXHoc.h81xM3G7wiuNSln4Pj6dDF/k/zXG25J6tu1Vv6A.wu', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (13, 13, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Pierre', 'pierre.denis@gmail.com', '+33610098964', '$2b$10$CH.Z.DG8HipXv9cnLpXwSeuzzRS33g.mUx7NyP11SHILv0EKcl2c.', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Gaetan', 'gaetan.ladan@gmail.com', '+33700336790', '$2b$10$LgKsRFu9qu42PJq4AAr8qOul74BIv4JNS5bTavXLQ2GdtuKk8In/q', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (14, 14, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Yasmine', 'yasmine.denis@gmail.com', '+33650456569', '$2b$10$J7MZul1KcsTiFmMmDHDyrumrok1NeVDMZcXnE9DWGe8az1NBQwzka', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Malo', 'malo.ladan@gmail.com', '+33707410137', '$2b$10$nnrKK7HC3u9RFdXKxTBng.sXr.MhNCes7qwD7Zn39oG/OkBh4YAbq', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (15, 15, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Denis', 'Ilyes', 'ilyes.denis@gmail.com', '+33798054899', '$2b$10$iNTcqd26an1hMVUkJ37eP.QPjIHuGvcZuLcFymaihXyaWwjuBsFAW', 'recruteur','2026-03-31');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Yasmine', 'yasmine.ladan@gmail.com', '+33778703037', '$2b$10$l3yU85K6mhlhjQVfayGvvuJikFCDTAhF.oTB1yFNfl4vSP8QFONP.', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (16, 16, 'Responsable RH');
 
 -- ==========================
 -- Offres
 -- ==========================
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (1, 'Développeur data (H/F)', 'Référence : 2025_DSI_013
- CDI
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (1, 'Ingénieur en Imagerie préclinique (H/F)', 'CDD
+    
 
 
-Au quotidien, les femmes et les hommes de l’EdA s’engagent aux côtés de nos forces armées sur le territoire national et à l’étranger.
 
+     Orsay
+    
 
-L’EdA c’est 1 000 collaborateurs dans le monde, 20 familles de métiers, pour assurer l’approvisionnement en denrées alimentaires, la restauration collective – externalisée ou en régie – et les activités de loisirs, la gestion des camps en opérations extérieures et le soutien aux évènements.
 
 
 
+ Ingénieur en Imagerie préclinique (H/F)
 
- Notre offre
 
 
 
+Centre de Recherche
 
-Sous la responsabilité du chef du département « études et développement » de la Direction des Systèmes d’Information (DSI), le développeur data est responsable sur les missions confiées de l’analyse, de la gestion et de la présentation des données, tout en contribuant au développement et à l’optimisation des applications nécessaires à mettre en place pour garantir la fiabilité et la performance des flux de données.
 
 
 
 
- Vos missions au quotidien
 
 
 
 
-Analyse de données :
 
 
 
 
-Collecter, nettoyer et structurer des données provenant de différentes sources (bases de données, API, fichiers externes, …).
 
 
-Effectuer des analyses pour répondre aux besoins métiers.
 
 
-Créer des rapports et des dashboards interactifs avec des outils BI (Power BI, Qlik, etc.).
+      L''Institut Curie est un acteur majeur de la recherche et de la lutte contre le cancer. Il est constitué d''un hôpital et d''un Centre de recherche de plus de 1000 collaborateurs avec une forte représentativité internationale.
 
 
-Fournir des insights et recommandations à partir des données pour améliorer les processus et les performances de l''établissement.
+L’objectif du Centre de recherche de l’institut Curie est de développer la recherche fondamentale et d’utiliser les connaissances produites pour améliorer le diagnostic, le pronostic, la thérapeutique des cancers dans le cadre du continuum entre la recherche fondamentale et l’innovation au service du malade.
 
 
-Gérer et maintenir des bases de données analytiques.
 
 
 
 
-Développement Web :
 
 
 
+       Missions détaillées
 
-Développer et maintenir des applications web internes ou externes en utilisant des technologies comme HTML, CSS, JavaScript, ainsi que des frameworks du marché.
 
+Sous l’autorité du Responsable de la Plateforme, l’ingénieur.e devra :
 
-Concevoir et développer des interfaces utilisateurs intuitives et responsives.
 
 
-Concevoir des expériences utilisateurs fluides, centrées sur les besoins métiers et les utilisateurs finaux.
 
 
 
+Réaliser les acquisitions d’images (µTEP/ µTDM embarqué) ;
 
-Gestion de bases de données et SQL :
 
 
 
+Assurer un suivi de maintenance, de fonctionnement et de gestion des appareillages de la plateforme intégrant les formations pratiques des utilisateurs ;
 
-Rédiger et optimiser des requêtes SQL pour extraire et manipuler des données à partir de bases de données relationnelles (MySQL, PostgreSQL, SQL Server, etc.).
 
 
-Développer et maintenir des procédures stockées, des triggers et des vues dans les bases de données.
 
+Participer à la mise en place et réaliser les contrôles qualité sur les systèmes d’imagerie et d’irradiation de la plateforme ;
 
-Assurer la performance et l''intégrité des bases de données en optimisant les processus d''extraction et de traitement des données.
 
 
 
+Participer aux acquisitions d’images et/ou aux mises en place de protocoles pour l’imagerie multimodale ;
 
-Développement et tests des flux de données et des interfaces :
 
 
 
+Participer aux irradiations sur les animaux et les cellules sur les systèmes d’irradiation de la plateforme et au Centre de Protonthérapie ;
 
-Développer et maintenir des flux de données entre différentes applications et bases de données, en garantissant leur cohérence et leur performance.
 
 
-Tester les flux de données pour s''assurer de leur bon fonctionnement, de leur exactitude et de leur sécurité (tests de bout en bout, tests d''intégration).
 
+Réaliser les développements technologiques pour l’utilisation des systèmes d’imagerie et d’irradiation ;
 
-Concevoir et réaliser des tests de performance pour les applications et les interfaces utilisateurs, en s''assurant de leur réactivité et de leur scalabilité.
 
 
-Mettre en place des tests automatisés pour les interfaces et les processus d’intégration afin de garantir une qualité continue des systèmes.
 
+Exploiter et présenter les résultats des mesures pour rédiger des rapports d’expériences, notes techniques ;
 
 
 
-Votre profil
 
+Développer des activités de conseil et de formation auprès des utilisateurs et partenaires scientifiques ;
 
- Le candidat est de nationalité française et/ou ressortissant européen.
- 
-Etablissement soumis à enquête administrative.
 
 
 
+Se tenir informé des évolutions techniques et les mettre en œuvre au sein de la plateforme ;
 
-Votre parcours
- 
 
 
-Bac +3/5 en informatique, analyse de données, statistiques ou domaines similaires. Expérience professionnelle de 3 à 5 ans minimum dans un rôle similaire, alliant analyse de données, développement web, et tests de flux et d''interfaces.
 
+Assurer un suivi de maintenance, de fonctionnement, de la formation et de gestion des appareillages de la plateforme ;
 
- 
-Vos savoir-faire
+
+
+
+Assurer la gestion des animaux (dont rongeurs) inclus dans les projets (en animalerie : suivi (change, socialisation (rats), suivi de poids)), transfert des animaux, anesthésie et mise en place sur les équipements de la plateforme
+.
+
+
+
+
+
+
+
+
+ Formation et expérience
+
+
+
+
+
+
+Bac +5/+8 en physique, physique médicale, imagerie ;
+
+
+
+
+Poste ouvert aux personnels hospitaliers tels que manipulateurs en électroradiologie, aides physiciens, etc.
+
+
+
+
+Expériences professionnelles souhaitées : 2 à 5 ans ;
+
+
+
+
+Habilitations souhaitées : Expérimentation animale niveau I (Concepteur) ;
+
+
+
+
+Avoir de bonnes connaissances associées à l’imagerie TEP.
+
+
+
+
+
+       Compétences et qualités requises
+
+
+
+
+
+
+Dosimétrie ;
+
+
+
+
+Acquisition, interprétation d’images scanner et TEP ;
+
+
+
+
+Analyse d’images ;
+
+
+
+
+Utilisation des outils informatiques de bureautique ;
+
+
+
+
+Sur le petit animal (rat, souris) : contention, anesthésie, injection ;
+
+
+
+
+Compétences linguistiques : maitrise du français (non obligatoire) et de l’anglais.
+
+
+
+
+
+
+
+        Toutes nos opportunités sont ouvertes à des personnes en situation de handicap.
+
+
+
+       Type de contrat :
+ CDD
+
+
+ Date de démarrage :
+ Dès que possible
+
+
+ Durée du contrat :
+ 36 mois
+
+
+ Temps de travail :
+ Temps complet - 39 heures par semaine
+
+
+ Rémunération :
+ selon les grilles en vigueur
+
+
+ Avantages :
+ Restauration collective, prise en charge du titre de transport annuel à 70%, mutuelle d’entreprise
+
+
+ Localisation du poste :
+ Orsay
+
+
+
+
+
+       Contact
+
+
+Pour postuler, merci d’envoyer CV et lettre de motivation à
+
+
+ Date de parution de l’offre : 16/10/2025
+
+
+ Date limite des candidatures : Dès que pourvue
+
+
+
+
+
+        L''Institut Curie est un employeur inclusif respectant l''égalité des chances.
+
+
+ Il s’engage également à appliquer des normes exigeantes en matière d''intégrité de la recherche.
+
+
+https://euraxess.ec.europa.eu/sites/default/files/brochures/eur_21620_en-fr.pdf', 'Orsay', 'CDD', 0.0, '36 mois', 2, '2026-05-12', '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (4, 'Ingénieur Conception Électronique Analog/Power - H/F', 'Contexte
+
+
+Dans le cadre du développement de systèmes électroniques embarqués critiques, nous recherchons un 
+Ingénieur en électronique analogique et de puissance
+ pour concevoir des convertisseurs haute fiabilité destinés à des applications spatiales.
+
+
+Missions principales
+
+
+
+
+Conception et dimensionnement de convertisseurs DC-DC / AC-DC (Forward, Flyback, Buck, DAB…)
+
+
+Design de circuits analogiques de protection (OVP, UVP, OCP, thermique)
+
+
+Simulation sous LT-Spice / PSpice et calculs sous Mathcad
+
+
+Sélection de composants et conception des éléments magnétiques
+
+
+Réalisation des analyses de fiabilité (Derating, WCA, PSA)
+
+
+Mise au point, validation prototype et debugging
+
+
+Rédaction des dossiers techniques et participation aux revues de conception
+
+
+
+
+Profil recherché
+
+
+
+
+Formation d’ingénieur en électronique/électrotechnique.
+
+
+Expérience confirmée en électronique analogique ou puissance
+
+
+Bonne compréhension des circuits analogiques / commande / magnétique.
+
+
+Maîtrise des topologies SMPS et contraintes EMI/thermiques
+
+
+Expérience en environnement exigeant (spatial, aéronautique ou défense appréciée)
+
+
+Un bon sens pratique : oscillo, charge électronique, debug, sécurité… tu connais.
+
+
+Une vraie rigueur technique (notes de calculs, justifications, doc).
+
+
+Anglais technique
+
+
+
+
+Type d''emploi : CDI
+
+
+Rémunération : 45 000,00€ à 55 000,00€ par an
+
+
+Avantages :
+
+
+
+
+Flextime
+
+
+Prise en charge du transport quotidien
+
+
+RTT
+
+
+
+
+Lieu du poste : En présentiel', 'Créteil', 'CDI', 45000.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (5, 'Data Scientist', 'ContexteOnSpark est un cabinet spécialisé dans la GMAO/EAM et l''intégration SI, en forte croissance (40 collaborateurs, CA 3,3 M?). Dans le cadre de la diversification de son offre vers la Data et l''Intelligence Artificielle, nous recherchons un Data Scientist pour accompagner nos clients grands comptes. Vous travaillerez sur des données massives et complexes, et contribuerez à des cas d''usage à fort impact : modèles de prévision, simulateurs, analyses statistiques avancées, détection de tendances, dans un environnement Big Data on-premise (Cloudera CDP, Cloudera Machine Learning) avec accès à des IDE modernes (Jupyter, RStudio, VSCode). 
+
+
+
+
+ ResponsabilitésConcevoir et entraîner des modèles de Machine Learning et Deep Learning 
+
+
+
+
+ Analyser des jeux de données complexes et volumineux 
+
+
+
+
+ Collaborer avec les Data Engineers pour la mise en production des modèles 
+
+
+
+
+ Accompagner les équipes métier dans l''interprétation des résultats 
+
+
+
+
+ Contribuer aux cas d''usage IA et NLP de la plateforme 
+
+
+
+Profil candidat:
+
+
+
+ Profil recherchéFormation Bac+5 (Data Science, Statistiques, Mathématiques ou équivalent) 
+
+
+
+
+ Maîtrise de Python (Pandas, Scikit-learn?) et/ou R 
+
+
+
+
+ Expérience en Machine Learning, Deep Learning, NLP 
+
+
+
+
+ Connaissance des environnements Big Data (Spark, Hadoop, Cloudera?) 
+
+
+
+
+ Connaissance du secteur public ou de la protection sociale appréciée 
+
+
+
+
+ ConditionsPrésence physique requise à Paris 12ème (télétravail partiel possible, jusqu''à 2 jours/semaine) 
+
+
+
+
+ Mission longue durée avec possibilité d''intégration en CDI', 'Paris', 'CDI', 0.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (4, 'Product Owner Espaces Digitaux F/H', 'Créée en 1986, à l’initiative de mutuelles de la Fonction publique la Banque Française Mutualiste est la seule banque dédiée à l’ensemble des agents du secteur public dont le capital est détenu par 25 mutuelles sociétaires. La Banque Française Mutualiste propose des offres adaptées aux agents du secteur public avec son partenaires distributeur SG. Elle compte aujourd’hui près d’1,2 million de clients.
+
+
+Guidées par ses valeurs que sont la responsabilité citoyenne, la solidarité, l’éthique et le respect de la personne, la Banque Française Mutualiste poursuit son développement dans le cadre de son nouveau Plan stratégique avec pour ambition d’accroitre son portefeuille clients, de digitaliser davantage son offre et de diversifier es canaux de distribution.
+
+
+Afin de renforcer les équipes Marketing Digital et dans un contexte de forte transformation digitale, la Direction Marketing Communication recrute dans le cadre d’une création de poste un
+
+
+Product Owner Espaces Digitaux F/H
+
+
+
+
+ Vos Missions :
+
+
+
+
+Rattaché à la Responsable Marketing Digital vous intégrez une équipe dynamique en qualité de Product Owner Espaces Digitaux F/H. Ce rôle clé s’inscrit au cœur des enjeux d’expérience utilisateur, de performance digitale et de déploiement de nouveaux outils digitaux structurants.
+
+
+Vous êtes responsable de la vision produit, du pilotage et de l’évolution des 
+espaces digitaux
+ de la BFM. Véritable interface entre les équipes de développement et les utilisateurs, vous garantissez la cohérence, la performance et la valeur utilisateur des produits digitaux tout au long de leur cycle de vie.
+
+
+En qualité de Product Owner Espaces Digitaux F/H, vous assurez notamment les missions suivantes :
+
+
+Ø 
+Pilotage produit digital & vision stratégique
+
+
+
+
+Définir et porter la vision produit des espaces digitaux en lien avec la stratégie marketing et business ;
+
+
+Recueillir, analyser et prioriser les besoins métiers et utilisateurs ;
+
+
+Construire, prioriser et maintenir le backlog
+
+
+
+
+Ø 
+Delivery & coordination
+
+
+
+
+Participer et/ou mener les rituels agiles (ateliers, refinements, sprint reviews) ;
+
+
+Rédiger les US fonctionnelles
+
+
+Participe à la définition des critères d’acceptation des livrables et veiller à leur respect (recettes)
+
+
+
+
+Ø 
+Amélioration continue
+
+
+
+
+Analyser les usages et performances des parcours digitaux ;
+
+
+Identifier les opportunités d’optimisation et d’innovation ;
+
+
+Être force de proposition sur les évolutions fonctionnelles et technologiques.
+
+
+
+
+Ø 
+Projets structurants
+
+
+
+
+Participer activement aux projets de refonte du site institutionnel, des parcours de souscription en ligne et de l’Espace Client
+
+
+Contribuer au lancement du CRM et à sa bonne intégration dans les espaces digitaux
+
+
+
+
+
+
+
+   Issu(e) d’une formation supérieure (école de commerce, ingénieur ou équivalent), vous justifiez d’une 
+expérience confirmée en tant que Product Owner dans une organisation AGILE
+.
+
+
+Vous maîtrisez :
+
+
+
+
+les méthodologies agiles,
+
+
+les outils tels que : Jira / Confluence / ConstentSquare / Matomo / Google Analytics / Drupal
+
+
+les enjeux UX/UI, parcours clients et performance digitale,
+
+
+les projets de refonte de site web et/ou de déploiement de CRM.
+
+
+
+
+Doté(e) d’un excellent sens de l’analyse et de la priorisation, vous savez concilier vision stratégique et approche opérationnelle. Vous êtes reconnu(e) pour votre capacité traduire des besoins fonctionnels en solutions concrètes.
+
+
+Votre aisance relationnelle, votre esprit de synthèse et votre capacité à fédérer des équipes pluridisciplinaires feront la différence.
+
+
+Curieux(se), structuré(e) et orienté(e) résultats, vous aimez évoluer dans des environnements en transformation et contribuer à la création de produits digitaux à fort impact.', 'Paris', 'CDI', 60000.0, '', 3, '2026-05-12', '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (5, 'Data Scientist Paiements', 'Vos missions au quotidien 
+
+
+
+
+La Direction des Paiements de la Banque de Détail SG en France (SGRF/PAY) recherche son futur Data Scientist pour compléter l’équipe du Pôle Produits Data Paiements au sein du Département Fraude, Etudes & Pilotage (PAY/FEP).
+
+
+Le rôle de notre future recrue consistera à accompagner les départements métiers (équipes commerciales, produits et supports) de la Direction des Paiements, les Directions de Marchés de clientèle (entreprises, professionnels et particuliers) ainsi que le Réseau (agences et centre d’affaires) par l’exploitation des données au travers de la plateforme Big Data et des outils associés (Dataiku pour la data preparation et la modélisation, MicroStrategy pour la restitution des données sous forme de dashboard et de Self BI).
+
+
+Concrètement, vous serez amené à développer des cas d’usage à même de contribuer aux objectifs stratégiques de conquête de flux, gain de PNB et de satisfaction client :
+
+
+
+
+
+
+Construire des cas d’usage répondant à l’efficacité opérationnelle des équipes
+
+
+
+
+Développer des scores d’appétence en vue de campagnes commerciales
+
+
+
+
+Produire des listes de prospection de clients susceptibles d’être réactivés ou de contrats à renégocier
+
+
+
+
+Faire des analyses relatives à la lutte contre la fraude (accompagnement à l’identification de cas de suspicion, profilage)
+
+
+
+
+Mettre en évidence toutes sortes d’indicateurs à même de compléter le pilotage de l’activité des paiements (fragilisation de la relation client, attrition, risque frauduleux, etc.)
+
+
+
+
+
+
+
+
+
+
+
+
+Et si c’était vous ? 
+
+
 
 
 Compétences techniques :
@@ -191,270 +654,165 @@ Compétences techniques :
 
 
 
-Compétences avancées en SQL et gestion de bases de données relationnelles.
+Diplôme d’ingénieur de niveau Bac+5 dans le domaine des études statistiques et/ou mathématiques appliquées et/ou modélisation
 
 
-Maîtrise des langages de programmation web (HTML, CSS, JavaScript, PHP, etc.).
+Solides connaissances en mathématiques appliquées (statistiques, probabilités, logique)
 
 
-Expérience avec des outils de visualisation de données (Power BI, Qlik, etc.).
+Maîtrise des langages de programmation SQL et Python (librairies Pandas, NumPy, PySpark, outils VS Code, Jupyter Notebook)
 
 
-Maîtrise des processus et outils de tests (tests unitaires, tests d’intégration, tests fonctionnels et de performance).
+Maîtrise de Dataiku (préparation des données, automatisation, industrialisation)
 
 
-Compétences en automatisation des tests pour les applications web et les flux de données.
-
-
-Expérience dans la gestion des flux de données et l''intégration d''API.
+Maîtrise de MicroStrategy (en majeur chez SGRF, semblable à Tableau ou PowerBI)
 
 
 
 
-Compétences analytiques :
+Compétences comportementales :
 
 
 
 
-Capacité à analyser des ensembles de données complexes et à en extraire des insights significatifs.
+Esprit analytique, rigueur
 
 
-Sens de la rigueur et de l''organisation dans le traitement des données.
+Curiosité, réactivité
 
 
-Excellentes capacités de résolution de problèmes et de prise de décision basée sur les données.
+Capacité d''écoute, force de proposition
 
 
-
-
- 
-Les savoir-être partagés par tous les collaborateurs de l’EdA
-
-
-Esprit d’équipe, sens du service, discrétion, implication, agilité, éthique, communication, initiative
-
-
- 
- Nos propositions
+Aisance relationnelle, orientation client
 
 
 
 
-CDI statut cadre à pourvoir ASAP
- Poste basé à Pantin avec de possibles déplacements de courte durée en France ou à l’étranger.
- Restaurant et parking sur site ;
- Horaires flexibles et télétravail ;
- 13 RTT annuel, intéressement, PEE, PERCO, CET ;
- Prime de performance individuelle en fonction des résultat obtenus ;
- Un parcours d’intégration complet pour faciliter la prise en main de votre poste et découvrir votre environnement, avec des sessions d’intégration ;
- Une large palette de formations pour votre projet professionnel ;
- Des avantages et prestations sociales intéressants : sport, voyages, billetterie, culture, aide à l’accès au logement, accompagnement à la mobilité, facilités crèche, activités sportives à tarifs avantageux, etc.
-
-
- 
- Pourquoi postuler
-
-
-L’engagement au côté des forces armées françaises nous permet de donner du sens à nos actions et de nous accomplir au quotidien. C’est l’opportunité de mettre nos expertises et notre créativité au service de projets dimensionnants.
- Pour garantir leur réussite, nous veillons à développer et conjuguer les talents de chacun.
- 
- Nous rejoindre c’est intégrer un collectif où l’humain reste au centre des attentions, qu’il soit client ou collaborateur. Nous avons la conviction que le service indéfectible que nous devons à nos prescripteurs ne peut être garanti que par la qualité de l’environnement que nous proposons à nos équipes.
- 
- A la jonction des univers militaire et civil, l’EdA est riche d’une culture de mixité.
- En postulant chez nous, ne vous posez pas d’autre question que celle de savoir si vous partagez nos valeurs et ambitions.
- Au-delà de votre expertise, nous recherchons les qualités qui font la force de nos équipes : éthique, implication, audace, rigueur, empathie et créativité.
- 
- Ce poste est ouvert aux personnes en situation de handicap.', 'Pantin', 'CDI', 0.0, '', 3, '2026-03-31', '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (2, 'Data Engineer', 'En tant que
-Data Engineer
-, vous aurez les 
-missions
- suivantes :
 
 
 
 
- Concevoir 
-des modélisations physiques
 
 
- Construire 
-des mappings techniques et rédaction de spécifications d’alimentation.
-
-
- Développer 
-des flux des données
-
-
- Contribuer 
-au pilotage de projets, de proof of concepts
-
-
- Participer 
-à des missions d’expertise
+Plus qu’un poste, un tremplin 
 
 
 
 
-N''hésitez pas à postuler même si vous ne répondez pas à toutes les exigences. Nous accordons autant d''importance à la 
-capacité d''apprendre qu''à la maîtrise d''une technologie
+Notre vision est de jouer un rôle moteur dans les transformations positives du monde et de contribuer à un avenir plus écologique, respectueux de la planète !
+
+
+Choisir Société Générale, c’est intégrer un Groupe où la 
+culture d’entreprise est tournée vers l’inclusion, la diversité et l’esprit d’équipe !
+
+
+C’est construire une 
+carrière dynamique
+ avec la possibilité de changer de poste en moyenne tous les 4 ans, en France et à l''international tout en bénéficiant de 
+formations régulières
+ !
+
+
+Au regard de vos compétences, une 
+rémunération attractive
+ revue annuellement, composée d’un salaire fixe, d’une part variable individuelle et d’une prime d’intéressement et de participation vous sera proposée.
+
+
+Vous bénéficiez également de 
+tarifs préférentiels sur vos services bancaires, d’un compte épargne temps monétisable et d’un Plan d’Epargne Entreprise abondé
 .
 
 
-Ce poste
- 
-est à pourvoir en
- stage 
-et
- CDI
+Attentif à votre 
+qualité de vie et conditions de travail
+, vous bénéficiez de nombreux avantages complémentaires :
 
 
- Compétences professionnelles & niveau d''études requis :
 
 
+Télétravail possible selon le rythme de votre service
 
 
-Vous êtes titulaire d''un diplôme 
-Bac +3
- minimum dans le domaine de la 
-data
+26 à 28 jours de congés payés par an et 14 à 18 jours de RTT (suivant les années), des congés liés aux événements de la vie
 
 
-Vous possédez minimum 
-1 an d''expérience
- dans le métier
+Prise en charge de 60% de votre titre de transport
 
 
-Être 
-enthousiaste 
-à l''idée 
-d''apprendre de nouvelles technologies
+Un Comité d’Entreprise (billetterie événements sportifs & culturels, primes et subventions vacances, garde d’enfants, chèque cadeaux à Noël)
 
 
-Expérience de la méthodologie 
-Agile / Scrum
+Une offre variée de restaurants d’entreprise et de cafétérias à tarifs compétitifs ainsi que des titres restaurants dématérialisés quand vous êtes en télétravail
 
 
-Capacité à 
-planifier et à prioriser 
-les 
-tâches
- et les 
-activités confiées
- en autonomie
 
 
- Maîtrise 
-de l’anglais oral et technique obligatoire
 
 
- Expérience
- avérée dans l''écriture de code propre avec 2 ou plusieurs des technologies suivantes :
- BASH, SQL, Java, Python, NoSQL', 'Paris', 'CDI', 0.0, '', 1, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (3, 'Administrateur systèmes et réseaux H/F en alternance (école CESI Campus Nanterre)', 'À propos du poste
 
 
-L’école CESI recherche pour l''un de ses partenaires, un·e alternant·e Administrateur·rice Réseau pour renforcer l’équipe IT; Projets sur un parc multi-sites, vous participerez à l’exploitation quotidienne, au support N1/N2 et aux déploiements encadrés par des ingénieurs réseau. En tant que professionnel(le) de l''informatique, vous serez responsable de la gestion, de la maintenance et de l''optimisation des infrastructures IT.
 
 
-Responsabilités
+Pourquoi nous choisir ? 
 
 
-Encadré par le responsable technique, vous participerez à :
 
 
+Chez Société Générale, nous sommes convaincus que vous êtes le moteur du changement, et que le monde de demain sera fait de toutes vos initiatives, des plus petites aux plus ambitieuses.
 
 
-Administrer les dossiers courants au niveau des postes de travail et serveurs (Windows, Linux)
+Aux 4 coins du monde, que vous nous rejoigniez pour quelques mois, quelques années ou toute votre carrière, ensemble nous avons les moyens d’avoir un impact positif sur l’avenir. Créer, oser, innover, entreprendre font partie de notre ADN.
 
 
-Contribuer à l’amélioration continue de la documentation et des procédures internes
+Si vous aussi vous souhaitez être dans l’action, évoluer dans un environnement stimulant et bienveillant, vous sentir utile au quotidien et développer ou renforcer votre expertise, nous sommes faits pour nous rencontrer !
 
 
-Gérer les droits utilisateurs, les accès, le parc informatique
+Vous hésitez encore ?
 
 
-Superviser l’infrastructure
+Sachez que nos collaborateurs peuvent s’engager quelques jours par an pour des actions de solidarité sur leur temps de travail : parrainer des personnes en difficulté dans leur orientation ou leur insertion professionnelle, participer à l’éducation financière de jeunes en apprentissage ou encore partager leurs compétences avec une association. Les formats d’engagement sont multiples.
 
 
-Déployer, faire la maintenance et mettre à jour les solutions réseaux (VPN, Firewalls, routeurs)
 
 
-Participer aux audits de sécurité
 
 
-Supports utilisateur de niveau 1 et 2
 
 
 
 
-Profil recherché
-Vous souhaitez intégrer le Bachelor Administrateur Systèmes Réseaux (ASR) au sein du campus CESI NANTERRE, une formation sur 12 mois en alternance, au rythme d''1 semaine à l''école et de 3 semaines en entreprise.
 
+    Diversité et inclusion
+   
 
-L'' alternance vous offrira une formation professionnalisante, avec une montée en compétences accélérée au contact de professionnels engagés.
 
 
-Le profil souhaité :
 
 
+    Nous sommes un 
+employeur garantissant l''égalité des chances
+ et nous sommes fiers de faire de la diversité une force pour notre entreprise. Le groupe s’engage à reconnaître et à 
+promouvoir tous les talents
+, quels que soient leurs croyances, âge, handicap, parentalité, origine ethnique, nationalité, identité de genre, orientation sexuelle, appartenance à une organisation politique, religieuse, syndicale ou à une minorité, ou toute autre caractéristique qui pourrait faire l’objet d’une discrimination.
+   
 
 
-Titulaire d’un bac +2 en INFORMATIQUE (Cybersécurité, réseaux, systèmes d’informations ou équivalent)
 
 
-A l’aise avec les environnements Linux et Windows
 
 
-Sens de l’écoute, rigueur et autonomie
 
+    Transparence et responsabilité
+   
 
-Intérêt marqué pour la cybersécurité, les systèmes et réseaux
 
 
-Envie d’apprendre, de contribuer et d’évoluer dans un cadre bienveillant et professionnel
 
 
-
-
-Bon à savoir :
-
-
-Scolarité financée et rémunérée dans le cadre d’un contrat de travail en apprentissage ou de professionnalisation. Les éventuels frais d’inscription sont également à la charge exclusive de l’employeur, dans le cadre du principe de gratuité des contrats en alternance.
-
-
-Pourquoi choisir CESI ?
-
-
-Une autre idée de l’excellence : École d’ingénieurs créée en 1958 par des entreprises industrielles, CESI compte 26 campus sur tout le territoire, dotés d’équipements pédagogiques de pointe, 110 000 alumni, 8 000 entreprises d’accueil et plus de 130 universités partenaires dans le monde.
-
-
-Pourquoi choisir notre entreprise partenaire ?
-
-
-Rejoindre notre partenaire, c’est évoluer dans une entreprise où l’humain passe avant le process et ou chaque collaborateur est encouragé à être acteur de son parcours
-
-
-Type d''emploi : Alternance
-
-
-Lieu du poste : En présentiel
-
-
-Date de démarrage: octobre 2026
-
-
-Candidature à : mfmarques@cesi.fr
-
-
-Type d''emploi : Alternance
-
-
-Rémunération : 774,00€ à 1 801,00€ par mois
-
-
-Lieu du poste : En présentiel', 'Paris', 'Alternance', 9288.0, '12 mois', 0, '2026-10-01', '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (4, 'Ingénieur Système Equipements électroniques F/H', 'Lieu : Gennevilliers, France
+    Le groupe Société Générale a à coeur que les personnes qui nous rejoignent agissent avec éthique et responsabilité pour une culture de performance durable. Les informations mentionnées dans votre candidature peuvent potentiellement être vérifiées dans le respect du cadre légal, à tout moment pendant le processus de recrutement.', 'La Défense', 'CDI', 0.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Ingénieur Système Equipements électroniques F/H', 'Lieu : Gennevilliers, France 
  
 
 
@@ -473,16 +831,26 @@ Nos engagements, vos avantages
 
 
 
+
+
 Une réussite portée par notre excellence technologique, votre expérience et notre ambition partagée
+
+
 
 
 Un package de rémunération attractif
 
 
+
+
 Un développement des compétences en continu : parcours de formation, académies et communautés internes
 
 
+
+
 Un environnement inclusif, bienveillant et respectant l’équilibre des collaborateurs
+
+
 
 
 Un engagement sociétal et environnemental reconnu
@@ -493,7 +861,7 @@ Un engagement sociétal et environnemental reconnu
 
 
  Votre quotidien
- Le Campus de Gennevilliers est le cœur des activités de conception, de développement et de soutien des grands systèmes de défense : radiocommunications, réseaux et systèmes d’infrastructure résilients, communications par satellite, combat collaboratif et cybersécurité. Situé au nord de Paris, il est rapidement accessible en transports en commun.
+ Le Campus de Gennevilliers est le cœur des activités de conception, de développement et de soutien des grands systèmes de défense : radiocommunications, réseaux et systèmes d’infrastructure résilients, communications par satellite, combat collaboratif et cybersécurité. Situé au nord de Paris, il est rapidement accessible en transports en commun. 
  
 
 
@@ -556,13 +924,21 @@ Vous disposez d''un Bac+5 et/ou Ingénieur électronique analogique et numériqu
 
 
 
+
+
 De la conception de cartes électroniques
+
+
 
 
 Des tests de produits embarqués
 
 
+
+
 De l''animation d''équipe technique*
+
+
 
 
 Les phases d''intégration, test et mise au point de cartes électroniques.
@@ -583,263 +959,141 @@ La maitrise de l''anglais, la rigueur, l''organisation sont des atouts que l''on
 Alors ce poste est fait pour vous !
 
 
- Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous !
+ Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous ! 
  
- Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Gennevilliers', 'CDI', 0.0, '', 5, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (5, 'Data Engineer (Databricks /Azure)', 'Description de l''entreprise
-
-
- Le Groupement Les Mousquetaires, ce sont 7 enseignes de la grande distribution portées haut et fort par plus de 3 000 chefs d’entreprise indépendants ! Ce sont aussi 150 000 collaborateurs mobilisés autour de notre modèle unique de producteurs et commerçants. Et nous en sommes fiers ! Dans toutes les fonctions au service des points de vente, de la logistique à l’immobilier, en passant par l’industrie agroalimentaire ou l’informatique, nos équipes font nos succès.
-
-
-Rejoindre la Stime c’est contribuer à des projets à fort enjeu et être challengé dans ses missions au sein d''un environnement dynamique.
-
-
-Notre volonté est d’ouvrir le champ des possibles et permettre à chacun de se réaliser. La Stime met donc en place un management qui favorise l’élaboration de solutions en commun, en s’appuyant sur des pratiques agiles.
-
-
-Alors, prêts à relever ces défis avec nous ?
- Description du poste
-
-
- Contexte 
-
-
-Au sein de la Direction des SI Mutualisés, l’équipe DataLab intervient sur les périmètres Data et Analytics, dans le cadre du programme de transformation du SI du Groupement Les Mousquetaires.
-
-
-Vous intégrerez la 
-Data Factory
-, un dispositif réunissant les équipes Data de la Stime et des métiers. Sa mission : concevoir et déployer des produits Analytics innovants destinés aux fonctions support, aux équipes logistiques, aux magasins, ainsi qu’aux consommateurs.
-
-
-Après les premiers succès et des attentes de plus en plus fortes, nous passons désormais à l’échelle avec une nouvelle organisation Agile en Domaine/Tribu/Squad et la nécessité d’industrialiser nos pratiques pour accélérer la livraison des produits, tout en capitalisant mieux sur le patrimoine de données constitué.
-
-
-Vous rejoindrez l’une de nos squads, en charge du développement de cas d’usage 
-BI, Analytics et Data Science
- sur notre plateforme Data Cloud 
-Azure
-/Databricks.
-
-
-Le contexte vous plaît ? Découvrez votre quotidien au sein de votre future équipe.
-
-
-En tant que Data Engineer, vous interviendrez sur le cycle complet de création de produits Data :
-
-
- Conception & Analyse
-
-
-
-
-Participer aux ateliers de définition et de maturation des besoins avec les Product Owners et les métiers.
-
-
-
-
- Développement & Intégration
-
-
-
-
-Construire des pipelines Data pour la collecte, la transformation et le traitement des données dans notre Data Lake Azure.
-
-
-Développer des notebooks de traitements avancés sur 
-Databricks
- (langues : SQL, Scala ou PySpark).
-
-
-Concevoir et modéliser les données au sein du Data Lake (formats Parquet, Delta).
-
-
-
-
- Qualité, CI/CD & Documentation
-
-
-
-
-Réaliser les tests unitaires, d’assemblage et d’intégration.
-
-
-Rédiger la documentation technique (DAT, release notes…).
-
-
-Préparer les packages de livraison en CI/CD en lien avec les équipes DataOps.
-
-
-
-
- Run & Amélioration Continue
-
-
-
-
-Assurer la maintenance corrective et évolutive des produits data développées.
-
-
-Participer aux cérémonies Agiles (Sprint Planning, Daily, Review, Demo…).
-
-
-Contribuer à l’animation de la communauté Data : groupes de travail, meetups (Microsoft, Databricks…), partages de bonnes pratiques.
-
-
+ Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Gennevilliers', 'CDI', 0.0, '', 5, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (7, 'Chef de projet mission numérique en santé (H/F)', 'Date : 06/05/2026 
  
- Qualifications
 
 
- De formation supérieure en informatique, vous disposez d’une expérience significative (au moins 5 ans) dans une fonction similaire.
 
 
-Vous disposez des compétences suivantes:
 
 
 
 
-Expertise démontrée en BI, Big Data ou Analytics.
 
+     Poste à pourvoir
+    
 
-Expérience dans le développement et l’implémentation de solutions Big Data, idéalement sur le Cloud.
 
 
-Très bonne connaissance du framework Spark.
 
+Chef de projet scientifique (H/F) à la Mission Numérique en Santé (MNS)
 
-Très bonne maîtrise des langages : SQL, Scala, Python.
 
 
-Compréhension solide des concepts DevOps, CI/CD et de leurs outils.
 
 
-Expérience en environnement Agile (idéalement JIRA).
 
 
-Les certifications Spark, Azure ou Databricks sont un plus apprécié.
 
 
 
 
- Soft Skills
+     Emploi
+    
 
 
 
 
-Excellentes capacités d’analyse et de vulgarisation.
+Conduite de projet Stratégies d’amélioration
 
 
-Rigueur, curiosité et esprit de challenge.
+Filière : Expertise scientifique
 
 
-Autonomie et sens du travail en équipe.
 
 
 
 
- Pourquoi nous rejoindre ?
 
 
 
 
-Un management fondé sur la coopération et la co-construction
 
+     Emploi-repère
+    
 
-Un environnement dynamique et stimulant.
 
 
-Une excellente ambiance d’équipe.
 
+Chef de projet
 
-Intégration au sein d’une Data Factory composée de près de 120 experts.
 
 
-Une communauté active de plus de 40 Data Engineers et Data Scientists
 
 
-Participation possible à des hackathons internes et externes.
 
 
-Accès à de nombreux e-learning partenaires (Microsoft, Databricks…).
 
 
 
 
- Informations supplémentaires
+     Catégorie d’emploi
+    
 
 
- Côté RH
 
 
-En intégrant la Stime, vous pourrez bénéficier des avantages suivants :
+Catégorie 1
 
 
 
 
-Accord d’entreprise sur le télétravail
 
 
-13ème mois
 
 
-Prime Vacances
 
 
-Accord d’intéressement
 
+     Type de contrat
+    
 
-Restaurant d''entreprise
 
 
 
+Contrat à durée indéterminée / détachement Temps complet
 
-Pour faciliter la qualité de vie au travail de l’ensemble de nos équipes, nous proposons un service de conciergerie disponible même à domicile pour les journées en télétravail, une possibilité de Coworking dans divers espaces en Ile-de-France, une cantine dont la qualité fait moins regretter le télétravail, une salle de sport, et des locaux tout neufs, fonctionnels avec possibilité de pauses café en terrasse pour les chaudes journées ensoleillées !
 
 
-De nombreuses formations sont proposées dès la prise de fonction pour favoriser l''apprentissage des nouvelles technologies, à la hauteur des projets ambitieux que connait la Stime.
 
 
-Notre process de recrutement est simple et efficace : il se résume à un entretien RH, suivi d''un entretien opérationnel avec le responsable de Pôle et le responsable de Domaine.
 
 
 
 
- « Chez les Mousquetaires, seules les compétences font la différence. Le Groupement s''engage activement en faveur de la diversité, en créant un environnement de travail inclusif qui garantit l’égalité des opportunités pour chacun(e). »', 'Châtillon', 'CDI', 0.0, '', 5, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Alternance Data Engineer (F/H)', 'Description :
 
 
-L’ISCOD, spécialiste de la formation en Digital Learning, recherche pour son entreprise partenaire, un hypermarché, 
-un(e) Data Engineer en contrat d''apprentissage, 
-pour préparer l’une de nos formations diplômantes reconnues par l''Etat de niveau 5 à niveau 7 (Bac+2, Bachelor/Bac+3 ou Mastère/Bac+5).
+     Localisation
+    
 
 
- Choisissez l’alternance nouvelle génération avec l''ISCOD !
 
+     Saint-Denis (93)
+    
 
 
 
-Missions :
 
 
-Notre objectif est de digitaliser les activités commerciales et de marchandises dans le but de simplifier, d''harmoniser et d''automatiser les processus opérationnels de l''entreprise. Nous travaillons avec les équipes business, product management et design pour concevoir des outils ergonomiques et fiables.
 
 
-Vous aurez pour mission de contribuer à des projets Data en apportant son expertise sur les tâches suivantes :
 
 
+     Rémunération
+    
 
 
-montée en compétence sur l''ETL BigL, participation à la réalisation de projets métier dans le cadre de la solution offline ELT in-House BigLoader et BDI/DBT
 
+     Selon expérience et niveau de diplôme, par référence aux grilles indiciaires des agences sanitaires en application du décret n°2003-224 du 07 mars 2003 ou selon statut particulier si fonctionnaire (détachement)
+    
 
-prise en charge des demandes de corrections provenant d''incidents ou d''anomalies, participation à l''auto-formation et à la montée en compétences de l''équipe de développement
 
 
-application des bonnes pratiques et des normes de développement, mise en pratique des méthodes « devops »
 
 
-contribution aux chiffrages des usages et à la constitution des releases, contribution à l''automatisation du delivery, développement et documentation du code,travail au sein d''une équipe Clients.
 
 
 
@@ -850,137 +1104,648 @@ contribution aux chiffrages des usages et à la constitution des releases, contr
 
 
 
-Profil :
 
+DESCRIPTION DU POSTE A POURVOIR
 
- Environnement technique et expertises nécessaires :
 
 
 
 
-Expérience dans le domaine de la Data et du Cloud, idéalement sur Google Cloud Platform (GCP)
 
 
-Maîtrise de SQL pour la manipulation, l’analyse et la valorisation de données.
 
 
-Maîtrise des outils de CI/CD, Docker Compose.
 
 
-Bonne connaissance de l’environnement Linux et des outils de ligne de commande.
 
 
-Expérience solide avec les systèmes de gestion de version (Git).
 
 
 
+Missions générales du poste
 
- Environnement technique et expertises nécessaires :
 
 
 
 
-Excellente communication écrite et orale : Bonne communication écrite et orale en français pour des interactions fluides avec le métier.
 
 
-Esprit d''analyse et d''amélioration continue : Capacité à évaluer le code et ses impacts, ainsi qu''à remettre en question les solutions existantes pour les améliorer.
 
 
-Capacité de prise de recul : Aptitude à évaluer les problématiques avec objectivité et à proposer des solutions d''amélioration.
 
 
-Capacité à respecter les délais tout en maintenant des standards élevés.
 
 
-Esprit d''équipe : Capacité à collaborer efficacement avec les membres de l''équipe pour atteindre des objectifs communs Avantages : Vous aurez accès au infrastructures du campus (salle de sport, conciergerie, drive, parking et restauration) solution gratuite pour faire du sport grâce à l''application Egym Welpass.
 
 
 
 
- Avantages 
-:
 
 
 
 
-Vous aurez accès au infrastructures du campus (salle de sport, conciergerie, drive, parking et restauration) solution gratuite pour faire du sport grâce à l''application Egym Welpass.
 
 
-Vous aurez accès au infrastructures du campus (salle de sport, conciergerie, drive, parking et restauration)
 
 
 
 
 
 
-Vous êtes éligible à une formation Bac+2 à Bac+5 (diplôme validé ou en cours de validation)
 
 
-Poste basé à Massy
 
 
-Rémunération fixe selon niveau d’études + âge,
 
 
-Vous êtes intéressé(e) par cette offre d’emploi en alternance ? 
-Postulez dès maintenant !', 'Massy', 'Alternance', 0.0, '1 an', 0, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (7, 'Ingénieur système et réseau H/F', 'Notre entreprise
 
 
-Fondé en 2003, Cosium est un éditeur de logiciel. Nos logiciels sont fournis en mode Saas sur le cloud privé que nous opérons de bout en bout. Cosium est détenu et dirigé par des ingénieurs.
 
 
-Le département infrastructure
 
 
-Le département infrastructure s''occupe de la gestion de l''intégralité du système d''information de Cosium. Ceci inclus l''hébergement haute dispo des solutions SaaS de l''entreprise, qui fournissent à des milliers de professionnels de santé l''accès à leur progiciel. Nous gérons également l''intégralité des outils internes, que ce soit les outils collaboratifs ou les plate-formes d''intégration continue pour nos développeurs.
 
 
-Nous avons également une casquette DevOp en lien avec les développeurs afin d''optimiser la configuration des différents middleware tel que les bases de données et les serveurs applicatifs.
 
 
-Le département infrastructure est composé d''experts techniques. Nous sommes tous passionnés et nous aimons ce que nous faisons. Cosium met à notre disposition les moyens pour réaliser des projets ambitieux et innovants.
 
 
-Nous gérons une plate-forme souveraine hébergée en France sur plusieurs sites redondés. Nous sommes certifiés ISO 27001 et HDS pour l’hébergement et nous sommes LIR (Local Internet Registry), ce qui signifie que nous gérons nous-même notre réseau et nos peering (BGP).
 
 
-L’équipe est à taille humaine (moins de 10 personnes) et ne s''occupe pas du support utilisateur niveau 1, qui est délégué à une autre équipe.
 
 
-Votre mission
 
 
-En rejoignant notre équipe en tant qu''administrateur systèmes et réseaux, vous rejoignez un groupe d''experts techniques. Notre objectif est de permettre à chaque membre de s''épanouir pleinement. Vos projets auront un impact direct et significatif tant sur nos clients que sur nos équipes internes.
 
 
-Nous permettons le travail à domicile au besoin de façon occasionnelle, ce poste n''est pas un contrat en remote.
 
 
-Dans le cadre de vos fonctions, vous serez chargé de :
 
 
 
 
-Participer à l''évolution et la maintenance de l''infrastructure
 
+Direction et service d’affectation
 
-Mener à bien des projets : R&D, phase de test, mise en production, documentation puis maintenance
 
 
-Enrichir et maintenir la documentation technique
 
 
-Respecter les processus et certifications de l''entreprise (ISO 27001 / HDS)
+     Rattaché(e) à la chefferie de service de la MNS, vous évoluerez au sein d’une équipe reconnue, dynamique et à taille humaine (13 personnes dont 9 chefs de projet). 
+     
 
 
-Traiter les demandes complexes (niveau 2 et 3)
 
+      Votre mission générale sera de contribuer aux différents travaux du service pour produire des avis, recommandations ou référentiels sur les thématiques diverses du service : 
+     
 
-Effectuer une veille technologique des dernières innovations
 
+Promotion du bon usage et de la qualité et de la pertinence des technologies numériques utilisés dans un contexte de soins (télésanté, dispositifs médicaux à usage professionnel, systèmes d’intelligence artificielle, etc.) ;
 
-Mentorer les membres moins expérimentés
+
+
+
+Evaluation de dispositifs médicaux numériques dans le cadre de dossiers de demandes de remboursement déposés par des industriels (guichet numérique) ;
+
+
+
+
+Actions destinées à favoriser l’intégration des recommandations de la HAS dans les outils numériques utilisés par les professionnels.
+
+
+
+      L’ensemble des travaux que vous réaliserez s’appuiera sur les données scientifiques disponibles que vous analyserez en mobilisant votre expertise méthodologique. Compte tenu de la nature évolutive et dynamique des missions de la MNS, vous pourrez être amené(e) à vous impliquer dans des activités nouvelles à développer. 
+     
+
+
+
+      En occupant ce poste, vous serez amené à : 
+     
+
+
+Mobiliser des experts et à animer des réunions de groupes de travail composés d’experts, d’utilisateurs et d’acteurs de l’écosystème du numérique en santé ;
+
+
+
+
+Analyser et synthétiser les données scientifiques disponibles ;
+
+
+
+
+Construite et entretenir des liens de qualité avec nos partenaires internes et externes, dans le cadre de vos travaux ;
+
+
+
+
+Assurer une veille prospective et un reporting adéquat sur les travaux que vous portez ;
+
+
+
+
+Contribuer à la communication externe des résultats et des productions : communication lors de congrès, rédaction d’articles scientifiques, diverses communications externes ou participation à des enseignements.
+
+
+
+
+Participer à la construction du projet de service tant sur le plan fonctionnel que stratégique ;
+
+
+
+
+Participer à la mise en place de programmes collaboratifs au sein de la HAS.
+
+
+
+
+
+
+
+      Direction de l’Amélioration de la Qualité et de la Sécurité des Soins (DAQSS) & 
+     
+
+      Direction de l’évaluation et de l’accès à l’Innovation (DEAI) 
+     
+
+      Direction de la qualité de l''accompagnement social et médico-social 
+     
+
+
+
+
+
+      Mission Numérique en Santé (MNS) 
+     
+
+
+
+      Le numérique en santé est un levier majeur de la modernisation du système de santé qui transforme l’organisation des soins et l’accompagnement des personnes. Pour faire face aux multiples défis d''envergure associés au numérique en santé, la HAS s’est structurée en créant en 2021 un service dédié, la Mission Numérique en Santé (MNS), référent de l’institution pour toute question relative au numérique en santé. Les ambitions de ce service sont doubles : 
+     
+
+
+
+
+encourager l''intégration du numérique et de l’intelligence artificielle (IA) dans les pratiques professionnelles en instaurant un cadre de confiance pour une appropriation éclairée des technologies par les professionnels de santé et les usagers ;
+
+
+
+
+Promouvoir le numérique comme vecteur de diffusion des recommandations professionnelles.
+
+
+
+
+
+      Aujourd’hui reconnue pour son expertise au sein de l’écosystème, la MNS porte la voie de l’institution au niveau national et international dans le numérique en santé. Elle travaille sur des missions qui lui sont propres et également en transversalité avec de nombreux services de la HAS. Chaque année, elle produit des travaux, notamment en réponse aux sollicitations des directions ministérielles ou agences nationales. Parallèlement, la MNS a engagé et développe une approche exploratoire pour répondre aux enjeux du numérique, à la fois en proposant de nouveaux cadres et méthodes d’évaluation et en intégrant chaque fois que cela est pertinent des recommandations sur l’usage du numérique (aide à la décision, télésanté ou autre) dans tous les travaux de la HAS. 
+     
+
+
+
+      Pour toutes ses missions, l’axe de travail de la MNS est de construire un cadre de confiance favorisant la diffusion de technologies numériques utiles aux patients et aux professionnels et qui permettent d’améliorer la qualité, la sécurité et l’accès aux soins. 
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PROFIL RECHERCHÉ : 
+
+
+
+
+
+
+
+
+
+
+
+
+Formation 
+
+
+
+
+
+     Professionnel(le) de santé avec une forte appétence pour les sujets liés au numérique en santé (spécialisation ou expérience professionnelle en lien avec le numérique appréciée). 
+     
+ou
+
+
+
+      Ingénieur(e), bac+5 ou diplômes supérieurs en lien avec le numérique en santé ayant une solide connaissance des enjeux métiers et de l’environnement sanitaire, social ou médico-social en France.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expérience
+
+
+
+
+
+     Votre cursus de formation et/ou votre parcours professionnel vous ont permis de disposer de connaissances et/ou de savoir-faire dans le domaine de la santé. 
+     
+
+      Expérience : institution ou conduite de projets dans d’autres contextes. 2 à 3 ans d’expérience dans un poste similaire. 
+     
+
+
+
+
+
+
+
+
+
+
+
+
+Compétences
+
+
+
+
+
+
+
+      Eu égard aux missions qui vous seront confiées, il importe que vous ayez : 
+     
+
+
+une maîtrise des méthodes d’analyse critique et des études cliniques ;
+
+
+
+
+un solide bagage de connaissances de l’environnement réglementaire en santé et des politiques de santé en France et à l’international ;
+
+
+
+
+une capacité à animer des groupes de travail d’experts ;
+
+
+
+
+des connaissances en bases de données des produits de santé (médicaments et dispositifs médicaux) et en modélisation de l''information et des terminologies du domaine médical seraient un plus pour certaines missions à développer.
+
+
+
+
+
+      Passionné(e) par la transformation du système de santé grâce au numérique, vous disposez de fortes capacités à communiquer vous permettant d’animer des groupes de travail d’experts avec aisance et de travailler en réseau et en équipe. 
+     
+
+
+
+      Par ailleurs, compte tenu de la nature des productions attendues, vous faites preuve d’une grande rigueur tant dans l’analyse des dossiers qui vous sont confiés que dans la rédaction. Vous avez des compétences vous rendant autonome dans la conduite de projets (organisation, planification, gestion de groupes de travail, reporting …). Doté(e) d’une forte capacité d’initiative et d’un naturel positif, vous évoluerez au sein d’une institution qui prône des valeurs de respect, de solidarité et une dynamique de travail collective. 
+     
+
+
+
+      La maîtrise de l’anglais, tant à l’écrit qu’à l’oral et des outils informatiques (Word, Excel, PowerPoint, Internet) est indispensable. 
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LA HAUTE AUTORITÉ DE SANTÉ
+
+
+
+
+
+  Autorité publique indépendante à caractère scientifique, la Haute Autorité de santé (HAS) vise à développer la qualité dans les champs sanitaire, social et médico-social, au bénéfice des personnes. 
+ 
+
+  Elle travaille au côté des pouvoirs publics dont elle éclaire la décision, avec les professionnels de santé pour optimiser leurs pratiques et organisations, et au bénéfice des usagers dont elle renforce la capacité à faire des choix. 
+ 
+
+  Elle exerce trois missions principales : 
+ 
+
+
+
+
+Evaluer les médicaments, dispositifs et actes en vue de leur remboursement ;
+
+
+Recommander les bonnes pratiques professionnelles, élaborer des recommandations vaccinales et de santé publique ;
+
+
+Mesurer et améliorer la qualité dans les hôpitaux, cliniques, en médecine de ville et dans les structures sociales et médico-sociales.
+
+
+
+
+
+  La HAS exerce son activité dans le respect de trois valeurs : la rigueur scientifique, l''indépendance et la transparence. 
+ 
+
+  Créée par la loi du 13 août 2004 relative à l’Assurance maladie, elle est organisée autour : 
+ 
+
+
+
+
+D’un Collège de huit membres dont un président ;
+
+
+De commissions spécialisées présidées par des membres du Collège :
+
+
+ De services répartis en cinq directions opérationnelles. 
+ 
+Ref : C157O98714', 'Saint-Denis', 'CDI', 0.0, '', 2, '2026-06-01', '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Ingénieur système IT F/H', 'Lieu : Gennevilliers, France 
+ 
+
+
+ Construisons ensemble un avenir de confiance
+
+
+
+
+Thales est un leader mondial des hautes technologies spécialisé dans trois secteurs d’activité : Défense & Sécurité, Aéronautique & Spatial, et Cyber & Digital. Il développe des produits et solutions qui contribuent à un monde plus sûr, plus respectueux de l’environnement et plus inclusif. Le Groupe investit près de 4 milliards d’euros par an en Recherche & Développement, notamment dans des domaines clés de l’innovation tels que l’IA, la cybersécurité, le quantique, les technologies du cloud et la 6G. Thales compte près de 81 000 collaborateurs dans 68 pays.
+
+
+
+
+Nos engagements, vos avantages
+
+
+
+
+
+
+Une réussite portée par notre excellence technologique, votre expérience et notre ambition partagée
+
+
+
+
+Un package de rémunération attractif
+
+
+
+
+Un développement des compétences en continu : parcours de formation, académies et communautés internes
+
+
+
+
+Un environnement inclusif, bienveillant et respectant l’équilibre des collaborateurs
+
+
+
+
+Un engagement sociétal et environnemental reconnu
+
+
+
+
+
+
+ Votre quotidien
+ Le Campus de Gennevilliers est le cœur des activités de conception, de développement et de soutien des grands systèmes de défense : radiocommunications, réseaux et systèmes d’infrastructure résilients, communications par satellite, combat collaboratif et cybersécurité. Situé au nord de Paris, il est rapidement accessible en transports en commun. 
+ 
+
+
+
+
+GESA est le futur système de Gestion des Eléments Secrets des Armées. Il succède à l’actuel SELTIC. Bien plus qu’une rénovation de SELTIC, GESA repense de l’approche de la gestion des clés du MinArm.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Basé sur une architecture cloud et tournée vers l’utilisateur GESA est conçu et réalisé de façon itérative en collaboration étroite avec le client DGA et les opérationnels de la filière chiffre des armées.
+
+
+Dans ce contexte, vous évoluez au sein d’une équipe pluridisciplinaire composée d’architectes, d’ingénieur système, de développeurs, d’intégrateurs dédiée au sous-système IT de GESA.
+
+
+Une partie des développements étant réalisés sur nos sites de Cholet et Labège (Toulouse) des déplacements occasionnels pourront avoir lieu sur différents sites Thales ou de partenaires en France.
+
+
+A ce titre vos missions seront :
+
+
+
+
+En tant Ingénieur Systeme IT, vous serez amené à participer aux activités d’ingénierie nécessaires pour développer le sous-système IT Central de GESA :
+
+
+
+
+Analyser les besoins et des autres parties prenantes,
+
+
+Décrire les missions, fonctions et les exigences sur la solution ou le produit,
+
+
+Formaliser la spécification et l’architecture pour développer la solution ou le produit
+
+
+
+
+
+
+Et plus précisément de :
+
+
+
+
+Formaliser les besoins fonctionnels et non fonctionnelles d’architecture IaaS/PaaS en méthode Agile
+
+
+Décliner les chaines fonctionnelles (IaaS, PaaS, Applicatifs enrôlement station, mise à jour des bases, etc.)
+
+
+Décrire ces chaines fonctionnelles de manière détaillée, y compris pour les services communs (DNS, NTP, Log, Sauvegarde)
+
+
+Décrire les architectures physiques et logiques
+
+
+Etablir les exigences du socle technique (OS, Socle applicatif…) et assurer le suivi de l’implémentation de la solution auprès des parties prenantes.
+
+
+
+
+
+
+ Votre profil :
+
+
+
+
+Votre priorité est de travailler dans le monde de la cyberdéfense en intégrant une équipe projet composé d''experts de haut niveau ?
+
+
+Vous avez l''ambition de travailler sur des produits de hautes technologies ?
+
+
+Vous avez une capacité rédactionnelle solide pour décliner les architectures et les chaines fonctionnelles en exigences répondant au besoin ?
+
+
+
+
+Vous disposez d''un Bac+5 et/ou Ingénieur en IT et/ou cybersécurité et avez au moins 3 ans d''expérience sur :
+
+
+
+
+
+
+Les architectures cloud
+
+
+L''ingenierie Iaas, Paas dans un environnement Opensource
+
+
+Kubernetes
+
+
+Les solutions IT, réseaux et des déploiements automatisés d’infrastructure
+
+
+
+
+
+
+La maitrise de l''anglais, la rigueur, l''organisation sont des atouts que l''on vous reconnait ?
+
+
+
+
+Alors ce poste est fait pour vous !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous ! 
+ 
+ Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Gennevilliers', 'CDI', 0.0, '', 3, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (8, 'Data enginer IA - Freelance H/F', 'Description du poste
+ Taux journalier (TJM): 500/560 TJM 
+ 
+Contexte du poste
+
+
+Dans le cadre du développement de ses usages d’intelligence artificielle et d’analytics avancée, une organisation de référence renforce son équipe Data. Le ou la Data Ingénieur·e IA intervient au cœur de la plateforme data pour concevoir, industrialiser et opérer les pipelines de données qui alimentent les cas d’usage IA (machine learning, LLM, scoring, prévisions, etc.).
+
+
+Le poste vise à garantir la disponibilité, la qualité, la traçabilité et la performance des données de bout en bout, depuis les sources jusqu’aux environnements d’entraînement et de production.
+
+
+ Missions principales
+
+
+
+
+
+
+Concevoir, développer et maintenir des pipelines de données fiables, scalables et automatisés (batch et streaming).
+
+
+
+
+Collecter et intégrer des données hétérogènes (SI, APIs, fichiers, logs, événements).
+
+
+
+
+Mettre en place des contrôles de qualité des données : validation, détection d’anomalies, déduplication, gestion des valeurs manquantes.
+
+
+
+
+Préparer et exposer des jeux de données prêts pour l’IA : datasets d’entraînement/validation, tables de features, embeddings le cas échéant.
+
+
+
+
+Contribuer à l’industrialisation des flux data en lien avec les équipes Data Science, Produit, DevOps et Sécurité.
+
+
+
+
+Assurer la robustesse opérationnelle : gestion des incidents, mécanismes de reprise, optimisation des coûts et des performances.
+
+
+
+
+Participer à la mise en œuvre des bonnes pratiques de gouvernance, sécurité et conformité (gestion des accès, traçabilité, RGPD).
 
 
 
@@ -988,424 +1753,133 @@ Mentorer les membres moins expérimentés
 Profil recherché
 
 
+ Techniques
 
 
-Diplômes : BAC+5 ingénieur ou master informatique
 
 
-Expérience : Ce poste est ouvert à des juniors
 
 
+Solides bases en modélisation et architecture data (schémas, normalisation, performance).
 
 
-Qualités et expériences indispensables
 
 
+Maîtrise de SQL et bonnes compétences en Python.
 
 
-Anglais technique
 
 
-Volonté de travailler avec des produits Open Source
+Expérience des pipelines de données, de l’orchestration et du monitoring.
 
 
-Gestion de serveurs Linux (Debian et Ubuntu)
 
 
-Maîtrise du bash
+Compréhension des contraintes liées aux projets IA et MLOps.
 
 
-Gestion de pare-feu
 
 
-Compétence en réseaux : routage statique et dynamique, vlan, VPN
+Connaissance des environnements cloud (stockage, IAM, réseau) et de la conteneurisation', 'Paris', 'Freelance', 6000.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (9, 'Ingénieur/e concepteur/trice en mécatronique', 'CSI est une société française, basée aux Ulis (91), développant des produits innovants dans le domaine des nanotechnologies et plus particulièrement la microscopie en champ proche.
 
 
-Gestion de base de bases de données (postgresql et/ou mysql ou dérivés)
+Nous recherchons un concepteur ou une conceptrice mécatronique à dominance mécanique passionné(e) et innovant(e) pour rejoindre notre équipe dynamique. Vous serez responsable de la conception et du développement de systèmes mécatronique complexe pour garantir des solutions efficaces et performantes dédiées à la recherche scientifique.
 
 
-Gestion de serveurs web
+Objectifs :
 
 
-Gestion de reverse proxy
 
 
-Gestion de virtualisation et containérisation
+Renforcer l''équipe de R&D de l''entreprise.
 
 
-Monitoring et alerting avec des outils de supervisions
+Participer au développement de nouveaux systèmes et à l''amélioration des systèmes existants.
 
 
-Préférer vim à emac (ou avoir des arguments pour nous faire changer d’avis ;-) )
+Participer au montage et aux tests des équipements
 
 
-Utilisation d’un outil d’automatisation
 
 
+Vos principales missions :
 
 
-Qualités et expériences idéales
 
 
+En collaboration avec notre équipe en place vous participerez à la conception, la réalisation et la fabrication de nos produits.
 
 
-Expérience chez un hébergeur ou un éditeur de logiciel sur des socles Linux
+Prise d''initiative, force de proposition.
 
 
-Utilisation d’Ansible
 
 
-Aisance de programmation en Python
+· Le candidat devra faire preuve de réflexion, de rigueur, d''autonomie, mais aussi d''un sens manuel ; Polyvalent, celui-ci sera amené à faire l''étude, le développement et la fabrication de prototypes (petites séries d''appareils pluri-technologiques).
 
 
-Administration d’un service LDAP (OpenLDAP)
+Le candidat devra être à la fois capable de se servir de sa tête comme de ses mains, passionné par ce qu’il fait, être un touche-à-tout.
 
 
-Connaissance du système de fichier ZFS
+· La manipulation de machines à commande numérique ou conventionnelles est parfois nécessaire.
 
 
-Expérience sur des équipements Juniper
+· De formation Ingénieur ou bac +5 en Mécatronique, à dominante mécanique justifiant déjà d''une expérience significative.
 
 
 
 
-Les plus du poste
+Vous connaissez SolidWorks ou un autre logiciel de modélisation 3D
 
 
+Altium
 
 
-Participation à plusieurs conférences techniques comme FOSDEM, PGconf Europe…
+Des connaissances en optique seraient un plus
 
 
-Possibilité de proposer des conférences en tant que Speaker
 
 
-Un écran wide 34’’ résolution 3440*1440 pour voir chaque pixel du terminal en HD
+L’anglais courant et technique est nécessaire pour ce poste
 
 
-Choix du PC portable
+Type d''emploi : Temps plein, CDI
 
 
-Choix de la distribution Linux pour votre poste
+Statut : Cadre
 
 
-Choix du modèle de clavier externe et de la souris
+Expérience :
 
 
 
 
-Processus de recrutement
+Conception mécatronique : 5 ans (Requis)
 
 
 
 
-Entretien téléphonique ~30m
+Lieu du poste : En présentiel
 
 
-Entretien avec votre futur chef d’équipe ~1h
-
-
-Entretien avec le CEO
-
-
-
-
-Type d''emploi : CDI
+Type d''emploi : Temps plein, CDI
 
 
 Rémunération : 40 000,00€ à 50 000,00€ par an
 
 
-Formation:
+Expérience:
 
 
 
 
-Bac +5 (Master / MBA) (Optionnel)
+Conception micromécanique: 5 ans (Requis)
 
 
 
 
-Lieu du poste : En présentiel', 'Versailles', 'CDI', 40000.0, '', 0, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (8, 'Junior Data Center Facility Engineer', 'Across the data center industry – from deployment, through operations and maintenance, to decommissioning – Salute Mission Critical is a global leader in delivering high-quality data center services. We are looking for a Junior Data Center Engineer to join our team in Paris, France.
-
-
-At Salute, we don’t have employees — we have team members. Our culture is built on teamwork, open communication, continuous learning, and a strong commitment to safety and customer service.
-
-
- Role Overview
-:
-
-
-This is an entry-level opportunity designed for candidates with a technical background who are looking to start a career in the data center industry.
-
-
-As a Junior Data Center Engineer, you will support the operation and maintenance of critical systems within the data center. You will work alongside experienced engineers to learn how to maintain high availability and reliability of essential infrastructure.
-
-
-
-
- Key Responsibilities:
-
-
-
-
-Assist in monitoring and maintaining electrical and mechanical systems
-
-
-Support preventive maintenance tasks under supervision
-
-
-Help respond to basic system alarms and issues
-
-
-Participate in routine inspections of equipment and facilities
-
-
-Maintain clean and safe working environments in equipment rooms
-
-
-Assist with tracking and updating work orders and tickets
-
-
-Learn and follow operational procedures (SOPs, MOPs, EOPs)
-
-
-Support site walks and basic system checks
-
-
-Work with team members and contractors on daily tasks
-
-
-Assist with basic IT or customer-related requests when required
-
-
-
-
-
-
- What We’re Looking For:
-
-
-
-
-Basic technical training or education (e.g., electrical, mechanical, HVAC, or similar)
-
-
-Strong interest in data centers or critical infrastructure
-
-
-Willingness to learn and develop new technical skills
-
-
-Good problem-solving and attention to detail
-
-
-Ability to follow instructions and work as part of a team
-
-
-Basic computer skills and familiarity with ticketing systems (a plus, not required)
-
-
-Good communication skills in French and English
-
-
-
-
-
-
- Preferred (Not Required)
-
-
-
-
-Internship, apprenticeship, or hands-on experience in a technical field
-
-
-Basic understanding of electrical or mechanical systems
-
-
-Exposure to environments such as facilities maintenance, or industrial settings
-
-
-
-
-
-
- What You’ll Gain:
-
-
-
-
-Hands-on training in a fast-growing, high-demand industry
-
-
-Mentorship from experienced data center engineers
-
-
-Exposure to critical systems such as power, cooling, and automation
-
-
-Clear career progression opportunities within the company
-
-
-
-
-
-
- Qualifications
-
-
-
-
-A minimum of 1 year of directly related experience in the operation, installation and maintenance of building systems with technical understanding and knowledge of HVAC, electrical, plumbing, fire/life safety, and control systems
-
-
-High school diploma or College Degree
-
-
-Good observation skills and problem-solving ability.
-
-
-
-
-The role is a full-time position and your base salary will be commensurate with experience but is expected to be highly competitive.
-
-
- What you’ll get from us:
-
-
-Here, at Salute, we value our people and take great pride providing not just a job but fantastic career opportunities. In addition to the opportunity to work in a great team and earn a competitive salary - you''ll gain access to cutting edge industry training that aims to enhance your skills and propel your career forward. Not only will you receive valuable development in your current role, but for those who are ambitious and motivated, the possibilities are endless.
-
-
-#EMEA', 'Paris', 'CDI', 0.0, '', 1, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (9, 'Data Engineer', 'Qui sommes-nous ?
-
-
-Odysis est une Entreprise de Services du Numérique (ESN) spécialisée dans l’ingénierie et la gestion des données. Nous aidons les entreprises à transformer leurs données en leviers de performance et d''innovation.
-
-
- Nos valeurs chez Odysis :
-
-
-
-
- Service client avant tout :
- Nous nous engageons à fournir des solutions efficaces et documentées, sans chercher à nous rendre indispensables.
-
-
- Passion orientée valeur :
- Notre passion pour la technologie est au service de la création de valeur pour nos clients, en répondant précisément à leurs besoins.
-
-
- Fidélité aux fondamentaux :
- Face aux évolutions constantes du secteur de la data, nous privilégions des bases solides et pérennes pour assurer des solutions durables.
-
-
-
-
- Champs d''action :
-
-
-
-
- Conseil stratégique :
- Accompagnement en data gouvernance, data management et architecture pour définir des visions claires et des feuilles de route réalistes.
-
-
- Architecture et ingénierie des données :
- Conception et mise en œuvre de solutions adaptées aux besoins spécifiques de chaque client.
-
-
- Exploitation des données :
- Mise en place de solutions de data visualisation, storytelling et applications en data science/IA pour valoriser les données.
-
-
-
-
-Rejoindre Odysis, c''est intégrer une équipe dynamique avec des perspectives d''évolution dans un secteur en pleine expansion.
-
-
- Description du poste
-
-
- Missions principales :
-
-
-
-
-Concevoir, développer et maintenir des pipelines de données évolutifs et des architectures de données robustes.
-
-
-Collaborer avec les équipes de data scientists, d''analystes et autres parties prenantes pour assurer une intégration et une utilisation efficaces des données.
-
-
-Optimiser les processus de stockage et de récupération des données pour maximiser les performances et l''efficacité.
-
-
-Mettre en œuvre des contrôles de qualité des données et résoudre les problèmes pour garantir l''exactitude et la fiabilité des données.
-
-
-Assurer la conformité aux réglementations en matière de sécurité et de confidentialité des données.
-
-
-
-
- Compétences requises :
-
-
-
-
-Expérience avérée en tant que Data Engineer ou dans un rôle similaire.
-
-
-Maîtrise des outils et technologies de data engineering (par exemple, SQL, ETL, data warehousing).
-
-
-Expérience avec des frameworks de pipelines de données et des plateformes de traitement de données (par exemple, Apache Kafka, Apache Spark).
-
-
-Compétences en programmation avec des langages tels que Python, Java ou Scala.
-
-
-Expérience avec des plateformes cloud (par exemple, AWS, Google Cloud Platform, Azure).
-
-
-Connaissance de la modélisation des données, de la conception de bases de données et de la gouvernance des données.
-
-
-Solides compétences analytiques et en résolution de problèmes.
-
-
-
-
- Profil recherché
-
-
- Profil recherché :
-
-
-
-
-Diplôme en informatique, data engineering, technologies de l''information ou dans un domaine connexe.
-
-
-3 à 5 ans d''expérience en tant que Data Engineer ou dans un rôle similaire.
-
-
-Capacité à travailler en équipe et à communiquer efficacement avec des parties prenantes techniques et non techniques.
-
-
-Esprit d''initiative et capacité à s''adapter dans un environnement en constante évolution.
-
-
-
-
-Si vous êtes passionné par les données et souhaitez rejoindre une équipe dynamique en pleine croissance, nous serions ravis de recevoir votre candidature.
-
-
- 
- > 3 ans', 'Paris', 'CDI', 0.0, '', 3, NULL, '2026-03-31', FALSE);
+Lieu du poste : En présentiel', 'Les Ulis', 'CDI', 40000.0, '', 5, NULL, '2026-05-12', FALSE);
 INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (10, 'Ingénieur Système F/H', 'L’Institut national de la propriété industrielle (INPI) est un acteur majeur de l’innovation, de l’entreprenariat et de la création en France. Il délivre les titres de propriété industrielle (brevets, marques, dessins et modèles), assure l’homologation des indications géographiques artisanales et industrielles. L’INPI agit également en faveur du développement économique par ses actions de sensibilisation et de formation grâce à son réseau national et à ses représentations internationales.
 
 
@@ -1478,655 +1952,8 @@ Travail à domicile occasionnel
 
 
 
-Lieu du poste : Télétravail hybride (92400 Courbevoie)', 'Courbevoie', 'CDI', 40000.0, '', 0, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Alternance Data Engineer (F/H)', 'Description :
-
-
-L’ISCOD, spécialiste de la formation en Digital Learning, recherche pour son entreprise partenaire,
- un Data Engineer en contrat d''apprentissage,
- pour préparer l’une de nos formations diplômantes reconnues par l''Etat de niveau 5 à niveau 7 (Bac+2, Bachelor/Bac+3 et Mastère/Bac+5)
-
-
- Optez pour l’alternance nouvelle génération avec l''ISCOD !
-
-
-
-
-Missions :
-
-
-Vous serez en charge de concevoir, développer et maintenir les infrastructures et les pipelines de données permettant de collecter, transformer et mettre à disposition les données de l’entreprise de manière fiable et performante.
-
-
-
-
-Concevoir et maintenir les pipelines de données (ETL/ELT)
-
-
-Intégrer des données provenant de différentes sources (API, bases de données, outils métiers, fichiers externes)
-
-
-Assurer la qualité, la fiabilité et la disponibilité des données
-
-
-Optimiser les performances des bases de données et des flux de données
-
-
-Mettre en place et maintenir les data warehouses ou data lakes
-
-
-Collaborer avec les Data Analysts, Data Scientists et équipes métiers pour répondre aux besoins en données
-
-
-Documenter l’architecture et les flux de données
-
-
-Participer à l’amélioration continue de l’architecture data
-
-
-
-
-
-
-
-
-
-
-Profil :
-
-
-
-
-Vous disposez de connaissances solides en analyse de données et vous êtes à l’aise pour manipuler, structurer et interpréter des jeux de données variés. Une sensibilité aux enjeux de Propriété Intellectuelle est un avantage supplémentaire.
-
-
-Vous maîtrisez Power BI et savez utiliser efficacement la suite Microsoft Office, notamment Excel, Word et PowerPoint, dans le cadre de vos travaux d’analyse et de restitution.
-
-
-Autonome, rigoureux(se), organisé(e), vous êtes reconnu(e) pour votre communication, votre relationnel et votre capacité d’analyse et de synthèse. Vous avez une bonne capacité d''adaptation et savez être force de proposition. Vous aimez travailler en équipe.
-
-
-
-
-Poste basé en Ile de France
-
-
-Rémunération selon niveau d’études + âge
-
-
- Poste à pourvoir dès que possible !', 'Paris', 'CDI', 0.0, '1 an', 0, '2026-03-31', '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (11, 'Ingénieur Infrastructure Système Réseaux & Infrastructures - F/H', 'Description
-
-
-Notre client est une entreprise de service numérique chargée d''accompagner un acteur de référence sur les 
-technologies de communication critiques
- (Défense, armement, gourvenement, etc).
- 
- Dans le cadre d''un appel d''offre stratégique remporté, notre client renforce ses effectifs à travers des recrutements structurants, dont un 
-Ingénieur Infrastructure Système Réseaux & Infrastructures - F/H. 
- Votre rôle sera d''assurer la conception et le design d’architectures réseaux critiques. Vous ne gérez pas un parc informatique, vous concevez un produit industriel complexe.
-
-
-
-
-Concevoir, déployer et administrer les infrastructures réseaux (LAN, WAN, Wi‑Fi, sécurité) en coordination avec les équipes systèmes, cybersécurité et exploitation
-
-
-Définir, suivre et mettre en œuvre les plans d’évolution du réseau afin de garantir la performance, la disponibilité et la sécurité des services
-
-
-Assurer l’interface technique avec les fournisseurs, opérateurs télécoms et intégrateurs, et piloter les phases de mise en production
-
-
-Identifier, analyser et réduire les risques liés à l’architecture réseau, en lien avec les équipes projet et sécurité
-
-
- 
- Localisation : Genneviliers 
- Rémunération envisagée : entre 55K€ et 80K€ - la proposition sera adaptée en fonction de vos capacités à apporter de la valeur ajoutée au projet
- 
-
-
- Profil recherché
-
-
-
-
-Vous êtes Ingénieur de formation
-
-
-Vous êtes habilitable
-
-
-Vous êtes capable d''apporter votre vision, structurer, améliorer notamment sur l''aspect Delivery de l''équipe.', 'Gennevilliers', 'CDI', 55000.0, '', 0, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (12, 'Ingénieur système CBTC h/f', 'D’ici 2050, près de 70 % de la population mondiale vivra en ville. Pour répondre aux enjeux de mobilité urbaine durable, Siemens Mobility conçoit les trains et systèmes de signalisation qui dessinent la mobilité de demain : connectée, décarbonée et fluide.
-
-
-De la ligne 14 à Paris aux lignes de Riyadh ou New York, nos technologies rendent déjà les transports plus intelligents, sûrs et accessibles.
-
-
-Chaque jour, nous réduisons l’empreinte carbone de millions de trajets, une réussite portée par la diversité des profils présents dans notre entreprise.
-
-
-Et ce n’est qu’un début.
-
-
-Rejoignez-nous et venez mettre votre talent au service des mobilités de demain et d’un futur plus responsable.
-
-
-Au sein de Siemens Mobility, vous êtes le pilier technique de nos projets CBTC. Vous concevez et pilotez des systèmes de pilotage automatique de métro, contribuant à façonner la mobilité urbaine de demain. Votre expertise est essentielle pour des solutions innovantes et performantes.
-
-
- Principales missions
-
-
-
-
-Définir la solution technique, y compris sur de nouveaux produits, de système de transport adaptée aux besoins du client grâce à la collaboration interne et externe.
-
-
-Assurer l''interface avec nos clients et apporter un support technique jusqu’à la mise en service.
-
-
-Personnaliser et paramétrer la solution en fonction des spécificités de chaque projet.
-
-
-Élaborer le référentiel Système pour guider efficacement les équipes de développement, de configuration et de tests.
-
-
-Coordonner votre lot technique avec les autres départements (développement, tests, réseau, radio, cybersécurité, etc.) pour une intégration harmonieuse.
-
-
-
-
-
-
- Profil attendu
-
-
-Vous êtes titulaire d''une formation d''ingénieur ou d''un master, et justifiez d''au moins 3 ans d’expérience dans un domaine technique, idéalement ferroviaire. Vous possédez une excellente compréhension des systèmes critiques et des enjeux liés à l’automatisation des transports. Une première expérience en management serait un atout. Votre anglais est courant, indispensable pour évoluer dans notre environnement international. Nous recherchons une personne proactive, adaptable et dotée de solides qualités relationnelles.
-
-
- Avantages
-
-
-Bénéficiez d''avantages qui font la différence :
-
-
-
-
-Une carrière sans frontières : Développez votre potentiel au sein d''un groupe international présent dans plus de 200 pays. Profitez d''opportunités de mobilité internationale et d''un environnement multiculturel stimulant.
-
-
-Développement et engagement durable : Nous investissons dans votre évolution professionnelle grâce à une formation continue personnalisée, tout en œuvrant ensemble pour un avenir plus responsable.
-
-
-Un équilibre vie pro/perso : Bénéficiez d''une organisation flexible avec télétravail partiel, horaires adaptables et nombreux RTT, pour une meilleure qualité de vie.
-
-
-Un package attractif et complet : Profitez d''une rémunération compétitive, complétée par un système d''intéressement, une mutuelle avantageuse, et de nombreux avantages sociaux via notre CSE dynamique.
-
-
-
-
-L''aventure vous attend ! Postulez maintenant !
-
-
-Nous valorisons la diversité des parcours, des identités et des talents comme moteur d''innovation et de performance. Nous nous engageons à offrir à chacun des opportunités équitables et un accès juste au développement professionnel, en supprimant toute barrière, quels que soient l’origine, le genre, l’âge ou la situation de handicap.
-
-
-Pour les candidats en situation de handicap, nous adaptons notre processus de recrutement. Pour un accompagnement personnalisé lors de votre candidature, contactez notre référent Mission Handicap : diversite.fr@siemens.com', 'Châtillon', 'CDI', 0.0, '', 3, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (13, 'Ingénieur support systèmes industriels F/H (SIT/TSI)', 'Rejoignez-nous en tant qu’Ingénieur support des systèmes industriels !
- 
- La Direction opérationnelle Digital & Innovation conçoit, déploie et exploite tous les systèmes d’information et solutions digitales nécessaires à l’ensemble des activités du Groupe (transport, gestion des espaces, sureté).
- 
- Au sein de cette direction, l’unité Télécoms & Systèmes Industriels réalise, délivre, exploite, maintient et assure la pérennité des Services Télécoms et des Systèmes Industriels cœurs de métier s’adressant aux voyageurs, aux exploitants et aux mainteneurs.
- 
- Vous intégrez une équipe d''une dizaine de personne qui assure le support et l’expertise pour la reprise en maintenance, l’exploitation, l’administration, le maintien en conditions opérationnelles et l’assistance à maitrise d’œuvre des systèmes d’aide à l’exploitation des modes de transport de la RATP (Métro, RER, BUS et Tramway).
- 
-
-
- 01. Poste et Missions
-
-
-Quel sera votre quotidien ?
-
-
-
-
-Votre rôle sera principalement de :
-
-
-
-
-Réaliser, piloter et coordonner les actions de maintenance corrective et évolutive dans le cadre de la gestion d’incidents, problèmes et changement.
-
-
-Assurer une expertise technique sur les applications SI/ systèmes téléphonie en production.
-
-
-Analyser la performance des systèmes et la qualité du service offert, définir et mettre en œuvre des actions correctives ou d’amélioration.
-
-
-Définir, concevoir et mettre en œuvre les méthodes, processus, moyens et outils techniques pour la supervision et la maintenance de ces systèmes.
-
-
-Définir, mettre en place et alimenter les référentiels dans le cadre de la gestion de la configuration.
-
-
-Tester, valider et déployer les nouvelles infrastructures, versions logicielles des systèmes, en assurant la gestion de configuration.
-
-
-Piloter les marchés de sous-traitance : stratégie industrielle, démarches achat (renouvellement, nouveaux marchés) et gestion.
-
-
-Être le support technique des équipes projet : élaboration et validation des cahiers des charges, partage de la connaissance et des contraintes d’exploitation et de maintenabilité des systèmes, etc.
-
-
-Concevoir et dispenser les formations techniques et fonctionnelles à destination des équipes de maintenance et de supervision.
-
-
-
-
-
-
-Pour en savoir plus, cliquez sur le lien suivant : https://www.ratp.fr/groupe-ratp
-
-
-
-
- 02. Profil recherché
-
-
-Vous êtes diplômé d''un bac +5 d''une école d''Ingénieur ou Master à l''université en ingénierie Informatique ou Télécom et vous avez acquis 3 années d’expérience dans l’exploitation et la maintenance des systèmes informatiques ou télécom complexes.
-
-
-
-
-
-
-Pour relever ces défis, nous recherchons une personne :
-
-
-
-
-
-
-Ayant des connaissances générales des architectures informatiques, applicatives et télécoms et des connaissances en bases de données (Oracle, Postgres, MySQL)
-
-
-Maîtrisant des environnements Linux, Windows Server et VMWare (administration, scripting BASH/VBS)
-
-
-Capable de s’approprier des systèmes complexes intégrant les technologies d’information modernes
-
-
-Qui connait les métiers de la maintenance : supervision, maintenance, support d’expertise
-
-
-Ayant connaissance des processus d’intégration technique et de qualification des systèmes
-
-
-Capable d''évaluer et maîtriser l’impact des opérations sur le service fourni au client
-
-
-Ayant connaissance des techniques de prescription et de pilotage des marchés de sous-traitance
-
-
-Ayant des notions sur le clustering et le systèmes d’haute disponibilité et des notions de programmation (type Perl, Python ou PHP)
-
-
-
-
-
-
-Nous recherchons aussi une personne :
-
-
-
-
-Dynamique, rigoureuse, autonome avec une bonne aptitude relationnelle.
-
-
-Ayant des capacités d’analyse et de synthèse à l’oral et à l’écrit.
-
-
-Capable d''anticiper, de gérer les priorités, d''être force de proposition.
-
-
-Capable de travailler en équipe dans des environnements impliquant de nombreux acteurs (Projets, Exploitation Transport, Maintenance, Fournisseurs industriels).
-
-
-
-
-
-
-Vous vous reconnaissez ? N’hésitez pas à postuler directement en ligne
-
-
-
-
-Tous nos métiers sont ouverts aux personnes en situation de handicap.
-
-
-
-
- Conditions de travail Lieu et horaires : 
-
-
-
-
-Contrat CDI
-
-
-Noisy le Grand
-
-
-Horaires de bureau avec intégration au dispositif d’astreinte
-
-
-Permis B demandé
-
-
-
-
-
-
- 03. Informations complémentaires
- Région :Ile de France
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Type de contrat :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- Durée Indéterminée', 'Noisy-le-Grand', 'CDI', 0.0, '', 3, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (14, 'Data Engineer (H/F)', 'Description de l''entreprise
-
-
- Inetum est un leader européen des services numériques. Pour les entreprises, les acteurs publics et la société dans son ensemble, les 28 000 consultants et spécialistes du groupe visent chaque jour l''impact digital : des solutions qui contribuent à la performance, à l''innovation et au bien commun.
-
-
-Présent dans 19 pays au plus près des territoires, et avec ses grands partenaires éditeurs de logiciels, Inetum répond aux enjeux de la transformation digitale avec proximité et flexibilité.
-
-
-Porté par son ambition de croissance et d''industrialisation, Inetum a généré en 2023 un chiffre d''affaires de 2,5 milliards d''€.
-
-
-Pour répondre à un marché en croissance continue depuis plus de 30ans, Inetum a fait le choix délibéré de se recentrer sur 4 métiers afin de gagner en puissance et proposer des solutions sur mesure, adaptées aux besoins spécifiques de ses clients : le conseil (Inetum Consulting), la gestion des infrastructures et applications à façon (Inetum Technologies), l''implémentation de progiciels (Inetum Solutions) et sa propre activité d''éditeur de logiciels (Inetum Software). Inetum a conclu des partenariats stratégiques avec 4 grands éditeurs mondiaux - Salesforce, ServiceNow, Microsoft et SAP et poursuit une stratégie d''acquisitions dédiée afin d''entrer dans le top 5 européen sur ces technologies et proposer la meilleure expertise à ses clients.
- Description du poste
-
-
- Nous ne sommes pas seulement spécialisés dans le numérique. Nous intervenons également sur la 
-data
-. Nous possédons une Practice Data qui se développe fortement grâce à nos partenaires stratégiques comme 
-Snowflake, Informatica, Talend, Microsoft Azure, AWS, GCP
-, ou encore de gros éditeurs du marché comme Databricks, Dataiku, Microstrategy, Teradata, etc... Aujourd’hui, nous sommes capables d’asseoir notre expertise en accompagnant nos clients sur toute la chaîne de valorisation data (cas d’usage, développement, architecture, innovation, industrialisation).
-
-
-A ce titre, vous rejoindrez un programme 
-d’envergure internationale, d''ultraconcentration bancaire
- et contribuerez à la conception, au développement et à la maintenance de nos pipelines de données. Vous serez le garant de la bonne gestion des données, de la collaboration inter-équipes et de l’amélioration continue des processus et des technologies utilisées.
-
-
-Missions principales :
-
-
-
-
- Conception et développement de pipelines de données : 
-Élaborer et mettre en place des pipelines de données robustes et évolutifs pour garantir une gestion efficace des flux de données.
-
-
- Traitement et analyse des données : 
-Utiliser des technologies telles que Spark, Scala ou Python pour le traitement et l''analyse des données, en assurant des performances optimales.
-
-
- Collaboration inter-équipes : 
-Travailler en étroite collaboration avec les équipes de data science et de développement pour intégrer les solutions de données et assurer une synergie entre les différents départements.
-
-
- Optimisation des performances : 
-Améliorer les performances des systèmes de traitement de données pour maximiser l''efficacité et la rapidité des opérations.
-
-
- Gestion des données : 
-Mettre en œuvre les meilleures pratiques de gestion des données, en veillant à la qualité des données et à la gouvernance pour garantir la conformité et la fiabilité des informations.
-
-
- Participation aux cérémonies agiles : 
-Participer activement aux rituels agiles, y compris les daily stand-ups, les sprint planning, les sprint reviews et les rétrospectives, pour assurer une gestion de projet agile et collaborative.
-
-
- Documentation technique : 
-Rédiger et mettre à jour la documentation technique pour garantir la traçabilité et la compréhension des systèmes et des processus.
-
-
-
-
-Compétences techniques recherchées :
-
-
-
-
-Minimum 5 ans d''expérience en tant que Data Engineer.
-
-
-Environnement cloud (AWS)
-
-
- Très bonne maîtrise de Scala est nécessaire
-
-
-Bonne connaissance de 
-Spark
-
-
-Bonne connaissance des bases de données relationnelles et non relationnelles.
-
-
-Maîtrise des 
-outils de versioning (Git).
-
-
-Capacité à travailler en équipe et à communiquer efficacement.
-
-
-Esprit d''analyse et de résolution de problèmes.
-
-
-Capacité à s''adapter à de nouvelles technologies
-
-
- 
- Qualifications
-
-
- Profil :
-
-
-
-
-Vous êtes issu(e) d’une formation Bac+5 en informatique, data science ou équivalent.
-
-
-Vous justifiez de minimum 
-5 ans d''expérience
- en traitement de données.
-
-
-Vous maîtrisez parfaitement 
-Scala
-
-
-Vous avez une bonne connaissance de 
-Spark
-
-
-Vous êtes capable de travailler dans un environnement cloud
-
-
-Vous faîtes preuve d''initiative et êtes proactif dans la suggestion d’améliorations.
-
-
-
-
-Vos mots d’ordre sont :
-
-
-
-
-Amélioration continue,
-
-
-Travail en équipe et communication efficace avec les membres de l''équipe,
-
-
-Partage des connaissances,
-
-
-Travail dans un environnement dynamique et en constante évolution,
-
-
-Résolution rapide et efficace des problèmes.
-
-
- 
- Informations supplémentaires
-
-
- Vos avantages :
-
-
-27 jours de congés payés + 10 RTT
-
-
-Tickets restaurant : D''une valeur de 9€ (Prise en charge à 60% par Inetum)
-
-
-‍ Suivi de carrière individualisé : avec votre manager, leader technique ou chef de projet en proximité tout au long de l''année en plus des entretiens annuels et professionnels.
-
-
-Parcours d''intégration unique et personnalisé : Accompagnement, référent, rencontre avec les équipes pour vous familiariser avec les valeurs du groupe.
-
-
-Les petits + Inetum :
-
-
-Un accord télétravail flexible : 2 jours à 3 jours par semaine en fonction de notre client
-
-
-Une prise en charge à 70% des frais de transport en commun dans le cadre de vos déplacements professionnels
-
-
-Politique de formation avantageuse : Formations et Certifications techniques, fonctionnelles, testing, méthodologie et gestion de projet, développement personnel…)
-
-
-Des animations d''agence régulière avec les équipes Inetum : Soirées jeux, Afterworks, activité teambuilding …
-
-
-L''opportunité de transmettre votre savoir en tant qu''expert : Animation de Techlunch, participation à des meetup techniques, prise de parole sur des conférences, dans des écoles ou sur des événements.
-
-
-
-
- Notre processus de recrutement :
-
-
-Un entretien avec une chargée de recrutement.
-
-
-Un entretien avec un membre de l''équipe
-
-
-Un entretien avec le client
-
-
-Un retour rapide à la suite de nos échanges
-
-
-Démarrage de la mission le plus tôt possible', 'Saint-Ouen', 'CDI', 0.0, '', 5, '2026-03-31', '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (4, 'Ingénieur système Export (F/H)', 'Lieu : Rungis, France
+Lieu du poste : Télétravail hybride (92400 Courbevoie)', 'Courbevoie', 'CDI', 40000.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Ingénieur Système Equipements électroniques F/H', 'Lieu : Gennevilliers, France 
  
 
 
@@ -2145,16 +1972,26 @@ Nos engagements, vos avantages
 
 
 
+
+
 Une réussite portée par notre excellence technologique, votre expérience et notre ambition partagée
+
+
 
 
 Un package de rémunération attractif
 
 
+
+
 Un développement des compétences en continu : parcours de formation, académies et communautés internes
 
 
+
+
 Un environnement inclusif, bienveillant et respectant l’équilibre des collaborateurs
+
+
 
 
 Un engagement sociétal et environnemental reconnu
@@ -2165,483 +2002,163 @@ Un engagement sociétal et environnemental reconnu
 
 
  Votre quotidien
- Nous fournissons et soutenons des systèmes pour la gestion et la protection de l''espace aérien. Nous travaillons avec passion dans un cadre architectural moderne, et s''efforce de repousser les limites de la technologie dans nos secteurs clés. Au sud de Paris, notre site est facilement accessible en transport en commun.
+ Le Campus de Gennevilliers est le cœur des activités de conception, de développement et de soutien des grands systèmes de défense : radiocommunications, réseaux et systèmes d’infrastructure résilients, communications par satellite, combat collaboratif et cybersécurité. Situé au nord de Paris, il est rapidement accessible en transports en commun. 
  
 
 
-Le GIE Eurosam (ES) est une co-entreprise associant Thales et MBDA (France et Italie) dont l’objet est d’être Prime et Design Authority (DA) des Systèmes de défense Terrestres et Navals mis en service au sein des Forces Françaises et Italiennes.
-
-
-
-
-Le poste se situe au Département Technique d''Eurosam, dans l''équipe Ingénierie en charge des spécifications, développement et validation des développement.
-
-
-
-
-Au sein de l''équipe Ingénierie, les missions sont les suivantes :
-
-
-
-
-
-
-A partir du référentiel système du SAMP/T NG variante Fr, établir le référentiel système du SAMP/T NG Danemark en tenant compte des spécificités Danemark
-
-
-Suivre le développement des sous-systèmes
-
-
-Participer aux revues techniques
-
-
-Définir les essais à mener pour valider les évolutions
-
-
-Participer aux réunions techniques avec le client
-
-
-
-
-
-
-Toutes ces missions sont assurées en étroite collaboration avec le (la) Responsable de l''équipe Ingénierie eurosam, les membres des équipes Ingénierie et Essais eurosam, et les membres des équipes Ingénierie de Thales, MBDA It et MBDA Fr.
-
-
- Votre profil
-
-
-
-
-Vous avez des connaissances dans le domaine des systèmes air/ sol et dans le domaine du système et la gestion des exigences.
-
-
-Vous avez la capacité à travailler en équipe dans un environnement international. Vous êtes ouvert d''esprit, vous êtes réactif et vous avez le sens du contrat client.
-
-
- Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous !
+Dans le cadre d’un fort accroissement d’activités au sein du groupe Equipements et Contrôles du service de R&D de nos produits à très haut niveau de criticité & de sensibilité pour la 
+Dissuasion Française
+ (sous-marins et avions de combat), nous recherchons activement 
+un ingénieur 
+système
  
- Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Rungis', 'CDI', 0.0, '', 0, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (15, 'Ingénieur système et réseau (F/H)', 'Chez Atos, nous contribuons à façonner un avenir numérique enrichi par l’intelligence artificielle. Notre mission : réunir les meilleurs talents, technologies et partenaires, pour faire progresser la transformation digitale au quotidien.
+en équipement électronique
+. A ce titre, vous prenez en charge la responsabilité technique d’une nouvelle ligne de produits destinée à équiper le système de mise en œuvre à bord de sous-marins. Vous êtes hiérarchiquement regroupé au sein d’une équipe métier adressant les développements électroniques analogiques. Une grande importance est donnée au développement du groupe métier (sessions privilégiées d’échanges, …). Vous évoluez aussi au sein d’une équipe projet totalement intégrée & multi-métiers sous la responsabilité d’un chef de projet (métiers électronique analogique et numérique, mécanique, fiabiliste & sûreté de fonctionnement, SSI, IVVQ bancs de test, …).
+
+
+
+
+A ce titre vos missions seront de :
+
+
+
+
+
+
+Être le leader technique de l’équipe et l’interface technique d’ensemble avec le client,
+
+
+Garantir la coopération technique entre les équipes multi métiers (électronique analogique et de puissance, logiciel embarqué, numérique FGPA, mécanique, sûreté de fonctionnement) pour garantir la conformité de la solution avec les besoins du client,
+
+
+Être responsable de l’excellente qualité, au niveau technique, des produits et prestations livrés.
+
+
+Valider tous les choix techniques,
+
+
+Alerter sur les risques techniques du projet et de prendre des mesures correctives
+
+
+
+
+
+
+ Votre profil :
+
+
+
+
+Votre priorité est de travailler dans les systèmes embarqués en intégrant une équipe projet composé d''experts de haut niveau ?
+
+
+Vous avez l''ambition de travailler sur des projets de hautes technologies ?
+
+
+Vous avez une expérience d''au moins 5 ans sur des équipements Electroniques de haute fiabilité dans un domaine industriel ?
+
+
+
+
+Vous disposez d''un Bac+5 et/ou Ingénieur électronique analogique et numériques et avez des compétences sur :
+
+
+
+
+
+
+De la conception de cartes électroniques
+
+
+
+
+Des tests de produits embarqués
+
+
+
+
+De l''animation d''équipe technique*
+
+
+
+
+Les phases d''intégration, test et mise au point de cartes électroniques.
+
+
+
+
+
+
+"L’atout majeur de ce service est l’opportunité donnée au collaborateur d’intervenir sur toutes les phases du développement (des spécifications à la livraison, ainsi que le support au maintien en condition opérationnelle), permettant ainsi d’étendre son périmètre d’action continuellement. Le travail en équipe d’ingénierie pluridisciplinaire enrichit significativement."
+
+
+La maitrise de l''anglais, la rigueur, l''organisation sont des atouts que l''on vous reconnait ?
+
+
+
+
+Alors ce poste est fait pour vous !
+
+
+ Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous ! 
  
-
-
-
-  Des environnements critiques aux services cloud et de cybersécurité, nous guidons nos clients pour les amener là où ils ont besoin d’aller.
- 
-
-
-
-  Nos technologies sont fluides, sécurisées et conçues pour être responsables. Avec l’innovation intégrée dans tout ce que nous faisons, nous réinventons l’avenir pour nos clients, nos collaborateurs et la société dans son ensemble.
- 
-
-
-
-
-
-
-
-
-
-
-
-
-Rejoignez une aventure qui a du sens:
-
-
-
-
-
-    En tant qu’
-Ingénieur Système et Réseau
-, vous serez responsable de la conception, de la mise en œuvre et de la gestion de notre infrastructure informatique. Vous assurerez la disponibilité et la performance des systèmes et réseaux, tout en garantissant la sécurité des données.
-   
-
-
-
-
-
-
- Vos missions à nos côtés:
-
-
-
-
-
-
-Concevoir et déployer des architectures réseau et des systèmes informatiques adaptés aux besoins de l''entreprise ;
-
-
-Installer, configurer et maintenir les serveurs, les équipements réseau et les systèmes de stockage ;
-
-
-Assurer la surveillance et l’optimisation des performances des systèmes et réseaux ;
-
-
-Diagnostiquer et résoudre les incidents techniques en garantissant un support de qualité aux utilisateurs ;
-
-
-Mettre en œuvre des solutions de sécurité pour protéger les données et les infrastructures contre les menaces ;
-
-
-Collaborer avec les équipes de développement et d''autres départements pour assurer l''intégration et le bon fonctionnement des applications
-
-
-Participer à des projets d''amélioration continue et à l''innovation technologique
-
-
-
-
-
-
-
-
- Les atouts pour réussir:
-
-
-
-
-
-    Vous êtes issu(e) d’une formation supérieure 
-Bac+5
- Ecole d’ingénieur ou cursus universitaire, et justifiez d''au moins 
-3 années
- d’expérience sur un poste similaire.
-   
-
-
-
-    Vous maîtrisez des environnements Windows et Linux, ainsi que des technologies de virtualisation (VMware, Hyper-V).
-   
-
-
-
-    Vous avez des connaissances en protocoles réseau (TCP/IP, DNS, DHCP, etc.) et en sécurité des systèmes d''information.
-   
-
-
-
-    Vous détenez des capacités à diagnostiquer des problèmes techniques et à proposer des solutions efficaces.
-   
-
-
-
-    Et si en plus vous avez une bonne communication et savez travailler en équipe, alors vous avez l’ensemble des atouts pour réussir à ce poste.
-   
-
-
-
-
-
-
- Rémunération:
-
-
-
-
-
-    Fourchette de salaire : entre 40k€ et 50k€
-   
-
-
-
-
-
-
- Ce que nous proposons:
-
-
-
-
-
-
-Possibilité de travailler de façon hybride (
-télétravail 
-jusqu’à 3 jours par semaine)
-
-
-Tickets restaurant
- (valeur faciale de 10€, 60% pris en charge par l’employeur)
-
-
-Évènements d''intégration et autres événements internes
-
-
-Disponibilité de tous
- vos congés et RTT dès votre arrivée
-
-
-Programme de cooptation jusqu’à 
-2750 € de prime
-
-
-Accès aux activités sociales et culturelles
-
-
-Aide à la mobilité durable (vélo et covoiturage)
-
-
-
-
-
-
-
-
- Votre avenir chez Atos:
-
-
-
-
-
-
-Des opportunités de développement professionnel et d’évolution de carrière
-
-
-Plus de 600 formations certifiantes et plateforme e-learning
-
-
-Un accompagnement de proximité
-
-
-
-
-
-
-
-
- Prêt(e) à faire partie de l’aventure ? Faites la différence et rejoignez la teams Atos !
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-En savoir plus
- La diversité est un moteur au service de la créativité de nos clients, et nous nous efforçons chaque jour de créer un environnement où chacun se sent soutenu et encouragé.
- La « Tech for Good » s''inscrit au cœur de notre mission, que ce soit en matière de lutte contre le changement climatique, pour promouvoir l''inclusion numérique ou garantir la confiance dans la gestion des données.
- Nous sommes fiers des nombreuses reconnaissances mondiales pour nos pratiques environnementales, sociales et de gouvernance, et nous nous engageons à construire un avenir meilleur pour tous en exploitant le pouvoir de la technologie.', 'Bezons', 'CDI', 40000.0, '', 3, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (13, 'Ingénieur système ferroviaire H/F (INFRA/STF)', 'Rejoindre la RATP, c’est intégrer l’un des plus grands réseaux de transport urbain au monde et contribuer chaque jour à la mobilité de plus de 8 millions de voyageurs en Île-de-France. Nos 48 000 collaborateurs assurent la circulation des bus, métros, RER et tramways, modernisent nos infrastructures et développent des solutions innovantes pour une mobilité plus durable. Ici, vos compétences participent directement à un service public essentiel, tout en vous offrant de nombreuses perspectives d’évolution au sein d’une grande diversité de métiers. Vous intégrez la Business Unit RATP Infrastructures qui assure les missions de gestionnaire d''infrastructures. Elle est responsable de l''aménagement, de l''entretien et du renouvellement de l''infrastructure, et garantit dans la durée le maintien des conditions de sécurité, d''interopérabilité et de continuité du service public. 
- Dans le cadre des activités de maîtrise d’œuvre de l’unité, vous êtes en charge des activités d’études transverses, d’expertise concernant les systèmes de d''automatisme déployés par l’ingénierie de la RATP sur son domaine ferré.
+ Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Gennevilliers', 'CDI', 0.0, '', 5, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (6, 'Ingénieur système IT F/H', 'Lieu : Gennevilliers, France 
  
 
 
- 01. Poste et Missions
+ Construisons ensemble un avenir de confiance
 
 
-Vous intervenez principalement sur des systèmes d''automatisme de conduite déployés ou en cours de déploiement et serez amené à travailler sur le cohérence entre ces projets et les projets en cours de reprise en maintenance par le Gestionnaire d''Infrastructure du Grand Paris. Dans le cadre de votre mission, vous interviendrez sur la capacité d''intégrer sur ces projets les méthodes d''ingénierie système et d''intégration
 
 
+Thales est un leader mondial des hautes technologies spécialisé dans trois secteurs d’activité : Défense & Sécurité, Aéronautique & Spatial, et Cyber & Digital. Il développe des produits et solutions qui contribuent à un monde plus sûr, plus respectueux de l’environnement et plus inclusif. Le Groupe investit près de 4 milliards d’euros par an en Recherche & Développement, notamment dans des domaines clés de l’innovation tels que l’IA, la cybersécurité, le quantique, les technologies du cloud et la 6G. Thales compte près de 81 000 collaborateurs dans 68 pays.
 
 
-Vous intervenez sur les 
-missions suivantes
-:
 
 
+Nos engagements, vos avantages
 
 
- En lien avec les équipes projet des entités métiers qui s''assurent de la bonne marche des projets, vous:
 
 
 
 
+Une réussite portée par notre excellence technologique, votre expérience et notre ambition partagée
 
 
- Spécifiez, concevez, intégrez et validez les système d''automatisme ferroviaire,.
 
 
- Intégrer les systèmes d''automatisme ferroviaire dans les architectures des systèmes ferroviaires et assurez le suivi technique du fournisseur en charge de la fourniture de ces équipements.
+Un package de rémunération attractif
 
 
- Veillez à la prise en compte des règles et des normes de sécurité des systèmes dans les architectures mises en place et participez aux analyses de risques liées à ce domaine et assurez la cohérence des architectures vis-à-vis de considérations liées à la résilience et à la sécurité informatique des systèmes.
 
 
+Un développement des compétences en continu : parcours de formation, académies et communautés internes
 
 
 
 
+Un environnement inclusif, bienveillant et respectant l’équilibre des collaborateurs
 
 
-Dans le cadre de ces projets, vous participerez en lien avec les équipes d''intégration :
 
 
+Un engagement sociétal et environnemental reconnu
 
 
 
 
- A la mise en place de méthode d''ingénierie système (modélisation système, use case,...)
 
 
- A la définition de l''apport de ces méthodes dans le cadre de l''amélioration de la qualité et de la performance de ces projets ainsi qu''a la définition de l''impact de ces méthodes sur les stratégies de d''Intégration, Validation, Vérification et Qualification
-
-
-
-
-
-
-
-
-Au delà des projets vous interviendrez dans le cadre de la reprise en maintenance du Gestionnaire d''Infrastructure du Grand Paris:
-
-
-
-
-
-
- Vous participerez a des missions d''expertise système afin de faciliter la reprise en maintenance par la RATP
-
-
- Vous assurerez une veille sur ces projets ainsi que la transversalité des réflexions pour porter certaines méthodes/systèmes/technologie des systèmes du Grand Paris vers les projets en cours ou à venir
-
-
-
-
-
-
-
-
-En tant qu''expert et de part votre position transverse vous devez également:
-
-
-
-
-
-
- Garantir l’homogénéité et l’atteinte de la performance globale des systèmes, leur maintenabilité et leur évolutivité (disponibilité, conformités aux besoins spécifiés, obsolescences, etc.).
-
-
- Apporter votre support aux services de maintenance dans leur appropriation du fonctionnement des systèmes d''automatismes ferroviaires, ainsi que dans leurs activités de maintien en condition opérationnelle (traitement préventif, prédictif, obsolescences).
-
-
- Conduire des études d''expertise dans le domaine des systèmes ferroviaires.
-
-
- Etre le garant du plan d''adressage des systèmes du transport ferroviaire et contribuer à l’Innovation/Recherche en étant force de proposition.
-
-
- Mettre en œuvre, superviser et participer à des activités terrain dans le cadre des projets ou des expertises.
-
-
-
-
-
-
- Conformément à la loi n°2016-339 du 22 mars 2016 et au décret n°2017-757 du 3 mai 2017 pris en son application, une enquête administrative sera sollicitée auprès des services du ministère de l’Intérieur pour tout candidat sur ce poste.
-
-
-
-
- 02. Profil recherché
-
-
-Diplômé d’un bac+5 , vous présentez une expérience d’au moins 5 ans dans l’ingénierie des systèmes ferroviaires. Vous maîtrisez par ailleurs les technologies et architectures télécoms et disposez de capacité d’analyse, de synthèse et d’une approche globale des problèmes. Une très bonne connaissance des méthodes d''ingénierie systèmes et d''intégration est souhaitée.
-
-
-
-
-Pour cela, nous recherchons une personne qui a une :
-
-
-
-
-Solide capacité d’analyse et de synthèse
-
-
-Rigueur, organisation et sens des responsabilités
-
-
-Aptitude à la gestion de projet et au travail en équipe
-
-
-Excellentes compétences en communication écrite et orale
-
-
-
-
-
-
-Tous nos métiers sont ouverts aux personnes en situation de handicap. Pour initier votre embauche, votre casier judiciaire B3 vous sera demandé.
-
-
-
-
- Informations complémentaires
-
-
-
-
-Contrat : CDI
-
-
-Localisation : Val de Fontenay
-
-
-Télétravail : oui possible
-
-
-Rémunération : à définir selon expérience (minimum à 52k BA fixe hors primes)
-
-
-
-
-
-
-Avantages :
-
-
-
-
-Possibilité d''évolution vers d’autres métiers y compris en filiales internationales
-
-
-9 semaines de congés, soit 206 jours travaillés par an
-
-
-Gratuité sur le réseau RATP et 90% de prise en charge sur le réseau IDF hors RATP
-
-
-Prise en charge de 75% de l''abonnement hors IDF si concerné
-
-
-Accès gratuit à une variété de spécialistes médicaux au sein de nos espaces santé, incluant des médecins généralistes, des dermatologues, des ophtalmologues
-
-
-
-
-
-
-Pour en savoir plus sur le Groupe RATP, cliquez sur le lien suivant : https://ratpgroup.com/fr/
-
-
-
-
- 03. Informations complémentaires
- Région :Ile de France
+ Votre quotidien
+ Le Campus de Gennevilliers est le cœur des activités de conception, de développement et de soutien des grands systèmes de défense : radiocommunications, réseaux et systèmes d’infrastructure résilients, communications par satellite, combat collaboratif et cybersécurité. Situé au nord de Paris, il est rapidement accessible en transports en commun. 
  
 
 
 
 
+GESA est le futur système de Gestion des Eléments Secrets des Armées. Il succède à l’actuel SELTIC. Bien plus qu’une rénovation de SELTIC, GESA repense de l’approche de la gestion des clés du MinArm.
 
 
 
@@ -2664,199 +2181,1235 @@ Pour en savoir plus sur le Groupe RATP, cliquez sur le lien suivant : https://ra
 
 
 
+Basé sur une architecture cloud et tournée vers l’utilisateur GESA est conçu et réalisé de façon itérative en collaboration étroite avec le client DGA et les opérationnels de la filière chiffre des armées.
 
 
+Dans ce contexte, vous évoluez au sein d’une équipe pluridisciplinaire composée d’architectes, d’ingénieur système, de développeurs, d’intégrateurs dédiée au sous-système IT de GESA.
 
 
+Une partie des développements étant réalisés sur nos sites de Cholet et Labège (Toulouse) des déplacements occasionnels pourront avoir lieu sur différents sites Thales ou de partenaires en France.
 
 
+A ce titre vos missions seront :
 
 
 
 
+En tant Ingénieur Systeme IT, vous serez amené à participer aux activités d’ingénierie nécessaires pour développer le sous-système IT Central de GESA :
 
 
 
 
+Analyser les besoins et des autres parties prenantes,
 
 
-Type de contrat :
+Décrire les missions, fonctions et les exigences sur la solution ou le produit,
 
 
+Formaliser la spécification et l’architecture pour développer la solution ou le produit
 
 
 
 
 
 
+Et plus précisément de :
 
 
 
 
+Formaliser les besoins fonctionnels et non fonctionnelles d’architecture IaaS/PaaS en méthode Agile
 
 
+Décliner les chaines fonctionnelles (IaaS, PaaS, Applicatifs enrôlement station, mise à jour des bases, etc.)
 
 
+Décrire ces chaines fonctionnelles de manière détaillée, y compris pour les services communs (DNS, NTP, Log, Sauvegarde)
 
 
+Décrire les architectures physiques et logiques
 
 
+Etablir les exigences du socle technique (OS, Socle applicatif…) et assurer le suivi de l’implémentation de la solution auprès des parties prenantes.
 
 
 
 
 
 
+ Votre profil :
 
 
 
 
+Votre priorité est de travailler dans le monde de la cyberdéfense en intégrant une équipe projet composé d''experts de haut niveau ?
 
 
+Vous avez l''ambition de travailler sur des produits de hautes technologies ?
 
 
+Vous avez une capacité rédactionnelle solide pour décliner les architectures et les chaines fonctionnelles en exigences répondant au besoin ?
 
 
 
 
+Vous disposez d''un Bac+5 et/ou Ingénieur en IT et/ou cybersécurité et avez au moins 3 ans d''expérience sur :
 
 
 
 
- Durée Indéterminée', 'Val de Fontenay', 'CDI', 52000.0, '', 5, NULL, '2026-03-31', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (16, 'Data Engineer - H/F', 'Description de l''entreprise
 
 
- Sia est un groupe international de conseil en management de nouvelle génération, fondé en 1999. Nés à l''ère du digital, nous sommes augmentés par la data, enrichis par la créativité et guidés par la responsabilité. Nous collaborons avec nos clients pour relever les défis et saisir les opportunités. Dans un monde en pleine mutation, nous croyons que l’optimisme est un puissant levier de transformation. Avec une expertise couvrant un large éventail de secteurs et de services, nos 3 000 consultants accompagnent des clients dans le monde entier, depuis 48 bureaux répartis dans 19 pays. Notre expertise produit des résultats concrets. Notre optimisme change la donne
+Les architectures cloud
+
+
+L''ingenierie Iaas, Paas dans un environnement Opensource
+
+
+Kubernetes
+
+
+Les solutions IT, réseaux et des déploiements automatisés d’infrastructure
+
+
+
+
+
+
+La maitrise de l''anglais, la rigueur, l''organisation sont des atouts que l''on vous reconnait ?
+
+
+
+
+Alors ce poste est fait pour vous !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Thales, entreprise Handi-Engagée, reconnait tous les talents. La diversité est notre meilleur atout. Postulez et rejoignez nous ! 
+ 
+ Le poste pouvant nécessiter d''accéder à des informations relevant du secret de la défense nationale, la personne retenue fera l''objet d''une procédure d’habilitation, conformément aux dispositions des articles R.2311-1 et suivants du Code de la défense et de l’IGI 1300 SGDSN/PSE du 09 août 2021.', 'Gennevilliers', 'CDI', 0.0, '', 3, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (11, 'Data scientist F/H/X', 'Élu Groupe Data marketing de l’année, Isoskèle figure dans le top 20 des 500 agences françaises du classement Stratégies. ISOSKELE compte environ 450 collaborateurs pour 100M€ de CA.
+
+
+Pionnière dans le mariage réussi entre marketing et communication, Isoskèle – racine grecque de l’équilibre – repousse les limites de la créativité associée aux dernières innovations de la data et des technologies.
+
+
+Ce positionnement visionnaire lui a permis d’obtenir, depuis sa création en 2019, plus de 100 récompenses créatives, labels RGPD et certifications multiplateformes (Adobe, Salesforce, Acoustic…)
+
+
+Isoskèle propose un accompagnement global autour de 5 marques hyper-expertes.
+
+
+
+
+
+
+St Johns Isoskèle, stratégies créatives, publicitaires et réputationnelles : 
+https://stjohns.fr/
+
+
+
+
+CyberCité Isoskèle, Search, social et medias : 
+https://www.cybercite.fr/
+
+
+
+
+TimeOne, acquisition et marketing à la performance : 
+https://www.timeonegroup.com/
+
+
+
+
+Datamark martech & data : 
+https://datamark.isoskele.fr/
+
+
+
+
+LineUp7, data marketing : 
+https://www.lineup7.fr/
+
+
+
+
+OnlySo social media, marketing conversationnel et influence : 
+https://www.onlyso.fr/
+
+
+
+
  Description du poste
 
 
- Sia recrute un(e) Data Engineer pour accompagner le développement des activités de la Business Unit Data Science.
+Intégré.e au département Intelligence Marketing (composé d’experts en Études et DataScience) vous aurez pour mission de réaliser des projets de Data Science variés, dsur des sujets transverses stratégiques ou axés sur la connaissance client dans les secteurs caritatif et marchand, et de mener à bien le développement d’outils d’analyse innovants impliquant des technologies avancées comme le machine learning et l’intelligence artificielle.
 
 
-Vous serez amené(e) à participer aux missions Data Science de Sia chez nos clients.. Vous accompagnerez des Data Scientists, Software Engineers et DevOps Engineers dans des projets à forte composante Data, dans le but de répondre à des challenges techniques autour du 
-stockage
-, 
-flux
- et 
-traitement de données
-. Vous contribuerez activement aux choix technologiques, architecturaux et de gouvernance pour faire face aux enjeux de la mise à l’échelle de projets Data.
-
-
-Les travaux couvriront les thèmes suivants :
+ Vos principales missions seront les suivantes :
 
 
 
 
- Pipelines de données 
-: développement de scripts d’ETL dans des écosystèmes Big Data
+Réaliser les projets d’analyse, de la conception à la formalisation et présentation des résultats
 
 
- Infrastructures & Services adaptés au Machine Learning
- : veille technologique et mise en place de solutions utiles aux Data Scientists dans l’entraînement et la mise à disposition de leurs modèles de Machine Learning
+Compréhension du besoin client et proposition de méthodologies adaptées
 
 
- Programmation en python 
-: développement d''outils exécutés côté serveur (traitement de données en masse, exposition des données via des APIs, ...)
+Import et retraitement des bases de données
 
 
- Services Cloud
-: choix d''architecture, utilisation de services de stockage & calcul
+Suivi des KPI annuels des clients réguliers d’Isoskèle : bilan de collecte sur le secteur associatif, mesure de performance des campagnes publicitaires…
 
 
- 
+Réalisation d’analyses ad hoc et rédaction des présentations client : modélisation des comportements d’achats/navigation, des parcours et cycles de vie, analyse des combinaisons de produits, impact d’un programme relationnel…
+
+
+Rédaction de recommandations pertinentes en fonction des résultats de l’analyse des bases de données
+
+
+Mise en place de nouveaux outils visuels / statistiques à l’aide des logiciels adéquats (Python)
+
+
+
+
+ Profil recherché
+
+
+Diplômé.e d’un master en Datascience/Statistiques/Econométrie vous avez une première expérience significative (minimum 2 ans) sur un poste similaire.
+
+
+ Compétences :
+
+
+
+
+Maîtrise de Python
+
+
+Compétences mathématiques/économétriques avancées (statistiques, modèles de prévision/clustering)
+
+
+Maîtrise de la suite Office (Excel indispensable, PPT)
+
+
+Facilités écrites et orales
+
+
+Une sensibilité aux sujets marketing et de communication publicitaire est un plus
+
+
+
+
+Qualités :
+
+
+
+
+Rigueur, esprit de synthèse et capacités analytiques
+
+
+Capacité à travailler en équipe : agilité/réactivité dans la gestion des dossiers, avec des interlocuteurs différents
+
+
+Prise d’initiative et proactivité', 'Paris', 'CDI', 0.0, '', 2, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (12, 'Ingénieur DATA & IA', 'BIOMEN propose aux industriels de la Santé des compétences du meilleur niveau pour renforcer leurs équipes d’analyse Marketing/Ventes.
+
+
+ Autour de nos valeurs : Efficacité, Engagement, Esprit d’équipe, nous proposons des missions riches et opérationnelles, avec de réelles responsabilités qui vous permettront de développer des expertises pointues au sein d’un secteur ultra dynamique.
+
+
+ Prenez part à cet écosystème passionnant de la Santé et de la création du médicament !
+
+
+ Rejoindre BIOMEN, c’est intégrer une équipe solidaire d’une trentaine de personnes qui mise beaucoup sur l’intelligence collective ! C’est notre façon de répondre à ce besoin de chacun de donner du sens à notre travail.
+
+
+ Description du poste
+
+
+Piloter, structurer et faire évoluer les initiatives Data et IA de l’organisation, aussi bien sur les projets internes que sur les projets clients, en assurant la cohérence technique, méthodologique et stratégique.
+
+
+Le poste joue un rôle de 
+référent technique
+, de 
+chef d’orchestre data
+, et de 
+conseiller stratégique
+ sur les usages de l’IA.
+Missions principales
+
+
+1. Stratégie Data & IA
+
+
+
+
+Contribuer à la définition et à la mise en œuvre de la stratégie Data & IA
+
+
+Identifier les opportunités d’usage de la data et de l’IA à forte valeur ajoutée
+
+
+Prioriser les cas d’usage selon leur impact métier, faisabilité et maturité
+
+
+Assurer une veille technologique continue (data, IA, automatisation)
+
+
+
+
+2. Pilotage de projets (internes & externes)
+
+
+
+
+Cadrer et piloter des projets data / IA de bout en bout
+
+
+Coordonner les parties prenantes métiers, IT et data
+
+
+Garantir le respect des objectifs, délais et standards techniques
+
+
+Intervenir sur des projets internes structurants (outils, plateformes, méthodes)
+
+
+
+
+3. Référent technique Data & IA
+
+
+
+
+Définir les bonnes pratiques techniques et méthodologiques
+
+
+Valider les choix d’architecture, de modélisation et d’outillage
+
+
+Apporter un support et un accompagnement technique aux équipes
+
+
+Garantir la qualité, la robustesse et la maintenabilité des solutions
+
+
+
+
+4. Données & solutions analytiques
+
+
+
+
+Superviser la collecte, la structuration et la valorisation des données
+
+
+Concevoir ou challenger des pipelines data, modèles analytiques et IA
+
+
+Participer à la conception de POC et à leur industrialisation
+
+
+Veiller à la gouvernance des données (qualité, sécurité, conformité)
+
+
+
+
+5. Acculturation & accompagnement
+
+
+
+
+Diffuser la culture data et IA au sein de l’organisation
+
+
+Former, sensibiliser et accompagner les équipes sur les usages data et analytiques
+
+
+Jouer un rôle de conseil et d’expertise, en interne comme auprès des clients
+
+
+
+
+ Profil recherché
+
+
+ Compétences techniques attendues
+
+
+
+
+Solides bases en data engineering et data analytics
+
+
+Connaissances en IA / machine learning (approche pragmatique)
+
+
+Maîtrise d’au moins un langage data (Python, SQL, etc.)
+
+
+Compréhension des architectures data et des flux de données
+
+
+Expérience avec des outils BI / reporting / visualisation
+
+
+Notions de cloud, automatisation et MLOps appréciées
+
+
+
+
+ Compétences fonctionnelles & soft skills
+
+
+
+
+Capacité à comprendre des enjeux métier complexes
+
+
+Esprit analytique et structuré
+
+
+Autonomie et force de proposition
+
+
+Aisance dans les échanges avec des interlocuteurs non techniques
+
+
+Capacité à formaliser et vulgariser
+
+
+
+
+
+    Profil recherché
+
+
+
+
+Formation ingénieur ou équivalent
+
+
+Expérience confirmée sur des projets data et analytiques
+
+
+Appétence pour l’innovation et la transformation
+
+
+Capacité à évoluer dans un environnement en construction
+
+
+Une expérience dans l’environnement pharmaceutique constitue un atout majeur', 'Levallois-Perret', 'CDI', 0.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (13, 'Ingénieur Conception Mécanique (H/F)', 'Description de l''entreprise
+
+
+
+   “ALTEN joue un rôle crucial dans l''accompagnement des secteurs Aéronautique, Spatial, Défense (ASD), en relevant des défis technologiques et en soutenant les enjeux clés de développement durable, de décarbonation et de sécurité. Nous investissons dans le recrutement des meilleurs talents, la structuration de nos Centres d’Excellence, la formation pour le développement de nouvelles compétences et l''innovation”, Stéphane Dahan, Directeur du Recrutement des Ingénieurs.
+
+
+ALTEN, Leader mondial de l’Ingénierie et des IT Services, recherche des ingénieurs audacieux pour rejoindre nos équipes spécialisées dans les secteurs de l''ASD.
+
+
+Grâce à nos référencements préférentiels, nous vous garantissons un accès à des projets à forte valeur ajoutée, qu’il s’agisse de développer des technologies de vol innovantes, de participer à des missions spatiales révolutionnaires, ou de contribuer à des avancées critiques en matière de défense.
+
+
+Vous êtes fasciné par l''aviation, rêvez de conquérir l''espace, ou souhaitez renforcer la sécurité de nos nations ? Faites décoller votre carrière avec ALTEN !
+
+
+
+
+Description du poste
+
+
+
+    Missions principales
+
+
+
+
+Concevoir et dimensionner des pièces et sous-ensembles mécaniques en tenant compte des contraintes thermiques, vibratoires et environnementales
+
+
+Réaliser la modélisation 3D et les plans 2D associés
+
+
+Participer aux analyses de faisabilité, aux revues techniques et aux choix de solutions
+
+
+Contribuer aux études de tenue mécanique (statique, dynamique, calculs de tolérances, chaines de cotes)
+
+
+Collaborer avec les équipes électroniques, industrialisation et qualité afin d’assurer la cohérence globale du produit
+
+
+Rédiger la documentation technique (spécifications, dossiers de justification, dossiers de définition)
+
+
+Assurer le suivi des prototypes, des essais et de la mise en production
+
+
+Proposer des améliorations de conception visant à optimiser les performances, la fiabilité ou les coûts
+
+
+
+
  Qualifications
 
 
- Diplômé(e) d''une formation en École d''Ingénieur ou d''une
- 
-formation de haut niveau dans le domaine des technologies de l’information, 
-vous justifiez d''une
- première expérience d''au moins 2 ans
- en Data, DevOps, Cloud ou Software Engineering.
+
+    Formation / Expérience
 
 
 
 
-Vous disposez d''un 
-bon niveau en Python
-, vous permettant de qualifier, enrichir, et traiter de la donnée.
-   
+Diplôme d’ingénieur ou équivalent en mécanique, mécatronique ou conception de produits industriels
 
 
-C’est un plus si vous maîtrisez un autre langage de programmation
+Expérience de 1 à 5 ans en conception mécanique, idéalement dans un secteur exigeant (aéronautique, défense, énergie…)
 
 
 
 
-Vous maîtrisez les bases de données 
-relationnelles
- (PostgreSQL, SQLServer, …)
-   
-
-
-C’est un plus si vous maîtrisez un autre paradigme de base de données (Wide-column, Key-value, …)
+ Compétences Techniques
 
 
 
 
-Vous avez de l’expérience avec des outils de
- calcul distribué
-, tels que Hadoop ou Spark ou vous avez de l’expérience avec des outils de Machine Learning, tels que Tensorflow ou Torch
-
-
-C’est un plus si vous avez de l''expérience avec les services d’
-au moins une plateforme de services Cloud
- (GCP, AWS, Azure)
+Maîtrise du logiciel CATIA V5
 
 
 
 
-Pour vous, il est essentiel…
+ Qualités personnelles
 
 
 
 
-d’aller 
-au fond des choses 
-: Il est important pour vous de comprendre toutes les nuances de votre dataset
+Autonomie, rigueur, esprit d’analyse et de synthèse
 
 
-d’avoir un état d’esprit “
-Do it yourself
-” : Monter en compétence sur une technologie en autonomie pour répondre à une problématique ne vous fait pas peur
-
-
-d’être 
-curieux(se) 
-: Le monde de la data avance vite, mais vos capacités de veille vous permettent de rester à jour
+Bonne communication écrite et orale
 
 
 
 
-Vous disposez d''une appétence pour les enjeux liés à la data et l''IA, d''une capacité à monter en compétences rapidement sur ces sujets et êtes enthousiaste à l''idée d''accompagner nos clients à en saisir les opportunités.
+ Langues et mobilité
 
 
-Vous êtes curieux(se) et aimez travailler en équipe ? Vous êtes reconnu(e) pour votre sens de l’analyse ?
- Vous souhaitez rejoindre un environnement professionnel dynamique et motivant ? Vous partagez nos valeurs que sont l''excellence, l''entrepreneuriat, l''innovation, le partage, la bienveillance et l''équilibre vie personnelle/vie professionnelle ?
 
 
-Vous parlez français et anglais couramment dans un contexte professionnel ?
+Maîtrise professionnelle de l''Anglais (Lu, écrit et oral)
 
 
-Alors rejoignez-nous !
+
+
  Informations supplémentaires
 
 
- Locaux situés en plein coeur de Paris
-
-
-Découvrez notre site carrière et parcourez notre vitrine Welcome To The Jungle
 
 
 
 
-Sia est un employeur qui souscrit au principe de l’égalité d’accès à l’emploi. Tous les aspects de l’emploi, tels que le recrutement, les promotions, la rémunération, ou les sanctions sont basés uniquement sur les performances, les compétences, et le comportement des employés ou les besoins de l’entreprise.', 'Paris', 'CDI', 0.0, '', 2, NULL, '2026-03-31', FALSE);
+
+     RTT
+
+
+
+
+Tickets restaurant (60% pris en charge par ALTEN)
+
+
+
+
+Participation aux frais de transports (Pass Navigo pris en charge à 90%...)
+
+
+
+
+Avantages sociaux : chèques vacances, tarifs préférentiels, 1% logement
+
+
+
+
+ALTEN Solidaire : bénévolats auprès d’associations caritatives (Les Restos du Cœur, Emmaüs...)
+
+
+
+
+Evènements : soirées annuelles, afterworks, team building, ALTEN Awards...
+
+
+
+
+Qualité de vie au travail : activités bien-être', 'Boulogne-Billancourt', 'CDI', 0.0, '', 1, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (14, 'Responsable Administrateur Systèmes et Réseaux', 'La société :
+
+
+Rivage Investment
+ est une société de gestion d’actifs indépendante à dimension internationale, spécialisée dans la dette privée d’infrastructure. Fondée en 2010, elle intervient en Europe et en Amérique du Nord, à la croisée de la finance, des actifs réels et des besoins économiques de long terme.
+
+
+Notre conviction est claire : la dette privée d’infrastructure constitue l’une des classes d’actifs les plus résilientes et essentielles de nos économies modernes. Elle offre une performance régulière tout en contribuant au financement de fonctions économiques et sociétales fondamentales.
+
+
+Indépendants par nature et globaux dans notre développement, nous conjuguons l’agilité d’une structure entrepreneuriale avec la discipline, la gouvernance et les standards exigés par les investisseurs internationaux en dette privée.
+
+
+Nous agissons comme des partenaires de long terme, tant auprès des investisseurs que des porteurs de projets, en instruisant, structurant et assurant le suivi des solutions de financement avec rigueur, responsabilité et continuité tout au long de la durée de vie des investissements.
+
+
+Notre différence ?
+
+
+Rivage Investment combine des capacités différenciantes de sourcing et de structuration avec une discipline de crédit sans compromis. Cet équilibre permet de construire la performance tout en assurant la résilience sur l’ensemble des cycles.
+
+
+Les valeurs qui nous animent
+
+
+
+
+Réflexion disciplinée, processus robustes et standards exigeants.
+
+
+Connaissance approfondie des infrastructures et capacité d’évaluation continuellement renforcée.
+
+
+Engagement, agilité et culture de création de valeur.
+
+
+Cadre ESG exigeant et engagement de long terme en faveur d’infrastructures durables.
+
+
+Intelligence collective et relations fondées sur la proximité et la transparence avec les investisseurs et les parties prenantes.
+
+
+Exigence intellectuelle nourrie par une remise en question permanente de nos hypothèses et de nos cadres d’analyse.
+
+
+
+
+Le poste et les missions :
+
+
+Rattaché(e) à la fonction IT / Systèmes d’Information, le Manager Systèmes & Réseaux garantit la performance, la disponibilité et la sécurité du système d’information de la société, dans un contexte d’exigence élevée propre aux activités financières.
+
+
+Le poste vise à :
+
+
+- Répondre efficacement aux besoins des utilisateurs internes
+
+
+- Assurer une résilience maximale de l’infrastructure (continuité et reprise d’activité)
+
+
+- Maintenir un niveau de cybersécurité élevé et conforme aux exigences réglementaires
+
+
+- Accompagner la croissance rapide et les transformations technologiques de la société
+
+
+- Piloter et optimiser les coûts, performances et évolutions du SI.
+
+
+1. Management & Gouvernance IT
+
+
+- Encadrer, animer et faire monter en compétence l’équipe systèmes et réseaux.
+
+
+- Définir la stratégie IT en lien avec la direction :
+
+
+· Responsable des comités de décision et validation des choix techniques
+
+
+· Responsable des comités de décision et validation des choix de sécurité
+
+
+- Assurer la permanence du service Systèmes et Réseaux (gestion des congés/absences, programmation des interruptions nécessaires de service (Maj)
+
+
+- Mettre en place des indicateurs de performance (KPI) et de qualité de service (SLA)
+
+
+- Gérer les budgets IT et optimiser les coûts
+
+
+- Piloter les prestataires, fournisseurs et partenaires IT
+
+
+- Assurer une veille technologique et réglementaire
+
+
+2. Administration des systèmes & réseaux
+
+
+- Superviser l’ensemble des infrastructures :
+
+
+· Serveurs (on-premise et cloud)
+
+
+· Réseaux (LAN, WAN, VPN)
+
+
+· Systèmes de stockage et sauvegarde
+
+
+- Garantir la performance, la disponibilité et la scalabilité des systèmes.
+
+
+- Gérer les environnements virtualisés et cloud (AWS, Azure, etc.)
+
+
+- Maintenir la documentation technique à jour :
+
+
+· Schéma hardware de l’infrastructure IT
+
+
+· Plan IP complet de l’infrastructure IT
+
+
+· Bible technique des choix (« settings ») techniques en production
+
+
+3. Support utilisateurs & qualité de service
+
+
+- Organiser et superviser le support IT (niveau 1 à 3).
+
+
+- Répondre aux incidents critiques et demandes urgentes.
+
+
+- Améliorer l’expérience utilisateur et les outils internes.
+
+
+- Mettre en place des processus ITIL (gestion des incidents, changements, problèmes).
+
+
+- Former et sensibiliser les utilisateurs aux bonnes pratiques IT.
+
+
+4. Cybersécurité (priorité stratégique)
+
+
+- Définir et mettre en œuvre la politique de sécurité du SI.
+
+
+- Assurer la protection contre les cyberattaques et les fuites de données (EDR, firewall, SIEM, etc.).
+
+
+- Gérer les accès, identités et droits (IAM).
+
+
+- Piloter les audits de sécurité et tests d’intrusion (avec auditeur externe) et suivre le cycle « audits, recommandations, implémentations/corrections ».
+
+
+- Assurer la conformité réglementaire (ex : RGPD, exigences AMF).
+
+
+- Sensibiliser les collaborateurs aux risques cyber (ex : test de phishing en interne) en lien avec l’équipe RH (ex : formations (obligatoires) pour utilisateurs en échec).
+
+
+5. Résilience & continuité d’activité
+
+
+- Concevoir et maintenir les plans de continuité (PCA) et de reprise (PRA).
+
+
+- Garantir la redondance des systèmes critiques.
+
+
+- Tester régulièrement les dispositifs de continuité (ex : test de shut-down serveur principal et relai serveur secondaire) et PRA (bascule remote datacenter), et conclusion par PV
+
+
+- Assurer la sauvegarde (objectif d’immuabilité) et la restauration des données, tests de restauration des données et maintien de la procédure de restauration (ex : cartographie de la data dans chaque sauvegarde, quel process utiliser, mot de passe de désencryption, pour chaque jeu de sauvegarde)
+
+
+- Optimiser l’infrastructure pour améliorer le PRA (RTO/RPO) : actuellement RTO [2h] et RPO [2h]
+
+
+6. Projets IT & transformation
+
+
+- Piloter les projets d’évolution du SI (migration cloud, nouveaux outils métiers, automatisation, IA, architecture multisites, architecture d’applications on-site/off-site).
+
+
+- Accompagner la croissance de l’entreprise (scalabilité des infrastructures).
+
+
+- Participer à la digitalisation et/ou « IA-isation » des processus métiers.
+
+
+- Intégrer de nouvelles technologies (DevOps, cybersécurité avancée, SOC interne).
+
+
+- Collaborer avec les équipes métiers pour anticiper les besoins.
+
+
+7. Conformité & environnement réglementaire
+
+
+- Garantir la conformité aux normes du secteur financier.
+
+
+- Préparer les audits internes et externes.
+
+
+- Documenter les procédures et politiques IT.
+
+
+- Assurer la traçabilité et la gouvernance des données.
+
+
+Positionnement dans l’organisation 
+
+
+
+
+Rattachement hiérarchique: Head of IT
+
+
+Interactions :
+
+
+
+
+· Équipe IT (support et admins)
+
+
+· Équipes métiers
+
+
+· Prestataires techniques
+
+
+Indicateurs de performance (KPI)
+
+
+
+
+Taux de disponibilité du SI
+
+
+Temps moyen de résolution des incidents (MTTR)
+
+
+Nombre d’incidents de sécurité
+
+
+Satisfaction utilisateurs
+
+
+Respect et maintien des politiques et procédures
+
+
+Maintien de la documentation technique
+
+
+Succès des tests PRA/PCA
+
+
+
+
+Profil recherché
+
+
+Formation
+
+
+
+
+Bac+5 en informatique, systèmes et réseaux ou équivalent.
+
+
+6/10 ans d’expérience confirmée sur un poste similaire en environnement professionnel structuré et procédurier (finance)
+
+
+
+
+Compétences techniques
+
+
+Expertise :
+
+
+
+
+Ecosystème M365 (Azure, Defender, Intune, Entra)
+
+
+Maîtrise des systèmes Windows/Linux
+
+
+Réseaux (TCP/IP, VLAN, VPN, firewall)
+
+
+Sauvegarde et PRA/PCA
+
+
+
+
+Autres compétences techniques appréciées :
+
+
+
+
+Cybersécurité (SIEM, EDR, IAM, SOC)
+
+
+Virtualisation (VMware, Hyper-V)
+
+
+Cloud computing (AWS, Azure, GCP)
+
+
+Outils de supervision santé (Nagios, Zabbix, etc.)
+
+
+Scripting (PowerShell, Python)
+
+
+
+
+Compétences organisationnelles et opérationnelles 
+
+
+
+
+Rigueur et sens des responsabilités
+
+
+Réactivité et sang-froid
+
+
+Esprit d’analyse et de synthèse
+
+
+Excellente communication
+
+
+Proactivité et capacité d’anticipation
+
+
+
+
+Langues
+
+
+
+
+Français
+
+
+Anglais professionnel indispensable (écrit et oral).
+
+
+
+
+Qualités personnelles
+
+
+
+
+Rigueur et sens des responsabilités
+
+
+Réactivité et sang-froid
+
+
+Esprit d’analyse et de synthèse
+
+
+Excellente communication
+
+
+Proactivité et capacité d’anticipation
+
+
+
+
+Rémunération : 60 000,00€ à 75 000,00€ par an
+
+
+Avantages :
+
+
+
+
+Crèche d''entreprise
+
+
+Intéressement et participation
+
+
+Prise en charge du transport quotidien
+
+
+RTT
+
+
+Travail à domicile occasionnel
+
+
+
+
+Lieu du poste : En présentiel', 'Paris', 'CDI', 60000.0, '', 6, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (8, 'Product Owner - Freelance H/F', 'Description du poste
+
+
+Un client localisé à Paris recherche un product owner disponible rapidement d''au moins 8/10 ans d''expérience. 
+
+   2/3 jours de télétravail par semaine.', 'Paris', 'Freelance', 0.0, '', 8, '2026-05-12', '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (11, 'INGENIEUR CONCEPTION MECANIQUE EXPERIMENTE F/H', 'À propos du poste
+
+  Dans le cadre d’un projet in situ client, nous recherchons un(e) Ingénieur(e) Conception Mécanique pour réaliser des activités d’études et de pilotage de la conception de systèmes aéroportés.
+
+
+Missions principales : 
+
+
+- Consolider l''architecture système mécanique.
+
+
+- Préparer la conception détaillée.
+
+
+- Contribuer à la rédaction du plan d’essais du système complet.
+
+
+- Assurer la cohérence entre les exigences et le déroulé des essais.
+
+
+- Rédiger les notes de justification mécanique système.
+
+
+- Consolider le dossier de définition sur MyPLM (Product Life Management) sous 3DExperience.
+
+
+- Rédiger les procédures d’essais détaillées en tenant compte des contraintes produits et essais (types et méthodes d’essais selon les dimensions/contraintes de charge).
+
+
+- Identifier et consulter les laboratoires d’essais en définissant les spécifications nécessaires.
+
+
+- Lister les moyens et outillages requis pour les essais.
+
+
+- Mettre à jour les procédures associées.
+
+
+- Rédiger les notes d’analyse et les documents de justification à la définition (DJD).
+
+
+- Coordonner les activités avec les intervenants du projet, qu’ils soient internes ou externes.
+
+
+Profil recherché
+
+
+
+
+Vous disposez d’une expérience significative en études et conception de systèmes mécaniques ainsi qu’en gestion et suivi d’essais.
+
+
+Vous maîtrisez MyPLM (3DExperience) et Catia.
+
+
+Vous possédez une excellente capacité rédactionnelle, garantissant la clarté et la précision des documents techniques.
+
+
+Vous êtes force de proposition, notamment pour définir les détails de certains essais.
+
+
+
+
+Avantages 
+:
+
+
+Au-delà de la rémunération fixe, nous vous offrons une expérience professionnelle enrichissante, alignée sur nos valeurs en matière de Responsabilité Sociale des Entreprises (RSE) et de Qualité de Vie et Conditions de Travail (QVCT). Rejoindre notre équipe, c''est intégrer un environnement où votre développement est au coeur de nos préoccupations.
+
+
+- Prime Vacances : Profitez d''une prime vacances distribuée deux fois par an.
+
+  - Mutuelle d''entreprise : Choisissez parmi trois formules de garanties pour une couverture santé adaptée à vos besoins.
+
+  - Carte SWILE : Bien plus qu''une carte restaurant, c''est une application dédiée, qui vous permettre d''accéder à des réductions ainsi qu''à des bons d''achat pour les fêtes.
+
+
+#Studielrecrute
+
+
+Type d''emploi : Temps plein, CDI
+
+
+Rémunération : 40 000,00€ à 45 000,00€ par an
+
+
+Lieu du poste : En présentiel', 'Île-de-France', 'CDI', 40000.0, '', 0, NULL, '2026-05-12', FALSE);
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (13, 'Ingénieur Assurance Qualité et Affaires Réglementaires (H/F)', 'Chez Withings, nous souhaitons redonner aux individus le contrôle de leur santé.
+
+
+Nous avons l’obsession de créer des produits beaux et intuitifs, afin que chacun puisse les utiliser facilement au quotidien; nos balances connectées, montres hybrides, tensiomètres, moniteurs de sommeil et tous les dispositifs de notre gamme sont aujourd’hui utilisés par des millions d’utilisateurs.
+
+
+Notre objectif : permettre la prévention, le dépistage et l’accompagnement d’un certain nombre de maladies chroniques via des produits et des services innovants, afin de révolutionner la manière dont on prend soin de notre santé.
+
+
+Dans le cadre de notre développement, nous renforçons notre équipe Qualité et Affaires Réglementaires.
+
+
+Missions
+
+
+Rattaché.e à la direction qualité et affaires réglementaires, vous êtes le référent réglementaire et qualité au sein des projets de développement de nouveaux produits et d’amélioration de produits existants à forte composante logicielle. En étroite collaboration avec les autres équipes en interne (recherche appliquée, développement produit, qualité produit, marketing, études cliniques, commerciaux), vous secondez plus particulièrement les product managers afin de mener à bien vos missions :
+
+
+
+
+Contribuer à l’élaboration de stratégies réglementaires et qualité optimisant la mise sur le marché des dispositifs et logiciels développés dans les différents marchés visés
+
+
+Être le référent qualité et réglementaire au sein des équipes projets et assurer le lien avec le reste de l’équipe qualité et réglementaire
+
+
+Assister les équipes de développement dans l’organisation et la constitution des dossiers de conception et de fabrication (DHF, DMR & medical device file) conformément aux exigences applicables dont ISO 13485 et 21 CFR part 820
+
+
+Contribuer activement à la constitution des dossiers de gestion des risques tout au long du cycle de vie des produits conformément à l’ISO 14971
+
+
+Rédiger et tenir à jour les dossiers d’enregistrement dans l’ensemble des marchés de distribution dont dossiers techniques de marquage CE conformément aux exigences du MDR 2017/745 ou de l’IVDR 2017/746 et dossiers de soumission US 510(k) ou De Novo
+
+
+Mettre à jour les bases de données et enregistrements locaux suite à l’obtention d’une autorisation de commercialisation
+
+
+Contribuer à la définition et mise en oeuvre du Système de Management de la Qualité (SMQ) et plus particulièrement des processus de développement produit, gestion des risques, contrôle des modifications, traitement des réclamations clients et suivi de la matériovigilance - conformément aux référentiels applicables
+
+
+Participer aux activités d’évaluation réglementaire dans le cadre de l’application des processus au sens de l’ISO 13485, notamment lors d’audits (internes et de tierce partie)
+
+
+Assurer la veille réglementaire et accompagner les équipes de développement tout au long du cycle de vie d’un produit dans la mise en œuvre des normes applicables au dispositif
+
+
+Evaluer la conformité réglementaire et normative de l’étiquetage, des notices d’utilisation et des supports promotionnels
+
+
+Interagir avec l’organisme notifié et les autorités compétentes pertinentes selon les besoins
+
+
+Contribuer à véhiculer la culture qualité au sein de l’entreprise, notamment en organisant voire en animant les formations requises
+
+
+
+
+
+
+
+
+Requirements
+
+
+
+
+
+
+De formation Bac+5, de type école d’ingénieur généraliste ou biomédical, vous êtes à l’aise dans les domaines de l’électronique, de la mécanique et plus particulièrement du logiciel.
+
+
+Habitué.e à œuvrer au sein d’un système de management de la qualité construit autour de la conformité à l’ISO 13485 ou des exigences des 21 CFR, vous savez interpréter et faciliter la mise en œuvre de référentiels réglementaires et connaissez les normes applicables aux dispositifs électromédicaux tels que l’IEC 60601-1 et collatérales, l’IEC 62304, l’ISO 62366-1 et l’ISO 14971.
+
+
+Vous justifiez d''une première expérience réussie dans une fonction technique ou réglementaire dans le domaine des dispositifs médicaux, dont au moins une première expérience concerne le développement de logiciels médicaux.
+
+
+Vous avez une réelle appétence pour les produits high-tech et l’innovation, et vous souhaitez rejoindre une équipe à taille humaine dont la mission est de donner aux individus les outils technologiques qui leur permettront de prendre soin de leur santé. Vous êtes curieux, rigoureux, organisé, et vous inscrivez dans une démarche constante d’amélioration de l’existant.
+
+
+Vous faites preuve d''un très bon esprit d’analyse et d''une grande curiosité qui vous pousse à comprendre et résoudre les problématiques issues d''un environnement complexe.
+
+
+Vous appréciez les interactions pluridisciplinaires et multiculturelles au sein d’un environnement fortement évolutif et dynamique.
+
+
+Vous souhaitez pouvoir transmettre vos compétences actuelles et en développer de nouvelles.
+
+
+Vous avez une excellente maîtrise de l’anglais aussi bien à l’oral qu’à l’écrit.
+
+
+
+
+
+
+
+
+Benefits
+
+
+
+   Rejoindre l’aventure Withings, c’est :
+
+
+
+
+
+
+Intégrer un des pionniers et leaders mondiaux de la santé connectée, plusieurs fois primé au Consumer Electronic Show
+
+
+Contribuer à des projets innovants et ambitieux pour la santé de demain dans un environnement agile et en constante évolution
+
+
+Intégrer une entreprise internationale, membre de la FrenchTech 120, dont les équipes sont basées à Issy-les-Moulineaux, Boston, Hong-Kong et Shenzhen
+
+
+Participer à l’amélioration continue de nos produits et services en les bêta-testant avant leur sortie, notamment lors de nos nombreuses sessions sportives entre collègues
+
+
+Bénéficier de nombreux avantages : Stock Options, smartphone et ordinateur de votre choix, réductions pour des activités culturelles et sportives, restaurant d’entreprise, et bien plus encore
+
+
+Participer à la Withings Med Academy en assistant à des conférences de professionnels de santé afin de renforcer ses connaissances dans le domaine médical
+
+
+Collaborer avec des collègues passionnés et célébrer ensemble chacune de nos réussites !
+
+
+
+
+
+
+
+
+Toutes les candidatures reçues sont étudiées indépendamment de l’origine ethnique, des opinions, des croyances, de la religion, du genre, de l’orientation sexuelle ou de la santé des candidats. Withings aspire à offrir et garantir l’égalité des chances aux candidats et seules les personnes habilitées (RH et Management) auront accès aux informations concernant votre candidature.', 'Issy-les-Moulineaux', 'CDI', 0.0, '', 1, NULL, '2026-05-12', FALSE);
 
 -- Candidats
 INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite)

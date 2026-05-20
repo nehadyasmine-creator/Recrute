@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS contact_message;
 DROP TABLE IF EXISTS Messagerie;
 DROP TABLE IF EXISTS Lien;
 DROP TABLE IF EXISTS Candidature;
@@ -25,7 +26,7 @@ CREATE TYPE contrat_type AS ENUM ('CDI','CDD','Stage','Alternance','Freelance','
 CREATE TYPE categorie_competence AS ENUM ('technique','soft_skill','langue','autre');
 CREATE TYPE niveau_type AS ENUM ('debutant','intermediaire','avance','expert');
 CREATE TYPE statut_offre AS ENUM ('ouverte','fermee');
-CREATE TYPE statut_candidature AS ENUM ('envoyee','en_attente','refusee','acceptee');
+CREATE TYPE statut_candidature AS ENUM ('envoyee','en_attente','refusee','acceptee','enregistree');
 
 CREATE TABLE Utilisateur (
     id_utilisateur SERIAL PRIMARY KEY,
@@ -120,6 +121,19 @@ CREATE TABLE Candidature (
     date_candidature DATE DEFAULT CURRENT_DATE,
     lettre_motivation TEXT,
     statut statut_candidature DEFAULT 'envoyee'
+);
+
+CREATE TABLE contact_message (
+    id_contact_message SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telephone VARCHAR(20),
+    role_utilisateur VARCHAR(50),
+    objet VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    statut VARCHAR(30) DEFAULT 'ouvert'
 );
 
 CREATE TABLE Messagerie (
