@@ -1,0 +1,130 @@
+<div class="offer-form-page">
+	<div class="offer-form-card">
+		<div class="card-header">
+			<p class="eyebrow">{{ editMode ? 'Modifier une offre' : 'Créer une offre' }}</p>
+			<h1>{{ editMode ? 'Mise à jour de l’offre' : 'Nouvelle offre' }}</h1>
+			<p>
+				{{ editMode
+					? 'Modifiez les informations de l’offre et ajustez les compétences requises.'
+					: 'Renseignez toutes les informations utiles pour publier une offre complète.' }}
+			</p>
+		</div>
+
+		@if (loading) {
+			<div class="state-box">Chargement du formulaire...</div>
+		} @else {
+			@if (errorMessage) {
+				<div class="state-box error">{{ errorMessage }}</div>
+			}
+
+			@if (successMessage) {
+				<div class="state-box success">{{ successMessage }}</div>
+			}
+
+			<form class="offer-form" [formGroup]="form" (ngSubmit)="save()">
+				<section class="section-block">
+					<h2>Informations de l’offre</h2>
+					<div class="field-grid two-cols">
+						<label class="form-field full-width">
+							<span>Titre</span>
+							<input type="text" formControlName="titre" placeholder="Développeur Angular" />
+						</label>
+
+						<label class="form-field full-width">
+							<span>Description</span>
+							<textarea formControlName="description" rows="6" placeholder="Décrivez le poste, les missions et les attentes..."></textarea>
+						</label>
+
+						<label class="form-field">
+							<span>Lieu</span>
+							<input type="text" formControlName="lieu" placeholder="Paris, télétravail, hybride..." />
+						</label>
+
+						<label class="form-field">
+							<span>Type de contrat</span>
+							<select formControlName="typeContrat">
+								<option value="">Sélectionnez</option>
+								@for (type of typeContratOptions; track type) {
+									<option [value]="type">{{ type }}</option>
+								}
+							</select>
+						</label>
+
+						<label class="form-field">
+							<span>Salaire</span>
+							<input type="number" min="0" formControlName="salaire" placeholder="Salaire annuel ou mensuel" />
+						</label>
+
+						<label class="form-field">
+							<span>Durée</span>
+							<input type="text" formControlName="duree" placeholder="6 mois, CDI, 1 an..." />
+						</label>
+
+						<label class="form-field">
+							<span>Expérience requise</span>
+							<input type="number" min="0" formControlName="experienceRequise" placeholder="Nombre d'années" />
+						</label>
+
+						<label class="form-field">
+							<span>Date de début</span>
+							<input type="date" formControlName="dateDebut" />
+						</label>
+
+						<label class="form-field checkbox-field full-width">
+							<input type="checkbox" formControlName="teletravail" />
+							<span>Télétravail possible</span>
+						</label>
+					</div>
+				</section>
+
+				<section class="section-block">
+					<div class="skills-header">
+						<div>
+							<h2>Compétences nécessaires</h2>
+							<p>Indiquez la catégorie, le nom de la compétence et si elle est obligatoire.</p>
+						</div>
+						<button type="button" class="secondary-btn" (click)="addCompetenceRow()">+ Ajouter une compétence</button>
+					</div>
+
+					<div class="skills-list" formArrayName="competences">
+						@for (row of competences.controls; track trackByRow($index); let i = $index) {
+							<div class="skill-row" [formGroupName]="i">
+								<label class="form-field skill-select">
+									<span>Catégorie</span>
+									<select formControlName="category">
+										@for (category of categoriesCompetence; track category) {
+											<option [value]="category">{{ category }}</option>
+										}
+									</select>
+								</label>
+
+								<label class="form-field skill-input">
+									<span>Compétence</span>
+									<input type="text" formControlName="nom" placeholder="Ex: Angular, gestion de projet..." />
+								</label>
+
+								<label class="form-field skill-checkbox">
+									<span>Obligatoire</span>
+									<input type="checkbox" formControlName="obligatoire" />
+								</label>
+
+								<button type="button" class="danger-btn" (click)="removeCompetenceRow(i)">Supprimer</button>
+							</div>
+						}
+
+						@if (hasDuplicateCompetences()) {
+							<div class="state-box error small-message">Chaque catégorie et compétence doit être unique.</div>
+						}
+					</div>
+				</section>
+
+				<div class="action-row">
+					<button type="button" class="secondary-btn" (click)="goBack()">Retour</button>
+					<button type="submit" class="primary-btn" [disabled]="saving">
+						{{ saving ? 'Enregistrement...' : (editMode ? 'Modifier l’offre' : 'Créer l’offre') }}
+					</button>
+				</div>
+			</form>
+		}
+	</div>
+</div>

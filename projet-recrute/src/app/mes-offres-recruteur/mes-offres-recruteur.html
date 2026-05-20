@@ -1,0 +1,54 @@
+<div class="recruiter-offers-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Mes offres</p>
+      <h1>Offres du recruteur</h1>
+      <p class="subtitle">Retrouvez uniquement les offres que vous avez créées et modifiez-les directement.</p>
+    </div>
+    <a routerLink="/ajouter-offre" class="primary-btn">Créer une offre</a>
+  </div>
+
+  @if (loading) {
+    <div class="state-box">Chargement de vos offres...</div>
+  } @else if (errorMessage) {
+    <div class="state-box error">{{ errorMessage }}</div>
+  } @else if (offres.length === 0) {
+    <div class="state-box empty">
+      <i class="bi bi-inboxes"></i>
+      <h2>Aucune offre créée</h2>
+      <p>Vous n’avez pas encore publié d’offre. Commencez par en créer une.</p>
+    </div>
+  } @else {
+    <div class="offers-grid">
+      @for (offre of offres; track offre.id) {
+        <article class="offer-card" role="button" tabindex="0" [routerLink]="goToDetail(offre.id)">
+          <div class="offer-header">
+            <div>
+              <h2>{{ offre.titre }}</h2>
+              <p class="meta-line">{{ displayOrFallback(offre.lieu) }} | {{ displayOrFallback(offre.typeContrat) }}</p>
+            </div>
+            <span class="status-badge">{{ displayOrFallback(offre.statut) }}</span>
+          </div>
+
+          <p class="description">{{ truncate(offre.description, 180) }}</p>
+
+          <div class="offer-info">
+            <span>Publié le {{ formatDate(offre.datePublication) }}</span>
+            <span>Salaire {{ offre.salaire ? (offre.salaire + ' EUR') : 'non renseigné' }}</span>
+            <span>{{ offre.teletravail ? 'Télétravail possible' : 'Présentiel' }}</span>
+          </div>
+
+          <div class="offer-actions">
+            <a [routerLink]="goToEdit(offre.id)" class="icon-btn edit-btn" title="Modifier l'offre" aria-label="Modifier l'offre" (click)="$event.stopPropagation()">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+            <button type="button" class="icon-btn delete-btn" title="Supprimer l'offre" aria-label="Supprimer l'offre" (click)="deleteOffer(offre.id, $event)">
+              <i class="bi bi-trash3"></i>
+            </button>
+            <a [routerLink]="goToDetail(offre.id)" class="ghost-btn" (click)="$event.stopPropagation()">Voir le détail</a>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</div>

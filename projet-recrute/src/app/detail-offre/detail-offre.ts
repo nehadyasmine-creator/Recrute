@@ -20,6 +20,7 @@ interface Offre {
   recruteur?: {
     poste?: string | null;
     utilisateur?: {
+      id?: number | null;
       nom?: string | null;
       prenom?: string | null;
       email?: string | null;
@@ -240,6 +241,16 @@ export class DetailOffre implements OnInit {
     const nom = this.offre?.recruteur?.utilisateur?.nom?.trim() || '';
     const fullName = `${prenom} ${nom}`.trim();
     return fullName || 'Non renseigné';
+  }
+
+  canEditOffer(): boolean {
+    if (this.authService.getUserRole() !== 'recruteur') {
+      return false;
+    }
+
+    const userId = this.authService.getUserId();
+    const offerOwnerUserId = this.offre?.recruteur?.utilisateur?.id;
+    return !!userId && !!offerOwnerUserId && userId === offerOwnerUserId;
   }
 
   entrepriseLink(): string[] | null {

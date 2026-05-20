@@ -99,6 +99,9 @@ export class ApiService {
   getOffresOuvertes(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/offres/ouvertes`);
   }
+  getOffresByRecruteur(idRecruteur: number): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/offres/recruteur/${idRecruteur}`);
+  }
   getOffreById(id: number): Observable<any> {
     return this.http.get<any>(`${API}/offres/${id}`);
   }
@@ -118,6 +121,9 @@ export class ApiService {
   }
   getRecruteurById(id: number): Observable<any> {
     return this.http.get<any>(`${API}/recruteurs/${id}`);
+  }
+  getRecruteurByUtilisateurId(idUtilisateur: number): Observable<any> {
+    return this.http.get<any>(`${API}/recruteurs/utilisateur/${idUtilisateur}`);
   }
   createRecruteur(data: any): Observable<any> {
     return this.http.post(`${API}/recruteurs`, data);
@@ -157,6 +163,17 @@ export class ApiService {
     return this.http.delete(`${API}/competences-candidats`, {
       body: {
         idCandidat,
+        idCompetence,
+      },
+    });
+  }
+  createCompetenceOffre(data: any): Observable<any> {
+    return this.http.post(`${API}/competences-offres`, data);
+  }
+  deleteCompetenceOffre(idOffre: number, idCompetence: number): Observable<any> {
+    return this.http.delete(`${API}/competences-offres`, {
+      body: {
+        idOffre,
         idCompetence,
       },
     });
