@@ -3,6 +3,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { RouterLink } from '@angular/router';
 
+interface Competence {
+  id: number;
+  nom: string;
+  category: string;
+}
+
 interface Candidat {
   id: number;
   utilisateur: {
@@ -16,6 +22,7 @@ interface Candidat {
   ville: string;
   disponibilite: string;
   cv: string | null;
+  competences?: Competence[];
 }
 
 @Component({
@@ -32,6 +39,10 @@ export class ListeCandidatsComponent implements OnInit {
   error = '';
   searchTerm = '';
   filtreContrat = '';
+  filtreVille = '';
+  filtreDisponibilite = '';
+  filtreCompetence = '';
+  toutesLesCompetences: string[] = [];
 
   ngOnInit(): void {
     this.loadCandidats();
@@ -40,22 +51,54 @@ export class ListeCandidatsComponent implements OnInit {
   private loadCandidats(): void {
     this.apiService.getCandidats().subscribe({
       next: (candidats) => {
-        this.candidats = candidats;
-        this.loading = false;
+        this.candidats = candidats.filter(c => c.ville && c.disponibilite);
+        let remaining = this.candidats.length;
+
+        if (remaining === 0) {
+          this.loading = false;
+          return;
+        }
+
+        this.candidats.forEach((candidat, index) => {
+          this.apiService.getCompetencesByCandidat(candidat.id).subscribe({
+            next: (comps) => {
+              this.candidats[index].competences = comps.map((c: any) => c.competence);
+              this.majCompetences();
+              remaining--;
+              if (remaining === 0) this.loading = false;
+            },
+            error: () => {
+              this.candidats[index].competences = [];
+              remaining--;
+              if (remaining === 0) this.loading = false;
+            }
+          });
+        });
       },
       error: () => {
-        this.error = 'Impossible de charger les candidats pour le moment.';
+        this.error = 'Impossible de charger les candidats.';
         this.loading = false;
       }
     });
   }
 
+  private majCompetences(): void {
+    const toutes = new Set<string>();
+    this.candidats.forEach(c => {
+      c.competences?.forEach(comp => toutes.add(comp.nom));
+    });
+    this.toutesLesCompetences = Array.from(toutes).sort();
+  }
+
   get candidatsFiltres(): Candidat[] {
     return this.candidats.filter(c => {
-      const nomComplet = `${c.utilisateur?.prenom ?? ''} ${c.utilisateur?.nom ?? ''} ${c.utilisateur?.email ?? ''}`.toLowerCase();
+      const nomComplet = `${c.utilisateur?.prenom ?? ''} ${c.utilisateur?.nom ?? ''}`.toLowerCase();
       const matchSearch = nomComplet.includes(this.searchTerm.toLowerCase());
       const matchContrat = !this.filtreContrat || c.typeContrat === this.filtreContrat;
-      return matchSearch && matchContrat;
+      const matchVille = !this.filtreVille || c.ville?.toLowerCase().includes(this.filtreVille.toLowerCase());
+      const matchDispo = !this.filtreDisponibilite || c.disponibilite <= this.filtreDisponibilite;
+      const matchCompetence = !this.filtreCompetence || c.competences?.some(comp => comp.nom === this.filtreCompetence);
+      return matchSearch && matchContrat && matchVille && matchDispo && matchCompetence;
     });
   }
 
@@ -65,6 +108,18 @@ export class ListeCandidatsComponent implements OnInit {
 
   onFiltreContrat(event: Event): void {
     this.filtreContrat = (event.target as HTMLSelectElement).value;
+  }
+
+  onFiltreVille(event: Event): void {
+    this.filtreVille = (event.target as HTMLInputElement).value;
+  }
+
+  onFiltreDisponibilite(event: Event): void {
+    this.filtreDisponibilite = (event.target as HTMLInputElement).value;
+  }
+
+  onFiltreCompetence(event: Event): void {
+    this.filtreCompetence = (event.target as HTMLSelectElement).value;
   }
 
   getInitiales(prenom?: string, nom?: string): string {

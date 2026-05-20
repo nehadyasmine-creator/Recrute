@@ -4,12 +4,16 @@
   <div class="filtres">
     <div class="search-wrapper">
       <i class="bi bi-search"></i>
-      <input
-        type="text"
-        placeholder="Rechercher un candidat..."
-        (input)="onSearch($event)"
-      />
+      <input type="text" placeholder="Rechercher un candidat..." (input)="onSearch($event)"/>
     </div>
+    <input class="filtre-input" type="text" placeholder="Ville..." (input)="onFiltreVille($event)"/>
+    <input class="filtre-input" type="date" (change)="onFiltreDisponibilite($event)"/>
+    <select (change)="onFiltreCompetence($event)">
+      <option value="">Toutes les compétences</option>
+      @for (comp of toutesLesCompetences; track comp) {
+        <option [value]="comp">{{ comp }}</option>
+      }
+    </select>
     <select (change)="onFiltreContrat($event)">
       <option value="">Tous les contrats</option>
       <option value="CDI">CDI</option>
@@ -56,6 +60,14 @@
               </span>
             }
           </div>
+
+          @if (candidat.competences && candidat.competences.length > 0) {
+            <div class="competences">
+              @for (comp of candidat.competences; track comp.nom) {
+                <span class="badge badge-competence">{{ comp.nom }}</span>
+              }
+            </div>
+          }
 
           <div class="card-actions">
             <button class="btn-voir" [routerLink]="['/infos-candidat', candidat.id]">
