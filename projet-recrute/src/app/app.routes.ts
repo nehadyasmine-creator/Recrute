@@ -19,6 +19,7 @@ import { Postuler } from './postuler/postuler';
 import { DetailEntreprise } from './detail-entreprise/detail-entreprise';
 import { AjouterOffre } from './ajouter-offre/ajouter-offre';
 import { MesOffresRecruteur } from './mes-offres-recruteur/mes-offres-recruteur';
+import { AccueilEmployeur } from './accueil-employeur/accueil-employeur';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -29,6 +30,7 @@ export const routes: Routes = [
     { path: 'modifier-profil-candidat', component: ModifierProfilCandidat},
     { path: 'modifier-profil-employeur', component: ModifierProfilEmployeur},
     { path: 'liste-offres', component: ListeOffres},
+    { path: 'accueil-employeur', component: AccueilEmployeur},
     { path: 'ajouter-offre', component: AjouterOffre},
     { path: 'ajouter-offre/:id', component: AjouterOffre},
     { path: 'mes-offres', component: MesOffresRecruteur},
