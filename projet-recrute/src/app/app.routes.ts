@@ -7,6 +7,7 @@ import { InscriptionEmployeur } from './inscription-employeur/inscription-employ
 import { ModifierProfilCandidat } from './modifier-profil-candidat/modifier-profil-candidat';
 import { ListeOffres } from './liste-offres/liste-offres';
 import { QuiSommesNous } from './qui-sommes-nous/qui-sommes-nous';
+import { ListeCandidatsComponent } from './liste-candidats/liste-candidats.component';
 import { ModifierProfilEmployeur } from './modifier-profil-employeur/modifier-profil-employeur';
 import { CandidatureEnregistre } from './candidature-enregistre/candidature-enregistre';
 import { OffresPostulees } from './offres-postulees/offres-postulees';
@@ -27,6 +28,7 @@ export const routes: Routes = [
     { path: 'suggestion-ia-candidat', component: SuggestionIaCandidat},
     { path: 'admin', component: Admin},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
+    { path: 'liste-candidats', component: ListeCandidatsComponent},
 
 
     //à laisser en tout dernier, sert à rediriger vers la page d'accueil si on essaie d'aller sur une page qui n'existe pas
