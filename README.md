@@ -21,9 +21,13 @@ Important d'installer pour lancer les scripts Python depuis l'application
 ```bash
 npm install --save-dev concurrently
 ```
-Et lancer avec :
+Et lancer l'application avec :
 ```bash
 npm run dev
+```
+Au lieu de :
+```bash
+ng serve
 ```
 
 Installer les librairies Python suivantes : 
