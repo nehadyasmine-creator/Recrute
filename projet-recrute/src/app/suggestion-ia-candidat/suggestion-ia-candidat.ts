@@ -48,19 +48,26 @@ export class SuggestionIaCandidat implements OnInit {
 
     this.uploading = true;
     this.errorMessage = '';
-    this.infoMessage = '';
+    this.infoMessage = 'Envoi et analyse du CV en cours...';
+    this.loadingSuggestions = true;
 
-    this.apiService.uploadCv(this.candidatId, this.selectedFile).subscribe({
-      next: () => {
+    this.apiService.getIASuggestionsFromPdf(this.selectedFile).subscribe({
+      next: (data: any) => {
+        console.log("Réponse de l'IA :", data);
         this.uploading = false;
-        this.selectedFile = null;
+        this.loadingSuggestions = false;
         this.hasCv = true;
-        this.infoMessage = 'CV importé avec succès. Chargement des suggestions IA...';
-        this.loadIASuggestions();
+        this.infoMessage = 'CV analysé avec succès !';
+        this.selectedFile = null;
+        
+        this.suggestions = Array.isArray(data) ? data : (data.suggestions || []); 
       },
-      error: () => {
+      error: (err) => {
+        console.error("Erreur de l'API IA :", err);
         this.uploading = false;
-        this.errorMessage = "Erreur lors de l'import du CV.";
+        this.loadingSuggestions = false;
+        this.infoMessage = '';
+        this.errorMessage = "Erreur lors de l'analyse du CV par l'IA.";
       },
     });
   }
@@ -78,6 +85,7 @@ export class SuggestionIaCandidat implements OnInit {
         this.hasCv = !!candidat?.cv;
         this.loading = false;
 
+        // Si le candidat a déjà un CV en base de données, on charge les suggestions via le GET
         if (this.hasCv) {
           this.loadIASuggestions();
         }
@@ -88,7 +96,6 @@ export class SuggestionIaCandidat implements OnInit {
       },
     });
   }
-
 
   private loadIASuggestions(): void {
     if (!this.candidatId) return;
