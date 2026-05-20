@@ -26,6 +26,7 @@ Et lancer avec :
 npm run dev
 ```
 
+Installer les librairies Python suivantes : 
 
 ```bash
 cd recrute-pyton
