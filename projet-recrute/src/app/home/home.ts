@@ -40,7 +40,7 @@ export class Home {
         }
 
         if (role === 'recruteur') {
-          this.router.navigate(['/accueil-employeur']);
+          this.router.navigate(['/liste-candidats']);
           return;
         }
 
