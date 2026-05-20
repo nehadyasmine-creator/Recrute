@@ -31,10 +31,6 @@ INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('With
 -- Recruteurs (Utilisateurs)
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Pierre', 'pierre.puiseux@gmail.com', '+33698549499', '$2b$10$/eFVi4D3NYGzk1G0SL7J9ePvPhtHdtNtzbZQHILGKUaYMpyhQN/EW', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Gaetan', 'gaetan.puiseux@gmail.com', '+33743643860', '$2b$10$8V3O0WsgGMnk0Tkq/tYVuefD9FCAFbHzMtErO09FQ15o6BXi33ssC', 'recruteur','2026-05-19');
-INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (2, 2, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Malo', 'malo.puiseux@gmail.com', '+33722841691', '$2b$10$rGjMIA8tusElq0U248t2zuHqN/vez7lax/HcxQaAUKafzSPZER0B6', 'recruteur','2026-05-19');
-INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (3, 3, 'Responsable RH');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Yasmine', 'yasmine.puiseux@gmail.com', '+33774552383', '$2b$10$o.mR90xhpVYNqfVDRPb/YeFrHf6rRp5wbJ5VnpTFP60.XUFLbp/hu', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (4, 4, 'Responsable RH');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Clément', 'clément.puiseux@gmail.com', '+33624620132', '$2b$10$LGzb9DpsXmgrfdSx8Vk9EOlrpW2YPWeRta7LwpRAyZF2D4Ll5r3Su', 'recruteur','2026-05-19');
