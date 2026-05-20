@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { ApiService } from '../service/api.service';
 
@@ -18,6 +18,7 @@ export class CandidatureEnregistre implements OnInit {
   
   private authService = inject(AuthService);
   private apiService = inject(ApiService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.loadSavedOffers();
@@ -75,7 +76,13 @@ export class CandidatureEnregistre implements OnInit {
     });
   }
 
-  removeSavedOffer(offerId: number): void {
+  goToDetail(offerId: number): void {
+    this.router.navigate(['/detail-offre', offerId]);
+  }
+
+  removeSavedOffer(offerId: number, event?: Event): void {
+    event?.stopPropagation();
+
     const removeFromCandidate = (candidateId: number) => {
       this.apiService.getCandidaturesByCandidat(candidateId).subscribe({
       next: (candidatures) => {
@@ -114,7 +121,4 @@ export class CandidatureEnregistre implements OnInit {
     });
   }
 
-  getOfferUrl(offerId: number): string {
-    return `/infos-offre/${offerId}`;
-  }
 }

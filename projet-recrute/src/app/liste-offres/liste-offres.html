@@ -11,13 +11,13 @@
 	} @else if (!loading && !error && offres.length > 0) {
 		<div class="offres-grid">
 			@for (offre of offres; track offre.id) {
-				<article class="offre-card">
+				<article class="offre-card" role="button" tabindex="0" (click)="goToDetail(offre.id)" (keydown.enter)="goToDetail(offre.id)">
 					<div class="offre-header">
 						<h2>{{ offre.titre }}</h2>
 						<button 
 							class="bookmark-btn"
 							[class.saved]="isOfferSaved(offre.id)"
-							(click)="toggleSaveOffer(offre)"
+							(click)="toggleSaveOffer(offre, $event)"
 							[title]="isOfferSaved(offre.id) ? 'Retirer de favoris' : 'Ajouter aux favoris'"
 						>
 							<i class="bi" [class.bi-bookmark-fill]="isOfferSaved(offre.id)" [class.bi-bookmark]="!isOfferSaved(offre.id)"></i>

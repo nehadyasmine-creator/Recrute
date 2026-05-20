@@ -1,0 +1,116 @@
+<div class="forgot-page">
+  <div class="forgot-card">
+    <div class="card-header">
+      <p class="eyebrow">Mot de passe oublié</p>
+      <h1>Vérification du compte</h1>
+      <p>Indiquez votre mail, choisissez votre type de compte, puis validez vos informations avant de définir un nouveau mot de passe.</p>
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert-box alert-error">{{ errorMessage }}</div>
+    }
+
+    @if (successMessage) {
+      <div class="alert-box alert-success">{{ successMessage }}</div>
+    }
+
+    @if (step === 'identify') {
+      <form class="wizard-form" (ngSubmit)="startVerification()">
+        <div class="field-grid">
+          <label class="form-field">
+            <span>Adresse e-mail</span>
+            <input type="email" name="email" [(ngModel)]="identityForm.email" placeholder="vous@exemple.com" />
+          </label>
+
+          <label class="form-field">
+            <span>Je suis</span>
+            <select name="role" [(ngModel)]="identityForm.role">
+              <option value="candidat">Candidat</option>
+              <option value="recruteur">Recruteur</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="primary-btn" [disabled]="loading">
+          {{ loading ? 'Vérification...' : 'Vérifier mon compte' }}
+        </button>
+      </form>
+    }
+
+    @if (step === 'verify') {
+      <div class="step-note">
+        <h2>Vérifiez les informations du compte</h2>
+        <p>Les accents ne sont pas pris en compte. Vous pouvez saisir les informations comme elles vous viennent, sans vous soucier des majuscules.</p>
+      </div>
+
+      <form class="wizard-form" (ngSubmit)="verifyIdentity()">
+        <div class="field-grid two-cols">
+          <label class="form-field">
+            <span>Nom</span>
+            <input type="text" name="nom" [(ngModel)]="verificationForm.nom" placeholder="Dupont" />
+          </label>
+
+          <label class="form-field">
+            <span>Prénom</span>
+            <input type="text" name="prenom" [(ngModel)]="verificationForm.prenom" placeholder="Jean" />
+          </label>
+
+          <label class="form-field">
+            <span>Téléphone</span>
+            <input type="text" name="telephone" [(ngModel)]="verificationForm.telephone" placeholder="06 12 34 56 78" />
+          </label>
+
+          @if (identityForm.role === 'recruteur') {
+            <label class="form-field">
+              <span>Poste</span>
+              <input type="text" name="poste" [(ngModel)]="verificationForm.poste" placeholder="Responsable RH" />
+            </label>
+          }
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="secondary-btn" (click)="step = 'identify'">Retour</button>
+          <button type="submit" class="primary-btn" [disabled]="loading">
+            {{ loading ? 'Vérification...' : 'Valider les informations' }}
+          </button>
+        </div>
+      </form>
+    }
+
+    @if (step === 'password') {
+      <div class="step-note">
+        <h2>Choisissez un nouveau mot de passe</h2>
+        <p>Saisissez-le deux fois pour confirmer qu’il est identique.</p>
+      </div>
+
+      <form class="wizard-form" (ngSubmit)="resetPassword()">
+        <div class="field-grid two-cols">
+          <label class="form-field full-width">
+            <span>Nouveau mot de passe</span>
+            <input type="password" name="nouveauMotDePasse" [(ngModel)]="passwordForm.nouveauMotDePasse" placeholder="Nouveau mot de passe" />
+          </label>
+
+          <label class="form-field full-width">
+            <span>Confirmer le mot de passe</span>
+            <input type="password" name="confirmationMotDePasse" [(ngModel)]="passwordForm.confirmationNouveauMotDePasse" placeholder="Confirmez le mot de passe" />
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="secondary-btn" (click)="step = 'verify'">Retour</button>
+          <button type="submit" class="primary-btn" [disabled]="loading">
+            {{ loading ? 'Réinitialisation...' : 'Réinitialiser mon mot de passe' }}
+          </button>
+        </div>
+      </form>
+    }
+
+    @if (step === 'done') {
+      <div class="done-state">
+        <h2>Mot de passe réinitialisé</h2>
+        <p>Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.</p>
+        <a routerLink="/" class="primary-btn">Retour à la connexion</a>
+      </div>
+    }
+  </div>
+</div>

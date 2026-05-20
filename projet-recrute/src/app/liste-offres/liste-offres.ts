@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
 
@@ -23,6 +23,7 @@ interface Offre {
 export class ListeOffres implements OnInit {
   private apiService = inject(ApiService);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   offres: Offre[] = [];
   loading = true;
@@ -73,7 +74,13 @@ export class ListeOffres implements OnInit {
     return this.savedOfferIds.has(offerId);
   }
 
-  toggleSaveOffer(offer: any): void {
+  goToDetail(offerId: number): void {
+    this.router.navigate(['/detail-offre', offerId]);
+  }
+
+  toggleSaveOffer(offer: any, event?: Event): void {
+    event?.stopPropagation();
+
     const userId = this.authService.getUserId();
     if (!userId) {
       this.error = 'Vous devez être connecté pour enregistrer une offre';

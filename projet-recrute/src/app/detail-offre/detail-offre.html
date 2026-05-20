@@ -1,0 +1,88 @@
+<div class="detail-page">
+	@if (loading) {
+		<div class="state-box">Chargement de l'offre...</div>
+	} @else if (errorMessage) {
+		<div class="state-box error">{{ errorMessage }}</div>
+	} @else if (offre) {
+		<article class="detail-card">
+			<header class="detail-header">
+				<div>
+					<p class="eyebrow">Détail de l'offre</p>
+					<h1>{{ offre.titre }}</h1>
+					<p class="meta-line">{{ displayOrFallback(offre.lieu) }} | {{ displayOrFallback(offre.typeContrat) }} | {{ formatDate(offre.datePublication) }}</p>
+				</div>
+
+				<button
+					class="bookmark-btn"
+					[class.saved]="isOfferSaved()"
+					(click)="toggleSaveOffer($event)"
+					[title]="isOfferSaved() ? 'Retirer de favoris' : 'Ajouter aux favoris'"
+				>
+					<i class="bi" [class.bi-bookmark-fill]="isOfferSaved()" [class.bi-bookmark]="!isOfferSaved()"></i>
+				</button>
+			</header>
+
+			<section class="detail-section">
+				<h2>Description</h2>
+				<p>{{ displayOrFallback(offre.description) }}</p>
+			</section>
+
+			<section class="detail-section">
+				<h2>Informations générales</h2>
+				<div class="info-grid">
+					<div class="info-item">
+						<span class="label">Salaire</span>
+						<span class="value">{{ offre.salaire ? (offre.salaire + ' EUR') : 'Non renseigné' }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Télétravail</span>
+						<span class="value">{{ yesNo(offre.teletravail) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Durée</span>
+						<span class="value">{{ displayOrFallback(offre.duree) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Expérience requise</span>
+						<span class="value">{{ offre.experienceRequise !== null && offre.experienceRequise !== undefined ? (offre.experienceRequise + ' an(s)') : 'Non renseignée' }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Date de début</span>
+						<span class="value">{{ formatDate(offre.dateDebut) }}</span>
+					</div>
+                    <div class="info-item">
+						<span class="label">Entreprise</span>
+						@if (entrepriseLink()) {
+							<a class="value company-link" [routerLink]="entrepriseLink()">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</a>
+						} @else {
+							<span class="value">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</span>
+						}
+					</div>
+				</div>
+			</section>
+            
+			<section class="detail-section">
+				<h2>Compétences nécessaires</h2>
+				@if (competencesRequises.length === 0) {
+					<p>Aucune compétence renseignée pour cette offre.</p>
+				} @else {
+					<div class="skills-wrap">
+						@for (comp of competencesRequises; track comp.nom) {
+							<span class="chip" [class.required]="comp.obligatoire">
+								{{ comp.nom }}
+								@if (comp.obligatoire) {
+									<small>Obligatoire</small>
+								}
+							</span>
+						}
+					</div>
+				}
+			</section>
+
+			<footer class="action-row">
+				<button class="secondary-btn" (click)="goBackToList()">Retour aux offres</button>
+				<a [routerLink]="['/postuler', offre.id]" class="primary-btn">Candidater</a>
+			</footer>
+		</article>
+	}
+</div>
