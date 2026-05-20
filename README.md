@@ -29,8 +29,9 @@ npm run dev
 Installer les librairies Python suivantes : 
 
 ```bash
-cd recrute-pyton
+cd recrute-python
 pip install pymongo
+pip install fastapi uvicorn python-multipart
 python.exe -m pip install --upgrade pip
 pip install pdfplumber
 pip install sentence_transformers
