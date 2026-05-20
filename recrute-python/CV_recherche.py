@@ -4,11 +4,10 @@ import numpy as np
 from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer
 from fastapi import FastAPI, UploadFile, File
-from fastapi.middleware.cors import CORSMiddleware # <--- AJOUT OBLIGATOIRE
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 # --- CONFIGURATION ---
-CV_PATH = "CV_axel_guenot.pdf"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "recrute_mongo"
@@ -35,9 +34,14 @@ class CRMAtchingEngine:
 
     def cosine_similarity(self, v1, v2):
         v1, v2 = np.array(v1), np.array(v2)
-        return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+        # Sécurité pour éviter la division par zéro
+        norm_v1 = np.linalg.norm(v1)
+        norm_v2 = np.linalg.norm(v2)
+        if norm_v1 == 0 or norm_v2 == 0:
+            return 0.0
+        return np.dot(v1, v2) / (norm_v1 * norm_v2)
 
-    def find_matches(self, cv_path=CV_PATH, top_n=5):
+    def find_matches(self, cv_path, top_n=5):
         raw_text = self.extract_cv_text(cv_path)
         if not raw_text: return []
 
@@ -48,11 +52,17 @@ class CRMAtchingEngine:
 
         results = []
         for offer in all_offers:
+            if 'embedding' not in offer:
+                continue
+                
             score = self.cosine_similarity(cv_embedding, offer['embedding'])
+            
+            # Gestion sécurisée des dictionnaires imbriqués
+            metadata = offer.get('metadata', {})
             results.append({
                 "idOffre": str(offer.get('_id', '')),
-                "titre": offer['metadata'].get('titre', 'Inconnu'),
-                "entreprise": offer['metadata'].get('entreprise', 'N/A'),
+                "titre": metadata.get('titre', 'Inconnu'),
+                "entreprise": metadata.get('entreprise', 'N/A'),
                 "score": round(score * 100, 2)
             })
 
@@ -63,7 +73,7 @@ class CRMAtchingEngine:
 if __name__ == "__main__":
     app = FastAPI()
 
-    # ANTI-ERREUR 1 : Autorise Angular (CORS) à lire les données Python
+    # Autorise Angular (CORS) à lire les données Python
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -74,23 +84,23 @@ if __name__ == "__main__":
 
     engine = CRMAtchingEngine()
 
-    # ANTI-ERREUR 2 : Route POST si vous envoyez un fichier physique un jour
+    # Route POST exclusive pour analyser un fichier envoyé par l'utilisateur
     @app.post("/api/match-cv")
     async def api_match_file(file: UploadFile = File(...)):
         temp_path = f"temp_{file.filename}"
-        with open(temp_path, "wb") as buffer:
-            buffer.write(await file.read())
-        suggestions = engine.find_matches(temp_path)
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
-        return suggestions
-
-    # ANTI-ERREUR 3 : Route GET pour répondre à la méthode Angular (getIASuggestions)
-    @app.get("/api/match-cv/{candidat_id}")
-    async def api_match_id(candidat_id: str):
-        # Pour que ça marche instantanément sans erreur de base de données,
-        # on utilise le CV par défaut déclaré dans la configuration.
-        return engine.find_matches(CV_PATH)
+        try:
+            # Sauvegarde temporaire du fichier uploadé
+            with open(temp_path, "wb") as buffer:
+                buffer.write(await file.read())
+                
+            # Analyse sémantique
+            suggestions = engine.find_matches(temp_path)
+            return suggestions
+            
+        finally:
+            # Nettoyage : s'exécute TOUJOURS, même si find_matches() plante
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
 
     # Lancement de l'API
     uvicorn.run(app, host="0.0.0.0", port=8000)
