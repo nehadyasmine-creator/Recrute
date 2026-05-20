@@ -1,0 +1,49 @@
+<div class="detail-page">
+	@if (loading) {
+		<div class="state-box">Chargement de l'entreprise...</div>
+	} @else if (errorMessage) {
+		<div class="state-box error">{{ errorMessage }}</div>
+	} @else if (entreprise) {
+		<article class="detail-card">
+			<header class="detail-header">
+				<div>
+					<p class="eyebrow">Détail de l'entreprise</p>
+					<h1>{{ entreprise.nom }}</h1>
+					<p class="meta-line">{{ displayOrFallback(entreprise.secteur) }} | {{ displayOrFallback(entreprise.taille) }}</p>
+				</div>
+
+				<button class="secondary-btn" (click)="goBack()">Retour aux offres</button>
+			</header>
+
+			<section class="detail-section">
+				<h2>Informations générales</h2>
+				<div class="info-grid">
+					<div class="info-item">
+						<span class="label">Secteur</span>
+						<span class="value">{{ displayOrFallback(entreprise.secteur) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Taille</span>
+						<span class="value">{{ displayOrFallback(entreprise.taille) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Siège social</span>
+						<span class="value">{{ displayOrFallback(entreprise.siegeSocial) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">SIREN</span>
+						<span class="value">{{ displayOrFallback(entreprise.siren) }}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Site web</span>
+						@if (websiteHref()) {
+							<a class="value website-link" [href]="websiteHref()" target="_blank" rel="noopener noreferrer">{{ displayOrFallback(entreprise.siteWeb) }}</a>
+						} @else {
+							<span class="value">{{ displayOrFallback(entreprise.siteWeb) }}</span>
+						}
+					</div>
+				</div>
+			</section>
+		</article>
+	}
+</div>

@@ -17,6 +17,17 @@ export class ApiService {
     return this.http.post(`${API}/auth/login`, { email, motDePasse });
   }
 
+  // Mot de passe oublié
+  initForgotPassword(data: any): Observable<any> {
+    return this.http.post(`${API}/utilisateurs/mot-de-passe-oublie/init`, data);
+  }
+  verifyForgotPassword(data: any): Observable<any> {
+    return this.http.post(`${API}/utilisateurs/mot-de-passe-oublie/verifier`, data);
+  }
+  resetForgotPassword(data: any): Observable<any> {
+    return this.http.post(`${API}/utilisateurs/mot-de-passe-oublie/reinitialiser`, data);
+  }
+
   // Candidats
   getCandidats(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidats`);
@@ -116,6 +127,9 @@ export class ApiService {
   getEntreprises(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/entreprises`);
   }
+  getEntrepriseById(id: number): Observable<any> {
+    return this.http.get<any>(`${API}/entreprises/${id}`);
+  }
   createEntreprise(data: any): Observable<any> {
     return this.http.post(`${API}/entreprises`, data);
   }
@@ -123,6 +137,9 @@ export class ApiService {
   // Competences
   getCompetences(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/competences`);
+  }
+  getCompetencesByOffre(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/competences-offres/offre/${id}`);
   }
   createCompetence(data: any): Observable<any> {
     return this.http.post(`${API}/competences`, data);

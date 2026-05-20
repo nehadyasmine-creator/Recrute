@@ -13,6 +13,10 @@ import { CandidatureEnregistre } from './candidature-enregistre/candidature-enre
 import { OffresPostulees } from './offres-postulees/offres-postulees';
 import { Admin } from './admin/admin';
 import { SuggestionIaCandidat } from './suggestion-ia-candidat/suggestion-ia-candidat';
+import { MdpOublie } from './mdp-oublie/mdp-oublie';
+import { DetailOffre } from './detail-offre/detail-offre';
+import { Postuler } from './postuler/postuler';
+import { DetailEntreprise } from './detail-entreprise/detail-entreprise';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -23,9 +27,13 @@ export const routes: Routes = [
     { path: 'modifier-profil-candidat', component: ModifierProfilCandidat},
     { path: 'modifier-profil-employeur', component: ModifierProfilEmployeur},
     { path: 'liste-offres', component: ListeOffres},
+    { path: 'detail-offre/:id', component: DetailOffre},
+    { path: 'detail-entreprise/:id', component: DetailEntreprise},
+    { path: 'postuler/:id', component: Postuler},
     { path: 'candidatures-enregistrees', component: CandidatureEnregistre},
     { path: 'offres-postulees', component: OffresPostulees},
     { path: 'suggestion-ia-candidat', component: SuggestionIaCandidat},
+    { path: 'mdp-oublie', component: MdpOublie},
     { path: 'admin', component: Admin},
     { path: 'qui-sommes-nous', component: QuiSommesNous},
     { path: 'liste-candidats', component: ListeCandidatsComponent},

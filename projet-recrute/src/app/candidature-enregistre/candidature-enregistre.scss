@@ -96,6 +96,12 @@
         background: linear-gradient(180deg, rgba(19, 42, 70, 0.8), rgba(27, 64, 104, 0.6));
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         transform: translateY(-4px);
+        cursor: pointer;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #2d76b4;
+        outline-offset: 2px;
       }
 
       .offer-header {
@@ -151,29 +157,6 @@
           margin-top: 12px;
           color: rgba(255, 255, 255, 0.7);
           line-height: 1.5;
-        }
-      }
-
-      .offer-footer {
-        padding: 12px 18px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-
-        .view-btn {
-          display: inline-block;
-          padding: 10px 18px;
-          background: linear-gradient(135deg, #2d76b4, #1f4d81);
-          color: white;
-          text-decoration: none;
-          border-radius: 8px;
-          font-weight: 500;
-          transition: all 0.2s ease;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-
-          &:hover {
-            background: linear-gradient(135deg, #3a8fd4, #2a5fa1);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateX(2px);
-          }
         }
       }
     }
