@@ -31,6 +31,8 @@ INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('With
 -- Recruteurs (Utilisateurs)
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Pierre', 'pierre.puiseux@gmail.com', '+33698549499', '$2b$10$/eFVi4D3NYGzk1G0SL7J9ePvPhtHdtNtzbZQHILGKUaYMpyhQN/EW', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Gaetan', 'gaetan.puiseux@gmail.com', '+33743643860', '$2b$10$8V3O0WsgGMnk0Tkq/tYVuefD9FCAFbHzMtErO09FQ15o6BXi33ssC', 'recruteur','2026-05-19');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Malo', 'malo.puiseux@gmail.com', '+33722841691', '$2b$10$rGjMIA8tusElq0U248t2zuHqN/vez7lax/HcxQaAUKafzSPZER0B6', 'recruteur','2026-05-19');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Yasmine', 'yasmine.puiseux@gmail.com', '+33774552383', '$2b$10$o.mR90xhpVYNqfVDRPb/YeFrHf6rRp5wbJ5VnpTFP60.XUFLbp/hu', 'recruteur','2026-05-19');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (4, 4, 'Responsable RH');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Clément', 'clément.puiseux@gmail.com', '+33624620132', '$2b$10$LGzb9DpsXmgrfdSx8Vk9EOlrpW2YPWeRta7LwpRAyZF2D4Ll5r3Su', 'recruteur','2026-05-19');
@@ -308,7 +310,7 @@ Pour postuler, merci d’envoyer CV et lettre de motivation à
 
 
 https://euraxess.ec.europa.eu/sites/default/files/brochures/eur_21620_en-fr.pdf', 'Orsay', 'CDD', 0.0, '36 mois', 2, '2026-05-12', '2026-05-12', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (2, 'Ingénieur Conception Électronique Analog/Power - H/F', 'Contexte
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (4, 'Ingénieur Conception Électronique Analog/Power - H/F', 'Contexte
 
 
 Dans le cadre du développement de systèmes électroniques embarqués critiques, nous recherchons un 
@@ -398,7 +400,7 @@ RTT
 
 
 Lieu du poste : En présentiel', 'Créteil', 'CDI', 45000.0, '', 0, NULL, '2026-05-12', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (3, 'Data Scientist', 'ContexteOnSpark est un cabinet spécialisé dans la GMAO/EAM et l''intégration SI, en forte croissance (40 collaborateurs, CA 3,3 M?). Dans le cadre de la diversification de son offre vers la Data et l''Intelligence Artificielle, nous recherchons un Data Scientist pour accompagner nos clients grands comptes. Vous travaillerez sur des données massives et complexes, et contribuerez à des cas d''usage à fort impact : modèles de prévision, simulateurs, analyses statistiques avancées, détection de tendances, dans un environnement Big Data on-premise (Cloudera CDP, Cloudera Machine Learning) avec accès à des IDE modernes (Jupyter, RStudio, VSCode). 
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (5, 'Data Scientist', 'ContexteOnSpark est un cabinet spécialisé dans la GMAO/EAM et l''intégration SI, en forte croissance (40 collaborateurs, CA 3,3 M?). Dans le cadre de la diversification de son offre vers la Data et l''Intelligence Artificielle, nous recherchons un Data Scientist pour accompagner nos clients grands comptes. Vous travaillerez sur des données massives et complexes, et contribuerez à des cas d''usage à fort impact : modèles de prévision, simulateurs, analyses statistiques avancées, détection de tendances, dans un environnement Big Data on-premise (Cloudera CDP, Cloudera Machine Learning) avec accès à des IDE modernes (Jupyter, RStudio, VSCode). 
 
 
 
@@ -3183,7 +3185,7 @@ INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire
 Un client localisé à Paris recherche un product owner disponible rapidement d''au moins 8/10 ans d''expérience. 
 
    2/3 jours de télétravail par semaine.', 'Paris', 'Freelance', 0.0, '', 8, '2026-05-12', '2026-05-12', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (15, 'INGENIEUR CONCEPTION MECANIQUE EXPERIMENTE F/H', 'À propos du poste
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (11, 'INGENIEUR CONCEPTION MECANIQUE EXPERIMENTE F/H', 'À propos du poste
 
   Dans le cadre d’un projet in situ client, nous recherchons un(e) Ingénieur(e) Conception Mécanique pour réaliser des activités d’études et de pilotage de la conception de systèmes aéroportés.
 
@@ -3270,7 +3272,7 @@ Rémunération : 40 000,00€ à 45 000,00€ par an
 
 
 Lieu du poste : En présentiel', 'Île-de-France', 'CDI', 40000.0, '', 0, NULL, '2026-05-12', FALSE);
-INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (16, 'Ingénieur Assurance Qualité et Affaires Réglementaires (H/F)', 'Chez Withings, nous souhaitons redonner aux individus le contrôle de leur santé.
+INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (13, 'Ingénieur Assurance Qualité et Affaires Réglementaires (H/F)', 'Chez Withings, nous souhaitons redonner aux individus le contrôle de leur santé.
 
 
 Nous avons l’obsession de créer des produits beaux et intuitifs, afin que chacun puisse les utiliser facilement au quotidien; nos balances connectées, montres hybrides, tensiomètres, moniteurs de sommeil et tous les dispositifs de notre gamme sont aujourd’hui utilisés par des millions d’utilisateurs.
