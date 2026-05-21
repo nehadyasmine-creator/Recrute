@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "python": "cd ../recrute-python && python cv_recherche.py",
+    "python": "cd ../recrute-python && python recherche_offres.py",
     "dev": "concurrently \"npm run python\" \"npm run start\""
   },
   "prettier": {
