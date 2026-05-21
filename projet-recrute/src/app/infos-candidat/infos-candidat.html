@@ -1,1 +1,80 @@
-<p>infos-candidat works!</p>
+<div class="contenu">
+  @if (loading) {
+    <p class="state">Chargement du profil...</p>
+  } @else if (error) {
+    <p class="state error">{{ error }}</p>
+  } @else {
+
+    <div class="profil-card">
+
+      <!-- HEADER -->
+      <div class="profil-header">
+        <div class="avatar">{{ getInitiales() }}</div>
+        <div class="identite">
+          <h1>{{ candidat.utilisateur?.prenom }} {{ candidat.utilisateur?.nom }}</h1>
+          <p class="email">{{ candidat.utilisateur?.email }}</p>
+          <div class="badges">
+            @if (candidat.typeContrat) {
+              <span class="badge badge-contrat">
+                <i class="bi bi-briefcase"></i> {{ candidat.typeContrat }}
+              </span>
+            }
+            @if (candidat.ville) {
+              <span class="badge badge-lieu">
+                <i class="bi bi-geo-alt"></i> {{ candidat.ville }}
+              </span>
+            }
+            @if (candidat.disponibilite) {
+              <span class="badge badge-dispo">
+                <i class="bi bi-calendar-check"></i> Disponible le {{ candidat.disponibilite | date:'dd/MM/yyyy' }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETENCES -->
+      @if (competences.length > 0) {
+        <div class="section">
+          <h2><i class="bi bi-stars"></i> Compétences</h2>
+          <div class="competences-list">
+            @for (comp of competences; track comp.nom) {
+              <span class="badge badge-competence">{{ comp.nom }}</span>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- EXPERIENCES -->
+      @if (experiences.length > 0) {
+        <div class="section">
+          <h2><i class="bi bi-briefcase"></i> Expériences</h2>
+          <div class="experiences-list">
+            @for (exp of experiences; track exp.id) {
+              <div class="experience-item">
+                <div class="exp-header">
+                  <h3>{{ exp.poste }}</h3>
+                  <span class="exp-dates">
+                    {{ exp.dateDebut | date:'MM/yyyy' }} — {{ exp.dateFin ? (exp.dateFin | date:'MM/yyyy') : 'Aujourd\'hui' }}
+                  </span>
+                </div>
+                <p class="exp-entreprise"><i class="bi bi-building"></i> {{ exp.entreprise }}</p>
+                @if (exp.description) {
+                  <p class="exp-description">{{ exp.description }}</p>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- RETOUR -->
+      <div class="actions">
+        <button class="btn-retour" [routerLink]="['/liste-candidats']">
+          <i class="bi bi-arrow-left"></i> Retour aux candidats
+        </button>
+      </div>
+
+    </div>
+  }
+</div>

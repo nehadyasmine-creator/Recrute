@@ -1,0 +1,178 @@
+.contenu {
+  padding: 40px 60px;
+  min-height: 100vh;
+}
+
+.profil-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* HEADER */
+.profil-header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a6b, #2d6abf);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .identite {
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f1f3d;
+      margin: 0 0 6px 0;
+    }
+
+    .email {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0 0 12px 0;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+}
+
+/* BADGES */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.badge-contrat { background: #dbeafe; color: #1d4ed8; }
+.badge-lieu { background: #f1f5f9; color: #475569; }
+.badge-dispo { background: #d1fae5; color: #065f46; }
+.badge-competence { background: #f3e8ff; color: #7c3aed; font-size: 13px; padding: 6px 12px; }
+
+/* SECTIONS */
+.section {
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+  }
+}
+
+.competences-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* EXPERIENCES */
+.experiences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.experience-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 3px solid #1a3a6b;
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f1f3d;
+      margin: 0;
+    }
+
+    .exp-dates {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  }
+
+  .exp-entreprise {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 8px 0;
+  }
+
+  .exp-description {
+    font-size: 13px;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 12px;
+
+  .btn-retour {
+    padding: 12px 24px;
+    background: #f1f5f9;
+    color: #0f1f3d;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+
+    &:hover { background: #e2e8f0; }
+  }
+}
+
+/* ÉTATS */
+.state {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  margin-top: 60px;
+
+  &.error { color: #fca5a5; }
+}
+
+@media (max-width: 768px) {
+  .contenu { padding: 24px 20px; }
+  .profil-header { flex-direction: column; }
+}
