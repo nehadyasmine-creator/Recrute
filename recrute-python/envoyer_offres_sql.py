@@ -61,7 +61,7 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             file_out.write(requete_sql)
             entreprises_traitees.add(nom_entreprise)
 
-    file_out.write('-- Recruteurs (Utilisateurs)\n')
+    file_out.write('\n-- Recruteurs (Utilisateurs)\n')
 
     prenoms = ['Yasmine', 'Malo', 'Gaetan', 'Martin', 'Pierre', 'Clément']
     shuffle(prenoms)
@@ -138,9 +138,6 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
         teletravail_brut = str(row.get('boolean', 'False')).strip().lower()
         teletravail_sql = 'TRUE' if teletravail_brut in ['true', '1', 'oui', 'yes'] else 'FALSE'
 
-        # CORRECTION DES GUILLEMETS DANS CETTE REQUÊTE :
-        # 1. Enlevé les '' autour de {date_debut_sql} (car ils y sont déjà s'il y a une date)
-        # 2. Corrigé la fin de la chaîne avant teletravail_sql
         requete_sql_offre = (
             f"INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, "
             f"experience_requise, date_debut, date_publication, teletravail) VALUES "
@@ -148,34 +145,103 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             f"{salaire}, '{duree_echappe}', {experience_requise}, {date_debut_sql}, '{date_publication}', "
             f"{teletravail_sql});\n"
         )
-
-        # ... (Fin de votre boucle for row in lignes_csv pour les offres)
         file_out.write(requete_sql_offre)
-    requetes_manuelles = textwrap.dedent("""
-                                         -- Candidats
-                                         INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite)
-                                         VALUES (2, 'CDI', 'Paris', '2026-04-01'),
-                                                (3, 'Freelance', 'Lyon', '2026-03-15');
 
-                                         -- Compétences des candidats
-                                         INSERT INTO CompetenceCandidat (id_candidat, id_competence, niveau)
-                                         VALUES (1, 1, 'avance'),        -- Bob : Java avancé
-                                                (1, 3, 'avance'),        -- Bob : Spring Boot avancé
-                                                (1, 5, 'intermediaire'), -- Bob : Docker intermédiaire
-                                                (2, 2, 'expert'),        -- Clara : Python expert
-                                                (2, 4, 'intermediaire');
-                                         -- Clara : React intermédiaire
+    # ==========================================================
+    # GESTION DES CANDIDATS (VIA LE DOSSIER CV ET LE DICTIONNAIRE)
+    # ==========================================================
+    file_out.write('\n-- ==========================\n')
+    file_out.write('-- Candidats\n')
+    file_out.write('-- ==========================\n')
 
-                                         -- Compétences requises pour les offres
-                                         INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire)
-                                         VALUES (1, 1, true),  -- Offre Java : Java obligatoire
-                                                (1, 3, true),  -- Offre Java : Spring Boot obligatoire
-                                                (1, 5, false), -- Offre Java : Docker optionnel
-                                                (2, 5, true),  -- Offre DevOps : Docker obligatoire
-                                                (2, 6, true); -- Offre DevOps : SQL obligatoire
-                                         """)
+    dossier_cv = os.path.join(dossier_actuel, 'CVs')
 
-    file_out.write(requetes_manuelles)
+    # Précisez uniquement les noms et prénoms ici
+    dictionnaire_candidats = {
+        "CV_axel_guenot.pdf": {
+            "nom": "Guenot",
+            "prenom": "Axel"
+        },
+        "CV_Martin_LADAN_TF1.pdf": {
+            "nom": "Ladan",
+            "prenom": "Martin"
+        }
+    }
+
+    villes_aleatoires = ['Paris', 'Lyon', 'Nantes', 'Bordeaux', 'Lille']
+    contrats_aleatoires = ['CDI', 'Freelance', 'CDD']
+
+    if os.path.exists(dossier_cv):
+        for fichier in os.listdir(dossier_cv):
+            if fichier in dictionnaire_candidats:
+                infos = dictionnaire_candidats[fichier]
+
+                i += 1  # On incrémente l'ID utilisateur
+
+                nom = infos['nom']
+                prenom = infos['prenom']
+
+                # Génération dynamique
+                email = prenom.lower() + '.' + nom.lower() + '@gmail.com'
+                telephone = '+33' + str(randint(600000000, 799999999))
+                motdepasse_clair = prenom + nom
+                role = 'candidat'
+                dateCreation = datetime.date.today()
+
+                type_contrat = contrats_aleatoires[randint(0, 2)]
+                ville = villes_aleatoires[randint(0, 4)]
+                disponibilite = (dateCreation + datetime.timedelta(days=randint(10, 60))).strftime('%Y-%m-%d')
+
+                # Échappement des apostrophes pour le SQL
+                nom_echappe = nom.replace("'", "''")
+                prenom_echappe = prenom.replace("'", "''")
+                email_echappe = email.replace("'", "''")
+                ville_echappe = ville.replace("'", "''")
+                fichier_echappe = fichier.replace("'", "''")  # Échappement du nom du fichier au cas où
+
+                # Hachage sécurisé
+                sel = bcrypt.gensalt(rounds=10)
+                motdepasse_hashe = bcrypt.hashpw(motdepasse_clair.encode('utf-8'), sel).decode('utf-8')
+
+                # 1. Requête Utilisateur
+                requete_sql_utilisateur = (
+                    f"INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES"
+                    f" ('{nom_echappe}', '{prenom_echappe}', '{email_echappe}', '{telephone}', '{motdepasse_hashe}', '{role}', '{dateCreation}');\n"
+                )
+                file_out.write(requete_sql_utilisateur)
+
+                # 2. Requête Candidat (Ajout de la colonne 'cv' et de la variable '{fichier_echappe}')
+                requete_sql_candidat = (
+                    f"INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES"
+                    f" ({i}, '{type_contrat}', '{ville_echappe}', '{disponibilite}', '{fichier_echappe}');\n"
+                )
+                file_out.write(requete_sql_candidat)
+
+    # ==========================================================
+    # GESTION DES COMPETENCES (CONSERVEES MANUELLEMENT)
+    # ==========================================================
+    requetes_competences = textwrap.dedent("""
+        -- ==========================
+        -- Compétences
+        -- ==========================
+        -- Compétences des candidats (NB: Vérifiez que id_candidat correspond bien aux nouveaux IDs générés)
+        INSERT INTO CompetenceCandidat (id_candidat, id_competence, niveau)
+        VALUES (1, 1, 'avance'),        -- Bob : Java avancé
+               (1, 3, 'avance'),        -- Bob : Spring Boot avancé
+               (1, 5, 'intermediaire'), -- Bob : Docker intermédiaire
+               (2, 2, 'expert'),        -- Clara : Python expert
+               (2, 4, 'intermediaire'); -- Clara : React intermédiaire
+
+        -- Compétences requises pour les offres
+        INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire)
+        VALUES (1, 1, true),  -- Offre Java : Java obligatoire
+               (1, 3, true),  -- Offre Java : Spring Boot obligatoire
+               (1, 5, false), -- Offre Java : Docker optionnel
+               (2, 5, true),  -- Offre DevOps : Docker obligatoire
+               (2, 6, true);  -- Offre DevOps : SQL obligatoire
+    """)
+
+    file_out.write(requetes_competences)
 
 # Fin du bloc 'with open(...)'
 print(f"Les requêtes SQL ont été générées avec succès dans : {chemin_sql}")
