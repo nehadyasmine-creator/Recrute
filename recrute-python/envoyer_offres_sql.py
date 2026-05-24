@@ -178,6 +178,10 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             "nom": "Ingrachen",
             "prenom": "Pierre"
         },
+        "CV_Flore_Barthes.pdf": {
+            "nom": "Barthes",
+            "prenom": "Flore"
+        },
         "CV_Louis_Guillemot_2026.pdf": {
             "nom": "Guillemot",
             "prenom": "Louis"
