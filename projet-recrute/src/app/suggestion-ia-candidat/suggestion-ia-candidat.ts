@@ -85,7 +85,7 @@ export class SuggestionIaCandidat implements OnInit {
         this.hasCv = !!candidat?.cv;
         this.loading = false;
 
-        // Si le candidat a déjà un CV en base de données, on charge les suggestions via le GET
+        // Si le candidat a déjà un CV en base de données, on charge les suggestions
         if (this.hasCv) {
           this.loadIASuggestions();
         }
@@ -102,17 +102,37 @@ export class SuggestionIaCandidat implements OnInit {
     
     this.loadingSuggestions = true;
     this.errorMessage = ''; 
+    this.infoMessage = 'Récupération de votre CV en cours...';
     
-    this.apiService.getIASuggestions(this.candidatId).subscribe({
-      next: (data: any) => {
-        console.log("Réponse de l'IA :", data); 
-        this.suggestions = Array.isArray(data) ? data : (data.suggestions || []); 
-        this.loadingSuggestions = false;
+    // 1. On télécharge le CV existant depuis l'API
+    this.apiService.downloadCv(this.candidatId).subscribe({
+      next: (cvBlob: Blob) => {
+        this.infoMessage = "CV récupéré, analyse par l'IA en cours...";
+
+        // 2. On convertit le Blob reçu en un objet File
+        const cvFile = new File([cvBlob], 'cv_candidat.pdf', { type: 'application/pdf' });
+
+        // 3. On envoie le fichier à l'IA via le endpoint Python existant
+        this.apiService.getIASuggestionsFromPdf(cvFile).subscribe({
+          next: (data: any) => {
+            console.log("Réponse de l'IA :", data); 
+            this.suggestions = Array.isArray(data) ? data : (data.suggestions || []); 
+            this.loadingSuggestions = false;
+            this.infoMessage = 'Recommandations IA générées avec succès !';
+          },
+          error: (err) => {
+            console.error("Erreur de l'API IA :", err); 
+            this.loadingSuggestions = false;
+            this.infoMessage = '';
+            this.errorMessage = "Impossible de récupérer les recommandations IA.";
+          }
+        });
       },
       error: (err) => {
-        console.error("Erreur de l'API IA :", err); 
+        console.error("Erreur lors de la récupération du CV :", err); 
         this.loadingSuggestions = false;
-        this.errorMessage = "Impossible de récupérer les recommandations IA.";
+        this.infoMessage = '';
+        this.errorMessage = "Impossible de récupérer votre CV enregistré.";
       }
     });
   }

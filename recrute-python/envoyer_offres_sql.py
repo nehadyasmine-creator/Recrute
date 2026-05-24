@@ -64,18 +64,23 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
     file_out.write('\n-- Recruteurs (Utilisateurs)\n')
 
     prenoms = ['Yasmine', 'Malo', 'Gaetan', 'Martin', 'Pierre', 'Clément']
-    shuffle(prenoms)
     noms = ['Nehad', 'Dufournier', 'Puiseux', 'Ladan', 'Ingrachen', 'Martinez']
-    shuffle(noms)
-    i = 0
+
+    paires_interdites = set(zip(prenoms, noms))
+
+    combinaisons_valides = [(p, n) for p in prenoms for n in noms if (p, n) not in paires_interdites]
+
+    shuffle(combinaisons_valides)
 
     entreprises_traitees = set()
     map_entreprise_recruteur = {}
 
+    i = 0
+
     for row in lignes_csv:
         nom_entreprise = row['entreprise']
-        nom = noms[(i // 6) % 6]
-        prenom = prenoms[i % 6]
+
+        prenom, nom = combinaisons_valides[i % len(combinaisons_valides)]
         email = prenom.lower() + '.' + nom.lower() + '@gmail.com'
         telephone = '+33' + str(randint(600000000, 799999999))
         motdepasse_clair = prenom + nom
@@ -154,9 +159,8 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
     file_out.write('-- Candidats\n')
     file_out.write('-- ==========================\n')
 
-    dossier_cv = os.path.join(dossier_actuel, 'CVs')
+    dossier_cv = os.path.abspath(os.path.join(dossier_actuel, '..', 'recrute-backend', 'uploads', 'cv'))
 
-    # Précisez uniquement les noms et prénoms ici
     dictionnaire_candidats = {
         "CV_axel_guenot.pdf": {
             "nom": "Guenot",
@@ -165,6 +169,30 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
         "CV_Martin_LADAN_TF1.pdf": {
             "nom": "Ladan",
             "prenom": "Martin"
+        },
+        "CV_Ambre_Lacombe.pdf": {
+            "nom": "Lacombe",
+            "prenom": "Ambre"
+        },
+        "CV_INGRACHEN_Pierre.pdf": {
+            "nom": "Ingrachen",
+            "prenom": "Pierre"
+        },
+        "CV_Louis_Guillemot_2026.pdf": {
+            "nom": "Guillemot",
+            "prenom": "Louis"
+        },
+        "CV_Mathilde_Carteron.pdf": {
+            "nom": "Carteron",
+            "prenom": "Mathilde"
+        },
+        "CV_Vanwormhoudt_Apolline.pdf": {
+            "nom": "Vanwormhoudt",
+            "prenom": "Apolline"
+        },
+        "CV_Yasmine_Nehad.pdf": {
+            "nom": "Nehad",
+            "prenom": "Yasmine"
         }
     }
 
