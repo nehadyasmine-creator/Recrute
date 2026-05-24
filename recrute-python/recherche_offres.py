@@ -45,19 +45,22 @@ class CRMAtchingEngine:
         raw_text = self.extract_cv_text(cv_path)
         if not raw_text: return []
 
-        print(f"[INFO] Analyse sémantique du CV...")
         cv_embedding = self.model.encode(raw_text).tolist()
 
         all_offers = list(self.collection.find({}, {"metadata": 1, "embedding": 1}))
 
+        # 👇 AJOUTE CETTE LIGNE POUR VÉRIFIER LA CONNEXION
+        print(f"[DEBUG] Offres recuperees dans la BD : {len(all_offers)}")
+
         results = []
         for offer in all_offers:
             if 'embedding' not in offer:
+                # 👇 AJOUTE CETTE LIGNE POUR VÉRIFIER LES DONNÉES
+                print(f"[ATTENTION] L'offre {offer.get('_id')} n'a pas d'embedding !")
                 continue
-                
+
             score = self.cosine_similarity(cv_embedding, offer['embedding'])
-            
-            # Gestion sécurisée des dictionnaires imbriqués
+
             metadata = offer.get('metadata', {})
             results.append({
                 "idOffre": str(offer.get('_id', '')),
@@ -87,20 +90,44 @@ if __name__ == "__main__":
     # Route POST exclusive pour analyser un fichier envoyé par l'utilisateur
     @app.post("/api/match-cv")
     async def api_match_file(file: UploadFile = File(...)):
+        print(f"\n{'=' * 50}")
+        print(f"[INPUT] NOUVELLE REQUETE RECUE")
+        print(f"[INFO] Nom du fichier : {file.filename}")
+        print(f"[INFO] Type de fichier : {file.content_type}")
+
         temp_path = f"temp_{file.filename}"
         try:
-            # Sauvegarde temporaire du fichier uploadé
+            file_content = await file.read()
+            print(f"[INFO] Taille du fichier : {len(file_content)} octets")
+
+            if len(file_content) == 0:
+                print("[ERREUR] Le fichier recu est vide !")
+                return []
+
             with open(temp_path, "wb") as buffer:
-                buffer.write(await file.read())
-                
-            # Analyse sémantique
+                buffer.write(file_content)
+
+            raw_text = engine.extract_cv_text(temp_path)
+            print(f"[PROCESSING] Texte extrait du PDF : {len(raw_text)} caracteres.")
+            if len(raw_text) == 0:
+                print("[ATTENTION] pdfplumber n'a trouve aucun texte dans ce PDF.")
+
+            print(f"[PROCESSING] Lancement de l'IA...")
             suggestions = engine.find_matches(temp_path)
+
+            print(f"[OUTPUT] Renvoi de {len(suggestions)} resultats au site :")
+            import json
+            print(json.dumps(suggestions, indent=2))
+            print(f"{'=' * 50}\n")
+
             return suggestions
-            
+
+        except Exception as e:
+            print(f"[CRASH] Une erreur s'est produite : {e}")
+            return []
+
         finally:
-            # Nettoyage : s'exécute TOUJOURS, même si find_matches() plante
             if os.path.exists(temp_path):
                 os.remove(temp_path)
-
     # Lancement de l'API
     uvicorn.run(app, host="0.0.0.0", port=8000)
