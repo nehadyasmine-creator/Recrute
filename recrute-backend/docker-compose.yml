@@ -30,6 +30,17 @@ services:
           MONGO_INITDB_DATABASE: recrute_mongo
     volumes:
       - mongo_data:/data/db
+      - ./src/main/resources/mongo-init:/docker-entrypoint-initdb.d/
+
+  mongo-express:
+    image: mongo-express
+    container_name: recrute-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+    depends_on:
+      - mongodb
 
 volumes:
   postgres_data:
