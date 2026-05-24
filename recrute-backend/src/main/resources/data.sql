@@ -30,37 +30,37 @@ INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('IDEM
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Withings', 'Issy-les-Moulineaux', 'Santé', 'https://www.withings.com', 'grand_groupe');
 
 -- Recruteurs (Utilisateurs)
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Gaetan', 'gaetan.ladan@gmail.com', '+33708025889', '$2b$10$Lo63Lgnda/KiXs9o2JG9bu53W2ISwG/s79vXSP0Uw59Io3SS/5dLC', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Martin', 'martin.ingrachen@gmail.com', '+33665675912', '$2b$10$wKTZHslypB3XaTqxjsC9WOggnqhozF78uswYe2xa3Ha9/BU438L7e', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Yasmine', 'yasmine.ingrachen@gmail.com', '+33606920217', '$2b$10$ktr4reR0Ee2ssfzSgh40c.GBq5ELYYfE.IupvCsVr6QS99t4Ljmsm', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Yasmine', 'yasmine.puiseux@gmail.com', '+33772982848', '$2b$10$jOIlJd2.GVddRzK2VMl0i.XQcmNbH/7M4FWNruQsISQsB3xxsGyla', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (2, 2, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Pierre', 'pierre.ladan@gmail.com', '+33644667888', '$2b$10$rNTOn.zxD0uDRd/kEgFuju1nzYxIaQQvlWA4NS8D4X8Eg/iO90gFm', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Yasmine', 'yasmine.ingrachen@gmail.com', '+33707431940', '$2b$10$78lP3uQOMa5f09bueL/D3ewzjizpDYaEoe5gtL42Bt0CndBD0VO1e', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (3, 3, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Yasmine', 'yasmine.dufournier@gmail.com', '+33790370944', '$2b$10$gvypYXOm3fVzkdn34Pj2HO4u18cDYK//QO2MS3YkUttprjGZRjinW', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Clément', 'clément.ingrachen@gmail.com', '+33697297869', '$2b$10$GLK/1Oz4rTfPDzglKGpdZ./B76UcWWaZ7qEjwVoYbKeDAg//Lf/aC', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (4, 4, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Gaetan', 'gaetan.martinez@gmail.com', '+33792195218', '$2b$10$rK.DfCPDgFf9Mtx33cKcmeunPyaQ9LBc1joZtaADlRXaqibIGJ02m', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Clément', 'clément.ladan@gmail.com', '+33799766974', '$2b$10$WO1QIk4GDL5Pa5vyVn5MYOCkg47R4gtTAbGCCVVMFrRy7jIX9YY4W', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (5, 5, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Pierre', 'pierre.puiseux@gmail.com', '+33717616723', '$2b$10$RJqkou5dErNSPesCuTwKUetqixPjdqgzxc06G/yontLXqSvgu.Nkq', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Yasmine', 'yasmine.ladan@gmail.com', '+33658887545', '$2b$10$YdPEqi42lmLjcteNKIP8eOSrVcWgPKqk7jOL1E69dH8QxDKRvuaHe', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (6, 6, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Martin', 'martin.puiseux@gmail.com', '+33713934022', '$2b$10$vP8.KRn3KAwNZ4yT0zxOgOl.MSRH94s.4vg8nJDhWOtYUII9k/LO2', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Malo', 'malo.puiseux@gmail.com', '+33769964453', '$2b$10$mFwXCigd7fTR8KVEmtKegO4nPhBQgWv0ft23C1qlwePvfyWOCqKSC', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (7, 7, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Clément', 'clément.nehad@gmail.com', '+33789746350', '$2b$10$r1PVBrXdxldu/blO.p.Zx.RiXyFXDPqVE7QI7aTOYlnZwJdFY17oy', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Martin', 'martin.nehad@gmail.com', '+33774953804', '$2b$10$DbQkDB.M/3g1DMImOxB9/et1BjCAzB7jjFA9A6C0j0PbTJu0aL8CS', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (8, 8, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Pierre', 'pierre.martinez@gmail.com', '+33773837269', '$2b$10$IpLkcywA0adasg.GbcQTLu3H5/q8zQZMZF7GMcgM7dslJ5XeQZsye', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Martin', 'martin.martinez@gmail.com', '+33799476656', '$2b$10$0Sc9XSwWO9aWbiScSZH7OuAye3Cyj3XL44jBrcWX7Bko7xWARG2Zu', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (9, 9, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Malo', 'malo.nehad@gmail.com', '+33659503975', '$2b$10$2dFjqsEU6/j6c.6cyjNO0O2nK7R1V017Q.T4gUokZG5ET4J.QA30S', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Pierre', 'pierre.ladan@gmail.com', '+33788578706', '$2b$10$OXpBmzbuJXHxcv8RjcP6m.hGOfY5IyQ9sbsXoRWn1xAfzeXUXKnAi', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (10, 10, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Clément', 'clément.puiseux@gmail.com', '+33611274394', '$2b$10$GMlc15rFolx4MFXMTXOjqORblPi1V8pakYGNlZE237W2ok7Rb.XlW', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Malo', 'malo.nehad@gmail.com', '+33661267060', '$2b$10$1I1U20uXPBUDJu31j57aeupqL.4QfQee.bdom23TLs9zA6wNtQhYu', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (11, 11, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Martin', 'martin.martinez@gmail.com', '+33788815060', '$2b$10$mbBgDkrObyNwOIisRHrPf.OiTwOoCCn6HD734pCmS7jnoEW5qmj9y', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Pierre', 'pierre.dufournier@gmail.com', '+33702638573', '$2b$10$KQSlrHlKf6nLBjx4f3hOYO23z2kPstWdVpkk7r/Uwt3ZKfiftH9m2', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (12, 12, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Yasmine', 'yasmine.ladan@gmail.com', '+33753565061', '$2b$10$MzCNkpVfm5CfMjD0IuD2KOR3uPqjlOg3ihuyaqr.wJyIr/PH9jTg6', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Martin', 'martin.dufournier@gmail.com', '+33669238225', '$2b$10$56mkjCBcd7ohg9fH8zCzMOE5s.miHNaowdYGVRKJ9l5ZxqDCBh212', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (13, 13, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Clément', 'clément.dufournier@gmail.com', '+33672379896', '$2b$10$8V0XBEiahlgjB1iQydENeOfjpQlqSrVlFdIyMiFwV2cviKGxrHTVS', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Malo', 'malo.ingrachen@gmail.com', '+33651245277', '$2b$10$LmJkENj.r.X4xbEIYKhjX.OwFAFNcRfUjDnfP4xIYbCGUTgcF/HRy', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (14, 14, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Martin', 'martin.ingrachen@gmail.com', '+33617560657', '$2b$10$UIoETW55sWU94eQ0525KoesbYBslhTAmQuVJ8P9J9WXhQBM40G8Du', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Gaetan', 'gaetan.nehad@gmail.com', '+33735290071', '$2b$10$bJ0mHOJ4tBMpM4sUAzrhJ.N3Qdu6pYmYDfmI5D8fvBrpr6LYdUctG', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (15, 15, 'Responsable RH');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Yasmine', 'yasmine.martinez@gmail.com', '+33703042601', '$2b$10$ieNyAlEHLhZC.L5oxPhSkekxWTL3iJfblnpN4aeiCHoXMAYZw9Nr.', 'recruteur','2026-05-24');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Puiseux', 'Pierre', 'pierre.puiseux@gmail.com', '+33733993418', '$2b$10$Jn0mBhgScCI23Mi.NnU14u0o/M1o8Zi94kaK/ZMfQzrQgE3UTLxiq', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (16, 16, 'Responsable RH');
 
 -- ==========================
@@ -3417,20 +3417,22 @@ Toutes les candidatures reçues sont étudiées indépendamment de l’origine e
 -- ==========================
 -- Candidats
 -- ==========================
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lacombe', 'Ambre', 'ambre.lacombe@gmail.com', '+33772067122', '$2b$10$My52opwtPyeUwjSGKB0bxe0mJz5RMYIwIrg32Fb9mR9bbh8.4qwfa', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (17, 'CDD', 'Lyon', '2026-06-06', 'CV_Ambre_Lacombe.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Pierre', 'pierre.ingrachen@gmail.com', '+33615747491', '$2b$10$D0q9.fjR4n9.dDWKtVRQCuSP6mmJcWneHjLMolUL3/bpFbMt5KRXC', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (18, 'CDD', 'Lyon', '2026-06-13', 'CV_INGRACHEN_Pierre.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Guillemot', 'Louis', 'louis.guillemot@gmail.com', '+33746416210', '$2b$10$2bY5TuHwwn5lN5aHw/kuQuu6zdeeCQ/DxPpIqicNGbDXLRN.F9Wxa', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (19, 'CDD', 'Paris', '2026-06-29', 'CV_Louis_Guillemot_2026.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Martin', 'martin.ladan@gmail.com', '+33633971573', '$2b$10$LJ2sNTYbAXPBsqObpxMNLuk30Kk2hqTGzPj.i.MhuKBf3M432QS6O', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (20, 'Freelance', 'Paris', '2026-06-18', 'CV_Martin_LADAN_TF1.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Carteron', 'Mathilde', 'mathilde.carteron@gmail.com', '+33611190217', '$2b$10$vPlLL.yJG9lfH3N4hJ17gu6fW2KClSLn8cMir2Ft8SXkDwBubp02a', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (21, 'CDD', 'Paris', '2026-06-29', 'CV_Mathilde_Carteron.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Vanwormhoudt', 'Apolline', 'apolline.vanwormhoudt@gmail.com', '+33748157355', '$2b$10$ANjQ.mXp0sm.GICvNpMyM.irF6iPZrC1E5IaWmYpsY8do0mBxY67q', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (22, 'Freelance', 'Lille', '2026-06-14', 'CV_Vanwormhoudt_Apolline.pdf');
-INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Yasmine', 'yasmine.nehad@gmail.com', '+33789301641', '$2b$10$XEmXBM6w2H9wZJui1ZE/reSPaxwSErJ3fsnc06EgQ3daiROZpMwxm', 'candidat', '2026-05-24');
-INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (23, 'CDI', 'Lille', '2026-06-24', 'CV_Yasmine_Nehad.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lacombe', 'Ambre', 'ambre.lacombe@gmail.com', '+33699100969', '$2b$10$Pb0r7rZ4d4h436OsfhcdheE9kfuRRxSxLwALRqGtewjmsHi/5lSpa', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (17, 'Freelance', 'Paris', '2026-07-07', 'CV_Ambre_Lacombe.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Barthes', 'Flore', 'flore.barthes@gmail.com', '+33723912763', '$2b$10$CtqulonoCz6xe2KmBG8JIOEnBSdJxUYgxOt1f3bZS1ldkhrs7SsWC', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (18, 'Freelance', 'Nantes', '2026-07-19', 'CV_Flore_Barthes.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Pierre', 'pierre.ingrachen@gmail.com', '+33688347746', '$2b$10$NL3nF7tPzkffhiY4eUNzxuLPq0zYlk33c4Lf8Agq3HTGTSVIE9ABa', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (19, 'CDI', 'Nantes', '2026-06-10', 'CV_INGRACHEN_Pierre.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Guillemot', 'Louis', 'louis.guillemot@gmail.com', '+33672329689', '$2b$10$82JKwYMpq3iGlTrOtEZhbeK86qkiGDIgEo3DlJn1Z3FCl5z5uV/k.', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (20, 'CDD', 'Paris', '2026-07-13', 'CV_Louis_Guillemot_2026.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ladan', 'Martin', 'martin.ladan@gmail.com', '+33636009877', '$2b$10$mClMvEM4l8lsB/xHuINlc.22RoXLM7K4fY.fDGP3GY3xdzFD8yyKm', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (21, 'CDD', 'Paris', '2026-06-12', 'CV_Martin_LADAN_TF1.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Carteron', 'Mathilde', 'mathilde.carteron@gmail.com', '+33703638101', '$2b$10$QmF/C43AEnoOEIjD.qL7duYALTvMjnpSUM7tOCAjA4ML4Uf50vsDy', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (22, 'CDD', 'Bordeaux', '2026-07-01', 'CV_Mathilde_Carteron.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Vanwormhoudt', 'Apolline', 'apolline.vanwormhoudt@gmail.com', '+33784509595', '$2b$10$/lSLGL2p6kDE7q5V4JzI7.qsbbMiH1v2k3P6X/dXP4XZpDqq2fbfe', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (23, 'Freelance', 'Nantes', '2026-06-14', 'CV_Vanwormhoudt_Apolline.pdf');
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Yasmine', 'yasmine.nehad@gmail.com', '+33691882621', '$2b$10$UneU2eOIoHKA4QpItj/jDOqTQMG7m0i297tBxzMMrNEkXFFq7U6.m', 'candidat', '2026-05-24');
+INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (24, 'CDI', 'Lyon', '2026-07-03', 'CV_Yasmine_Nehad.pdf');
 
 -- ==========================
 -- Compétences
