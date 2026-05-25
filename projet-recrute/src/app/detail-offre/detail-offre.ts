@@ -42,6 +42,15 @@ interface CompetenceOffreView {
   obligatoire: boolean;
 }
 
+interface CandidatureView {
+  id: number;
+  candidatNom: string;
+  candidatEmail: string;
+  statut: string;
+  dateCandidature?: string | null;
+  cv?: string | null;
+}
+
 @Component({
   selector: 'app-detail-offre',
   imports: [CommonModule, RouterLink],
@@ -59,6 +68,9 @@ export class DetailOffre implements OnInit {
   loading = true;
   errorMessage = '';
   savedOfferIds: Set<number> = new Set();
+  receivedApplications: CandidatureView[] = [];
+  loadingApplications = false;
+  applicationsError = '';
   private candidateId: number | null = null;
 
   ngOnInit(): void {
@@ -80,6 +92,7 @@ export class DetailOffre implements OnInit {
     this.apiService.getOffreById(id).subscribe({
       next: (offre) => {
         this.offre = offre;
+        this.loadReceivedApplications(id);
         this.loading = false;
         this.loadCompetences(id);
       },
@@ -121,6 +134,65 @@ export class DetailOffre implements OnInit {
         });
       },
     });
+  }
+
+  private loadReceivedApplications(offerId: number): void {
+    this.receivedApplications = [];
+    this.applicationsError = '';
+
+    if (!this.canEditOffer()) {
+      return;
+    }
+
+    this.loadingApplications = true;
+
+    this.apiService.getCandidaturesByOffre(offerId).subscribe({
+      next: (candidatures) => {
+        const filtered = (candidatures || []).filter((c: any) => c?.statut !== 'enregistree');
+
+        this.receivedApplications = filtered
+          .map((c: any): CandidatureView => {
+            const prenom = (c?.candidat?.utilisateur?.prenom || '').trim();
+            const nom = (c?.candidat?.utilisateur?.nom || '').trim();
+            const fullName = `${prenom} ${nom}`.trim();
+
+            return {
+              id: c?.id,
+              candidatNom: fullName || 'Candidat inconnu',
+              candidatEmail: c?.candidat?.utilisateur?.email || 'Email non renseigné',
+              statut: this.candidatureStatusLabel(c?.statut),
+              dateCandidature: c?.dateCandidature || null,
+              cv: c?.candidat?.cv || null,
+            };
+          })
+          .sort((a, b) => {
+            const dateA = a.dateCandidature ? new Date(a.dateCandidature).getTime() : 0;
+            const dateB = b.dateCandidature ? new Date(b.dateCandidature).getTime() : 0;
+            return dateB - dateA;
+          });
+
+        this.loadingApplications = false;
+      },
+      error: () => {
+        this.loadingApplications = false;
+        this.applicationsError = 'Impossible de charger les candidatures reçues pour cette offre.';
+      },
+    });
+  }
+
+  private candidatureStatusLabel(status?: string | null): string {
+    switch (status) {
+      case 'envoyee':
+        return 'Envoyée';
+      case 'en_attente':
+        return 'En attente';
+      case 'refusee':
+        return 'Refusée';
+      case 'acceptee':
+        return 'Acceptée';
+      default:
+        return this.displayOrFallback(status, 'Non renseigné');
+    }
   }
 
   isOfferSaved(): boolean {
