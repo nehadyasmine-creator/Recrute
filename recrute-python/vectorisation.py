@@ -83,6 +83,7 @@ class DataIndexer:
 
             doc = {
                 "metadata": {
+                    "id_offre_sql": offer.get('id'),
                     "titre": titre,
                     "entreprise": str(entreprise.get('nom', '')),
                     "secteur": str(entreprise.get('secteur', '')),
@@ -170,8 +171,8 @@ class DataIndexer:
 
             doc = {
                 "metadata": {
-                    "candidat_id": candidat.get('id'),
-                    "utilisateur_id": utilisateur.get('id'),
+                    "id_candidat_sql": candidat.get('id'),
+                    "id_utilisateur_sql": utilisateur.get('id'),
                     "nom": nom,
                     "prenom": prenom,
                     "type_contrat": type_contrat,
