@@ -1,9 +1,10 @@
 [
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce367"
+            "$oid": "6a14400201e987b3b97bd0ce"
         },
         "metadata": {
+            "id_offre_sql": 1,
             "titre": "Ingénieur en Imagerie préclinique (H/F)",
             "entreprise": "Institut Curie",
             "secteur": "Santé",
@@ -404,9 +405,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce368"
+            "$oid": "6a14400201e987b3b97bd0cf"
         },
         "metadata": {
+            "id_offre_sql": 2,
             "titre": "Ingénieur Conception Électronique Analog/Power - H/F",
             "entreprise": "Elsys Design",
             "secteur": "Électronique",
@@ -807,9 +809,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce369"
+            "$oid": "6a14400201e987b3b97bd0d0"
         },
         "metadata": {
+            "id_offre_sql": 3,
             "titre": "Data Scientist",
             "entreprise": "ONSPARK",
             "secteur": "Informatique",
@@ -1210,9 +1213,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36a"
+            "$oid": "6a14400201e987b3b97bd0d1"
         },
         "metadata": {
+            "id_offre_sql": 4,
             "titre": "Product Owner Espaces Digitaux F/H",
             "entreprise": "Banque Française Mutualiste",
             "secteur": "Banque",
@@ -1613,9 +1617,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36b"
+            "$oid": "6a14400201e987b3b97bd0d2"
         },
         "metadata": {
+            "id_offre_sql": 5,
             "titre": "Data Scientist Paiements",
             "entreprise": "Société Générale",
             "secteur": "Finance",
@@ -2016,9 +2021,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36c"
+            "$oid": "6a14400201e987b3b97bd0d3"
         },
         "metadata": {
+            "id_offre_sql": 6,
             "titre": "Ingénieur Système Equipements électroniques F/H",
             "entreprise": "Thales",
             "secteur": "Défense",
@@ -2419,9 +2425,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36d"
+            "$oid": "6a14400201e987b3b97bd0d4"
         },
         "metadata": {
+            "id_offre_sql": 7,
             "titre": "Chef de projet mission numérique en santé (H/F)",
             "entreprise": "Haute Autorité de Santé",
             "secteur": "Santé",
@@ -2822,9 +2829,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36e"
+            "$oid": "6a14400201e987b3b97bd0d5"
         },
         "metadata": {
+            "id_offre_sql": 8,
             "titre": "Ingénieur système IT F/H",
             "entreprise": "Thales",
             "secteur": "Défense",
@@ -3225,9 +3233,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce36f"
+            "$oid": "6a14400201e987b3b97bd0d6"
         },
         "metadata": {
+            "id_offre_sql": 9,
             "titre": "Data enginer IA - Freelance H/F",
             "entreprise": "Collective.work",
             "secteur": "Informatique",
@@ -3628,9 +3637,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce370"
+            "$oid": "6a14400201e987b3b97bd0d7"
         },
         "metadata": {
+            "id_offre_sql": 10,
             "titre": "Ingénieur/e concepteur/trice en mécatronique",
             "entreprise": "CS Instruments",
             "secteur": "Nanotechnologie",
@@ -4031,9 +4041,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce371"
+            "$oid": "6a14400201e987b3b97bd0d8"
         },
         "metadata": {
+            "id_offre_sql": 11,
             "titre": "Ingénieur Système F/H",
             "entreprise": "INPI",
             "secteur": "Informatique",
@@ -4434,9 +4445,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce372"
+            "$oid": "6a14400201e987b3b97bd0d9"
         },
         "metadata": {
+            "id_offre_sql": 12,
             "titre": "Ingénieur Système Equipements électroniques F/H",
             "entreprise": "Thales",
             "secteur": "Défense",
@@ -4837,9 +4849,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce373"
+            "$oid": "6a14400201e987b3b97bd0da"
         },
         "metadata": {
+            "id_offre_sql": 13,
             "titre": "Ingénieur système IT F/H",
             "entreprise": "Thales",
             "secteur": "Défense",
@@ -5240,9 +5253,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce374"
+            "$oid": "6a14400201e987b3b97bd0db"
         },
         "metadata": {
+            "id_offre_sql": 14,
             "titre": "Data scientist F/H/X",
             "entreprise": "ISOSKELE",
             "secteur": "Marketing",
@@ -5643,9 +5657,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce375"
+            "$oid": "6a14400201e987b3b97bd0dc"
         },
         "metadata": {
+            "id_offre_sql": 15,
             "titre": "Ingénieur DATA & IA",
             "entreprise": "BIOMEN",
             "secteur": "Santé",
@@ -6046,9 +6061,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce376"
+            "$oid": "6a14400201e987b3b97bd0dd"
         },
         "metadata": {
+            "id_offre_sql": 16,
             "titre": "Ingénieur Conception Mécanique (H/F)",
             "entreprise": "ALTEN",
             "secteur": "Aéronautique",
@@ -6449,9 +6465,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce377"
+            "$oid": "6a14400201e987b3b97bd0de"
         },
         "metadata": {
+            "id_offre_sql": 17,
             "titre": "Responsable Administrateur Systèmes et Réseaux",
             "entreprise": "RIVAGE INVESTMENT",
             "secteur": "Finance",
@@ -6852,9 +6869,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce378"
+            "$oid": "6a14400201e987b3b97bd0df"
         },
         "metadata": {
+            "id_offre_sql": 18,
             "titre": "Product Owner - Freelance H/F",
             "entreprise": "Collective.work",
             "secteur": "Informatique",
@@ -7255,9 +7273,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce379"
+            "$oid": "6a14400201e987b3b97bd0e0"
         },
         "metadata": {
+            "id_offre_sql": 19,
             "titre": "INGENIEUR CONCEPTION MECANIQUE EXPERIMENTE F/H",
             "entreprise": "IDEM for STUDIEL SERVICES",
             "secteur": "Aéronautique",
@@ -7658,9 +7677,10 @@
     },
     {
         "_id": {
-            "$oid": "6a1352bf745f85a00e2ce37a"
+            "$oid": "6a14400201e987b3b97bd0e1"
         },
         "metadata": {
+            "id_offre_sql": 20,
             "titre": "Ingénieur Assurance Qualité et Affaires Réglementaires (H/F)",
             "entreprise": "Withings",
             "secteur": "Santé",
