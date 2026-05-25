@@ -1,0 +1,219 @@
+.page-root {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 2.5%;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.menus {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    width: 100%;
+    justify-content: center;
+}
+
+.menu-options{
+    position: relative;
+    flex-direction: column;
+    width: 300px;
+    max-width: 40%;
+    margin-bottom: 50px;
+    margin-right:70px;
+
+    justify-content:space-between;
+
+
+    background: rgba(45, 117, 180, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding:0;
+    height:fit-content;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    box-shadow: inset 5px 0 2px -2px rgba(0, 0, 0, 0.1), inset -2px 0 8px -5px rgba(0, 0, 0, 0.1), inset 0 5px 8px -2px rgba(0, 0, 0, 0.1), inset 0 -5px 8px -2px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    overflow:hidden;
+}
+
+.menu-contenu{
+    position: relative;
+    flex-direction: column;
+    width: 960px;
+    max-width: 90%;
+    margin-bottom: 50px;
+    //height: 400px;
+    justify-content:space-between;
+
+
+    background: rgba(45, 117, 180, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    box-shadow: inset 5px 0 2px -2px rgba(0, 0, 0, 0.1), inset -2px 0 8px -5px rgba(0, 0, 0, 0.1), inset 0 5px 8px -2px rgba(0, 0, 0, 0.1), inset 0 -5px 8px -2px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    align-items: stretch;
+}
+
+.logout {
+    color: #ffb4b4 !important;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.list-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.add-card {
+    margin-top: 14px;
+}
+
+.password-card {
+    margin-top: 18px;
+}
+
+.pdp-card {
+    margin-top: 18px;
+}
+
+.pdp-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.pdp-preview,
+.pdp-fallback {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.pdp-preview {
+    object-fit: cover;
+}
+
+.pdp-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.cv-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cv-preview-wrapper {
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cv-preview {
+    width: 100%;
+    min-height: 620px;
+    border: none;
+    background: #fff;
+}
+
+.table {
+    --bs-table-bg: transparent !important; 
+    --bs-table-color: white !important;
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    margin-bottom:0;
+
+    thead, tbody, tfoot, tr, td, th {
+        background-color: transparent !important;
+        color: white !important;
+        box-shadow: none !important; 
+        padding:15px;
+        cursor:pointer;
+    }
+
+    tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+        transition: 0.3s;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        &:last-child {
+        border-bottom: none !important;
+    }   
+    }
+}
+
+@media (max-width: 992px) {
+    .menus {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-options {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 18px;
+    }
+
+    .menu-contenu {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

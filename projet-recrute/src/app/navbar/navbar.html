@@ -6,8 +6,11 @@
     <a class="nav-item nav-link" routerLink="qui-sommes-nous">Qui sommes-nous ?</a>
     <a class="nav-item nav-link" routerLink="faq">F.A.Q.</a>
     <a class="nav-item nav-link" routerLink="contactez-nous">Contactez-nous</a>
+    <a class="nav-item nav-link" routerLink="/liste-offres">Offres</a>
     @if (isAdmin()) {
       <a class="nav-item nav-link admin-link" routerLink="/admin">Admin</a>
+    }@else if (isRecruiter()) {
+      <a class="nav-item nav-link" routerLink="/liste-candidats">Candidats</a>
     }
   </div>
   
@@ -15,6 +18,12 @@
     <div class="profile-menu" title="Mon profil" [class.active]="isProfileRouteActive()"
         (mouseenter)="openDropdown()"
         (mouseleave)="closeDropdown()">
+      <a class="message-link" [routerLink]="'/messagerie'" title="Messagerie" (click)="showProfileDropdown = false">
+        <i class="bi bi-chat-dots-fill"></i>
+        @if (messageUnreadCount > 0) {
+          <span class="message-badge" aria-label="Messages non lus"></span>
+        }
+      </a>
       <a class="nav-item avatar-link" [routerLink]="getProfileLink()">
         <div class="avatar-circle">
           @if (avatarUrl) {
@@ -35,9 +44,15 @@
             <a routerLink="/modifier-profil-employeur" class="dropdown-link" (click)="showProfileDropdown = false">
               <i class="bi bi-person"></i> Mon profil
             </a>
-            <a routerLink="/" class="dropdown-link" (click)="showProfileDropdown = false">
-              <i class="bi bi-briefcase"></i> Mon entreprise
-            </a>
+            @if (entrepriseId) {
+              <a [routerLink]="['/detail-entreprise', entrepriseId]" class="dropdown-link" (click)="showProfileDropdown = false">
+                <i class="bi bi-briefcase"></i> Mon entreprise
+              </a>
+            } @else {
+              <span class="dropdown-link disabled" aria-disabled="true">
+                <i class="bi bi-briefcase"></i> Mon entreprise
+              </span>
+            }
             <a routerLink="/mes-offres" class="dropdown-link" (click)="showProfileDropdown = false">
               <i class="bi bi-inboxes"></i> Mes offres
             </a>

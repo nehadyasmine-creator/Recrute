@@ -12,7 +12,9 @@
 					<p class="meta-line">{{ displayOrFallback(entreprise.secteur) }} | {{ displayOrFallback(entreprise.taille) }}</p>
 				</div>
 
-				<button class="secondary-btn" (click)="goBack()">Retour aux offres</button>
+				<div class="header-actions">
+					<a class="secondary-btn" [routerLink]="['/modifier-profil-employeur']" [queryParams]="{ onglet: 'entreprise' }">Modifier</a>
+				</div>
 			</header>
 
 			<section class="detail-section">

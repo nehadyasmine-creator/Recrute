@@ -1,1 +1,147 @@
-<p>modifier-profil-employeur works!</p>
+<div class="content page-root">
+    <h1>Votre profil</h1>
+    @if (isLoading) {
+    <p>Chargement du profil...</p>
+    }
+
+    @if (errorMessage) {
+    <div class="alert alert-danger w-100" role="alert">{{ errorMessage }}</div>
+    }
+
+    @if (infoMessage) {
+    <div class="alert alert-success w-100" role="alert">{{ infoMessage }}</div>
+    }
+
+    <div class="menus">
+        <div class="menu-options">
+            <table class="table table-borderless table-hover">
+                <tbody>
+                    <tr (click)="changerOnglet('infos')" [class.active]="ongletActif === 'infos'">
+                        <td>Informations personnelles</td>
+                    </tr>
+                    <tr (click)="changerOnglet('entreprise')" [class.active]="ongletActif === 'entreprise'">
+                        <td>Entreprise</td>
+                    </tr>
+                    <tr>
+                        <td (click)="logout()" class="logout">Déconnexion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="menu-contenu">
+            @switch (ongletActif) {
+            @case ('infos') {
+            <h2>Informations du recruteur</h2>
+
+            <div class="item-card pdp-card mt-3">
+                <h5>Photo de profil</h5>
+                <div class="pdp-preview-row">
+                    @if (pdpPreviewUrl) {
+                    <img class="pdp-preview" [src]="pdpPreviewUrl" alt="Photo de profil" />
+                    } @else {
+                    <div class="pdp-fallback">{{ getUtilisateurInitiales() }}</div>
+                    }
+                    <div>
+                        <p class="mb-2">Ajoutez ou remplacez votre photo de profil.</p>
+                        <input type="file" (change)="onPdpSelected($event)" accept="image/*" />
+                    </div>
+                </div>
+                <div class="actions-row">
+                    <button class="btn btn-light" (click)="uploadPdp()" [disabled]="!selectedPdpFile">
+                        Enregistrer la photo
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div>
+                    <label class="form-label">Nom</label>
+                    <input class="form-control" [(ngModel)]="utilisateurForm.nom" />
+                </div>
+                <div>
+                    <label class="form-label">Prénom</label>
+                    <input class="form-control" [(ngModel)]="utilisateurForm.prenom" />
+                </div>
+                <div>
+                    <label class="form-label">Email</label>
+                    <input class="form-control" [(ngModel)]="utilisateurForm.email" />
+                </div>
+                <div>
+                    <label class="form-label">Téléphone</label>
+                    <input class="form-control" [(ngModel)]="utilisateurForm.telephone" />
+                </div>
+                <div>
+                    <label class="form-label">Poste</label>
+                    <input class="form-control" [(ngModel)]="recruteurForm.poste" />
+                </div>
+            </div>
+
+            <div class="actions-row">
+                <button class="btn btn-light" (click)="saveInfos()">Enregistrer les informations</button>
+            </div>
+
+            <div class="item-card password-card mt-3">
+                <h5>Changer le mot de passe</h5>
+                <div class="form-grid">
+                    <div>
+                        <label class="form-label">Ancien mot de passe</label>
+                        <input class="form-control" type="password" [(ngModel)]="passwordForm.ancienMotDePasse" />
+                    </div>
+                    <div>
+                        <label class="form-label">Nouveau mot de passe</label>
+                        <input class="form-control" type="password" [(ngModel)]="passwordForm.nouveauMotDePasse" />
+                    </div>
+                    <div class="full-width">
+                        <label class="form-label">Confirmer le nouveau mot de passe</label>
+                        <input class="form-control" type="password" [(ngModel)]="passwordForm.confirmationNouveauMotDePasse" />
+                    </div>
+                </div>
+                <div class="actions-row">
+                    <button class="btn btn-light" (click)="changePassword()">Modifier le mot de passe</button>
+                </div>
+            </div>
+            }
+
+            @case ('entreprise') {
+            <h2>Informations de l'entreprise</h2>
+
+            <div class="form-grid">
+                <div>
+                    <label class="form-label">Nom</label>
+                    <input class="form-control" [(ngModel)]="entrepriseForm.nom" />
+                </div>
+                <div>
+                    <label class="form-label">Secteur d'activité</label>
+                    <input class="form-control" [(ngModel)]="entrepriseForm.secteur" />
+                </div>
+                <div>
+                    <label class="form-label">Siège Social</label>
+                    <input class="form-control" [(ngModel)]="entrepriseForm.siegeSocial" />
+                </div>
+                <div>
+                    <label class="form-label">SIREN</label>
+                    <input class="form-control" [(ngModel)]="entrepriseForm.siren" />
+                </div>
+                <div>
+                    <label class="form-label">Site Web</label>
+                    <input class="form-control" [(ngModel)]="entrepriseForm.siteWeb" />
+                </div>
+                <div>
+                    <label class="form-label">Taille de l'entreprise</label>
+                    <select class="form-select" [(ngModel)]="entrepriseForm.taille">
+                        <option value="">Non renseigné</option>
+                        @for (taille of taillesEntreprises; track taille) {
+                        <option [value]="taille">{{ taille }}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions-row">
+                <button class="btn btn-light" (click)="saveEntreprise()">Enregistrer les informations de l'entreprise</button>
+            </div>
+        }
+    }
+    </div>
+</div>

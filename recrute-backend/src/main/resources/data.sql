@@ -3454,3 +3454,15 @@ VALUES (1, 1, true),  -- Offre Java : Java obligatoire
        (1, 5, false), -- Offre Java : Docker optionnel
        (2, 5, true),  -- Offre DevOps : Docker obligatoire
        (2, 6, true);  -- Offre DevOps : SQL obligatoire
+
+-- ==========================
+-- Candidature et messagerie de test
+-- ==========================
+INSERT INTO Candidature (id_candidat, id_offre, score_matching, date_candidature, lettre_motivation, statut)
+VALUES (1, 1, 91.50, '2026-05-25', 'Bonjour, je suis très intéressée par cette mission et disponible pour un entretien.', 'en_attente');
+
+INSERT INTO Messagerie (id_candidature, id_recruteur, id_candidat, message, sendAt, lu)
+VALUES (1, 1, 1, 'Bonjour Ambre, merci pour votre candidature. Nous avons bien reçu votre dossier et revenons vers vous rapidement.', '2026-05-25 09:00:00', true),
+      (1, 1, 1, 'Bonjour, merci pour votre retour. Je reste disponible pour un échange cette semaine.', '2026-05-25 09:35:00', false),
+      (1, 1, 1, 'Parfait, pouvons-nous prévoir un entretien jeudi à 14h ?', '2026-05-25 10:10:00', false),
+      (1, 1, 1, 'Oui, jeudi 14h me convient très bien. Merci !', '2026-05-25 10:42:00', false);
