@@ -3459,7 +3459,14 @@ VALUES (1, 1, true),  -- Offre Java : Java obligatoire
 -- Candidature et messagerie de test
 -- ==========================
 INSERT INTO Candidature (id_candidat, id_offre, score_matching, date_candidature, lettre_motivation, statut)
-VALUES (1, 1, 91.50, '2026-05-25', 'Bonjour, je suis très intéressée par cette mission et disponible pour un entretien.', 'en_attente');
+VALUES (1, 1, 91.50, '2026-05-25', 'Bonjour, je suis très intéressée par cette mission et disponible pour un entretien.', 'en_attente'),
+       (2, 1, 86.30, '2026-05-24', 'Je souhaite rejoindre votre équipe et mettre mes compétences Java/Spring au service de vos projets.', 'envoyee'),
+       (3, 2, 88.10, '2026-05-23', 'Je suis motivée par ce poste et disponible rapidement pour un premier échange.', 'en_attente'),
+       (4, 5, 92.40, '2026-05-22', 'Votre offre correspond à mon parcours en développement full stack, je serais ravie d en discuter.', 'acceptee'),
+       (5, 5, 79.00, '2026-05-21', 'Je candidate avec enthousiasme et reste disponible pour tout complément d information.', 'envoyee'),
+       (6, 5, 74.80, '2026-05-20', 'Je suis particulièrement intéressé par vos problématiques métier et la stack proposée.', 'en_attente'),
+       (7, 8, 81.25, '2026-05-19', 'Mon expérience en environnement agile me permettra de contribuer efficacement dès le début.', 'refusee'),
+       (8, 10, 84.55, '2026-05-18', 'Je souhaite participer activement à vos projets et apporter ma rigueur technique.', 'envoyee');
 
 INSERT INTO Messagerie (id_candidature, id_recruteur, id_candidat, expediteur_role, message, sendAt, lu)
 VALUES (1, 1, 1, 'recruteur', 'Bonjour Ambre, merci pour votre candidature. Nous avons bien reçu votre dossier et revenons vers vous rapidement.', '2026-05-25 09:00:00', true),

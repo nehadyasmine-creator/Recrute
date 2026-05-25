@@ -165,6 +165,54 @@ h1 {
 	opacity: 0.9;
 }
 
+.applications-error {
+	color: #ffd7d7 !important;
+}
+
+.applications-list {
+	display: grid;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.application-item {
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 12px;
+
+	h3 {
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	p {
+		margin: 6px 0 0;
+		line-height: 1.45;
+		color: rgba(255, 255, 255, 0.9);
+	}
+}
+
+.application-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.status-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	border-radius: 999px;
+	border: 1px solid rgba(96, 165, 250, 0.4);
+	background: rgba(96, 165, 250, 0.14);
+	color: #dbeafe;
+}
+
 .action-row {
 	margin-top: 26px;
 	display: flex;

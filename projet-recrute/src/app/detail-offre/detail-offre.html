@@ -79,6 +79,33 @@
 				}
 			</section>
 
+			@if (canEditOffer()) {
+				<section class="detail-section">
+					<h2>Candidatures reçues</h2>
+					@if (loadingApplications) {
+						<p>Chargement des candidatures...</p>
+					} @else if (applicationsError) {
+						<p class="applications-error">{{ applicationsError }}</p>
+					} @else if (receivedApplications.length === 0) {
+						<p>Aucune candidature reçue pour le moment.</p>
+					} @else {
+						<div class="applications-list">
+							@for (candidature of receivedApplications; track candidature.id) {
+								<article class="application-item">
+									<div class="application-head">
+										<h3>{{ candidature.candidatNom }}</h3>
+										<span class="status-pill">{{ candidature.statut }}</span>
+									</div>
+									<p>{{ candidature.candidatEmail }}</p>
+									<p>Date de candidature : {{ formatDate(candidature.dateCandidature) }}</p>
+									<p>CV : {{ displayOrFallback(candidature.cv) }}</p>
+								</article>
+							}
+						</div>
+					}
+				</section>
+			}
+
 			<footer class="action-row">
 				<button class="secondary-btn" (click)="goBackToList()">Retour aux offres</button>
 				@if (canEditOffer()) {
