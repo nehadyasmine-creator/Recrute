@@ -37,6 +37,14 @@ public class MessagerieService {
         return messagerieRepository.save(messagerie);
     }
 
+    public Optional<Messagerie> markAsRead(Long id) {
+        return messagerieRepository.findById(id)
+                .map(message -> {
+                    message.setLu(true);
+                    return messagerieRepository.save(message);
+                });
+    }
+
     public void delete(Long id) {
         messagerieRepository.deleteById(id);
     }

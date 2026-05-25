@@ -237,6 +237,9 @@ export class ApiService {
   sendMessage(data: any): Observable<any> {
     return this.http.post(`${API}/messagerie`, data);
   }
+  markMessageAsRead(id: number): Observable<any> {
+    return this.http.put(`${API}/messagerie/${id}/lu`, {});
+  }
 
   public getIASuggestionsFromPdf(file: File) {
     const formData = new FormData();

@@ -166,7 +166,7 @@ export class Navbar {
 
         this.apiService.getMessagesByRecruteur(recruteur.id).subscribe({
           next: (messages) => {
-            this.messageUnreadCount = (messages || []).filter((message) => !message?.lu).length;
+            this.messageUnreadCount = (messages || []).filter((message) => this.isUnreadFromOppositeSide(message, 'recruteur')).length;
           },
           error: () => {
             this.messageUnreadCount = 0;
@@ -189,7 +189,7 @@ export class Navbar {
 
         this.apiService.getMessagesByCandidat(candidat.id).subscribe({
           next: (messages) => {
-            this.messageUnreadCount = (messages || []).filter((message) => !message?.lu).length;
+            this.messageUnreadCount = (messages || []).filter((message) => this.isUnreadFromOppositeSide(message, 'candidat')).length;
           },
           error: () => {
             this.messageUnreadCount = 0;
@@ -205,6 +205,23 @@ export class Navbar {
   private normalizeRole(role?: string): string | null {
     const normalizedRole = (role || '').trim().toLowerCase();
     return normalizedRole || null;
+  }
+
+  private isUnreadFromOppositeSide(message: any, currentRole: 'recruteur' | 'candidat'): boolean {
+    if (message?.lu) {
+      return false;
+    }
+
+    const senderRole = this.normalizeRole(message?.expediteurRole);
+    if (senderRole) {
+      return currentRole === 'recruteur'
+        ? senderRole === 'candidat'
+        : senderRole === 'recruteur';
+    }
+
+    return currentRole === 'recruteur'
+      ? !!message?.candidat?.id && !message?.recruteur?.id
+      : !!message?.recruteur?.id && !message?.candidat?.id;
   }
 
   private computeInitials(prenom?: string, nom?: string): string {

@@ -39,19 +39,31 @@
 			} @else {
 				<div class="discussion-list">
 					@for (discussion of discussions; track discussion.candidature.id) {
-						<button class="discussion-item" [class.active]="selectedDiscussion?.candidature?.id === discussion.candidature?.id" (click)="selectDiscussion(discussion)">
+						<div class="discussion-item" [class.active]="selectedDiscussion?.candidature?.id === discussion.candidature?.id" (click)="selectDiscussion(discussion)">
 							<div class="discussion-topline">
-								<strong>{{ discussion.title }}</strong>
+								@if (getCandidateLink(discussion)) {
+									<a class="discussion-title-link" [routerLink]="getCandidateLink(discussion)" (click)="$event.stopPropagation()">
+										<strong>{{ discussion.title }}</strong>
+									</a>
+								} @else {
+									<strong>{{ discussion.title }}</strong>
+								}
 								@if (hasUnreadMessages(discussion)) {
 									<span class="unread-pill">{{ discussion.unreadCount }}</span>
 								}
 							</div>
-							<p>{{ discussion.subtitle }}</p>
+							@if (getOfferLink(discussion)) {
+								<a class="discussion-subtitle-link" [routerLink]="getOfferLink(discussion)" (click)="$event.stopPropagation()">
+									<p>{{ discussion.subtitle }}</p>
+								</a>
+							} @else {
+								<p>{{ discussion.subtitle }}</p>
+							}
 							<div class="discussion-meta">
 								<span>{{ getStatusLabel(discussion.candidature?.statut) }}</span>
 								<span>{{ getLatestLabel(discussion) | date:'dd/MM/yyyy HH:mm' }}</span>
 							</div>
-						</button>
+						</div>
 					}
 				</div>
 			}
@@ -63,8 +75,8 @@
 					<header class="conversation-header">
 						<div>
 							<p class="eyebrow">Conversation active</p>
-							<h2>{{ selectedDiscussion.title }}</h2>
-							<p class="subtitle">{{ selectedDiscussion.subtitle }}</p>
+							<h2 class="discussion-title-link" [routerLink]="getCandidateLink(selectedDiscussion)">{{ selectedDiscussion.title }}</h2>
+							<p class="discussion-subtitle-link" [routerLink]="getOfferLink(selectedDiscussion)">{{ selectedDiscussion.subtitle }}</p>
 						</div>
 
 						<div class="conversation-tags">
@@ -84,7 +96,15 @@
 							@for (message of selectedDiscussion.messages; track message.id) {
 								<article class="message-card" [class.unread]="!message.lu">
 									<div class="message-topline">
-										<span>Message</span>
+										<span>
+											@if (isRecruiterMessage(message)) {
+												Recruteur
+											} @else if (isCandidateMessage(message)) {
+												Candidat
+											} @else {
+												Message
+											}
+										</span>
 										<span>{{ message.sendAt | date:'dd/MM/yyyy HH:mm' }}</span>
 									</div>
 									<p>{{ message.message }}</p>
@@ -93,6 +113,11 @@
 											<span class="chip success">Lu</span>
 										} @else {
 											<span class="chip warning">En attente</span>
+											@if (canMarkAsRead(message)) {
+												<button type="button" class="btn btn-sm btn-outline-primary mark-read-btn" (click)="markAsRead(message)">
+													Marquer comme lu
+												</button>
+											}
 										}
 									</div>
 								</article>

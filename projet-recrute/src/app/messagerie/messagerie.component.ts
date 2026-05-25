@@ -117,6 +117,7 @@ export class Messagerie implements OnInit {
 
     const payload: any = {
       candidature: { id: candidatureId },
+      expediteurRole: this.userRole,
       message: this.composerMessage.trim(),
       sendAt: new Date().toISOString().slice(0, 19),
       lu: false,
@@ -240,6 +241,50 @@ export class Messagerie implements OnInit {
     return discussion.unreadCount > 0;
   }
 
+  getOfferLink(discussion: MessagerieConversation): string | null {
+    const offerId = discussion.candidature?.offre?.id;
+    return offerId ? `/detail-offre/${offerId}` : null;
+  }
+
+  getCandidateLink(discussion: MessagerieConversation): string | null {
+    const candidateId = discussion.candidature?.candidat?.id;
+    return this.userRole === 'recruteur' && candidateId ? `/infos-candidat/${candidateId}` : null;
+  }
+
+  canMarkAsRead(message: any): boolean {
+    if (message?.lu || !message?.expediteurRole) {
+      return false;
+    }
+
+    if (this.userRole === 'recruteur') {
+      return message.expediteurRole === 'candidat';
+    }
+
+    if (this.userRole === 'candidat') {
+      return message.expediteurRole === 'recruteur';
+    }
+
+    return false;
+  }
+
+  markAsRead(message: any): void {
+    if (!message?.id || !this.canMarkAsRead(message)) {
+      return;
+    }
+
+    this.apiService.markMessageAsRead(Number(message.id)).subscribe({
+      next: () => {
+        this.setInfo('Message marqué comme lu.');
+        const selectedId = Number(this.selectedDiscussion?.candidature?.id);
+        this.loadDashboard(selectedId);
+        window.dispatchEvent(new Event('profile-updated'));
+      },
+      error: () => {
+        this.setError('Impossible de marquer ce message comme lu.');
+      },
+    });
+  }
+
   private loadRecruiterDashboard(selectedCandidatureId?: number): void {
     if (!this.userId) {
       return;
@@ -354,6 +399,14 @@ export class Messagerie implements OnInit {
   private normalizeRole(role?: string | null): string | null {
     const normalizedRole = (role || '').trim().toLowerCase();
     return normalizedRole || null;
+  }
+
+  isRecruiterMessage(message: any): boolean {
+    return message?.expediteurRole === 'recruteur';
+  }
+
+  isCandidateMessage(message: any): boolean {
+    return message?.expediteurRole === 'candidat';
   }
 
   private formatName(prenom?: string, nom?: string, fallback = 'Non renseigné'): string {

@@ -153,6 +153,17 @@
 	font-size: 0.98rem;
 }
 
+.discussion-title-link,
+.discussion-subtitle-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.discussion-title-link:hover,
+.discussion-subtitle-link:hover {
+	color: #0f4c81;
+}
+
 .discussion-item p {
 	margin: 8px 0 10px;
 	color: #5e6c7a;
@@ -252,6 +263,13 @@
 
 .message-footer {
 	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.mark-read-btn {
+	margin-left: auto;
+	border-radius: 999px;
+	padding-inline: 14px;
 }
 
 .composer-card {
