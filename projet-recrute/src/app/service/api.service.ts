@@ -9,6 +9,15 @@ const API = environment.apiUrl;
 export class ApiService {
   private http = inject(HttpClient);
 
+  // Récupérer un dossier de candidature spécifique
+getCandidatureById(id: number): Observable<any> {
+  return this.http.get<any>(`${API}/candidatures/${id}`);
+}
+
+// Mettre à jour l'état (le backend doit intercepter la modification)
+updateCandidatureStatut(id: number, candidature: any): Observable<any> {
+  return this.http.put<any>(`${API}/candidatures/${id}`, candidature);
+}
   // Auth
   register(data: any): Observable<any> {
     return this.http.post(`${API}/auth/register`, data);

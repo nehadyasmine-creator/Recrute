@@ -136,6 +136,10 @@ export class DetailOffre implements OnInit {
     });
   }
 
+  goToCandidatureDetail(candidatureId: number): void {
+  this.router.navigate(['/detail-candidature', candidatureId]);
+}
+
   private loadReceivedApplications(offerId: number): void {
     this.receivedApplications = [];
     this.applicationsError = '';

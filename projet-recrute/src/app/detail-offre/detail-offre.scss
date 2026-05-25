@@ -13,6 +13,48 @@
 	padding: 22px;
 	text-align: center;
 }
+.application-item.clickable {
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    padding-bottom: 38px; // Espace pour le bouton du bas
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(96, 165, 250, 0.5);
+        transform: translateY(-2px);
+    }
+    
+    &:focus-visible {
+        outline: 2px solid #60a5fa;
+        outline-offset: 2px;
+    }
+}
+
+.view-more {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #60a5fa;
+    opacity: 0.8;
+    
+    i {
+        transition: transform 0.2s ease;
+    }
+}
+
+.application-item.clickable:hover .view-more i {
+    transform: translateX(4px);
+}
+
+// Couleurs dynamiques selon le statut dans la liste
+.status-pill {
+    &[data-status="Acceptée"] { background: rgba(74, 222, 128, 0.16); border-color: rgba(74, 222, 128, 0.4); color: #86efac; }
+    &[data-status="Refusée"] { background: rgba(248, 113, 113, 0.16); border-color: rgba(248, 113, 113, 0.4); color: #fca5a5; }
+    &[data-status="En attente"] { background: rgba(251, 146, 60, 0.16); border-color: rgba(251, 146, 60, 0.4); color: #ffedd5; }
+}
 
 .state-box.error {
 	color: #ffd7d7;

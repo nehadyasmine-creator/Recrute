@@ -90,18 +90,27 @@
 						<p>Aucune candidature reçue pour le moment.</p>
 					} @else {
 						<div class="applications-list">
-							@for (candidature of receivedApplications; track candidature.id) {
-								<article class="application-item">
-									<div class="application-head">
-										<h3>{{ candidature.candidatNom }}</h3>
-										<span class="status-pill">{{ candidature.statut }}</span>
-									</div>
-									<p>{{ candidature.candidatEmail }}</p>
-									<p>Date de candidature : {{ formatDate(candidature.dateCandidature) }}</p>
-									<p>CV : {{ displayOrFallback(candidature.cv) }}</p>
-								</article>
-							}
-						</div>
+    @for (candidature of receivedApplications; track candidature.id) {
+        <article 
+            class="application-item clickable" 
+            role="button" 
+            tabindex="0" 
+            (click)="goToCandidatureDetail(candidature.id)"
+            (keydown.enter)="goToCandidatureDetail(candidature.id)"
+        >
+            <div class="application-head">
+                <h3>{{ candidature.candidatNom }}</h3>
+                <span class="status-pill" [attr.data-status]="candidature.statut">{{ candidature.statut }}</span>
+            </div>
+            <p class="app-email"><i class="bi bi-envelope"></i> {{ candidature.candidatEmail }}</p>
+            <p class="app-date"><i class="bi bi-calendar3"></i> Date : {{ formatDate(candidature.dateCandidature) }}</p>
+            <p class="app-cv"><i class="bi bi-file-earmark-person"></i> Fichier CV : {{ displayOrFallback(candidature.cv) }}</p>
+            <div class="view-more">
+                <span>Traiter la candidature <i class="bi bi-arrow-right"></i></span>
+            </div>
+        </article>
+    }
+</div>
 					}
 				</section>
 			}

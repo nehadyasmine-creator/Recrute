@@ -1,0 +1,96 @@
+<div class="detail-page">
+    @if (loading) {
+    <div class="state-box">Chargement du dossier candidat...</div>
+    } @else if (errorMessage) {
+    <div class="state-box error">{{ errorMessage }}</div>
+    } @else if (candidature) {
+    <div class="back-link-container">
+        <a [routerLink]="['/detail-offre', candidature.offre?.id]" class="back-btn-text">
+            <i class="bi bi-arrow-left"></i> Retour à l'offre : {{ candidature.offre?.titre }}
+        </a>
+    </div>
+
+    <div class="candidature-grid">
+        <main class="main-card">
+            <header class="candidat-header">
+                <div class="avatar-placeholder">
+                    {{ candidature.candidat?.utilisateur?.prenom?.charAt(0) }}{{
+                    candidature.candidat?.utilisateur?.nom?.charAt(0) }}
+                </div>
+                <div>
+                    <p class="eyebrow">Dossier de Candidature</p>
+                    <h1>{{ candidature.candidat?.utilisateur?.prenom }} {{ candidature.candidat?.utilisateur?.nom }}
+                    </h1>
+                    <p class="sub-meta">Déposée le {{ formatDate(candidature.dateCandidature) }}</p>
+                </div>
+            </header>
+
+            <section class="info-section">
+                <h2><i class="bi bi-file-earmark-text"></i> Lettre de motivation</h2>
+                <div class="text-box text-content">
+                    @if (candidature.lettreMotivation) {
+                    <p>{{ candidature.lettreMotivation }}</p>
+                    } @else {
+                    <p class="empty-state">Le candidat n'a pas joint de lettre de motivation spécifique.</p>
+                    }
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2><i class="bi bi-paperclip"></i> Documents joints</h2>
+                <div class="document-holder">
+                    <div class="doc-card">
+                        <div class="doc-icon"><i class="bi bi-file-pdf-fill"></i></div>
+                        <div class="doc-info">
+                            <span class="doc-name">Curriculum_Vitae.pdf</span>
+                            <span class="doc-fallback-text">Source en BDD : {{ candidature.candidat?.cv || 'Non
+                                renseigné' }}</span>
+                        </div>
+                        <a class="download-stub-btn" title="Visualiser le document">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar-card">
+            <div class="widget-section">
+                <h3>Statut Actuel</h3>
+                <div class="current-status-box" [ngClass]="getStatutClass(candidature.statut)">
+                    {{ getStatutLabel(candidature.statut) }}
+                </div>
+            </div>
+
+            <div class="widget-section">
+                <h3>Actions Recruteur</h3>
+                <div class="actions-vertical-list">
+                    <button class="action-btn contact-btn" [routerLink]="['/messagerie']"
+                        [queryParams]="{ candidatureId: candidature.id }">
+                        <i class="bi bi-chat-dots"></i> Ouvrir la discussion
+                    </button>
+
+                    <hr class="separator">
+
+                    <button class="action-btn accept-btn"
+                        [disabled]="candidature.statut === 'acceptee' || actionLoading"
+                        (click)="updateStatut('acceptee')">
+                        <i class="bi bi-check-circle"></i> Accepter la candidature
+                    </button>
+
+                    <button class="action-btn pending-btn"
+                        [disabled]="candidature.statut === 'en_attente' || actionLoading"
+                        (click)="updateStatut('en_attente')">
+                        <i class="bi bi-hourglass-split"></i> Mettre en attente / Vivier
+                    </button>
+
+                    <button class="action-btn reject-btn" [disabled]="candidature.statut === 'refusee' || actionLoading"
+                        (click)="updateStatut('refusee')">
+                        <i class="bi bi-x-circle"></i> Refuser la candidature
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+    }
+</div>
