@@ -21,7 +21,7 @@ interface OffreResume {
 
 @Component({
   selector: 'app-postuler',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
   templateUrl: './postuler.html',
   styleUrl: './postuler.scss',
 })

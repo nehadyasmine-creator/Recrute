@@ -1,36 +1,73 @@
 <div class="contenu">
-	<h1 style="color:white ; margin-bottom:50px">Offres disponibles</h1>
-	@if (loading) {
-		<p class="state">Chargement des offres...</p>
-	} @else if (error) {
-		<p class="state error">{{ error }}</p>
-	} @else if (!loading && !error && offres.length === 0) {
-		<div class="state">
-			Aucune offre ouverte pour le moment.
-		</div>
-	} @else if (!loading && !error && offres.length > 0) {
-		<div class="offres-grid">
-			@for (offre of offres; track offre.id) {
-				<article class="offre-card" role="button" tabindex="0" (click)="goToDetail(offre.id)" (keydown.enter)="goToDetail(offre.id)">
-					<div class="offre-header">
-						<h2>{{ offre.titre }}</h2>
-						<button 
-							class="bookmark-btn"
-							[class.saved]="isOfferSaved(offre.id)"
-							(click)="toggleSaveOffer(offre, $event)"
-							[title]="isOfferSaved(offre.id) ? 'Retirer de favoris' : 'Ajouter aux favoris'"
-						>
-							<i class="bi" [class.bi-bookmark-fill]="isOfferSaved(offre.id)" [class.bi-bookmark]="!isOfferSaved(offre.id)"></i>
-						</button>
-					</div>
-					<p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
-					<p>
-						{{ offre.description| slice:0:300}} {{ offre.description.length > 300 ? '...' : '' }}
-					</p>
-					<p class="meta">Salaire: {{ offre.salaire || 'Non renseigné' }}</p>
-					<p class="meta">Télétravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
-				</article>
-			}
-		</div>
-	}
+    <h1 style="color:white ; margin-bottom:20px">Offres disponibles</h1>
+    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Trouvez l'opportunité qui correspond à votre profil professionnel.</p>
+
+    <div class="search-container">
+        <div class="search-row">
+            <div class="search-group">
+                <i class="bi bi-search icon-input"></i>
+                <input type="text" [(ngModel)]="criteres.motCle" (input)="appliquerFiltres()" placeholder="Poste, compétences, mots-clés...">
+            </div>
+            
+            <div class="search-group">
+                <i class="bi bi-geo-alt icon-input"></i>
+                <input type="text" [(ngModel)]="criteres.lieu" (input)="appliquerFiltres()" placeholder="Ville, région...">
+            </div>
+
+            <div class="search-group">
+                <select [(ngModel)]="criteres.typeContrat" (change)="appliquerFiltres()">
+                    <option value="">Tous les contrats</option>
+                    <option value="CDI">CDI</option>
+                    <option value="CDD">CDD</option>
+                    <option value="Alternance">Alternance</option>
+                    <option value="Stage">Stage</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="search-actions">
+            <label class="checkbox-label">
+                <input type="checkbox" [(ngModel)]="criteres.teletravail" (change)="appliquerFiltres()">
+                <span>Télétravail uniquement</span>
+            </label>
+
+            <button class="btn-reset" (click)="reinitialiserFiltres()" *ngIf="criteres.motCle || criteres.lieu || criteres.typeContrat || criteres.teletravail">
+                Effacer les filtres
+            </button>
+        </div>
+    </div>
+
+    @if (loading) {
+        <p class="state">Chargement des offres...</p>
+    } @else if (error) {
+        <p class="state error">{{ error }}</p>
+    } @else if (!loading && !error && offresFiltrees.length === 0) {
+        <div class="state">
+            Aucune offre ne correspond à vos critères de recherche.
+        </div>
+    } @else if (!loading && !error && offresFiltrees.length > 0) {
+        <div class="offres-grid">
+            @for (offre of offresFiltrees; track offre.id) {
+                <article class="offre-card" role="button" tabindex="0" (click)="goToDetail(offre.id)" (keydown.enter)="goToDetail(offre.id)">
+                    <div class="offre-header">
+                        <h2>{{ offre.titre }}</h2>
+                        <button 
+                            class="bookmark-btn"
+                            [class.saved]="isOfferSaved(offre.id)"
+                            (click)="toggleSaveOffer(offre, $event)"
+                            [title]="isOfferSaved(offre.id) ? 'Retirer de favoris' : 'Ajouter aux favoris'"
+                        >
+                            <i class="bi" [class.bi-bookmark-fill]="isOfferSaved(offre.id)" [class.bi-bookmark]="!isOfferSaved(offre.id)"></i>
+                        </button>
+                    </div>
+                    <p class="meta">{{ offre.lieu }} | {{ offre.typeContrat }}</p>
+                    <p>
+                        {{ offre.description | slice:0:300 }} {{ offre.description.length > 300 ? '...' : '' }}
+                    </p>
+                    <p class="meta">Salaire: {{ offre.salaire || 'Non renseigné' }}</p>
+                    <p class="meta">Télétravail: {{ offre.teletravail ? 'Oui' : 'Non' }}</p>
+                </article>
+            }
+        </div>
+    }
 </div>

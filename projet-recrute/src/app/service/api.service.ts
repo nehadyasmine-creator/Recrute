@@ -91,9 +91,6 @@ export class ApiService {
   sendContactMessage(data: any): Observable<any> {
     return this.http.post(`${API}/contacts`, data);
   }
-  updateUtilisateur(id: number, data: any): Observable<any> {
-    return this.http.put(`${API}/utilisateurs/${id}`, data);
-  }
 
   // Offres
   getOffres(): Observable<any[]> {

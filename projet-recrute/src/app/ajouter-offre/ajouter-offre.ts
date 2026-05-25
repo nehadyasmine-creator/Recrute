@@ -35,7 +35,7 @@ interface OffreFormPayload {
 
 @Component({
   selector: 'app-ajouter-offre',
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './ajouter-offre.html',
   styleUrl: './ajouter-offre.scss',
 })

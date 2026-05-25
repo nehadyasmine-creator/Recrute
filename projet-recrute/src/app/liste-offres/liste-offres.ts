@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
+import { FormsModule } from '@angular/forms'; // À AJOUTER
 
 interface Offre {
   id: number;
@@ -16,7 +17,7 @@ interface Offre {
 
 @Component({
   selector: 'app-liste-offres',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, FormsModule], // AJOUT DE FormsModule
   templateUrl: './liste-offres.html',
   styleUrl: './liste-offres.scss',
 })
@@ -26,10 +27,19 @@ export class ListeOffres implements OnInit {
   private router = inject(Router);
 
   offres: Offre[] = [];
+  offresFiltrees: Offre[] = []; // Liste dynamique mise à jour par la recherche
   loading = true;
   error = '';
   savedOfferIds: Set<number> = new Set();
   private candidateId: number | null = null;
+
+  // Objet contenant nos critères de recherche avancée
+  criteres = {
+    motCle: '',
+    lieu: '',
+    typeContrat: '',
+    teletravail: false
+  };
 
   ngOnInit(): void {
     this.loadOffres();
@@ -40,6 +50,7 @@ export class ListeOffres implements OnInit {
     this.apiService.getOffresOuvertes().subscribe({
       next: (offres) => {
         this.offres = offres;
+        this.offresFiltrees = offres; // Initialement, on affiche tout
         this.loading = false;
       },
       error: () => {
@@ -49,6 +60,41 @@ export class ListeOffres implements OnInit {
     });
   }
 
+  // Fonction principale de filtrage
+  appliquerFiltres(): void {
+    this.offresFiltrees = this.offres.filter(offre => {
+      // 1. Recherche par mot-clé (dans le titre ou la description)
+      const matchMotCle = !this.criteres.motCle || 
+        offre.titre.toLowerCase().includes(this.criteres.motCle.toLowerCase()) || 
+        offre.description.toLowerCase().includes(this.criteres.motCle.toLowerCase());
+
+      // 2. Recherche par lieu
+      const matchLieu = !this.criteres.lieu || 
+        offre.lieu.toLowerCase().includes(this.criteres.lieu.toLowerCase());
+
+      // 3. Filtrage par type de contrat
+      const matchContrat = !this.criteres.typeContrat || 
+        offre.typeContrat === this.criteres.typeContrat;
+
+      // 4. Filtrage par télétravail (si la case est cochée, on ne garde que les offres en télétravail)
+      const matchTeletravail = !this.criteres.teletravail || offre.teletravail === true;
+
+      return matchMotCle && matchLieu && matchContrat && matchTeletravail;
+    });
+  }
+
+  // Permet de vider les filtres en un clic
+  reinitialiserFiltres(): void {
+    this.criteres = {
+      motCle: '',
+      lieu: '',
+      typeContrat: '',
+      teletravail: false
+    };
+    this.offresFiltrees = this.offres;
+  }
+
+  // --- Le reste de ton code d'origine demeure inchangé ---
   private loadSavedOffers(): void {
     const userId = this.authService.getUserId();
     if (!userId) return;
@@ -56,9 +102,7 @@ export class ListeOffres implements OnInit {
     this.apiService.getCandidatByUtilisateurId(userId).subscribe({
       next: (candidat) => {
         this.candidateId = candidat?.id ?? null;
-        if (!this.candidateId) {
-          return;
-        }
+        if (!this.candidateId) return;
 
         this.apiService.getCandidaturesByCandidat(this.candidateId).subscribe({
           next: (candidatures) => {
@@ -80,7 +124,6 @@ export class ListeOffres implements OnInit {
 
   toggleSaveOffer(offer: any, event?: Event): void {
     event?.stopPropagation();
-
     const userId = this.authService.getUserId();
     if (!userId) {
       this.error = 'Vous devez être connecté pour enregistrer une offre';
@@ -95,7 +138,6 @@ export class ListeOffres implements OnInit {
             this.error = 'Impossible de retrouver votre profil candidat';
             return;
           }
-
           this.saveOrRemoveOffer(offer);
         },
         error: () => {
@@ -104,21 +146,14 @@ export class ListeOffres implements OnInit {
       });
       return;
     }
-
     this.saveOrRemoveOffer(offer);
   }
 
   private saveOrRemoveOffer(offer: any): void {
-    if (!this.candidateId) {
-      this.error = 'Impossible de retrouver votre profil candidat';
-      return;
-    }
-
+    if (!this.candidateId) return;
     if (this.isOfferSaved(offer.id)) {
-      // Supprimer de favoris
       this.removeSavedOffer(offer.id);
     } else {
-      // Ajouter à favoris
       this.saveOffer(offer, this.candidateId);
     }
   }
@@ -132,12 +167,8 @@ export class ListeOffres implements OnInit {
     };
 
     this.apiService.createCandidature(candidature).subscribe({
-      next: () => {
-        this.savedOfferIds.add(offer.id);
-      },
-      error: () => {
-        this.error = 'Erreur lors de l\'enregistrement de l\'offre';
-      }
+      next: () => this.savedOfferIds.add(offer.id),
+      error: () => this.error = 'Erreur lors de l\'enregistrement de l\'offre'
     });
   }
 
@@ -153,12 +184,8 @@ export class ListeOffres implements OnInit {
           );
           if (savedCand) {
             this.apiService.deleteCandidature(savedCand.id).subscribe({
-              next: () => {
-                this.savedOfferIds.delete(offerId);
-              },
-              error: () => {
-                this.error = 'Erreur lors de la suppression de l\'enregistrement';
-              }
+              next: () => this.savedOfferIds.delete(offerId),
+              error: () => this.error = 'Erreur lors de la suppression de l\'enregistrement'
             });
           }
         }
@@ -177,9 +204,7 @@ export class ListeOffres implements OnInit {
         this.candidateId = candidateId;
         fetchAndRemove(candidateId);
       },
-      error: () => {
-        this.error = 'Impossible de retrouver votre profil candidat';
-      }
+      error: () => this.error = 'Impossible de retrouver votre profil candidat'
     });
   }
 }
