@@ -68,6 +68,64 @@
         </div>
       }
 
+      <div class="section action-panel">
+        <h2><i class="bi bi-file-earmark-pdf"></i> CV</h2>
+        @if (hasCv()) {
+          <p class="helper-text">Le CV du candidat est disponible pour consultation.</p>
+          <button type="button" class="btn-primary" (click)="openCv()" [disabled]="cvLoading">
+            @if (cvLoading) {
+              Ouverture en cours...
+            } @else {
+              Voir le CV
+            }
+          </button>
+        } @else {
+          <p class="helper-text muted">Aucun CV n’a été ajouté par ce candidat.</p>
+        }
+      </div>
+
+      @if (isRecruiterConnected()) {
+        <div class="section action-panel">
+          <h2><i class="bi bi-chat-dots"></i> Messagerie</h2>
+          <p class="helper-text">{{ getMessageHelperText() }}</p>
+
+          @if (!messagingCandidatureId && hasSelectableOffers()) {
+            <label class="offer-choice">
+              <span>Offre à utiliser</span>
+              <select
+                [(ngModel)]="selectedOfferId"
+                name="selectedOfferId"
+                (ngModelChange)="onSelectedOfferChange($event)"
+              >
+                <option [ngValue]="null">Sélectionner une offre</option>
+                @for (offre of recruiterOffers; track offre.id) {
+                  <option [ngValue]="offre.id">{{ offre.titre }}</option>
+                }
+              </select>
+            </label>
+          }
+
+          <button
+            type="button"
+            class="btn-primary"
+            (click)="startMessaging()"
+            [disabled]="!canStartMessaging() || actionLoading"
+          >
+            @if (actionLoading) {
+              Création en cours...
+            } @else {
+              {{ getMessageActionLabel() }}
+            }
+          </button>
+
+          @if (!canStartMessaging()) {
+            <p class="helper-text muted">
+              Choisissez une offre pour créer la candidature vide et lancer la messagerie.
+            </p>
+          }
+        </div>
+      }
+
       <!-- RETOUR -->
       <div class="actions">
         <button class="btn-retour" [routerLink]="['/liste-candidats']">

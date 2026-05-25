@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { forkJoin, map, of, switchMap } from 'rxjs';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { ApiService } from '../service/api.service';
 
@@ -22,6 +22,7 @@ type MessagerieConversation = {
   styleUrl: './messagerie.scss',
 })
 export class Messagerie implements OnInit {
+  private route = inject(ActivatedRoute);
   private authService = inject(AuthService);
   private apiService = inject(ApiService);
 
@@ -40,7 +41,9 @@ export class Messagerie implements OnInit {
   totalUnreadCount = 0;
 
   ngOnInit(): void {
-    this.loadDashboard();
+    const candidatureParam = this.route.snapshot.queryParamMap.get('candidatureId');
+    const selectedCandidatureId = candidatureParam ? Number(candidatureParam) : undefined;
+    this.loadDashboard(selectedCandidatureId && Number.isFinite(selectedCandidatureId) ? selectedCandidatureId : undefined);
   }
 
   private clearMessages(): void {
