@@ -63,7 +63,7 @@ class CRMAtchingEngine:
 
             metadata = offer.get('metadata', {})
             results.append({
-                "idOffre": str(offer.get('_id', '')),
+                "idOffre": metadata.get('id_offre_sql'),
                 "titre": metadata.get('titre', 'Inconnu'),
                 "entreprise": metadata.get('entreprise', 'N/A'),
                 "score": round(score * 100, 2)
