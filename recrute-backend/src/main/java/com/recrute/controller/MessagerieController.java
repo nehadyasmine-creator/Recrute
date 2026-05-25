@@ -46,6 +46,13 @@ public class MessagerieController {
         return messagerieService.create(messagerie);
     }
 
+    @PutMapping("/{id}/lu")
+    public ResponseEntity<Messagerie> markAsRead(@PathVariable Long id) {
+        return messagerieService.markAsRead(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         messagerieService.delete(id);

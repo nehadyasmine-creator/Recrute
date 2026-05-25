@@ -29,7 +29,6 @@
 					<h2>Aucune suggestion trouvée</h2>
 					<p>Nous n'avons trouvé aucune offre correspondant à votre CV pour le moment. Mettez à jour votre CV ou réessayez plus tard.</p>
 					<div class="empty-actions">
-						<button class="action-link">Réessayer</button>
 						<a routerLink="/liste-offres" class="action-link">Voir les offres</a>
 					</div>
 				</div>
@@ -48,7 +47,7 @@
 
 						<div class="offer-actions">
 							@if (suggestion.idOffre) {
-								<a [routerLink]="['/infos-offre', suggestion.idOffre]" class="view-btn">Voir l'offre</a>
+								<a [routerLink]="['/detail-offre', suggestion.idOffre]" class="view-btn">Voir l'offre</a>
 							} @else {
 								<a routerLink="/liste-offres" class="view-btn">Voir les offres</a>
 							}

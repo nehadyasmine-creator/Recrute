@@ -26,6 +26,9 @@ public class Messagerie {
     @JoinColumn(name = "id_candidat")
     private Candidat candidat;
 
+    @Column(name = "expediteur_role")
+    private String expediteurRole;
+
     private String message;
 
     @Column(name = "sendat")

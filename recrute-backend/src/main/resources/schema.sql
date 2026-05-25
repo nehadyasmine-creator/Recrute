@@ -141,6 +141,7 @@ CREATE TABLE Messagerie (
     id_candidature INT REFERENCES Candidature(id_candidature),
     id_recruteur INT REFERENCES Recruteur(id_recruteur),
     id_candidat INT REFERENCES Candidat(id_candidat),
+    expediteur_role VARCHAR(50),
     message TEXT,
     sendAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     lu BOOLEAN DEFAULT false

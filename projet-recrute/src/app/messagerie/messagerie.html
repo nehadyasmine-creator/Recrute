@@ -1,1 +1,153 @@
-<p>messagerie works!</p>
+<div class="messaging-page">
+	<header class="messaging-header">
+		<div>
+			<p class="eyebrow">Messagerie</p>
+			<h1>Vos discussions</h1>
+			<p class="subtitle">Consultez les conversations liées à vos candidatures et répondez depuis un tableau de bord unique.</p>
+		</div>
+
+		<div class="header-actions">
+			<div class="unread-summary">
+				<span class="summary-label">Messages en attente</span>
+				<strong>{{ totalUnreadCount }}</strong>
+			</div>
+			<a class="secondary-link" [routerLink]="getBackLink()">Retour au profil</a>
+		</div>
+	</header>
+
+	@if (errorMessage) {
+		<div class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+	}
+
+	@if (infoMessage) {
+		<div class="alert alert-success" role="alert">{{ infoMessage }}</div>
+	}
+
+	<div class="dashboard-shell">
+		<aside class="discussion-panel">
+			<div class="panel-heading">
+				<h2>Discussions</h2>
+				<span>{{ discussions.length }}</span>
+			</div>
+
+			@if (isLoading) {
+				<div class="empty-state compact">Chargement des discussions...</div>
+			} @else if (discussions.length === 0) {
+				<div class="empty-state compact">
+					Aucune discussion pour le moment.
+				</div>
+			} @else {
+				<div class="discussion-list">
+					@for (discussion of discussions; track discussion.candidature.id) {
+						<div class="discussion-item" [class.active]="selectedDiscussion?.candidature?.id === discussion.candidature?.id" (click)="selectDiscussion(discussion)">
+							<div class="discussion-topline">
+								@if (getCandidateLink(discussion)) {
+									<a class="discussion-title-link" [routerLink]="getCandidateLink(discussion)" (click)="$event.stopPropagation()">
+										<strong>{{ discussion.title }}</strong>
+									</a>
+								} @else {
+									<strong>{{ discussion.title }}</strong>
+								}
+								@if (hasUnreadMessages(discussion)) {
+									<span class="unread-pill">{{ discussion.unreadCount }}</span>
+								}
+							</div>
+							@if (getOfferLink(discussion)) {
+								<a class="discussion-subtitle-link" [routerLink]="getOfferLink(discussion)" (click)="$event.stopPropagation()">
+									<p>{{ discussion.subtitle }}</p>
+								</a>
+							} @else {
+								<p>{{ discussion.subtitle }}</p>
+							}
+							<div class="discussion-meta">
+								<span>{{ getStatusLabel(discussion.candidature?.statut) }}</span>
+								<span>{{ getLatestLabel(discussion) | date:'dd/MM/yyyy HH:mm' }}</span>
+							</div>
+						</div>
+					}
+				</div>
+			}
+		</aside>
+
+		<main class="conversation-panel">
+			@if (selectedDiscussion) {
+				<section class="conversation-card">
+					<header class="conversation-header">
+						<div>
+							<p class="eyebrow">Conversation active</p>
+							<h2 class="discussion-title-link" [routerLink]="getCandidateLink(selectedDiscussion)">{{ selectedDiscussion.title }}</h2>
+							<p class="discussion-subtitle-link" [routerLink]="getOfferLink(selectedDiscussion)">{{ selectedDiscussion.subtitle }}</p>
+						</div>
+
+						<div class="conversation-tags">
+							<span class="status-tag">{{ getStatusLabel(selectedDiscussion.candidature?.statut) }}</span>
+							@if (hasUnreadMessages(selectedDiscussion)) {
+								<span class="status-tag pending">{{ selectedDiscussion.unreadCount }} en attente</span>
+							}
+						</div>
+					</header>
+
+					<div class="messages-stream">
+						@if (selectedDiscussion.messages.length === 0) {
+							<div class="empty-state message-empty">
+								Aucun message dans cette discussion pour le moment.
+							</div>
+						} @else {
+							@for (message of selectedDiscussion.messages; track message.id) {
+								<article class="message-card" [class.unread]="!message.lu">
+									<div class="message-topline">
+										<span>
+											@if (isRecruiterMessage(message)) {
+												Recruteur
+											} @else if (isCandidateMessage(message)) {
+												Candidat
+											} @else {
+												Message
+											}
+										</span>
+										<span>{{ message.sendAt | date:'dd/MM/yyyy HH:mm' }}</span>
+									</div>
+									<p>{{ message.message }}</p>
+									<div class="message-footer">
+										@if (message.lu) {
+											<span class="chip success">Lu</span>
+										} @else {
+											<span class="chip warning">En attente</span>
+											@if (canMarkAsRead(message)) {
+												<button type="button" class="btn btn-sm btn-outline-primary mark-read-btn" (click)="markAsRead(message)">
+													Marquer comme lu
+												</button>
+											}
+										}
+									</div>
+								</article>
+							}
+						}
+					</div>
+
+					<footer class="composer-card">
+						<label class="form-label">{{ getComposerLabel() }}</label>
+						<textarea
+							class="form-control composer-input"
+							rows="4"
+							[(ngModel)]="composerMessage"
+							placeholder="Rédigez votre message..."
+						></textarea>
+						<div class="composer-actions">
+							<span class="hint">Votre message sera ajouté à la discussion sélectionnée.</span>
+							<button class="btn btn-light" (click)="sendMessage()" [disabled]="!composerMessage.trim() || isLoading">
+								Envoyer
+							</button>
+						</div>
+					</footer>
+				</section>
+			} @else {
+				<section class="conversation-card empty-conversation">
+					<div class="empty-state">
+						Sélectionnez une discussion pour afficher les messages.
+					</div>
+				</section>
+			}
+		</main>
+	</div>
+</div>

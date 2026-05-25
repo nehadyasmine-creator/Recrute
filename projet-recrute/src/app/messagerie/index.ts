@@ -1,0 +1,1 @@
+export { Messagerie } from './messagerie.component';

@@ -57,6 +57,43 @@ position: fixed;
   margin-right: 0.5rem;
 }
 
+.message-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-link:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+}
+
+.message-link i {
+  font-size: 1.05rem;
+}
+
+.message-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  border: 2px solid rgba(45, 118, 180, 0.95);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.16);
+}
+
 .avatar-circle {
   border-radius: 50%;
   height: 58px;
@@ -127,6 +164,7 @@ position: fixed;
   position: relative;
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 10px 12px;
   border-radius: 999px;
   cursor: pointer;
@@ -189,6 +227,12 @@ position: fixed;
 .dropdown-link.logout:hover {
   background: rgba(220, 53, 69, 0.18);
   color: #fff;
+}
+
+.dropdown-link.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 @keyframes slideDown {

@@ -128,6 +128,9 @@ export class ApiService {
   createRecruteur(data: any): Observable<any> {
     return this.http.post(`${API}/recruteurs`, data);
   }
+  updateRecruteur(id: number, data: any): Observable<any> {
+    return this.http.put(`${API}/recruteurs/${id}`, data);
+  }
 
   // Entreprises
   getEntreprises(): Observable<any[]> {
@@ -138,6 +141,9 @@ export class ApiService {
   }
   createEntreprise(data: any): Observable<any> {
     return this.http.post(`${API}/entreprises`, data);
+  }
+  updateEntreprise(id: number, data: any): Observable<any> {
+    return this.http.put(`${API}/entreprises/${id}`, data);
   }
 
   // Competences
@@ -222,8 +228,17 @@ export class ApiService {
   getMessagesByCandidature(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/messagerie/candidature/${id}`);
   }
+  getMessagesByCandidat(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/messagerie/candidat/${id}`);
+  }
+  getMessagesByRecruteur(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/messagerie/recruteur/${id}`);
+  }
   sendMessage(data: any): Observable<any> {
     return this.http.post(`${API}/messagerie`, data);
+  }
+  markMessageAsRead(id: number): Observable<any> {
+    return this.http.put(`${API}/messagerie/${id}/lu`, {});
   }
 
   public getIASuggestionsFromPdf(file: File) {

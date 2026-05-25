@@ -20,6 +20,8 @@ export class Navbar {
   avatarUrl: string | null = null;
   avatarInitials: string = 'U';
   userRole: string | null = null;
+  entrepriseId: number | null = null;
+  messageUnreadCount = 0;
   private subscriptions = new Subscription();
   private readonly profileUpdatedListener = () => this.loadAvatar();
     dropdownTimeout: any;
@@ -104,6 +106,18 @@ export class Navbar {
       next: (utilisateur) => {
         this.userRole = this.normalizeRole(utilisateur?.role);
         this.avatarInitials = this.computeInitials(utilisateur?.prenom, utilisateur?.nom);
+
+        if (this.isRecruiter()) {
+          this.loadRecruiterContext(userId);
+          this.loadMessageBadgeForRecruiter(userId);
+        } else if (this.isCandidate()) {
+          this.entrepriseId = null;
+          this.loadMessageBadgeForCandidate(userId);
+        } else {
+          this.entrepriseId = null;
+          this.messageUnreadCount = 0;
+        }
+
         if (!utilisateur?.pdp) {
           this.clearAvatarUrl();
           return;
@@ -122,6 +136,68 @@ export class Navbar {
       error: () => {
         this.clearAvatarUrl();
         this.userRole = null;
+        this.messageUnreadCount = 0;
+      },
+    });
+  }
+
+  getEntrepriseLink(): string | null {
+    return this.isRecruiter() && this.entrepriseId ? `/detail-entreprise/${this.entrepriseId}` : null;
+  }
+
+  private loadRecruiterContext(userId: number): void {
+    this.apiService.getRecruteurByUtilisateurId(userId).subscribe({
+      next: (recruteur) => {
+        this.entrepriseId = recruteur?.entreprise?.id ?? null;
+      },
+      error: () => {
+        this.entrepriseId = null;
+      },
+    });
+  }
+
+  private loadMessageBadgeForRecruiter(userId: number): void {
+    this.apiService.getRecruteurByUtilisateurId(userId).subscribe({
+      next: (recruteur) => {
+        if (!recruteur?.id) {
+          this.messageUnreadCount = 0;
+          return;
+        }
+
+        this.apiService.getMessagesByRecruteur(recruteur.id).subscribe({
+          next: (messages) => {
+            this.messageUnreadCount = (messages || []).filter((message) => this.isUnreadFromOppositeSide(message, 'recruteur')).length;
+          },
+          error: () => {
+            this.messageUnreadCount = 0;
+          },
+        });
+      },
+      error: () => {
+        this.messageUnreadCount = 0;
+      },
+    });
+  }
+
+  private loadMessageBadgeForCandidate(userId: number): void {
+    this.apiService.getCandidatByUtilisateurId(userId).subscribe({
+      next: (candidat) => {
+        if (!candidat?.id) {
+          this.messageUnreadCount = 0;
+          return;
+        }
+
+        this.apiService.getMessagesByCandidat(candidat.id).subscribe({
+          next: (messages) => {
+            this.messageUnreadCount = (messages || []).filter((message) => this.isUnreadFromOppositeSide(message, 'candidat')).length;
+          },
+          error: () => {
+            this.messageUnreadCount = 0;
+          },
+        });
+      },
+      error: () => {
+        this.messageUnreadCount = 0;
       },
     });
   }
@@ -129,6 +205,23 @@ export class Navbar {
   private normalizeRole(role?: string): string | null {
     const normalizedRole = (role || '').trim().toLowerCase();
     return normalizedRole || null;
+  }
+
+  private isUnreadFromOppositeSide(message: any, currentRole: 'recruteur' | 'candidat'): boolean {
+    if (message?.lu) {
+      return false;
+    }
+
+    const senderRole = this.normalizeRole(message?.expediteurRole);
+    if (senderRole) {
+      return currentRole === 'recruteur'
+        ? senderRole === 'candidat'
+        : senderRole === 'recruteur';
+    }
+
+    return currentRole === 'recruteur'
+      ? !!message?.candidat?.id && !message?.recruteur?.id
+      : !!message?.recruteur?.id && !message?.candidat?.id;
   }
 
   private computeInitials(prenom?: string, nom?: string): string {
