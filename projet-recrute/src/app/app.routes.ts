@@ -15,13 +15,13 @@ import { Admin } from './admin/admin';
 import { SuggestionIaCandidat } from './suggestion-ia-candidat/suggestion-ia-candidat';
 import { MdpOublie } from './mdp-oublie/mdp-oublie';
 import { DetailOffre } from './detail-offre/detail-offre';
-import { Postuler } from './postuler/postuler';
 import { DetailEntreprise } from './detail-entreprise/detail-entreprise';
 import { AjouterOffre } from './ajouter-offre/ajouter-offre';
 import { MesOffresRecruteur } from './mes-offres-recruteur/mes-offres-recruteur';
 import { AccueilEmployeur } from './accueil-employeur/accueil-employeur';
 import { InfosCandidat } from './infos-candidat/infos-candidat';
-import { Messagerie } from './messagerie/messagerie.component';
+import { Messagerie } from './messagerie';
+import { Postuler } from './postuler/postuler';
 
 export const routes: Routes = [
     { path: '', component: Home },

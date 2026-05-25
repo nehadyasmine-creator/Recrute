@@ -1,11 +1,7 @@
 .messaging-page {
 	min-height: 100vh;
 	padding: 120px 3vw 40px;
-	background:
-		radial-gradient(circle at top left, rgba(52, 122, 191, 0.22), transparent 28%),
-		radial-gradient(circle at top right, rgba(17, 94, 89, 0.14), transparent 24%),
-		linear-gradient(180deg, #eef6fb 0%, #edf2f7 100%);
-	color: #0f2742;
+	color: #fff;
 }
 
 .messaging-header {
@@ -35,7 +31,7 @@
 .subtitle {
 	margin: 8px 0 0;
 	max-width: 720px;
-	color: #5c6b7a;
+	color: rgba(255, 255, 255, 0.78);
 }
 
 .header-actions {
@@ -53,19 +49,19 @@
 	padding: 0 16px;
 	border-radius: 999px;
 	text-decoration: none;
-	color: #10385f;
-	background: rgba(255, 255, 255, 0.85);
-	border: 1px solid rgba(16, 56, 95, 0.12);
-	box-shadow: 0 10px 26px rgba(16, 56, 95, 0.08);
+	color: #dbe8f8;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
 .unread-summary {
 	min-width: 150px;
 	padding: 14px 18px;
 	border-radius: 20px;
-	background: linear-gradient(135deg, #0f4c81, #1f6b99);
+	background: linear-gradient(135deg, #2d76b4, #1f4d81);
 	color: #fff;
-	box-shadow: 0 18px 38px rgba(15, 76, 129, 0.18);
+	box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
 }
 
 .summary-label {
@@ -88,10 +84,10 @@
 .discussion-panel,
 .conversation-card {
 	border-radius: 28px;
-	background: rgba(255, 255, 255, 0.78);
+	background: linear-gradient(180deg, rgba(19, 42, 70, 0.82), rgba(27, 64, 104, 0.6));
 	backdrop-filter: blur(18px);
-	border: 1px solid rgba(255, 255, 255, 0.78);
-	box-shadow: 0 24px 60px rgba(16, 56, 95, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	box-shadow: 0 20px 52px rgba(0, 0, 0, 0.2);
 }
 
 .discussion-panel {
@@ -121,8 +117,8 @@
 	min-width: 34px;
 	padding: 6px 10px;
 	border-radius: 999px;
-	background: rgba(15, 76, 129, 0.08);
-	color: #0f4c81;
+	background: rgba(255, 255, 255, 0.08);
+	color: #dbe8f8;
 	font-weight: 700;
 	text-align: center;
 }
@@ -134,19 +130,20 @@
 }
 
 .discussion-item {
-	border: 1px solid rgba(16, 56, 95, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 22px;
 	padding: 16px;
 	text-align: left;
-	background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.05);
 	transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+	color: #fff;
 }
 
 .discussion-item:hover,
 .discussion-item.active {
 	transform: translateY(-1px);
-	border-color: rgba(31, 107, 153, 0.25);
-	box-shadow: 0 16px 28px rgba(16, 56, 95, 0.1);
+	border-color: rgba(255, 255, 255, 0.18);
+	box-shadow: 0 16px 28px rgba(0, 0, 0, 0.14);
 }
 
 .discussion-item strong {
@@ -166,12 +163,12 @@
 
 .discussion-item p {
 	margin: 8px 0 10px;
-	color: #5e6c7a;
+	color: rgba(255, 255, 255, 0.72);
 }
 
 .discussion-meta {
 	font-size: 0.8rem;
-	color: #6c7a88;
+	color: rgba(255, 255, 255, 0.68);
 }
 
 .unread-pill,
@@ -187,24 +184,24 @@
 }
 
 .unread-pill {
-	background: rgba(220, 53, 69, 0.12);
-	color: #b4232f;
+	background: rgba(220, 53, 69, 0.2);
+	color: #ffd5d5;
 }
 
 .status-tag {
-	background: rgba(15, 76, 129, 0.08);
-	color: #0f4c81;
+	background: rgba(255, 255, 255, 0.08);
+	color: #dbe8f8;
 }
 
 .status-tag.pending,
 .chip.warning {
-	background: rgba(255, 183, 0, 0.14);
-	color: #9a6700;
+	background: rgba(255, 183, 0, 0.16);
+	color: #ffe6a6;
 }
 
 .chip.success {
-	background: rgba(25, 135, 84, 0.14);
-	color: #146c43;
+	background: rgba(74, 222, 128, 0.14);
+	color: #b8f5c8;
 }
 
 .conversation-panel {
@@ -239,26 +236,26 @@
 .message-card {
 	border-radius: 22px;
 	padding: 16px 18px;
-	background: rgba(255, 255, 255, 0.92);
-	border: 1px solid rgba(16, 56, 95, 0.08);
-	box-shadow: 0 14px 28px rgba(16, 56, 95, 0.06);
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
 }
 
 .message-card.unread {
-	border-color: rgba(255, 183, 0, 0.35);
-	background: linear-gradient(180deg, rgba(255, 248, 227, 0.96), rgba(255, 255, 255, 0.96));
+	border-color: rgba(255, 183, 0, 0.28);
+	background: linear-gradient(180deg, rgba(255, 248, 227, 0.12), rgba(255, 255, 255, 0.06));
 }
 
 .message-card p {
 	margin: 12px 0;
 	line-height: 1.6;
-	color: #26384d;
+	color: rgba(255, 255, 255, 0.88);
 	white-space: pre-wrap;
 }
 
 .message-topline {
 	font-size: 0.8rem;
-	color: #708090;
+	color: rgba(255, 255, 255, 0.68);
 }
 
 .message-footer {
@@ -274,7 +271,7 @@
 
 .composer-card {
 	padding-top: 12px;
-	border-top: 1px solid rgba(16, 56, 95, 0.08);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .composer-input {
@@ -289,7 +286,7 @@
 }
 
 .hint {
-	color: #5e6c7a;
+	color: rgba(255, 255, 255, 0.7);
 	font-size: 0.88rem;
 }
 
@@ -299,9 +296,9 @@
 	min-height: 180px;
 	padding: 28px;
 	border-radius: 24px;
-	border: 1px dashed rgba(16, 56, 95, 0.18);
-	background: rgba(255, 255, 255, 0.72);
-	color: #5c6b7a;
+	border: 1px dashed rgba(255, 255, 255, 0.18);
+	background: rgba(255, 255, 255, 0.04);
+	color: rgba(255, 255, 255, 0.78);
 	text-align: center;
 }
 
