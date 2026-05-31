@@ -23,6 +23,9 @@ import { InfosCandidat } from './infos-candidat/infos-candidat';
 import { Messagerie } from './messagerie';
 import { Postuler } from './postuler/postuler';
 import { DetailCandidature } from './detail-candidature/detail-candidature';
+import { APropos } from './a-propos/a-propos';
+import { MentionsLegales } from './mentions-legales/mentions-legales';
+import { Confidentialite } from './confidentialite/confidentialite';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -50,6 +53,9 @@ export const routes: Routes = [
     { path: 'liste-candidats', component: ListeCandidatsComponent},
     { path: 'infos-candidat/:id', component: InfosCandidat },
     { path: 'detail-candidature/:id', component: DetailCandidature },
+    { path: 'a-propos', component: APropos },
+    { path: 'mentions-legales', component: MentionsLegales },
+    { path: 'confidentialite', component: Confidentialite },
 
     //à laisser en tout dernier, sert à rediriger vers la page d'accueil si on essaie d'aller sur une page qui n'existe pas
     { path: '**', redirectTo: '' },
