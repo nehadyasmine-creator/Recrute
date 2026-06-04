@@ -132,7 +132,7 @@
                     <select class="form-select" [(ngModel)]="entrepriseForm.taille">
                         <option value="">Non renseigné</option>
                         @for (taille of taillesEntreprises; track taille) {
-                        <option [value]="taille">{{ taille }}</option>
+                        <option [value]="taille">{{ taille | formatTaille }}</option>
                         }
                     </select>
                 </div>
