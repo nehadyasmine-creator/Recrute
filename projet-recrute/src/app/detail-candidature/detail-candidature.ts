@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
 
@@ -32,16 +33,19 @@ interface CandidatureDetail {
   templateUrl: './detail-candidature.html',
   styleUrl: './detail-candidature.scss'
 })
-export class DetailCandidature implements OnInit {
+export class DetailCandidature implements OnInit, OnDestroy {
   private apiService = inject(ApiService);
   private authService = inject(AuthService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private sanitizer = inject(DomSanitizer);
 
   candidature: CandidatureDetail | null = null;
   loading = true;
   errorMessage = '';
   actionLoading = false;
+  cvPreviewUrl: SafeResourceUrl | null = null;
+  private cvBlobUrl: string | null = null;
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
@@ -62,11 +66,13 @@ export class DetailCandidature implements OnInit {
       next: (data) => {
         this.candidature = data;
         this.loading = false;
+        this.loadCvPreview();
         
         // Sécurité : s'assurer que seul le recruteur peut voir cela (optionnel selon vos règles)
         if (this.authService.getUserRole() !== 'recruteur') {
           this.errorMessage = "Accès restreint aux recruteurs.";
           this.candidature = null;
+          this.clearCvPreviewUrl();
         }
       },
       error: () => {
@@ -74,6 +80,10 @@ export class DetailCandidature implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.clearCvPreviewUrl();
   }
 
   updateStatut(nouveauStatut: string): void {
@@ -129,6 +139,33 @@ export class DetailCandidature implements OnInit {
       case 'refusee': return 'Refusée';
       case 'acceptee': return 'Acceptée';
       default: return status || 'Inconnu';
+    }
+  }
+
+  private loadCvPreview(): void {
+    const candidatId = this.candidature?.candidat?.id;
+    if (!candidatId || !this.candidature?.candidat?.cv) {
+      this.clearCvPreviewUrl();
+      return;
+    }
+
+    this.apiService.downloadCv(candidatId).subscribe({
+      next: (blob) => {
+        this.clearCvPreviewUrl();
+        this.cvBlobUrl = window.URL.createObjectURL(blob);
+        this.cvPreviewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.cvBlobUrl);
+      },
+      error: () => {
+        this.clearCvPreviewUrl();
+      },
+    });
+  }
+
+  private clearCvPreviewUrl(): void {
+    this.cvPreviewUrl = null;
+    if (this.cvBlobUrl) {
+      window.URL.revokeObjectURL(this.cvBlobUrl);
+      this.cvBlobUrl = null;
     }
   }
 }

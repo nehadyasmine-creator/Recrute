@@ -72,11 +72,18 @@
         <h2><i class="bi bi-file-earmark-pdf"></i> CV</h2>
         @if (hasCv()) {
           <p class="helper-text">Le CV du candidat est disponible pour consultation.</p>
+          @if (cvPreviewUrl) {
+            <div class="cv-preview-wrapper">
+              <iframe class="cv-preview" [src]="cvPreviewUrl" title="Aperçu du CV"></iframe>
+            </div>
+          } @else {
+            <p class="helper-text muted">Chargement de l’aperçu du CV...</p>
+          }
           <button type="button" class="btn-primary" (click)="openCv()" [disabled]="cvLoading">
             @if (cvLoading) {
               Ouverture en cours...
             } @else {
-              Voir le CV
+              Voir le CV dans un nouvel onglet
             }
           </button>
         } @else {

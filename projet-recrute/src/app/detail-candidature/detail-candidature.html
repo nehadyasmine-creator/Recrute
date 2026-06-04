@@ -39,16 +39,15 @@
             <section class="info-section">
                 <h2><i class="bi bi-paperclip"></i> Documents joints</h2>
                 <div class="document-holder">
-                    <div class="doc-card">
-                        <div class="doc-icon"><i class="bi bi-file-pdf-fill"></i></div>
-                        <div class="doc-info">
-                            <span class="doc-name">Curriculum_Vitae.pdf</span>
-                            <span class="doc-fallback-text">Source en BDD : {{ candidature.candidat?.cv || 'Non
-                                renseigné' }}</span>
+                    <div class="cv-card">
+
+                        @if (cvPreviewUrl) {
+                        <div class="cv-preview-wrapper">
+                            <iframe class="cv-preview" [src]="cvPreviewUrl" title="Aperçu du CV"></iframe>
                         </div>
-                        <a class="download-stub-btn" title="Visualiser le document">
-                            <i class="bi bi-eye"></i>
-                        </a>
+                        } @else {
+                        <p class="empty-state cv-empty-state">Aperçu du CV indisponible.</p>
+                        }
                     </div>
                 </div>
             </section>

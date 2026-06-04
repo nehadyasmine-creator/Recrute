@@ -24,7 +24,7 @@
 
 			<section class="detail-section">
 				<h2>Description</h2>
-				<p>{{ displayOrFallback(offre.description) }}</p>
+				<p class="description-text" [innerHTML]="displayOrFallback(offre.description) | linkify"></p>
 			</section>
 
 			<section class="detail-section">

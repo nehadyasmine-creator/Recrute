@@ -93,6 +93,21 @@
   gap: 12px;
 }
 
+.cv-preview-wrapper {
+  width: 100%;
+  border: 1px solid rgba(15, 31, 61, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.cv-preview {
+  width: 100%;
+  min-height: 620px;
+  border: none;
+  background: #fff;
+}
+
 .helper-text {
   margin: 0;
   color: #475569;

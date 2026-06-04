@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LinkifyPipe } from '../shared/pipes/linkify.pipe';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
 
@@ -53,7 +54,7 @@ interface CandidatureView {
 
 @Component({
   selector: 'app-detail-offre',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LinkifyPipe],
   templateUrl: './detail-offre.html',
   styleUrl: './detail-offre.scss',
 })

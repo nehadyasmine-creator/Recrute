@@ -31,6 +31,7 @@ export class Navbar {
 
   ngOnInit(): void {
     this.currentUrl = this.router.url;
+    this.userRole = this.normalizeRole(this.authService.getUserRole());
 
     const navSub = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -75,6 +76,22 @@ export class Navbar {
 
   isAdmin(): boolean {
     return this.userRole === 'admin';
+  }
+
+  getLogoLink(): string {
+    if (!this.isLoggedIn) {
+      return '/';
+    }
+
+    if (this.isRecruiter()) {
+      return '/liste-candidats';
+    }
+
+    if (this.isAdmin()) {
+      return '/admin';
+    }
+
+    return '/liste-offres';
   }
 
   getProfileLink(): string {
@@ -202,7 +219,7 @@ export class Navbar {
     });
   }
 
-  private normalizeRole(role?: string): string | null {
+  private normalizeRole(role?: string | null): string | null {
     const normalizedRole = (role || '').trim().toLowerCase();
     return normalizedRole || null;
   }
