@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
 import { forkJoin, of, switchMap } from 'rxjs';
@@ -17,6 +18,7 @@ export class InfosCandidat implements OnInit {
   private router = inject(Router);
   private apiService = inject(ApiService);
   private authService = inject(AuthService);
+  private sanitizer = inject(DomSanitizer);
 
   candidat: any = null;
   experiences: any[] = [];
@@ -26,6 +28,8 @@ export class InfosCandidat implements OnInit {
   loading = true;
   error = '';
   cvLoading = false;
+  cvPreviewUrl: SafeResourceUrl | null = null;
+  private cvBlobUrl: string | null = null;
   actionLoading = false;
   recruiterId: number | null = null;
   messagingCandidatureId: number | null = null;
@@ -37,6 +41,10 @@ export class InfosCandidat implements OnInit {
     this.userRole = this.normalizeRole(this.authService.getUserRole());
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.loadCandidat(id);
+  }
+
+  ngOnDestroy(): void {
+    this.clearCvPreviewUrl();
   }
 
   private loadCandidat(id: number): void {
@@ -52,6 +60,7 @@ export class InfosCandidat implements OnInit {
         this.candidat = candidat.candidat;
         this.experiences = candidat.experiences || [];
         this.competences = (candidat.competences || []).map((c: any) => c.competence);
+        this.loadCvPreview();
 
         if (this.isRecruiterConnected()) {
           this.loadRecruiterMessagingContext(id);
@@ -221,5 +230,31 @@ export class InfosCandidat implements OnInit {
   private normalizeRole(role?: string | null): string | null {
     const normalized = (role || '').trim().toLowerCase();
     return normalized || null;
+  }
+
+  private loadCvPreview(): void {
+    if (!this.candidat?.id || !this.hasCv()) {
+      this.clearCvPreviewUrl();
+      return;
+    }
+
+    this.apiService.downloadCv(this.candidat.id).subscribe({
+      next: (blob) => {
+        this.clearCvPreviewUrl();
+        this.cvBlobUrl = window.URL.createObjectURL(blob);
+        this.cvPreviewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.cvBlobUrl);
+      },
+      error: () => {
+        this.clearCvPreviewUrl();
+      },
+    });
+  }
+
+  private clearCvPreviewUrl(): void {
+    this.cvPreviewUrl = null;
+    if (this.cvBlobUrl) {
+      window.URL.revokeObjectURL(this.cvBlobUrl);
+      this.cvBlobUrl = null;
+    }
   }
 }
