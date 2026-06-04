@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { FormatTaillePipe } from '../shared/pipes/format-taille.pipe';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { forkJoin, of, switchMap } from 'rxjs';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modifier-profil-employeur',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FormatTaillePipe],
   templateUrl: './modifier-profil-employeur.html',
   styleUrl: './modifier-profil-employeur.scss',
 })

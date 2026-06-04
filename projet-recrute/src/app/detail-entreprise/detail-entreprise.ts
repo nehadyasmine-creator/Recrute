@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { FormatTaillePipe } from '../shared/pipes/format-taille.pipe';
 
 interface Entreprise {
   id: number;
@@ -15,7 +16,7 @@ interface Entreprise {
 
 @Component({
   selector: 'app-detail-entreprise',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormatTaillePipe],
   templateUrl: './detail-entreprise.html',
   styleUrl: './detail-entreprise.scss',
 })
