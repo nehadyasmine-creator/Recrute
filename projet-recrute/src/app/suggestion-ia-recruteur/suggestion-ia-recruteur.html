@@ -1,0 +1,69 @@
+<div class="suggestion-ia-page">
+    <div class="page-header">
+        <h1>Suggestions IA - Candidats</h1>
+        <p>Les 5 candidats les plus adaptés à votre offre, calculés par notre moteur IA.</p>
+    </div>
+
+    @if (loading) {
+        <div class="state-box">Chargement de vos offres...</div>
+    } @else if (errorMessage) {
+        <div class="state-box error">{{ errorMessage }}</div>
+    } @else if (offres.length === 0) {
+        <div class="empty-box">
+            <i class="bi bi-briefcase"></i>
+            <h2>Aucune offre publiée</h2>
+            <p>Vous devez publier au moins une offre d'emploi pour recevoir des recommandations de candidats personnalisées.</p>
+            <div class="empty-actions">
+                <a routerLink="/creer-offre" class="action-link">Créer une offre</a>
+                <a routerLink="/mon-profil-recruteur" class="action-link">Mon profil recruteur</a>
+            </div>
+        </div>
+    } @else {
+        <div class="empty-box selector-box">
+            <h2>Sélectionnez une offre à analyser</h2>
+            <p>Choisissez l'une de vos annonces pour que l'IA trouve les profils correspondants dans notre base de CV.</p>
+            <div class="empty-actions">
+                <select class="offer-select" (change)="onOfferSelected($event)" [disabled]="loadingSuggestions">
+                    @for (offre of offres; track offre.id) {
+                        <option [value]="offre.id" [selected]="selectedOffer?.id === offre.id">{{ offre.titre }}</option>
+                    }
+                </select>
+                <button class="action-link" (click)="loadIASuggestions()" [disabled]="!selectedOffer || loadingSuggestions">
+                    {{ loadingSuggestions ? 'Analyse en cours...' : 'Analyser cette offre' }}
+                </button>
+            </div>
+        </div>
+
+        <div class="offers-grid">
+            @if (loadingSuggestions) {
+                <div class="state-box">Analyse IA des CV en cours...</div>
+            } @else if (suggestions.length === 0 && hasAnalyzed) {
+                <div class="empty-box">
+                    <i class="bi bi-robot"></i>
+                    <h2>Aucun candidat trouvé</h2>
+                    <p>Nous n'avons trouvé aucun CV correspondant à cette offre pour le moment. Réessayez plus tard lorsque de nouveaux candidats se seront inscrits.</p>
+                </div>
+            } @else {
+                @for (suggestion of suggestions; track suggestion.idCandidat) {
+                    <article class="offer-card">
+                        <div class="offer-card-top">
+                            <div>
+                                <h2>{{ suggestion.prenom || 'Prénom inconnu' }} {{ suggestion.nom || 'Nom inconnu' }}</h2>
+                                <p class="company-line">{{ suggestion.typeContrat || 'Contrat non précisé' }} • {{ suggestion.ville || 'Ville non précisée' }}</p>
+                            </div>
+                            <span class="status-badge status-info">{{ suggestion.score }}%</span>
+                        </div>
+
+                        <p class="description">Suggestion basée sur le texte de votre offre. Score de similarité : <strong>{{ suggestion.score }}%</strong></p>
+
+                        <div class="offer-actions">
+                            @if (suggestion.idCandidat) {
+                                <a [routerLink]="['/detail-candidat', suggestion.idCandidat]" class="view-btn">Voir le profil complet</a>
+                            }
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    }
+</div>
