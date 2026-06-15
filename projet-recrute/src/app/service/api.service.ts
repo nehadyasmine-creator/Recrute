@@ -10,14 +10,15 @@ export class ApiService {
   private http = inject(HttpClient);
 
   // Récupérer un dossier de candidature spécifique
-getCandidatureById(id: number): Observable<any> {
-  return this.http.get<any>(`${API}/candidatures/${id}`);
-}
+  getCandidatureById(id: number): Observable<any> {
+    return this.http.get<any>(`${API}/candidatures/${id}`);
+  }
 
-// Mettre à jour l'état (le backend doit intercepter la modification)
-updateCandidatureStatut(id: number, candidature: any): Observable<any> {
-  return this.http.put<any>(`${API}/candidatures/${id}`, candidature);
-}
+  // Mettre à jour l'état (le backend doit intercepter la modification)
+  updateCandidatureStatut(id: number, candidature: any): Observable<any> {
+    return this.http.put<any>(`${API}/candidatures/${id}`, candidature);
+  }
+
   // Auth
   register(data: any): Observable<any> {
     return this.http.post(`${API}/auth/register`, data);
@@ -250,6 +251,7 @@ updateCandidatureStatut(id: number, candidature: any): Observable<any> {
     return this.http.put(`${API}/messagerie/${id}/lu`, {});
   }
 
+  // IA
   public getIASuggestionsFromPdf(file: File) {
     const formData = new FormData();
     formData.append('file', file);
@@ -259,5 +261,9 @@ updateCandidatureStatut(id: number, candidature: any): Observable<any> {
 
   public getIASuggestions(candidatId: number) {
     return this.http.get<any[]>(`http://localhost:8000/api/match-cv/${candidatId}`);
+  }
+
+  public getIASuggestionsFromOffer(offerData: { titre: string; description: string }): Observable<any[]> {
+    return this.http.post<any[]>('http://localhost:8000/api/match-offer', offerData);
   }
 }
