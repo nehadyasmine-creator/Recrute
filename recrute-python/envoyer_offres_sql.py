@@ -17,25 +17,22 @@ if os.path.exists(chemin_sql):
     with open(chemin_sql, mode='r', encoding='utf-8') as f:
         lignes_existantes = f.readlines()
         for i, ligne in enumerate(lignes_existantes):
-            # On s'arrête dès qu'on détecte le début de la génération des entreprises
             if '-- ==========================' in ligne and i + 1 < len(lignes_existantes) and 'Entreprises' in \
                     lignes_existantes[i + 1]:
                 break
-            elif '-- Entreprises' in ligne:  # Cas de secours si le format des '=' a changé
+            elif '-- Entreprises' in ligne: 
                 break
             lignes_a_conserver.append(ligne)
 
 entreprises_traitees = set()
 
 with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
-        open(chemin_sql, mode='w', encoding='utf-8') as file_out:  # Mode 'w' car on réécrit l'entête nous-mêmes
+        open(chemin_sql, mode='w', encoding='utf-8') as file_out:  
 
     lignes_csv = list(csv.DictReader(file_in))
 
-    # On réinjecte le contenu manuel qu'on a sauvegardé (s'il y en a)
     file_out.writelines(lignes_a_conserver)
 
-    # Si le fichier ne se termine pas par un saut de ligne, on en ajoute un pour la propreté
     if lignes_a_conserver and not lignes_a_conserver[-1].endswith('\n'):
         file_out.write('\n\n')
 
@@ -152,9 +149,6 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
         )
         file_out.write(requete_sql_offre)
 
-    # ==========================================================
-    # GESTION DES CANDIDATS (VIA LE DOSSIER CV ET LE DICTIONNAIRE)
-    # ==========================================================
     file_out.write('\n-- ==========================\n')
     file_out.write('-- Candidats\n')
     file_out.write('-- ==========================\n')
@@ -208,12 +202,11 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
             if fichier in dictionnaire_candidats:
                 infos = dictionnaire_candidats[fichier]
 
-                i += 1  # On incrémente l'ID utilisateur
+                i += 1 
 
                 nom = infos['nom']
                 prenom = infos['prenom']
 
-                # Génération dynamique
                 email = prenom.lower() + '.' + nom.lower() + '@gmail.com'
                 telephone = '+33' + str(randint(600000000, 799999999))
                 motdepasse_clair = prenom + nom
@@ -224,34 +217,27 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
                 ville = villes_aleatoires[randint(0, 4)]
                 disponibilite = (dateCreation + datetime.timedelta(days=randint(10, 60))).strftime('%Y-%m-%d')
 
-                # Échappement des apostrophes pour le SQL
                 nom_echappe = nom.replace("'", "''")
                 prenom_echappe = prenom.replace("'", "''")
                 email_echappe = email.replace("'", "''")
                 ville_echappe = ville.replace("'", "''")
-                fichier_echappe = fichier.replace("'", "''")  # Échappement du nom du fichier au cas où
+                fichier_echappe = fichier.replace("'", "''")  
 
-                # Hachage sécurisé
                 sel = bcrypt.gensalt(rounds=10)
                 motdepasse_hashe = bcrypt.hashpw(motdepasse_clair.encode('utf-8'), sel).decode('utf-8')
 
-                # 1. Requête Utilisateur
                 requete_sql_utilisateur = (
                     f"INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES"
                     f" ('{nom_echappe}', '{prenom_echappe}', '{email_echappe}', '{telephone}', '{motdepasse_hashe}', '{role}', '{dateCreation}');\n"
                 )
                 file_out.write(requete_sql_utilisateur)
 
-                # 2. Requête Candidat (Ajout de la colonne 'cv' et de la variable '{fichier_echappe}')
                 requete_sql_candidat = (
                     f"INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES"
                     f" ({i}, '{type_contrat}', '{ville_echappe}', '{disponibilite}', '{fichier_echappe}');\n"
                 )
                 file_out.write(requete_sql_candidat)
 
-    # ==========================================================
-    # GESTION DES COMPETENCES (CONSERVEES MANUELLEMENT)
-    # ==========================================================
     requetes_competences = textwrap.dedent("""
         -- ==========================
         -- Compétences
@@ -275,5 +261,4 @@ with open(chemin_csv, mode='r', encoding='utf-8') as file_in, \
 
     file_out.write(requetes_competences)
 
-# Fin du bloc 'with open(...)'
 print(f"Les requêtes SQL ont été générées avec succès dans : {chemin_sql}")
