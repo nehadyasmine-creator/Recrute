@@ -7,18 +7,14 @@ import pdfplumber
 from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer
 
-# --- CONFIGURATION ---
 API_URL_CANDIDATS = "http://localhost:8080/candidats"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "recrute_mongo"
 COLLECTION_NAME = "candidats"
 
-# Chemin vers le dossier généré par ton backend Spring Boot
-# Modifie ce chemin s'il n'est pas dans le même dossier racine que ton script Python
 CV_DIR = "../recrute-backend/uploads/cv"
 
-# Configuration du logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
@@ -86,7 +82,6 @@ class CandidateIndexer:
         for idx, candidat in enumerate(candidats):
             nom_fichier_cv = candidat.get('cv')
 
-            # CONDITION AJOUTÉE : On passe au candidat suivant si le CV est null ou vide
             if not nom_fichier_cv:
                 continue
 
@@ -97,10 +92,8 @@ class CandidateIndexer:
             ville = str(candidat.get('ville', ''))
             dispo = str(candidat.get('disponibilite', ''))
 
-            # Extraction locale via pdfplumber
             texte_cv_extrait = self.extract_cv_text_locally(nom_fichier_cv)
 
-            # Construction du texte à vectoriser
             full_content = f"Candidat: {prenom} {nom}. Recherche: {type_contrat} à {ville}. Dispo: {dispo}. "
             if texte_cv_extrait:
                 full_content += f"Contenu du CV : {texte_cv_extrait}"

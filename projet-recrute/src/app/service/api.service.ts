@@ -266,4 +266,16 @@ export class ApiService {
   public getIASuggestionsFromOffer(offerData: { titre: string; description: string }): Observable<any[]> {
     return this.http.post<any[]>('http://localhost:8000/api/match-offer', offerData);
   }
+
+  public compareMultipleCvs(titreOffre: string, descriptionOffre: string, files: File[]): Observable<any[]> {
+    const formData = new FormData();
+    formData.append('titre', titreOffre);
+    formData.append('description', descriptionOffre);
+
+    files.forEach((file) => {
+      formData.append('files', file); // Le nom 'files' doit correspondre au paramètre FastAPI
+    });
+    
+    return this.http.post<any[]>('http://localhost:8000/api/compare-cvs', formData);
+  }
 }

@@ -9,7 +9,6 @@ from bson import json_util
 from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer
 
-# --- CONFIGURATION ---
 API_URL_OFFRES = "http://localhost:8080/offres"
 API_URL_CANDIDATS = "http://localhost:8080/candidats"
 
@@ -17,11 +16,9 @@ MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "recrute_mongo"
 
-# Chemins
 CV_DIR = "../recrute-backend/uploads/cv"
 EXPORT_DIR = "../recrute-backend/src/main/resources/mongo-init"
 
-# Configuration du logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
@@ -40,9 +37,6 @@ class DataIndexer:
         text = re.sub(r'\s+', ' ', text)
         return text.strip()
 
-    # ==========================================
-    # GESTION DES OFFRES
-    # ==========================================
     def process_offres(self):
         collection = self.db["offres"]
 
@@ -59,7 +53,6 @@ class DataIndexer:
             print("[WARN] Aucune offre à traiter.")
             return
 
-        # COMME AVANT : On efface tout
         print("[INFO] Effacement des anciennes offres dans MongoDB...")
         collection.delete_many({})
 
@@ -104,9 +97,6 @@ class DataIndexer:
             collection.insert_many(docs)
             print(f"[SUCCÈS] {len(docs)} offres indexées en {round(time.time() - start_time, 2)}s.")
 
-    # ==========================================
-    # GESTION DES CANDIDATS
-    # ==========================================
     def extract_cv_text_locally(self, filename):
         if not filename: return ""
         file_path = os.path.join(CV_DIR, filename)
@@ -139,7 +129,6 @@ class DataIndexer:
             print("[WARN] Aucun candidat à traiter.")
             return
 
-        # COMME AVANT : On efface tout
         print("[INFO] Effacement des anciens candidats dans MongoDB...")
         collection.delete_many({})
 
@@ -190,9 +179,6 @@ class DataIndexer:
             collection.insert_many(docs)
             print(f"[SUCCÈS] {len(docs)} candidats indexés en {round(time.time() - start_time, 2)}s.")
 
-    # ==========================================
-    # EXPORTATION JSON AUTOMATIQUE
-    # ==========================================
     def export_to_json(self, collection_name):
         os.makedirs(EXPORT_DIR, exist_ok=True)
         file_path = os.path.join(EXPORT_DIR, f"{collection_name}.json")
@@ -208,11 +194,9 @@ class DataIndexer:
             print(f"[WARN] La collection '{collection_name}' est vide, rien à exporter.")
 
     def run(self):
-        # 1. Traitement avec écrasement complet
         self.process_offres()
         self.process_candidats()
 
-        # 2. Sauvegarde Automatique
         print("\n--- Lancement des exports JSON ---")
         self.export_to_json("offres")
         self.export_to_json("candidats")

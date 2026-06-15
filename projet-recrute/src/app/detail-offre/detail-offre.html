@@ -1,127 +1,146 @@
 <div class="detail-page">
-	@if (loading) {
-		<div class="state-box">Chargement de l'offre...</div>
-	} @else if (errorMessage) {
-		<div class="state-box error">{{ errorMessage }}</div>
-	} @else if (offre) {
-		<article class="detail-card">
-			<header class="detail-header">
-				<div>
-					<p class="eyebrow">Détail de l'offre</p>
-					<h1>{{ offre.titre }}</h1>
-					<p class="meta-line">{{ displayOrFallback(offre.lieu) }} | {{ displayOrFallback(offre.typeContrat) }} | {{ formatDate(offre.datePublication) }}</p>
-				</div>
+    @if (loading) {
+        <div class="state-box">Chargement de l'offre...</div>
+    } @else if (errorMessage) {
+        <div class="state-box error">{{ errorMessage }}</div>
+    } @else if (offre) {
+        <article class="detail-card">
+            <header class="detail-header">
+                <div>
+                    <p class="eyebrow">Détail de l'offre</p>
+                    <h1>{{ offre.titre }}</h1>
+                    <p class="meta-line">{{ displayOrFallback(offre.lieu) }} | {{ displayOrFallback(offre.typeContrat) }} | {{ formatDate(offre.datePublication) }}</p>
+                </div>
 
-				<button
-					class="bookmark-btn"
-					[class.saved]="isOfferSaved()"
-					(click)="toggleSaveOffer($event)"
-					[title]="isOfferSaved() ? 'Retirer de favoris' : 'Ajouter aux favoris'"
-				>
-					<i class="bi" [class.bi-bookmark-fill]="isOfferSaved()" [class.bi-bookmark]="!isOfferSaved()"></i>
-				</button>
-			</header>
+                <button
+                    class="bookmark-btn"
+                    [class.saved]="isOfferSaved()"
+                    (click)="toggleSaveOffer($event)"
+                    [title]="isOfferSaved() ? 'Retirer de favoris' : 'Ajouter aux favoris'"
+                >
+                    <i class="bi" [class.bi-bookmark-fill]="isOfferSaved()" [class.bi-bookmark]="!isOfferSaved()"></i>
+                </button>
+            </header>
 
-			<section class="detail-section">
-				<h2>Description</h2>
-				<p class="description-text" [innerHTML]="displayOrFallback(offre.description) | linkify"></p>
-			</section>
+            <section class="detail-section">
+                <h2>Description</h2>
+                <p class="description-text" [innerHTML]="displayOrFallback(offre.description) | linkify"></p>
+            </section>
 
-			<section class="detail-section">
-				<h2>Informations générales</h2>
-				<div class="info-grid">
-					<div class="info-item">
-						<span class="label">Salaire</span>
-						<span class="value">{{ offre.salaire ? (offre.salaire + ' EUR') : 'Non renseigné' }}</span>
-					</div>
-					<div class="info-item">
-						<span class="label">Télétravail</span>
-						<span class="value">{{ yesNo(offre.teletravail) }}</span>
-					</div>
-					<div class="info-item">
-						<span class="label">Durée</span>
-						<span class="value">{{ displayOrFallback(offre.duree) }}</span>
-					</div>
-					<div class="info-item">
-						<span class="label">Expérience requise</span>
-						<span class="value">{{ offre.experienceRequise !== null && offre.experienceRequise !== undefined ? (offre.experienceRequise + ' an(s)') : 'Non renseignée' }}</span>
-					</div>
-					<div class="info-item">
-						<span class="label">Date de début</span>
-						<span class="value">{{ formatDate(offre.dateDebut) }}</span>
-					</div>
+            <section class="detail-section">
+                <h2>Informations générales</h2>
+                <div class="info-grid">
                     <div class="info-item">
-						<span class="label">Entreprise</span>
-						@if (entrepriseLink()) {
-							<a class="value company-link" [routerLink]="entrepriseLink()">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</a>
-						} @else {
-							<span class="value">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</span>
-						}
-					</div>
-				</div>
-			</section>
+                        <span class="label">Salaire</span>
+                        <span class="value">{{ offre.salaire ? (offre.salaire + ' EUR') : 'Non renseigné' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Télétravail</span>
+                        <span class="value">{{ yesNo(offre.teletravail) }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Durée</span>
+                        <span class="value">{{ displayOrFallback(offre.duree) }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Expérience requise</span>
+                        <span class="value">{{ offre.experienceRequise !== null && offre.experienceRequise !== undefined ? (offre.experienceRequise + ' an(s)') : 'Non renseignée' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Date de début</span>
+                        <span class="value">{{ formatDate(offre.dateDebut) }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Entreprise</span>
+                        @if (entrepriseLink()) {
+                            <a class="value company-link" [routerLink]="entrepriseLink()">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</a>
+                        } @else {
+                            <span class="value">{{ displayOrFallback(offre.recruteur?.entreprise?.nom) }}</span>
+                        }
+                    </div>
+                </div>
+            </section>
             
-			<section class="detail-section">
-				<h2>Compétences nécessaires</h2>
-				@if (competencesRequises.length === 0) {
-					<p>Aucune compétence renseignée pour cette offre.</p>
-				} @else {
-					<div class="skills-wrap">
-						@for (comp of competencesRequises; track comp.nom) {
-							<span class="chip" [class.required]="comp.obligatoire">
-								{{ comp.nom }}
-								@if (comp.obligatoire) {
-									<small>Obligatoire</small>
-								}
-							</span>
-						}
-					</div>
-				}
-			</section>
+            <section class="detail-section">
+                <h2>Compétences nécessaires</h2>
+                @if (competencesRequises.length === 0) {
+                    <p>Aucune compétence renseignée pour cette offre.</p>
+                } @else {
+                    <div class="skills-wrap">
+                        @for (comp of competencesRequises; track comp.nom) {
+                            <span class="chip" [class.required]="comp.obligatoire">
+                                {{ comp.nom }}
+                                @if (comp.obligatoire) {
+                                    <small>Obligatoire</small>
+                                }
+                            </span>
+                        }
+                    </div>
+                }
+            </section>
 
-			@if (canEditOffer()) {
-				<section class="detail-section">
-					<h2>Candidatures reçues</h2>
-					@if (loadingApplications) {
-						<p>Chargement des candidatures...</p>
-					} @else if (applicationsError) {
-						<p class="applications-error">{{ applicationsError }}</p>
-					} @else if (receivedApplications.length === 0) {
-						<p>Aucune candidature reçue pour le moment.</p>
-					} @else {
-						<div class="applications-list">
-    @for (candidature of receivedApplications; track candidature.id) {
-        <article 
-            class="application-item clickable" 
-            role="button" 
-            tabindex="0" 
-            (click)="goToCandidatureDetail(candidature.id)"
-            (keydown.enter)="goToCandidatureDetail(candidature.id)"
-        >
-            <div class="application-head">
-                <h3>{{ candidature.candidatNom }}</h3>
-                <span class="status-pill" [attr.data-status]="candidature.statut">{{ candidature.statut }}</span>
-            </div>
-            <p class="app-email"><i class="bi bi-envelope"></i> {{ candidature.candidatEmail }}</p>
-            <p class="app-date"><i class="bi bi-calendar3"></i> Date : {{ formatDate(candidature.dateCandidature) }}</p>
-            <p class="app-cv"><i class="bi bi-file-earmark-person"></i> Fichier CV : {{ displayOrFallback(candidature.cv) }}</p>
-            <div class="view-more">
-                <span>Traiter la candidature <i class="bi bi-arrow-right"></i></span>
-            </div>
+            @if (canEditOffer()) {
+                <section class="detail-section">
+                    <div class="section-header-flex">
+                        <h2>Candidatures reçues</h2>
+                        @if (receivedApplications.length > 0 && !hasAnalyzedIA) {
+                            <button class="ai-btn" (click)="analyzeApplicationsWithIA()" [disabled]="analyzingIA">
+                                <i class="bi bi-robot"></i> {{ analyzingIA ? 'Analyse en cours...' : 'Trier avec l\'IA' }}
+                            </button>
+                        }
+                    </div>
+                    
+                    @if (aiAnalysisError) {
+                        <p class="applications-error"><i class="bi bi-exclamation-triangle"></i> {{ aiAnalysisError }}</p>
+                    }
+
+                    @if (loadingApplications) {
+                        <p>Chargement des candidatures...</p>
+                    } @else if (applicationsError) {
+                        <p class="applications-error">{{ applicationsError }}</p>
+                    } @else if (receivedApplications.length === 0) {
+                        <p>Aucune candidature reçue pour le moment.</p>
+                    } @else {
+                        <div class="applications-list">
+                            @for (candidature of receivedApplications; track candidature.id) {
+                                <article 
+                                    class="application-item clickable" 
+                                    role="button" 
+                                    tabindex="0" 
+                                    (click)="goToCandidatureDetail(candidature.id)"
+                                    (keydown.enter)="goToCandidatureDetail(candidature.id)"
+                                >
+                                    <div class="application-head">
+                                        <h3>{{ candidature.candidatNom }}</h3>
+                                        <div class="badges-group">
+                                            @if (candidature.aiScore !== undefined) {
+                                                <span class="ai-score-badge" [class.high]="candidature.aiScore >= 75" [class.medium]="candidature.aiScore >= 40 && candidature.aiScore < 75" [class.low]="candidature.aiScore < 40">
+                                                    <i class="bi bi-stars"></i> IA : {{ candidature.aiScore }}%
+                                                </span>
+                                            }
+                                            <span class="status-pill" [attr.data-status]="candidature.statut">{{ candidature.statut }}</span>
+                                        </div>
+                                    </div>
+                                    <p class="app-email"><i class="bi bi-envelope"></i> {{ candidature.candidatEmail }}</p>
+                                    <p class="app-date"><i class="bi bi-calendar3"></i> Date : {{ formatDate(candidature.dateCandidature) }}</p>
+                                    <p class="app-cv"><i class="bi bi-file-earmark-person"></i> Fichier CV : {{ displayOrFallback(candidature.cv) }}</p>
+                                    <div class="view-more">
+                                        <span>Traiter la candidature <i class="bi bi-arrow-right"></i></span>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+                    }
+                </section>
+            }
+
+            <footer class="action-row">
+                <button class="secondary-btn" (click)="goBackToList()">Retour aux offres</button>
+                @if (canEditOffer()) {
+                    <a [routerLink]="['/ajouter-offre', offre.id]" class="secondary-btn">Modifier l'offre</a>
+                }
+                <a [routerLink]="['/postuler', offre.id]" class="primary-btn">Candidater</a>
+            </footer>
         </article>
     }
-</div>
-					}
-				</section>
-			}
-
-			<footer class="action-row">
-				<button class="secondary-btn" (click)="goBackToList()">Retour aux offres</button>
-				@if (canEditOffer()) {
-					<a [routerLink]="['/ajouter-offre', offre.id]" class="secondary-btn">Modifier l'offre</a>
-				}
-				<a [routerLink]="['/postuler', offre.id]" class="primary-btn">Candidater</a>
-			</footer>
-		</article>
-	}
 </div>

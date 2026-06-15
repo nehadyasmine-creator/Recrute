@@ -5,14 +5,12 @@ import logging
 from pymongo import MongoClient
 from sentence_transformers import SentenceTransformer
 
-# --- CONFIGURATION ---
 API_URL = "http://localhost:8080/offres"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "recrute_mongo"
 COLLECTION_NAME = "offres"
 
-# Configuration du logger pour l'API
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class OfferIndexer:
@@ -45,7 +43,6 @@ class OfferIndexer:
         return text.strip()
 
     def run(self):
-        # 1. Récupération des données via l'API au lieu du CSV
         offres = self.recuperer_offres_api()
         if not offres:
             print("[ERREUR] Aucune offre à traiter. Arrêt du script.")
@@ -58,26 +55,21 @@ class OfferIndexer:
         start_time = time.time()
         docs = []
 
-        # 2. Traitement des offres JSON
         for idx, offer in enumerate(offres):
             titre = str(offer.get('titre', ''))
             description = str(offer.get('description', ''))
 
-            # Feature Engineering : On fusionne titre et description pour un vecteur riche
             full_content = f"{titre}. {description}"
             cleaned_content = self.clean_text(full_content)
 
             if not cleaned_content:
                 continue
 
-            # Vectorisation
             embedding = self.model.encode(cleaned_content).tolist()
 
-            # Extraction sécurisée des données imbriquées de l'entreprise
             recruteur = offer.get('recruteur', {})
             entreprise = recruteur.get('entreprise', {})
 
-            # Construction du document normé
             doc = {
                 "metadata": {
                     "titre": titre,
@@ -98,7 +90,6 @@ class OfferIndexer:
             if (idx + 1) % 10 == 0:
                 print(f"[PROGRESS] {idx + 1} offres traitées...")
 
-        # 3. Insertion dans MongoDB
         if docs:
             self.collection.insert_many(docs)
 

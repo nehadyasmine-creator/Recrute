@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { forkJoin, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { LinkifyPipe } from '../shared/pipes/linkify.pipe';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
@@ -45,11 +47,13 @@ interface CompetenceOffreView {
 
 interface CandidatureView {
   id: number;
+  candidatId: number;
   candidatNom: string;
   candidatEmail: string;
   statut: string;
   dateCandidature?: string | null;
   cv?: string | null;
+  aiScore?: number;
 }
 
 @Component({
@@ -69,9 +73,15 @@ export class DetailOffre implements OnInit {
   loading = true;
   errorMessage = '';
   savedOfferIds: Set<number> = new Set();
+  
   receivedApplications: CandidatureView[] = [];
   loadingApplications = false;
   applicationsError = '';
+  
+  analyzingIA = false;
+  hasAnalyzedIA = false;
+  aiAnalysisError = '';
+
   private candidateId: number | null = null;
 
   ngOnInit(): void {
@@ -138,8 +148,8 @@ export class DetailOffre implements OnInit {
   }
 
   goToCandidatureDetail(candidatureId: number): void {
-  this.router.navigate(['/detail-candidature', candidatureId]);
-}
+    this.router.navigate(['/detail-candidature', candidatureId]);
+  }
 
   private loadReceivedApplications(offerId: number): void {
     this.receivedApplications = [];
@@ -163,6 +173,7 @@ export class DetailOffre implements OnInit {
 
             return {
               id: c?.id,
+              candidatId: c?.candidat?.id, 
               candidatNom: fullName || 'Candidat inconnu',
               candidatEmail: c?.candidat?.utilisateur?.email || 'Email non renseigné',
               statut: this.candidatureStatusLabel(c?.statut),
@@ -182,6 +193,78 @@ export class DetailOffre implements OnInit {
         this.loadingApplications = false;
         this.applicationsError = 'Impossible de charger les candidatures reçues pour cette offre.';
       },
+    });
+  }
+
+  analyzeApplicationsWithIA(): void {
+    if (!this.offre || this.receivedApplications.length === 0) return;
+
+    const candsWithCv = this.receivedApplications.filter(c => c.candidatId && c.cv);
+    if (candsWithCv.length === 0) {
+      this.aiAnalysisError = "Aucun candidat n'a fourni de CV.";
+      return;
+    }
+
+    this.analyzingIA = true;
+    this.aiAnalysisError = '';
+
+    const downloadObservables = candsWithCv.map(cand =>
+      this.apiService.downloadCv(cand.candidatId).pipe(
+        map((blob: Blob) => {
+          const fileName = `cv_${cand.id}.pdf`;
+          return new File([blob], fileName, { type: 'application/pdf' });
+        }),
+        catchError(() => of(null)) 
+      )
+    );
+
+    forkJoin(downloadObservables).subscribe({
+      next: (filesOrNull) => {
+        const validFiles = filesOrNull.filter(f => f !== null) as File[];
+
+        if (validFiles.length === 0) {
+          this.analyzingIA = false;
+          this.aiAnalysisError = "Impossible de récupérer les fichiers PDF des CVs.";
+          return;
+        }
+
+        this.apiService.compareMultipleCvs(
+          this.offre!.titre,
+          this.offre!.description,
+          validFiles
+        ).subscribe({
+          next: (results) => {
+            results.forEach((res: any) => {
+              const match = res.nomFichier.match(/cv_(\d+)\.pdf/);
+              if (match) {
+                const candId = Number(match[1]);
+                const targetCand = this.receivedApplications.find(c => c.id === candId);
+                if (targetCand) {
+                  targetCand.aiScore = res.score;
+                }
+              }
+            });
+
+            this.receivedApplications.sort((a, b) => {
+              const scoreA = a.aiScore !== undefined ? a.aiScore : -1;
+              const scoreB = b.aiScore !== undefined ? b.aiScore : -1;
+              return scoreB - scoreA;
+            });
+
+            this.analyzingIA = false;
+            this.hasAnalyzedIA = true;
+          },
+          error: (err) => {
+            console.error("Erreur API IA :", err);
+            this.analyzingIA = false;
+            this.aiAnalysisError = "Erreur lors de l'analyse des CVs par l'IA.";
+          }
+        });
+      },
+      error: () => {
+        this.analyzingIA = false;
+        this.aiAnalysisError = "Erreur globale lors du téléchargement des CVs.";
+      }
     });
   }
 
@@ -334,5 +417,4 @@ export class DetailOffre implements OnInit {
     const entrepriseId = this.offre?.recruteur?.entreprise?.id;
     return entrepriseId ? ['/detail-entreprise', String(entrepriseId)] : null;
   }
-
 }
