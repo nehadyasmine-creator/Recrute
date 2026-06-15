@@ -34,7 +34,6 @@ class CRMAtchingEngine:
 
     def cosine_similarity(self, v1, v2):
         v1, v2 = np.array(v1), np.array(v2)
-        # Sécurité pour éviter la division par zéro
         norm_v1 = np.linalg.norm(v1)
         norm_v2 = np.linalg.norm(v2)
         if norm_v1 == 0 or norm_v2 == 0:
@@ -49,13 +48,11 @@ class CRMAtchingEngine:
 
         all_offers = list(self.collection.find({}, {"metadata": 1, "embedding": 1}))
 
-        # 👇 AJOUTE CETTE LIGNE POUR VÉRIFIER LA CONNEXION
         print(f"[DEBUG] Offres recuperees dans la BD : {len(all_offers)}")
 
         results = []
         for offer in all_offers:
             if 'embedding' not in offer:
-                # 👇 AJOUTE CETTE LIGNE POUR VÉRIFIER LES DONNÉES
                 print(f"[ATTENTION] L'offre {offer.get('_id')} n'a pas d'embedding !")
                 continue
 
@@ -76,7 +73,6 @@ class CRMAtchingEngine:
 if __name__ == "__main__":
     app = FastAPI()
 
-    # Autorise Angular (CORS) à lire les données Python
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -87,7 +83,6 @@ if __name__ == "__main__":
 
     engine = CRMAtchingEngine()
 
-    # Route POST exclusive pour analyser un fichier envoyé par l'utilisateur
     @app.post("/api/match-cv")
     async def api_match_file(file: UploadFile = File(...)):
         print(f"\n{'=' * 50}")
@@ -129,5 +124,4 @@ if __name__ == "__main__":
         finally:
             if os.path.exists(temp_path):
                 os.remove(temp_path)
-    # Lancement de l'API
     uvicorn.run(app, host="0.0.0.0", port=8000)
