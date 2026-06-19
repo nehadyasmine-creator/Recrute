@@ -20,7 +20,6 @@ export class FormatTaillePipe implements PipeTransform {
     const mapped = this.map[key];
     if (mapped) return mapped;
 
-    // Generic: replace underscores and title-case
     const human = key.replace(/_/g, ' ').toLowerCase().replace(/(^|\s)\S/g, (s) => s.toUpperCase());
     return human;
   }

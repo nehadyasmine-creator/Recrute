@@ -46,7 +46,7 @@ export class InscriptionCandidat {
         this.router.navigate(['/']); 
       },
       error: (err) => {
-        console.error('Détails de l\'erreur :', err); // Ajoute cette ligne
+        console.error('Détails de l\'erreur :', err);  
         this.errorMessage = "Erreur lors de l'inscription.";
       }
     });

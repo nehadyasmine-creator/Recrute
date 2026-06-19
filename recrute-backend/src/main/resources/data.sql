@@ -1,4 +1,3 @@
--- Compétences
 INSERT INTO Competence (category, nom) VALUES
 ('technique', 'Java'),
 ('technique', 'Python'),
@@ -11,7 +10,6 @@ INSERT INTO Competence (category, nom) VALUES
 ('langue', 'Anglais'),
 ('langue', 'Français');
 
--- Entreprises
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Institut Curie', 'Orsay', 'Santé', 'https://curie.fr', 'grand_groupe');
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Elsys Design', 'Créteil', 'Électronique', 'https://www.elsys-design.com', 'grand_groupe');
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('ONSPARK', 'Paris', 'Informatique', 'https://onspark.fr/', 'grand_groupe');
@@ -29,7 +27,6 @@ INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('RIVA
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('IDEM for STUDIEL SERVICES', 'Île-de-France', 'Aéronautique', 'https://www.idem-group.com/', 'grand_groupe');
 INSERT INTO Entreprise (nom, siegesocial,secteur, siteweb, taille) VALUES ('Withings', 'Issy-les-Moulineaux', 'Santé', 'https://www.withings.com', 'grand_groupe');
 
--- Recruteurs (Utilisateurs)
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Martinez', 'Malo', 'malo.martinez@gmail.com', '+33668639549', '$2b$10$.as7lMP/drSUcmBBNa2BKeYJmRycwxB1nTEQ296bfnYNE882y1KFO', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (1, 1, 'Responsable RH');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Ingrachen', 'Malo', 'malo.ingrachen@gmail.com', '+33704381542', '$2b$10$GJRcxMef0iPer8qBSW2eqOW.0orYMUf1ndW0fe9ObNXaEtT7ys5hm', 'recruteur','2026-05-24');
@@ -63,9 +60,7 @@ INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (15, 15, 'Re
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Dufournier', 'Martin', 'martin.dufournier@gmail.com', '+33754309261', '$2b$10$v7hT21N3liE084vfwLNs8.2rpxNUXDHptBK.e6vfDF84O77k9JtGq', 'recruteur','2026-05-24');
 INSERT INTO Recruteur (id_utilisateur, id_entreprise, poste) VALUES (16, 16, 'Responsable RH');
 
--- ==========================
--- Offres
--- ==========================
+
 INSERT INTO Offre (id_recruteur, titre, description, lieu, type_contrat, salaire, duree, experience_requise, date_debut, date_publication, teletravail) VALUES (1, 'Ingénieur en Imagerie préclinique (H/F)', 'CDD
 Orsay
 Ingénieur en Imagerie préclinique (H/F)
@@ -889,9 +884,6 @@ Participer à la Withings Med Academy en assistant à des conférences de profes
 Collaborer avec des collègues passionnés et célébrer ensemble chacune de nos réussites !
 Toutes les candidatures reçues sont étudiées indépendamment de l’origine ethnique, des opinions, des croyances, de la religion, du genre, de l’orientation sexuelle ou de la santé des candidats. Withings aspire à offrir et garantir l’égalité des chances aux candidats et seules les personnes habilitées (RH et Management) auront accès aux informations concernant votre candidature.', 'Issy-les-Moulineaux', 'CDI', 0.0, '', 1, NULL, '2026-05-12', FALSE);
 
--- ==========================
--- Candidats
--- ==========================
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Lacombe', 'Ambre', 'ambre.lacombe@gmail.com', '+33776733001', '$2b$10$krDTfyiBH4.lKYpmT.Fd7.FYkfHk6B2p5cZQWnpZm9Fz09cP5t.8e', 'candidat', '2026-05-24');
 INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (17, 'Freelance', 'Nantes', '2026-06-17', 'CV_Ambre_Lacombe.pdf');
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Guenot', 'Axel', 'axel.guenot@gmail.com', '+33729597410', '$2b$10$KsJ9J.rDE5WPdOZlEpE6R.bwao0WWD47Z34GdYw1cGWj3VJ4j5jXG', 'candidat', '2026-05-24');
@@ -911,28 +903,22 @@ INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VAL
 INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation) VALUES ('Nehad', 'Yasmine', 'yasmine.nehad@gmail.com', '+33709465928', '$2b$10$4WpBzzJtELxWg8DInvNk5.Hfy30J11I9rI4jZOfBxlPdmt3hQIDf2', 'candidat', '2026-05-24');
 INSERT INTO Candidat (id_utilisateur, typeContrat, ville, disponibilite, cv) VALUES (25, 'Freelance', 'Bordeaux', '2026-07-11', 'CV_Yasmine_Nehad.pdf');
 
--- ==========================
--- Compétences
--- ==========================
--- Compétences des candidats (NB: Vérifiez que id_candidat correspond bien aux nouveaux IDs générés)
+
 INSERT INTO CompetenceCandidat (id_candidat, id_competence, niveau)
-VALUES (1, 1, 'avance'),        -- Bob : Java avancé
-       (1, 3, 'avance'),        -- Bob : Spring Boot avancé
-       (1, 5, 'intermediaire'), -- Bob : Docker intermédiaire
-       (2, 2, 'expert'),        -- Clara : Python expert
-       (2, 4, 'intermediaire'); -- Clara : React intermédiaire
+VALUES (1, 1, 'avance'),        
+       (1, 3, 'avance'),        
+       (1, 5, 'intermediaire'), 
+       (2, 2, 'expert'),        
+       (2, 4, 'intermediaire'); 
 
--- Compétences requises pour les offres
 INSERT INTO CompetenceOffre (id_offre, id_competence, obligatoire)
-VALUES (1, 1, true),  -- Offre Java : Java obligatoire
-       (1, 3, true),  -- Offre Java : Spring Boot obligatoire
-       (1, 5, false), -- Offre Java : Docker optionnel
-       (2, 5, true),  -- Offre DevOps : Docker obligatoire
-       (2, 6, true);  -- Offre DevOps : SQL obligatoire
+VALUES (1, 1, true),  
+       (1, 3, true),  
+       (1, 5, false), 
+       (2, 5, true), 
+       (2, 6, true); 
 
--- ==========================
--- Candidature et messagerie de test
--- ==========================
+
 INSERT INTO Candidature (id_candidat, id_offre, score_matching, date_candidature, lettre_motivation, statut)
 VALUES (1, 1, 91.50, '2026-05-25', 'Bonjour, je suis très intéressée par cette mission et disponible pour un entretien.', 'en_attente'),
        (2, 1, 86.30, '2026-05-24', 'Je souhaite rejoindre votre équipe et mettre mes compétences Java/Spring au service de vos projets.', 'envoyee'),
@@ -948,3 +934,6 @@ VALUES (1, 1, 1, 'recruteur', 'Bonjour Ambre, merci pour votre candidature. Nous
       (1, 1, 1, 'candidat', 'Bonjour, merci pour votre retour. Je reste disponible pour un échange cette semaine.', '2026-05-25 09:35:00', false),
       (1, 1, 1, 'recruteur', 'Parfait, pouvons-nous prévoir un entretien jeudi à 14h ?', '2026-05-25 10:10:00', false),
       (1, 1, 1, 'candidat', 'Oui, jeudi 14h me convient très bien. Merci !', '2026-05-25 10:42:00', false);
+
+INSERT INTO Utilisateur (nom, prenom, email, telephone, motDePasse, role, dateCreation)
+VALUES ('Recrute', 'Admin', 'admin@recrute.fr', NULL, '$2b$10$TVoFw2.Tatk1dQa1PK9pNeDoVgcbOwdh8DPzJUvwEVBm701gLjxii', 'admin', '2026-06-18');

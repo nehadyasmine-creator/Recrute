@@ -3,7 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
-import { FormsModule } from '@angular/forms'; // À AJOUTER
+import { FormsModule } from '@angular/forms';
 
 interface Offre {
   id: number;
@@ -17,7 +17,7 @@ interface Offre {
 
 @Component({
   selector: 'app-liste-offres',
-  imports: [CommonModule, FormsModule], // AJOUT DE FormsModule
+  imports: [CommonModule, FormsModule], 
   templateUrl: './liste-offres.html',
   styleUrl: './liste-offres.scss',
 })
@@ -27,13 +27,12 @@ export class ListeOffres implements OnInit {
   private router = inject(Router);
 
   offres: Offre[] = [];
-  offresFiltrees: Offre[] = []; // Liste dynamique mise à jour par la recherche
+  offresFiltrees: Offre[] = [];
   loading = true;
   error = '';
   savedOfferIds: Set<number> = new Set();
   private candidateId: number | null = null;
 
-  // Objet contenant nos critères de recherche avancée
   criteres = {
     motCle: '',
     lieu: '',
@@ -50,7 +49,7 @@ export class ListeOffres implements OnInit {
     this.apiService.getOffresOuvertes().subscribe({
       next: (offres) => {
         this.offres = offres;
-        this.offresFiltrees = offres; // Initialement, on affiche tout
+        this.offresFiltrees = offres;
         this.loading = false;
       },
       error: () => {
@@ -60,30 +59,24 @@ export class ListeOffres implements OnInit {
     });
   }
 
-  // Fonction principale de filtrage
   appliquerFiltres(): void {
     this.offresFiltrees = this.offres.filter(offre => {
-      // 1. Recherche par mot-clé (dans le titre ou la description)
       const matchMotCle = !this.criteres.motCle || 
         offre.titre.toLowerCase().includes(this.criteres.motCle.toLowerCase()) || 
         offre.description.toLowerCase().includes(this.criteres.motCle.toLowerCase());
 
-      // 2. Recherche par lieu
       const matchLieu = !this.criteres.lieu || 
         offre.lieu.toLowerCase().includes(this.criteres.lieu.toLowerCase());
 
-      // 3. Filtrage par type de contrat
       const matchContrat = !this.criteres.typeContrat || 
         offre.typeContrat === this.criteres.typeContrat;
 
-      // 4. Filtrage par télétravail (si la case est cochée, on ne garde que les offres en télétravail)
       const matchTeletravail = !this.criteres.teletravail || offre.teletravail === true;
 
       return matchMotCle && matchLieu && matchContrat && matchTeletravail;
     });
   }
 
-  // Permet de vider les filtres en un clic
   reinitialiserFiltres(): void {
     this.criteres = {
       motCle: '',
@@ -94,7 +87,6 @@ export class ListeOffres implements OnInit {
     this.offresFiltrees = this.offres;
   }
 
-  // --- Le reste de ton code d'origine demeure inchangé ---
   private loadSavedOffers(): void {
     const userId = this.authService.getUserId();
     if (!userId) return;

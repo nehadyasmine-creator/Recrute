@@ -12,13 +12,11 @@ export class LinkifyPipe implements PipeTransform {
     if (value === null || value === undefined) return '' as unknown as SafeHtml;
     const text = String(value);
 
-    // Escape HTML to avoid XSS, then replace URLs with anchors
     const escapeHtml = (s: string) =>
       s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;');
 
     const escaped = escapeHtml(text);
 
-    // Simple URL regex (http(s) and www.)
     const urlRegex = /((https?:\/\/|www\.)[\w\-@:%_\+.~#?,&//=]+[^\s\"'<> ])/gi;
 
     const replaced = escaped.replace(urlRegex, (match: string) => {

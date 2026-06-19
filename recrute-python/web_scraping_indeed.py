@@ -21,7 +21,6 @@ def extraire_sans_paginer_ni_date():
 
     print("[!] Mode Hit & Run : 1 requête = 1 navigateur neuf. Zéro pagination. Zéro filtre de date.")
 
-    # --- ÉTAPE 1 : COLLECTE DES LIENS ---
     for ville in VILLES:
         if objectif_atteint: break
 
@@ -36,14 +35,12 @@ def extraire_sans_paginer_ni_date():
                 query_encoded = urllib.parse.quote(mot_cle)
                 loc_encoded = urllib.parse.quote(ville)
 
-                # URL ciblant la PAGE 1 UNIQUEMENT, basique
                 page_url = f"https://fr.indeed.com/jobs?q={query_encoded}&l={loc_encoded}"
 
                 sb.driver.uc_open_with_reconnect(page_url, reconnect_time=5)
                 time.sleep(random.uniform(3, 5))
 
                 try:
-                    # Nettoyage des pop-ups
                     sb.execute_script(
                         "document.querySelectorAll('.icl-Modal, .icl-Modal-backdrop').forEach(e => e.remove()); document.body.style.overflow = 'auto';")
 
@@ -68,10 +65,8 @@ def extraire_sans_paginer_ni_date():
     print(f"\n[+] Collecte terminée : {len(liens_finaux)} liens uniques obtenus.")
     print("-" * 50)
 
-    # --- ÉTAPE 2 : TÉLÉCHARGEMENT DES OFFRES ---
     print("\n[*] Lancement d'un navigateur unique pour le téléchargement de toutes les offres...")
 
-    # Le navigateur s'ouvre UNE SEULE FOIS pour toute la phase 2
     with SB(uc=True, headless=False, test=True, incognito=True) as sb:
         for index, job_url in enumerate(liens_finaux, start=1):
             print(f"[*] Visite de l'offre {index}/{len(liens_finaux)}")
@@ -93,7 +88,6 @@ def extraire_sans_paginer_ni_date():
             except Exception:
                 print(f"[-] Impossible de lire l'offre {index} (Captcha ou page introuvable).")
 
-            # Pause aléatoire vitale pour ne pas se faire bloquer dans cette session unique
             time.sleep(random.uniform(4, 8))
 
 

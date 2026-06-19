@@ -26,7 +26,6 @@ export class AuthService {
   return this.http.post(`${this.apiUrl}/auth/login`, { email, motDePasse }).pipe(
     tap((response: any) => {
       localStorage.setItem('token', response.token);
-      // On stocke l'ID s'il est présent dans la réponse du backend
       if (response.id) {
         localStorage.setItem('userId', response.id.toString());
       }
@@ -38,7 +37,6 @@ export class AuthService {
   );
 }
 
-// Ajoute cette petite méthode pour récupérer l'ID facilement
 getUserId(): number | null {
   const id = localStorage.getItem('userId');
   return id ? parseInt(id, 10) : null;
@@ -48,7 +46,6 @@ getUserRole(): string | null {
   return localStorage.getItem('userRole');
 }
 
-// Et n'oublie pas de nettoyer au logout
 logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('userId');
@@ -64,10 +61,8 @@ logout() {
     return !!this.getToken();
   }
   uploadCV(candidatId: number, formData: FormData): Observable<any> {
-  // L'URL doit correspondre à @PostMapping("/{id}/cv")
-  // Vérifie si le préfixe est bien /api/candidats ou autre dans le @RequestMapping en haut du fichier Java
   return this.http.post(`http://localhost:8080/candidats/${candidatId}/cv`, formData, {
-    responseType: 'text' // Car ton Java renvoie ResponseEntity<String> et non un JSON
+    responseType: 'text' 
   });
 }
 }

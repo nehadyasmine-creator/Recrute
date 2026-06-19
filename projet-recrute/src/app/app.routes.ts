@@ -59,6 +59,5 @@ export const routes: Routes = [
     { path: 'confidentialite', component: Confidentialite },
     { path: 'suggestion-ia-recruteur', component:SuggestionIaRecruteur},
 
-    //à laisser en tout dernier, sert à rediriger vers la page d'accueil si on essaie d'aller sur une page qui n'existe pas
     { path: '**', redirectTo: '' },
 ];

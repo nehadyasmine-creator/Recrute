@@ -8,26 +8,19 @@ from dotenv import load_dotenv
 
 from openai import OpenAI
 
-# --- Configuration de l'API OpenAI via le fichier .env ---
 load_dotenv()
 
-# Récupère la clé API de manière sécurisée
 VOTRE_CLE_API = os.getenv("OPENAI_API_KEY")
 
 if not VOTRE_CLE_API:
     raise ValueError("Erreur : La clé API est introuvable. Avez-vous bien créé le fichier .env avec OPENAI_API_KEY ?")
 
-# Initialisation du client OpenAI
-# Note : par défaut, OpenAI() lit directement os.getenv("OPENAI_API_KEY"),
-# mais la passer explicitement permet de garder la même logique que votre code initial.
 client = OpenAI(api_key=VOTRE_CLE_API)
 
-# --- Configuration des dossiers et fichiers ---
 HTML_DIR = "html"
 OUTPUT_CSV = "offres_indeed_extraites.csv"
 
 def extraire_donnees_offre(fichier_path):
-    # Initialisation du dictionnaire
     offre = {
         "fichier_source": os.path.basename(fichier_path),
         "titre": None,
@@ -49,7 +42,6 @@ def extraire_donnees_offre(fichier_path):
         with open(fichier_path, "r", encoding="utf-8") as f:
             soup = BeautifulSoup(f, 'lxml')
 
-            # --- 1. Extraction des métadonnées standard (BeautifulSoup) ---
             titre_el = soup.find('h1', attrs={'data-testid': 'jobsearch-JobInfoHeader-title'})
             if titre_el:
                 offre["titre"] = titre_el.text.strip()
@@ -79,7 +71,6 @@ def extraire_donnees_offre(fichier_path):
                 else:
                     offre["type_contrat"] = "CDI"
 
-            # --- 2. Extraction de la description ---
             desc_el = soup.find('div', id='jobDescriptionText')
             if desc_el:
                 description_texte = desc_el.get_text(separator='\n').strip()
@@ -110,7 +101,7 @@ def extraire_donnees_offre(fichier_path):
 
                 try:
                     reponse = client.chat.completions.create(
-                        model="gpt-4o-mini",  # L'équivalent rapide et économique (comme le modèle Flash)
+                        model="gpt-4o-mini",  
                         messages=[
                             {"role": "user", "content": prompt}
                         ],
@@ -157,7 +148,6 @@ def traiter_dossier_html():
     print(f"[*] Début de l'analyse de {len(fichiers_html)} offres...")
     toutes_les_offres = []
 
-    # Boucle sur chaque fichier du dossier
     for index, nom_fichier in enumerate(fichiers_html, start=1):
         chemin_complet = os.path.join(HTML_DIR, nom_fichier)
         print(f"[{index}/{len(fichiers_html)}] Traitement de {nom_fichier} avec OpenAI...")
@@ -165,7 +155,6 @@ def traiter_dossier_html():
         donnees = extraire_donnees_offre(chemin_complet)
         toutes_les_offres.append(donnees)
 
-    # Sauvegarde des données dans un fichier CSV
     if toutes_les_offres:
         colonnes = toutes_les_offres[0].keys()
 
