@@ -107,7 +107,6 @@ export class ModifierProfilCandidat implements OnInit, OnDestroy {
   chargerInfosUtilisateur() {
   const userId = this.authService.getUserId();
   if (userId) {
-    // On utilise la partie "Utilisateurs" de ton ApiService
     this.apiService.getUtilisateurById(userId).subscribe({
       next: (data) => {
         this.utilisateur = data;

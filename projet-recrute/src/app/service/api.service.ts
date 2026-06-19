@@ -9,17 +9,14 @@ const API = environment.apiUrl;
 export class ApiService {
   private http = inject(HttpClient);
 
-  // Récupérer un dossier de candidature spécifique
   getCandidatureById(id: number): Observable<any> {
     return this.http.get<any>(`${API}/candidatures/${id}`);
   }
 
-  // Mettre à jour l'état (le backend doit intercepter la modification)
   updateCandidatureStatut(id: number, candidature: any): Observable<any> {
     return this.http.put<any>(`${API}/candidatures/${id}`, candidature);
   }
 
-  // Auth
   register(data: any): Observable<any> {
     return this.http.post(`${API}/auth/register`, data);
   }
@@ -27,7 +24,6 @@ export class ApiService {
     return this.http.post(`${API}/auth/login`, { email, motDePasse });
   }
 
-  // Mot de passe oublié
   initForgotPassword(data: any): Observable<any> {
     return this.http.post(`${API}/utilisateurs/mot-de-passe-oublie/init`, data);
   }
@@ -38,7 +34,6 @@ export class ApiService {
     return this.http.post(`${API}/utilisateurs/mot-de-passe-oublie/reinitialiser`, data);
   }
 
-  // Candidats
   getCandidats(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidats`);
   }
@@ -66,7 +61,6 @@ export class ApiService {
     return this.http.get(`${API}/candidats/${id}/cv`, { responseType: 'blob' });
   }
 
-  // Utilisateurs
   getUtilisateurs(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/utilisateurs`);
   }
@@ -88,7 +82,6 @@ export class ApiService {
     return this.http.get(`${API}/utilisateurs/${id}/pdp`, { responseType: 'blob' });
   }
 
-  // Contact
   getContactMessages(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/contacts`);
   }
@@ -102,7 +95,6 @@ export class ApiService {
     return this.http.post(`${API}/contacts`, data);
   }
 
-  // Offres
   getOffres(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/offres`);
   }
@@ -125,7 +117,6 @@ export class ApiService {
     return this.http.delete(`${API}/offres/${id}`);
   }
 
-  // Recruteurs
   getRecruteurs(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/recruteurs`);
   }
@@ -142,7 +133,6 @@ export class ApiService {
     return this.http.put(`${API}/recruteurs/${id}`, data);
   }
 
-  // Entreprises
   getEntreprises(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/entreprises`);
   }
@@ -156,7 +146,6 @@ export class ApiService {
     return this.http.put(`${API}/entreprises/${id}`, data);
   }
 
-  // Competences
   getCompetences(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/competences`);
   }
@@ -195,7 +184,6 @@ export class ApiService {
     });
   }
 
-  // Experiences
   getExperiencesByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/experiences/candidat/${id}`);
   }
@@ -209,7 +197,6 @@ export class ApiService {
     return this.http.delete(`${API}/experiences/${id}`);
   }
 
-  // Liens
   getLiensByCandidat(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/liens/candidat/${id}`);
   }
@@ -217,7 +204,6 @@ export class ApiService {
     return this.http.post(`${API}/liens`, data);
   }
 
-  // Candidatures
   getCandidatures(): Observable<any[]> {
     return this.http.get<any[]>(`${API}/candidatures`);
   }
@@ -234,7 +220,6 @@ export class ApiService {
     return this.http.delete(`${API}/candidatures/${id}`);
   }
 
-  // Messagerie
   getMessagesByCandidature(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${API}/messagerie/candidature/${id}`);
   }
@@ -251,7 +236,6 @@ export class ApiService {
     return this.http.put(`${API}/messagerie/${id}/lu`, {});
   }
 
-  // IA
   public getIASuggestionsFromPdf(file: File) {
     const formData = new FormData();
     formData.append('file', file);
@@ -273,7 +257,7 @@ export class ApiService {
     formData.append('description', descriptionOffre);
 
     files.forEach((file) => {
-      formData.append('files', file); // Le nom 'files' doit correspondre au paramètre FastAPI
+      formData.append('files', file); 
     });
     
     return this.http.post<any[]>('http://localhost:8000/api/compare-cvs', formData);

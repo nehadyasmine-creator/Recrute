@@ -29,13 +29,11 @@ export class InscriptionEmployeur {
   errorMessage: string = '';
 
   onRegister() {
-    // Vérification des mots de passe
     if (this.employeurData.motdepasse !== this.employeurData.confirmPassword) {
       this.errorMessage = "Les mots de passe ne correspondent pas.";
       return;
     }
 
-    // Formatage des données pour l'API
     const finalData = {
       entreprise: this.employeurData.entreprise,
       siren: this.employeurData.siren,
@@ -48,7 +46,6 @@ export class InscriptionEmployeur {
       role: 'recruteur'
     };
 
-    // Appel du service
     this.authService.register(finalData).subscribe({
       next: (res) => {
         console.log('Inscription réussie !', res);  

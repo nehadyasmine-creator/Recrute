@@ -39,7 +39,6 @@ export class SuggestionIaRecruteur implements OnInit {
       return;
     }
 
-    // 1. Récupération du profil recruteur
     this.apiService.getRecruteurByUtilisateurId(userId).subscribe({
       next: (recruteur) => {
         this.recruteurId = recruteur?.id ?? null;
@@ -58,13 +57,11 @@ export class SuggestionIaRecruteur implements OnInit {
   }
 
   private loadOffresRecruteur(): void {
-    // 2. Récupération des offres de ce recruteur
     this.apiService.getOffresByRecruteur(this.recruteurId!).subscribe({
       next: (offres) => {
         this.offres = offres || [];
         this.loading = false;
 
-        // S'il a déjà des offres, on pré-sélectionne la première et on lance l'IA
         if (this.offres.length > 0) {
           this.selectedOffer = this.offres[0];
           this.loadIASuggestions();
@@ -82,7 +79,6 @@ export class SuggestionIaRecruteur implements OnInit {
     const offerId = Number(selectElement.value);
     this.selectedOffer = this.offres.find(o => o.id === offerId) || null;
     
-    // Si une nouvelle offre est sélectionnée, on relance automatiquement l'analyse
     if (this.selectedOffer) {
        this.loadIASuggestions();
     }
@@ -95,13 +91,11 @@ export class SuggestionIaRecruteur implements OnInit {
     this.errorMessage = ''; 
     this.infoMessage = 'Analyse de l\'offre par l\'IA en cours...';
     
-    // Format attendu par la nouvelle route FastAPI "OfferRequest" (Pydantic)
     const offerPayload = {
       titre: this.selectedOffer.titre || '',
       description: this.selectedOffer.description || ''
     };
 
-    // 3. Appel à la route FastAPI POST /api/match-offer
     this.apiService.getIASuggestionsFromOffer(offerPayload).subscribe({
       next: (data: any) => {
         console.log("Réponse de l'IA (Candidats) :", data); 

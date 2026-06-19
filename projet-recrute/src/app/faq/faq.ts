@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './faq.scss',
 })
 export class Faq {
-  // Stocke l'index de la question ouverte (-1 = tout est fermé)
   openedIndex: number = -1;
 
   faqs = [

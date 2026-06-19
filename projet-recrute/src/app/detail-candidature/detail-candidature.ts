@@ -68,7 +68,6 @@ export class DetailCandidature implements OnInit, OnDestroy {
         this.loading = false;
         this.loadCvPreview();
         
-        // Sécurité : s'assurer que seul le recruteur peut voir cela (optionnel selon vos règles)
         if (this.authService.getUserRole() !== 'recruteur') {
           this.errorMessage = "Accès restreint aux recruteurs.";
           this.candidature = null;
@@ -90,7 +89,6 @@ export class DetailCandidature implements OnInit, OnDestroy {
     if (!this.candidature || this.actionLoading) return;
     this.actionLoading = true;
 
-    // On prépare l'objet partiel à envoyer au backend
     const candidatureModifiee = {
       ...this.candidature,
       statut: nouveauStatut
